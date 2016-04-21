@@ -1,3 +1,4 @@
 require('dotenv').config();
+import log from './log';
 
-console.log('app started');
+log.debug('application started');

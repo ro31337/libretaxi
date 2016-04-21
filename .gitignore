@@ -1,6 +1,9 @@
 # Environment configuration file
 .env
 
+# Log files
+cheaptaxi*.log
+
 # Logs
 logs
 *.log
