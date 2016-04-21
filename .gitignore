@@ -4,6 +4,9 @@
 # Log files
 cheaptaxi*.log
 
+# nyc test coverage
+.nyc_output
+
 # Logs
 logs
 *.log
