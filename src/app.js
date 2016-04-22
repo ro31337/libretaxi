@@ -1,4 +1,4 @@
-require('dotenv').config();
 import log from './log';
+import './init';
 
-log.debug('application started');
+log.debug(__('app.welcome_banner'));

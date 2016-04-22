@@ -16,8 +16,11 @@
     "dotenv": "^2.0.0",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
+    "i18n": "^0.8.2",
     "moment": "^2.13.0",
     "nyc": "^6.4.0",
+    "oboe": "^2.1.2",
+    "walk": "^2.3.9",
     "winston": "^2.2.0"
   },
   "scripts": {
@@ -39,8 +42,7 @@
   "homepage": "https://github.com/ro31337/cheaptaxi#readme",
   "ava": {
     "files": [
-      "test/app-test.js",
-      "test/env-test.js"
+      "test/*-test.js"
     ]
   }
 }

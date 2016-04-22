@@ -4,3 +4,6 @@ parser: babel-eslint
 
 env:
   node: true
+
+rules:
+  "no-undef": 0
