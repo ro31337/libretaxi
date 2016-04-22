@@ -17,11 +17,13 @@
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
     "moment": "^2.13.0",
+    "nyc": "^6.4.0",
     "winston": "^2.2.0"
   },
   "scripts": {
-    "test": "npm run ava",
+    "test": "npm run lint && npm run cover",
     "lint": "eslint src test",
+    "cover": "nyc npm run ava",
     "ava": "ava --require babel-register",
     "start": "babel-node ./src/app.js"
   },
