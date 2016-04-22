@@ -1,3 +1,4 @@
+require('dotenv').config();
 import winston from 'winston';
 import moment from 'moment';
 
@@ -14,7 +15,7 @@ const consoleTransport = new (winston.transports.Console)({
 });
 
 const fileTransport = new (winston.transports.File)({
-  filename: 'cheaptaxi.log',
+  filename: process.env.LOG_FILE,
 });
 
 module.exports = new (winston.Logger)({
