@@ -1,6 +1,6 @@
 {
   "name": "cheaptaxi",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Cheap Taxi, Telegram Bot (@cheaptaxi_bot)",
   "main": "src/app.js",
   "dependencies": {},
