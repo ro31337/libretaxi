@@ -1,6 +1,8 @@
 require('dotenv').config();
-import log from './log';
+import Log from './log';
 import i18n from 'i18n';
+
+const log = new Log();
 
 i18n.configure({
   locales: ['en', 'ru'],

@@ -7,6 +7,9 @@ cheaptaxi*.log
 # nyc test coverage
 .nyc_output
 
+# esdoc
+esdoc
+
 # Logs
 logs
 *.log
