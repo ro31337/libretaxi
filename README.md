@@ -26,3 +26,12 @@ Run
 ```
 npm start
 ```
+
+Documentation
+=============
+
+Command below will generate documentation based on comments from source code:
+
+```
+npm run esdoc
+```

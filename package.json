@@ -14,6 +14,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.7.2",
     "dotenv": "^2.0.0",
+    "esdoc": "^0.4.6",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
     "i18n": "^0.8.2",
@@ -28,7 +29,8 @@
     "lint": "eslint src test",
     "cover": "nyc npm run ava",
     "ava": "ava --require babel-register",
-    "start": "babel-node ./src/app.js"
+    "start": "babel-node ./src/app.js",
+    "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json && open ./esdoc/index.html"
   },
   "repository": {
     "type": "git",
