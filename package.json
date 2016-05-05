@@ -30,7 +30,7 @@
     "cover": "nyc npm run ava",
     "ava": "ava --require babel-register",
     "start": "babel-node ./src/app.js",
-    "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json && open ./esdoc/index.html"
+    "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json"
   },
   "repository": {
     "type": "git",
