@@ -45,7 +45,7 @@
   "homepage": "https://github.com/ro31337/cheaptaxi#readme",
   "ava": {
     "files": [
-      "test/*-test.js"
+      "test/**/*-test.js"
     ]
   }
 }
