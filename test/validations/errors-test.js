@@ -11,8 +11,7 @@ test.cb('should have error message when thrown', t => {
   t.end();
 });
 
-test('should have error message when thrown', t => {
+test('should have message property', t => {
   const err = new ArgumentError('something');
-  t.is(err.name, 'ArgumentError');
   t.is(err.message, 'something');
 });
