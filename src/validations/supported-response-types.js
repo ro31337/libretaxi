@@ -14,4 +14,4 @@
  *   console.log('response with type "something" is not supported');
  * }
  */
-export default new Set(['text']);
+export default new Set(['text', 'redirect']);
