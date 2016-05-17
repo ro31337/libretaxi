@@ -1,6 +1,6 @@
-require('dotenv').config({ path: '../.env-sample' });
+require('dotenv').config();
 import test from 'ava';
 
-test('sample config should have telegram token key specified', t => {
-  t.is(process.env.TELEGRAM_TOKEN, '');
+test('line 1 should load variables from .env in "test" (current) directory', t => {
+  t.truthy(process.env.TEST_ENVIRONMENT);
 });

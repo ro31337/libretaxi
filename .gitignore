@@ -1,5 +1,5 @@
 # Environment configuration file
-.env
+/.env
 
 # Log files
 cheaptaxi*.log
