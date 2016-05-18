@@ -17,6 +17,8 @@
     "esdoc": "^0.4.6",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
+    "firebase": "^2.4.2",
+    "firebase-server": "^0.5.4",
     "i18n": "^0.8.2",
     "moment": "^2.13.0",
     "nyc": "^6.4.0",

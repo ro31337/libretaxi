@@ -20,6 +20,14 @@ Update your `.env` file:
 177081234:AbcdeE3879823SKjwhk2934
 ```
 
+
+`FIREBASE_STATES_CONNSTR` - connection string for Firebase for state storage.
+Example::
+
+```
+https://state-test.firebaseio.com/
+```
+
 Run
 ===
 
