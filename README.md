@@ -21,8 +21,8 @@ Update your `.env` file:
 ```
 
 
-`FIREBASE_STATES_CONNSTR` - connection string for Firebase for state storage.
-Example::
+`STATEFUL_CONNSTR` - connection string for Firebase for stateful objects.
+Example:
 
 ```
 https://state-test.firebaseio.com/

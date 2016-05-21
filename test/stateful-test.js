@@ -1,13 +1,15 @@
 import test from 'ava';
 import FirebaseServer from 'firebase-server';
-import StateStorage from '../src/state-storage';
+import Demo from './stateful-demo';
 
 let server = null;
 
 test.before(() => {
   server = new FirebaseServer(5000, 'localhost.firebaseio.test', {
-    test_state_key: { foo: 1, bar: 2 },
-    another_key: { foo: 11, bar: 22 },
+    demo: {
+      test_state_key: { foo: 1, bar: 2 },
+      another_key: { foo: 11, bar: 22 },
+    },
   });
 });
 
@@ -19,16 +21,16 @@ test.cb('should load initial state from storage', t => {
   t.plan(4);
 
   const checkAnother = () => {
-    new StateStorage('another_key').load().then((storage) => {
-      const state = storage.state;
+    new Demo('another_key').load().then((demo) => {
+      const state = demo.state;
       t.is(state.foo, 11);
       t.is(state.bar, 22);
       t.end();
     });
   };
 
-  new StateStorage('test_state_key').load().then((storage) => {
-    const state = storage.state;
+  new Demo('test_state_key').load().then((demo) => {
+    const state = demo.state;
     t.is(state.foo, 1);
     t.is(state.bar, 2);
     checkAnother();
@@ -37,8 +39,8 @@ test.cb('should load initial state from storage', t => {
 
 test.cb('should have state if key not exists', t => {
   t.plan(1);
-  new StateStorage('non_existing_key').load().then((storage) => {
-    t.truthy(storage.state);
+  new Demo('non_existing_key').load().then((demo) => {
+    t.truthy(demo.state);
     t.end();
   });
 });
@@ -48,16 +50,16 @@ test.cb('should save state and execute callback', t => {
 
   // to be executed on save ("line A" below)
   const callback = () => {
-    new StateStorage('test_state_key').load().then((storage) => {
-      t.is(storage.state.x, 3);
+    new Demo('test_state_key').load().then((demo) => {
+      t.is(demo.state.x, 3);
       t.end();
     });
   };
 
-  new StateStorage('test_state_key').load().then((storage) => {
-    const state = storage.state;
+  new Demo('test_state_key').load().then((demo) => {
+    const state = demo.state;
     state.x = 3;
-    storage.save(callback); // line A
+    demo.save(callback); // line A
   });
 });
 
@@ -66,16 +68,16 @@ test.cb('should save state without callback', t => {
 
   // to be executed after save ("line B" below)
   const verify = () => {
-    new StateStorage('test_state_key').load().then((storage) => {
-      t.is(storage.state.y, 4);
+    new Demo('test_state_key').load().then((demo) => {
+      t.is(demo.state.y, 4);
       t.end();
     });
   };
 
-  new StateStorage('test_state_key').load().then((storage) => {
-    const state = storage.state;
+  new Demo('test_state_key').load().then((demo) => {
+    const state = demo.state;
     state.y = 4;
-    storage.save();
+    demo.save();
 
     setTimeout(verify, 300); // line B
   });
@@ -84,14 +86,14 @@ test.cb('should save state without callback', t => {
 test.cb('should update state values', t => {
   t.plan(3);
 
-  new StateStorage('test_state_key').load().then((storage) => {
-    storage.setState({
+  new Demo('test_state_key').load().then((demo) => {
+    demo.setState({
       prop1: 1,
       prop2: 2,
     });
-    t.is(storage.state.prop1, 1);
-    t.is(storage.state.prop2, 2);
-    t.is(storage.state.foo, 1); // should not affect existing data
+    t.is(demo.state.prop1, 1);
+    t.is(demo.state.prop2, 2);
+    t.is(demo.state.foo, 1); // should not affect existing data
     t.end();
   });
 });
@@ -99,40 +101,40 @@ test.cb('should update state values', t => {
 test.cb('should sync values between two storages with the same key', t => {
   t.plan(1);
 
-  new StateStorage('must_sync').load().then((storage) => {
+  new Demo('must_sync').load().then((demo) => {
     const interval = setInterval(() => {
-      if (storage.state.foo) {
+      if (demo.state.foo) {
         clearInterval(interval);
-        t.is(storage.state.foo, 123);
+        t.is(demo.state.foo, 123);
         t.end();
       }
     }, 100);
   });
 
-  new StateStorage('must_sync').load().then((storage) => {
-    const state = storage.state;
+  new Demo('must_sync').load().then((demo) => {
+    const state = demo.state;
     state.foo = 123;
-    storage.save();
+    demo.save();
   });
 });
 
 test.cb('should not sync values when disposed', t => {
   // update procedure, to be executed on "line C" below.
   const update = () => {
-    new StateStorage('should_not_sync').load().then((storage) => {
-      const state = storage.state;
+    new Demo('should_not_sync').load().then((demo) => {
+      const state = demo.state;
       state.foo = 123;
-      storage.save();
+      demo.save();
     });
   };
 
-  new StateStorage('should_not_sync').load().then((storage) => {
-    storage.dispose(); // dispose current
+  new Demo('should_not_sync').load().then((demo) => {
+    demo.dispose(); // dispose current
     update(); // line C. run procedure that updates storage with the same key
 
     // check every 100 ms, fail if updated
     const interval = setInterval(() => {
-      if (storage.state.foo) {
+      if (demo.state.foo) {
         t.fail();
       }
     }, 100);
