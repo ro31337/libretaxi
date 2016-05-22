@@ -24,7 +24,6 @@ import { ArgumentError } from './validations/errors';
  * when it comes to typedef).
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @extends {ValidatedStateStorage}
  * @date 2016-05-20
  * @version 1.1
  * @since 0.1.0
