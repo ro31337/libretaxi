@@ -21,7 +21,9 @@ Update your `.env` file:
 ```
 
 
-`STATEFUL_CONNSTR` - connection string for Firebase for stateful objects.
+`STATEFUL_CONNSTR` - [Firebase](https://www.firebase.com) connection string
+for stateful objects.
+
 Example:
 
 ```
