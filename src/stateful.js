@@ -20,7 +20,7 @@ import { ArgumentError } from './validations/errors';
  * * `setState` - Updates selected properties. Doesn't affect other props.
  * * `dispose` - Unsubscribes from storage updates.
  *
- * See also: {@link StateKey}, source code for more information (esdoc is limited
+ * See also: {@link StatefulKey}, source code for more information (esdoc is limited
  * when it comes to typedef).
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
@@ -34,7 +34,7 @@ import { ArgumentError } from './validations/errors';
  *      super();
  *      this.stateful = {
  *        table: 'foo',
- *        key: 'cli_1_guid' // output from stateKey.toString()
+ *        key: 'cli_1_guid' // output from StatefulKey.toString()
  *      }
  *    }
  *  }
