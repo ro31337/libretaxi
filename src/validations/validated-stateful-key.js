@@ -2,7 +2,7 @@ import { ArgumentError } from './errors';
 import SupportedPlatforms from './supported-platforms';
 
 /**
- * Validator for {@link StateKey}.
+ * Validator for {@link StatefulKey}.
  * It validates constructor parameters only and has no other behavior.
  *
  * @abstract
@@ -11,7 +11,7 @@ import SupportedPlatforms from './supported-platforms';
  * @version 1.1
  * @since 0.1.0
  */
-export default class ValidatedStateKey {
+export default class ValidatedStatefulKey {
   /**
    * Constructor.
    *

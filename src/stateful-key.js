@@ -1,17 +1,17 @@
-import ValidatedStateKey from './validations/validated-state-key';
+import ValidatedStatefulKey from './validations/validated-stateful-key';
 import objectAssign from 'object-assign';
 
 /**
- * StateKey, unique key for State. Used to generate system-wide unique key
+ * StatefulKey, unique key for State. Used to generate system-wide unique key
  * for your action, command, object state.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @extends {ValidatedStateKey}
+ * @extends {ValidatedStatefulKey}
  * @date 2016-05-11
  * @version 1.1
  * @since 0.1.0
  */
-export default class StateKey extends ValidatedStateKey {
+export default class StatefulKey extends ValidatedStatefulKey {
   /**
    * Constructor.
    *
@@ -25,7 +25,7 @@ export default class StateKey extends ValidatedStateKey {
    * - options.platformId not specified
    * - options.guid not specified
    * @example
-   * const k = new StateKey('telegram', '31337', '4566bd48-d369-4594-aa1e-fb5dae1acf43');
+   * const k = new StatefulKey('telegram', '31337', '4566bd48-d369-4594-aa1e-fb5dae1acf43');
    */
   constructor(options) {
     super(options);
