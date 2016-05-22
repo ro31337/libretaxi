@@ -16,3 +16,8 @@ test('should lower case string representation', t => {
   const k = new StatefulKey({ platformType: 'cli', platformId: 1, guid: 'FOO' });
   t.is(k.toString(), 'cli_1_foo');
 });
+
+test('should generate key without guid', t => {
+  const k = new StatefulKey({ platformType: 'cli', platformId: 1 });
+  t.is(k.toString(), 'cli_1');
+});

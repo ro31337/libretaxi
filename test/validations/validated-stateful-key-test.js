@@ -42,12 +42,7 @@ test.cb('should throw error when "platformId" parameter not specified', t => {
   t.end();
 });
 
-test.cb('should throw error when "guid" parameter not specified', t => {
-  const err = 'guid parameter not specified';
-
-  t.throws(() => {
-    new ValidatedStatefulKey({ platformType: 'cli', platformId: 123 });
-  }, err);
-
+test.cb('should not throw error when "guid" parameter not specified', t => {
+  new ValidatedStatefulKey({ platformType: 'cli', platformId: 123 });
   t.end();
 });
