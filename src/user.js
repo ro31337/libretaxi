@@ -1,5 +1,8 @@
 import objectAssign from 'object-assign';
 import ValidatedUser from './validations/validated-user';
+import stateful from './stateful';
+import StatefulKey from './stateful-key';
+
 /**
  * User.
  * Represents the user who belongs to specific platform (Telegram, Cli, etc.)
@@ -10,7 +13,7 @@ import ValidatedUser from './validations/validated-user';
  * @version 1.1
  * @since 0.1.0
  */
-export default class User extends ValidatedUser {
+export default class User extends stateful(ValidatedUser) {
   /**
    * Constructor.
    *
@@ -22,5 +25,14 @@ export default class User extends ValidatedUser {
   constructor(options) {
     super(options);
     objectAssign(this, options);
+
+    const statefulKey = new StatefulKey({
+      platformType: this.platformType,
+      platformId: this.platformId }).toString();
+
+    this.stateful = {
+      key: statefulKey,
+      table: 'users',
+    };
   }
 }

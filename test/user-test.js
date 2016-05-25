@@ -19,3 +19,11 @@ test('user parameters should be accessible from outside', t => {
   t.is(u.extra, 555);
   t.pass();
 });
+
+test('should set stateful params', t => {
+  const u = new User({ platformType: 'cli', platformId: 1 });
+  t.truthy(u.stateful);
+  t.is(u.stateful.key, 'cli_1');
+  t.is(u.stateful.table, 'users');
+  t.pass();
+});
