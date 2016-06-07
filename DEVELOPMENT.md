@@ -79,3 +79,14 @@ npm run esdoc
 ```
 
 Command above will automatically generate and open generated documentation in your browser. It's recommended to execute this command every time you create/update docs for your classes.
+
+Tests
+=====
+
+**IMPORTANT** Make sure `127.0.0.1 localhost.firebaseio.test` is specified
+in your `/etc/hosts`. Look [here](https://github.com/urish/firebase-server/blob/master/README.md)
+for more info.
+
+```
+npm test
+```

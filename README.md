@@ -37,6 +37,17 @@ Run
 npm start
 ```
 
+Tests
+=====
+
+**IMPORTANT** Make sure `127.0.0.1 localhost.firebaseio.test` is specified
+in your `/etc/hosts`. Look [here](https://github.com/urish/firebase-server/blob/master/README.md)
+for more info.
+
+```
+npm test
+```
+
 Documentation
 =============
 
