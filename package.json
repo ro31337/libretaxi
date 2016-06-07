@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^0.15.2",
     "babel-cli": "^6.7.5",
     "babel-eslint": "^6.0.3",
     "babel-plugin-syntax-async-functions": "^6.5.0",
