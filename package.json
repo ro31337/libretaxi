@@ -28,7 +28,7 @@
     "winston": "^2.2.0"
   },
   "scripts": {
-    "test": "npm run lint && npm run cover",
+    "test": "npm run lint && npm run ava ./test/before-all.js && npm run cover",
     "lint": "eslint src test",
     "cover": "nyc npm run ava",
     "ava": "ava --require babel-register",
