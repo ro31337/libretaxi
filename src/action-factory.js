@@ -1,8 +1,4 @@
-import SelectLanguage from './menu/select-language';
-
-const routes = {
-  'select-language': SelectLanguage,
-};
+import routes from './routes';
 
 /**
  * Action factory, implements factory method(s) to create actions based on
@@ -27,14 +23,16 @@ export default class ActionFactory {
    * @return {Object} Instance of `Action`
    */
   static fromMenuLocation(menuLocation) {
-    if (!menuLocation) {
-      return new SelectLanguage(); // default location
+    let location = menuLocation;
+
+    if (!location) {
+      location = 'default';
     }
 
-    const action = routes[menuLocation];
+    const action = routes[location];
 
     if (!action) {
-      throw new Error(`Can't find route key "${menuLocation}" in routes`);
+      throw new Error(`Can't find route key "${location}" in routes`);
     }
 
     return new action; // eslint-disable-line new-cap
