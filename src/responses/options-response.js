@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Response from './response';
 import objectAssign from 'object-assign';
 import { ArgumentError } from '../validations/errors';
