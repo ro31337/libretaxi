@@ -8,7 +8,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should throw argument error when message not specified', t => {
-  const err = 'message parameter not specified';
+  const err = "'message' parameter not specified";
 
   t.throws(() => {
     new TextResponse();
