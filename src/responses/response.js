@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import ValidatedResponse from '../validations/validated-response';
+import checkNotNull from '../validations/check-not-null.js';
 import { mix } from 'mixwith';
 
 /**
@@ -13,7 +14,7 @@ import { mix } from 'mixwith';
  * @version 1.1
  * @since 0.1.0
  */
-export default class Response extends mix(Object).with(ValidatedResponse) {
+export default class Response extends mix(Object).with(checkNotNull('type'), ValidatedResponse) {
   /**
    * Constructor.
    *
