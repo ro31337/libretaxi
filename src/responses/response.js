@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import ValidatedResponse from '../validations/validated-response';
+import { mix } from 'mixwith';
 
 /**
  * Response to request. Supposed to be returned from the `Action` every
@@ -12,7 +13,7 @@ import ValidatedResponse from '../validations/validated-response';
  * @version 1.1
  * @since 0.1.0
  */
-export default class Response extends ValidatedResponse {
+export default class Response extends mix(Object).with(ValidatedResponse) {
   /**
    * Constructor.
    *

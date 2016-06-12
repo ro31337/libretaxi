@@ -1,6 +1,10 @@
 /* eslint-disable no-new */
 import test from 'ava';
-import ValidatedResponse from '../../src/validations/validated-response';
+import { mix } from 'mixwith';
+import Mixin from '../../src/validations/validated-response';
+
+class ValidatedResponse extends mix(Object).with(Mixin) {
+}
 
 test.cb('should throw error when parameters not specified', t => {
   const err = 'constructor parameters not specified';

@@ -1,17 +1,20 @@
 import { ArgumentError } from './errors';
 import SupportedResponseTypes from './supported-response-types';
+import { Mixin } from 'mixwith';
 
 /**
+ * @typedef ValidatedResponse
+ *
  * Validator for {@link Response}.
  * It validates constructor parameters only and has no other behavior.
  *
  * @abstract
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-05-04
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  */
-export default class ValidatedResponse {
+export default Mixin((s) => class extends s { // eslint-disable-line
   /**
    * Constructor.
    *
@@ -24,6 +27,8 @@ export default class ValidatedResponse {
    * - `options.type` is not supported. See {@link SupportedResponseTypes}.
    */
   constructor(options) {
+    super(options);
+
     if (!options) {
       throw new ArgumentError('constructor parameters not specified');
     }
@@ -36,4 +41,4 @@ export default class ValidatedResponse {
       throw new ArgumentError(`response with type "${options.type}" not supported`);
     }
   }
-}
+});
