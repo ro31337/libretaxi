@@ -1,6 +1,7 @@
 import Response from './response';
 import objectAssign from 'object-assign';
-import { ArgumentError } from '../validations/errors';
+import { mix } from 'mixwith';
+import checkNotNull from '../validations/check-not-null.js';
 
 /**
  * Text response. Used to return response that contains message to the user.
@@ -9,10 +10,10 @@ import { ArgumentError } from '../validations/errors';
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {Response}
  * @date 2016-05-04
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  */
-export default class TextResponse extends Response {
+export default class TextResponse extends mix(Response).with(checkNotNull('message')) {
   /**
    * Constructor.
    *
@@ -28,11 +29,6 @@ export default class TextResponse extends Response {
   constructor(options) {
     const opts = objectAssign({ type: 'text' }, options);
     super(opts);
-
-    if (!opts.message) {
-      throw new ArgumentError('message parameter not specified');
-    }
-
     objectAssign(this, opts);
   }
 }
