@@ -1,20 +1,13 @@
 /* eslint-disable no-new */
 import test from 'ava';
 import TextResponse from '../../src/responses/text-response';
+import checkNotNullTest from '../helpers/check-not-null.js';
+
+checkNotNullTest('message', (args) => { new TextResponse(args); });
 
 test('can be constructed with default parameters', t => {
   new TextResponse({ message: 'my message' });
   t.pass();
-});
-
-test.cb('should throw argument error when message not specified', t => {
-  const err = "'message' parameter not specified";
-
-  t.throws(() => {
-    new TextResponse();
-  }, err);
-
-  t.end();
 });
 
 test('should save message as property and have text type', t => {
