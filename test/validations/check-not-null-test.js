@@ -4,17 +4,17 @@ import checkNotNull from '../../src/validations/check-not-null.js';
 import { mix } from 'mixwith';
 
 // one parameter
-class Foo1 extends mix(Object).with(checkNotNull('bar')) {
+class Foo1 extends mix(class {}).with(checkNotNull('bar')) {
   constructor(options) { super(options); }
 }
 
 // array of parameters
-class Foo2 extends mix(Object).with(checkNotNull(['bar', 'buz'])) {
+class Foo2 extends mix(class {}).with(checkNotNull(['bar', 'buz'])) {
   constructor(options) { super(options); }
 }
 
 // combinations
-class Foo3 extends mix(Object).with(checkNotNull(['bar', 'buz']), checkNotNull('qux')) {
+class Foo3 extends mix(class {}).with(checkNotNull(['bar', 'buz']), checkNotNull('qux')) {
   constructor(options) { super(options); }
 }
 

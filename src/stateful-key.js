@@ -3,8 +3,6 @@ import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from './validations/check-not-null.js';
 
-class Dummy {}
-
 /**
  * StatefulKey, unique key for State. Used to generate system-wide unique key
  * for your action, command, object state.
@@ -17,7 +15,7 @@ class Dummy {}
  * @since 0.1.0
  */
 export default class StatefulKey extends
-  mix(Dummy).with(checkNotNull(['platformType', 'platformId']), ValidatedStatefulKey) {
+  mix(class {}).with(checkNotNull(['platformType', 'platformId']), ValidatedStatefulKey) {
   /**
    * Constructor.
    *

@@ -3,7 +3,7 @@ import test from 'ava';
 import Mixin from '../../src/validations/validated-stateful-key';
 import { mix } from 'mixwith';
 
-class ValidatedStatefulKey extends mix(Object).with(Mixin) {}
+class ValidatedStatefulKey extends mix(class {}).with(Mixin) {}
 
 test.cb('should throw error when "platformType" parameter not supported', t => {
   const err = 'platform type "bar" not supported';
