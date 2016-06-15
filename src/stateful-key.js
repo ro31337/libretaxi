@@ -1,21 +1,21 @@
-import ValidatedStatefulKey from './validations/validated-stateful-key';
 import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
-import checkNotNull from './validations/check-not-null.js';
+import checkNotNull from './validations/check-not-null';
+import checkPlatformType from './validations/check-platform-type';
 
 /**
  * StatefulKey, unique key for State. Used to generate system-wide unique key
  * for your action, command, object state.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @extends {ValidatedStatefulKey}
  * @extends {checkNotNull}
+ * @extends {checkPlatformType}
  * @date 2016-05-11
  * @version 1.1
  * @since 0.1.0
  */
 export default class StatefulKey extends
-  mix(class {}).with(checkNotNull(['platformType', 'platformId']), ValidatedStatefulKey) {
+  mix(class {}).with(checkNotNull(['platformType', 'platformId']), checkPlatformType) {
   /**
    * Constructor.
    *
