@@ -14,12 +14,12 @@ import { ArgumentError } from './errors';
  * @throws {ArgumentError} throw argument error when parameter(s) null
  * @example
  * import checkNotNull from './check-not-null.js';
- * class Foo extends mix(Object).with(checkNotNull('bar')) {
+ * class Foo extends mix(class {}).with(checkNotNull('bar')) {
  *   constructor(options) { super(options); }
  * }
  * @example
  * import checkNotNull from './check-not-null.js';
- * class Foo extends mix(Object).with(checkNotNull(['bar', 'buz'])) {
+ * class Foo extends mix(class {}).with(checkNotNull(['bar', 'buz'])) {
  *   constructor(options) { super(options); }
  * }
  */

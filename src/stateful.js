@@ -50,7 +50,7 @@ const stateful = (superclass) => {
   let s = superclass;
 
   if (!s) {
-    s = class Dummy {};
+    s = class {};
   }
 
   return class extends s {
