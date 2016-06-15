@@ -1,5 +1,9 @@
 import ValidatedStatefulKey from './validations/validated-stateful-key';
 import objectAssign from 'object-assign';
+import { mix } from 'mixwith';
+import checkNotNull from './validations/check-not-null.js';
+
+class Dummy {}
 
 /**
  * StatefulKey, unique key for State. Used to generate system-wide unique key
@@ -7,11 +11,13 @@ import objectAssign from 'object-assign';
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {ValidatedStatefulKey}
+ * @extends {checkNotNull}
  * @date 2016-05-11
  * @version 1.1
  * @since 0.1.0
  */
-export default class StatefulKey extends ValidatedStatefulKey {
+export default class StatefulKey extends
+  mix(Dummy).with(checkNotNull(['platformType', 'platformId']), ValidatedStatefulKey) {
   /**
    * Constructor.
    *
