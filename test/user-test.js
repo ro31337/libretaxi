@@ -1,6 +1,13 @@
 /* eslint-disable no-new */
 import test from 'ava';
 import User from '../src/user';
+import checkNotNullTest from './helpers/check-not-null';
+import checkPlatformTypeTest from './helpers/check-platform-type';
+
+checkNotNullTest(['platformType', 'platformId'], (args) => { new User(args); });
+checkPlatformTypeTest(() => {
+  new User({ platformType: 'foo', platformId: 1 });
+});
 
 test('user can be constructed with default parameters', t => {
   new User({ platformType: 'cli', platformId: 1 });

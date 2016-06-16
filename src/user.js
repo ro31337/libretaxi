@@ -1,7 +1,9 @@
 import objectAssign from 'object-assign';
-import ValidatedUser from './validations/validated-user';
 import stateful from './stateful';
 import StatefulKey from './stateful-key';
+import { mix } from 'mixwith';
+import checkNotNull from './validations/check-not-null';
+import checkPlatformType from './validations/check-platform-type';
 
 /**
  * User.
@@ -13,7 +15,9 @@ import StatefulKey from './stateful-key';
  * @version 1.1
  * @since 0.1.0
  */
-export default class User extends stateful(ValidatedUser) {
+export default class User extends
+  mix(stateful()).with(checkNotNull(['platformType', 'platformId']), checkPlatformType) {
+
   /**
    * Constructor.
    *
