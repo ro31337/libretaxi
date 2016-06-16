@@ -3,15 +3,14 @@ import SupportedPlatforms from './supported-platforms';
 import { Mixin } from 'mixwith';
 
 /**
- * @typedef ValidatedStatefulKey
+ * @typedef checkPlatformType
  *
- * Validating mixin for {@link StatefulKey}.
- * Validates `platformType`
+ * Validating mixin, checks if `platformType` is supported.
  *
  * @abstract
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-05-11
- * @version 1.2
+ * @version 1.3
  * @since 0.1.0
  */
 export default Mixin((s) => class extends s { // eslint-disable-line
@@ -24,8 +23,12 @@ export default Mixin((s) => class extends s { // eslint-disable-line
    */
   constructor(options) {
     super(options);
+    if (!options || !options.platformType) {
+      throw new ArgumentError('\'platformType\' parameter not specified');
+    }
+
     if (!SupportedPlatforms.has(options.platformType)) {
-      throw new ArgumentError(`platform type "${options.platformType}" not supported`);
+      throw new ArgumentError(`platform type '${options.platformType}' not supported`);
     }
   }
 });
