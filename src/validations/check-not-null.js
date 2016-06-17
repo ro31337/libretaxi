@@ -32,6 +32,12 @@ module.exports = (props) => { // eslint-disable-line arrow-body-style
         throw new ArgumentError('parameters not specified');
       }
 
+      // #82 - if no parameters provided to `checkNotNull` then we should
+      // just check if constructor options specified.
+      if (!props) {
+        return;
+      }
+
       const validate = (prop) => {
         if (!options[prop]) {
           throw new ArgumentError(`'${prop}' parameter not specified`);

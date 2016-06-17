@@ -18,6 +18,11 @@ class Foo3 extends mix(class {}).with(checkNotNull(['bar', 'buz']), checkNotNull
   constructor(options) { super(options); }
 }
 
+// no parameters provided to `checkNotNull`
+class Foo4 extends mix(class {}).with(checkNotNull()) {
+  constructor(options) { super(options); }
+}
+
 test('should allow to construct objects when prop(s) are specified', t => {
   new Foo1({ bar: 1 });
   new Foo2({ bar: 1, buz: 2 });
@@ -69,4 +74,9 @@ test.cb('should check combinations', t => {
   t.throws(() => { new Foo3({ bar: 1, buz: 2 }); }, err3);
 
   t.end();
+});
+
+test('should check if consturctor options present when no params provided for mixin', t => {
+  new Foo4('bar');
+  t.pass();
 });
