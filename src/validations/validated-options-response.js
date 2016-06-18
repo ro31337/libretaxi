@@ -4,8 +4,9 @@ import { Mixin } from 'mixwith';
 /**
  * @typedef ValidatedOptionsResponse
  *
- * Validator for {@link Response}.
- * It validates constructor parameters only and has no other behavior.
+ * Validator for {@link OptionsResponse}.
+ * Validates if params contains `rows`, if `rows` is array, and if each row
+ * is array containing the list of objects with params `label` and `value`.
  *
  * @abstract
  * @author Roman Pushkin (roman.pushkin@gmail.com)
@@ -18,10 +19,12 @@ export default Mixin((s) => class extends s { // eslint-disable-line
    * Constructor.
    *
    * @type {Object}
-   * @param {string} options.type - Response type, for example: `test`
-   * See {@link SupportedResponseTypes}
-   * @throws {ArgumentError} throw error when `options.type` is not supported.
-   * See {@link SupportedResponseTypes}.
+   * @param {string} options.rows - Array of rows of options. Where each row is
+   * array of objects. Each object must contain two properties: `label` and `value`.
+   * @throws {ArgumentError} throw error when `rows` parameter not specified
+   * @throws {TypeError} throw error `rows` parameter is not array
+   * @throws {TypeError} throw error when individual row is not array
+   * @throws {TypeError} throw error when individual row item is not object
    */
   constructor(options) {
     super(options);

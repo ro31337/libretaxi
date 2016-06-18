@@ -24,10 +24,6 @@ export default class OptionsResponse extends
    * @type {Object}
    * @param {string} options.rows - Array of rows of options. Where each row is
    * array of objects. Each object must contain two properties: `label` and `value`.
-   * @throws {ArgumentError} throw error when `rows` parameter not specified
-   * @throws {TypeError} throw error `rows` parameter is not array
-   * @throws {TypeError} throw error when individual row is not array
-   * @throws {TypeError} throw error when individual row item is not object
    * @example
    * const r = new OptionsResponse({
    * 	rows: [
