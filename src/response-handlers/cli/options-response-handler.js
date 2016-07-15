@@ -1,5 +1,6 @@
 import ResponseHandler from '../response-handler';
 import inquirer from 'inquirer';
+import objectAssign from 'object-assign';
 
 /**
  * Options response cli handler.
@@ -22,7 +23,7 @@ export default class OptionsResponseHandler extends ResponseHandler {
    * @param {Object} options.lib - dependency injection of console library
    */
   constructor(options) {
-    super(options);
+    super(objectAssign({ type: 'cli-options-response-handler' }, options));
     this.lib = options.lib || inquirer;
   }
 

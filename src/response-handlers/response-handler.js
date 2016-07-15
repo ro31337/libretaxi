@@ -11,16 +11,20 @@ import checkNotNull from '../validations/check-not-null.js';
  * @version 1.1
  * @since 0.1.0
  */
-export default class ResponseHandler extends mix(class {}).with(checkNotNull('response')) {
+export default class ResponseHandler extends mix(class {})
+  .with(checkNotNull(['response', 'type'])) {
   /**
    * Constructor.
    *
    * @param {Response} options.response - instance of {@link Response}, related
    * to this handler.
+   * @param {sting} options.type - unique type of response handler. For example:
+   * `cli-options-response-handler`. Used in unit testing.
    */
   constructor(options) {
     super(options);
     this.response = options.response;
+    this.type = options.type;
   }
 
   /**
