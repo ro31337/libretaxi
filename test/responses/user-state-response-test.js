@@ -9,7 +9,7 @@ test('can be constructed with default parameters', t => {
 
 test('should save properties and have \'user-state\' type', t => {
   const r = new UserStateResponse({ foo: 1, bar: 2 });
-  t.is(r.foo, 1);
-  t.is(r.bar, 2);
+  t.is(r.state.foo, 1);
+  t.is(r.state.bar, 2);
   t.is(r.type, 'user-state');
 });
