@@ -13,7 +13,7 @@ test.before(() => {
   });
 });
 
-test.after(() => {
+test.after.always('guaranteed cleanup', () => {
   server.close();
 });
 
