@@ -7,28 +7,26 @@ const map = {
 };
 
 /**
- * Action factory, implements factory method(s) to create actions based on
- * provided key. See source code for the list of keys and corresponding
- * actions.
+ * Response handler factory, implements factory method(s) to create
+ * CLI response handlers based on provided response.
+ *
+ * Creates:
+ * TextResponseHandler for `text` response type.
+ * OptionsResponseHandler for `options` response type.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @date 2016-05-26
+ * @date 2016-07-15
  * @version 1.1
  * @since 0.1.0
  */
 export default class CliResponseHandlerFactory {
   /**
-   * Creates concrete `Action` instance based on menu location.
+   * Creates concrete `ResponseHandler` instance based on response.
    *
    * @author Roman Pushkin (roman.pushkin@gmail.com)
-   * @date 2016-05-26
-   * @version 1.1
-   * @since 0.1.0
-   * @param {user} - {@link User} instance. Action is created
-   * based on the following variables:
-   *  - `user.state.menuLocation` (optional) - menu location
-   *  - `user.state.locale` (optional) - locale (`en`, `ru`, etc.)
-   * @return {Object} Instance of `Action`
+   * @date 2016-07-15
+   * @param {Response} response - response instance. New response handler is
+   * created based on `response.type`.
    */
   static fromResponse(response) {
     const klass = map[response.type];
