@@ -16,14 +16,14 @@ export default class UserStateResponse extends Response {
   /**
    * Constructor.
    *
-   * @type {Object}
+   * @param {object} state - Object with modified state properties
    * @example
    * r = new UserStateResponse({phone: '555-111-22-33'});
    * console.log(r.type); // prints "user-state"
-   * console.log(r.phone); // prints "555-111-22-33"
+   * console.log(r.state.phone); // prints "555-111-22-33"
    */
-  constructor(options) {
-    const opts = objectAssign({ type: 'user-state' }, options);
+  constructor(state) {
+    const opts = { type: 'user-state', state };
     super(opts);
     objectAssign(this, opts);
   }
