@@ -1,9 +1,11 @@
 import TextResponseHandler from '../response-handlers/cli/text-response-handler';
 import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
+import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
 
 const map = {
   text: TextResponseHandler,
   options: OptionsResponseHandler,
+  'user-state': UserStateResponseHandler,
 };
 
 /**
@@ -27,9 +29,18 @@ export default class CliResponseHandlerFactory {
    * @date 2016-07-15
    * @param {Response} response - response instance. New response handler is
    * created based on `response.type`.
+   * @param {User} user - user instance. Used for all user-related response handlers.
+   * If `response.type` contains string `user`, then user parameter is provided
+   * to response handler constructor.
    */
-  static fromResponse(response) {
-    const klass = map[response.type];
+  static fromResponse(response, user) {
+    const t = response.type.toLowerCase();
+    const klass = map[t];
+
+    if (t.includes('user')) {
+      return new klass({ response, user }); // eslint-disable-line new-cap
+    }
+
     return new klass({ response }); // eslint-disable-line new-cap
   }
 }
