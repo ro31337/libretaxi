@@ -12,7 +12,7 @@ test('should return correct types for responses for cli platform', t => {
   const optionsResponse = new OptionsResponse({ rows: [] });
   const userStateResponse = new UserStateResponse({ foo: 1 });
   const selectLocaleResponse = new SelectLocaleResponse({ locale: 'en' });
-  const user = { platformId: 'cli' };
+  const user = { platformType: 'cli' };
 
   const r1 = HandlerFactory.getHandler({ response: textResponse, user });
   const r2 = HandlerFactory.getHandler({ response: optionsResponse, user });
@@ -30,7 +30,7 @@ test('should return correct types for responses for telegram platform', t => {
   const optionsResponse = new OptionsResponse({ rows: [] });
   const userStateResponse = new UserStateResponse({ foo: 1 });
   const selectLocaleResponse = new SelectLocaleResponse({ locale: 'en' });
-  const user = { platformId: 'telegram' };
+  const user = { platformType: 'telegram' };
 
   const r1 = HandlerFactory.getHandler({ response: textResponse, user });
   const r2 = HandlerFactory.getHandler({ response: optionsResponse, user });
