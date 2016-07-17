@@ -30,10 +30,8 @@ export default class ResponseHandler extends mix(class {})
   /**
    * Entry point for the actual response handling.
    *
-   * @param {function} onResult - (optional) callback that can be called by `call`
-   * method when results are ready. Telegram results usually ready on user
-   * interaction, so there is no need for this callback. But for cli platform it
-   * can be useful to call this callback (but it's not required).
+   * @param {function} onResult - callback that can be called by `call`
+   * method when results are ready.
    */
   call(onResult) { // eslint-disable-line no-unused-vars
     throw new Error('not implemented');

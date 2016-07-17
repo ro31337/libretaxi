@@ -20,7 +20,8 @@ export default class TextResponseHandler extends ResponseHandler {
    * Handler entry point.
    * Prints the message to console.
    */
-  call() {
+  call(onResult) {
     console.log(this.response.message); // eslint-disable-line no-console
+    onResult();
   }
 }

@@ -11,7 +11,7 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test('prints the message to console', t => {
+test.cb('prints the message to console', t => {
   // arrange
   const r = { message: 'foo' };
   const h = new TextResponseHandler({ response: r });
@@ -19,9 +19,10 @@ test('prints the message to console', t => {
   console.log = ss.sinon.spy();
 
   // act
-  h.call();
-
-  // assert
-  t.truthy(console.log.calledWith('foo'));
-  console.log = tmp;
+  h.call(() => {
+    // assert
+    t.truthy(console.log.calledWith('foo'));
+    console.log = tmp;
+    t.end();
+  });
 });

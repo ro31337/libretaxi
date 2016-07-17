@@ -56,6 +56,7 @@ export default class OptionsResponseHandler extends ResponseHandler {
       onResult(result.value);
     }).catch((err) => {
       console.log(`Error in OptionsResponseHandler: ${err}`); // eslint-disable-line no-console
+      onResult();
     });
   }
 }
