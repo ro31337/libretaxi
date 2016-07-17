@@ -1,9 +1,9 @@
 /* eslint-disable no-new */
 /* eslint-disable no-unused-vars */
 import test from 'ava';
-import HandlerFactory from '../src/cli-response-handler-factory';
-import TextResponse from '../src/responses/text-response';
-import OptionsResponse from '../src/responses/options-response';
+import HandlerFactory from '../../src/factories/cli-response-handler-factory';
+import TextResponse from '../../src/responses/text-response';
+import OptionsResponse from '../../src/responses/options-response';
 
 test('should return correct types for responses', t => {
   const textResponse = new TextResponse({ message: 'foo' });

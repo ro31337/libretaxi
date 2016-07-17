@@ -1,5 +1,5 @@
-import TextResponseHandler from './response-handlers/cli/text-response-handler';
-import OptionsResponseHandler from './response-handlers/cli/options-response-handler';
+import TextResponseHandler from '../response-handlers/cli/text-response-handler';
+import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 
 const map = {
   text: TextResponseHandler,
