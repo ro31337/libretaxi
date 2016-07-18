@@ -28,7 +28,7 @@ const map = {
 export default class ResponseHandlerFactory {
   /**
    * Creates concrete `ResponseHandler` instance based on response and user.
-   * `response.type` and `user.platformId` used to determine which handler
+   * `response.type` and `user.platformType` used to determine which handler
    * to build. If `response.type` has word `user`, then user object is passed
    * to the handler.
    *
@@ -38,11 +38,11 @@ export default class ResponseHandlerFactory {
    * @param {User} options.user - user instance.
    */
   static getHandler(options) {
-    const platformId = options.user.platformId;
+    const platformType = options.user.platformType;
     const response = options.response;
     const user = options.user;
     const t = response.type.toLowerCase();
-    const klass = map[platformId][t];
+    const klass = map[platformType][t];
 
     if (t.includes('user')) {
       return new klass({ response, user }); // eslint-disable-line new-cap
