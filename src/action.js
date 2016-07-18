@@ -101,4 +101,17 @@ export default class Action extends mix(class {}).with(checkNotNull('i18n')) {
   text() {
     throw new Error('not implemented');
   }
+
+  /**
+   * Calls `get` (if `arg` is empty) or `post` (if `arg` is provided).
+   * @param {string} arg - argument to action.
+   * @returns {Response} response - Message of specific type, see {@link Response},
+   * {@link TextResponse}, {@link RedirectResponse}
+   */
+  call(arg) {
+    if (arg) {
+      return this.post(arg);
+    }
+    return this.get();
+  }
 }

@@ -33,3 +33,21 @@ test('should set state if specified', t => {
   t.is(action.state.a, 1);
   t.pass();
 });
+
+test.cb('should call get on `call` when arg is not provided', t => {
+  const action = new Action({ i18n: {} });
+  action.get = () => {
+    t.pass();
+    t.end();
+  };
+  action.call();
+});
+
+test.cb('should call post on `call` when arg is provided', t => {
+  const action = new Action({ i18n: {} });
+  action.post = (arg) => {
+    t.is(arg, 123);
+    t.end();
+  };
+  action.call(123);
+});
