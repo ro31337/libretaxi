@@ -2,17 +2,19 @@ import TextResponseHandler from '../response-handlers/cli/text-response-handler'
 import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
-
+import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 const map = {
   cli: {
     text: TextResponseHandler,
     options: OptionsResponseHandler,
     'user-state': UserStateResponseHandler,
+    composite: CompositeResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
     options: NotImplementedResponseHandler,
     'user-state': UserStateResponseHandler,
+    composite: CompositeResponseHandler,
   },
 };
 
@@ -29,8 +31,8 @@ export default class ResponseHandlerFactory {
   /**
    * Creates concrete `ResponseHandler` instance based on response and user.
    * `response.type` and `user.platformType` used to determine which handler
-   * to build. If `response.type` has word `user`, then user object is passed
-   * to the handler.
+   * to build. If `response.type` has word `user` of if it's `composite`,
+   * then user object is passed to the handler along with response object.
    *
    * @author Roman Pushkin (roman.pushkin@gmail.com)
    * @date 2016-07-15
@@ -44,7 +46,7 @@ export default class ResponseHandlerFactory {
     const t = response.type.toLowerCase();
     const klass = map[platformType][t];
 
-    if (t.includes('user')) {
+    if (t.includes('user') || t === 'composite') {
       return new klass({ response, user }); // eslint-disable-line new-cap
     }
 
