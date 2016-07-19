@@ -22,7 +22,7 @@ export default class RedirectResponse extends Response {
    * @param {string} options.path - pre-defined key from {@link Routes}.
    * @throws {ArgumentError} thrown when path invalid or not specified.
    * @example
-   * return new RedirectResponse({ path: 'select-language' });
+   * return new RedirectResponse({ path: 'select-locale' });
    */
   constructor(options) {
     const opts = objectAssign({ type: 'redirect' }, options);

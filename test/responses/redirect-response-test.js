@@ -27,7 +27,7 @@ test.cb('should throw argument error when path not found', t => {
   const err = 'path not found';
 
   const valid = ['default',
-    'select-language',
+    'select-locale',
   ];
 
   const invalid = [

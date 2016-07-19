@@ -1,4 +1,4 @@
-import SelectLanguage from './menu/select-language';
+import SelectLocale from './menu/select-locale';
 
 /**
  * @typedef Routes
@@ -20,8 +20,8 @@ import SelectLanguage from './menu/select-language';
  * const instance = new routes['default'];
  */
 const routes = {
-  default: SelectLanguage,
-  'select-language': SelectLanguage,
+  default: SelectLocale,
+  'select-locale': SelectLocale,
 };
 
 export default routes;
