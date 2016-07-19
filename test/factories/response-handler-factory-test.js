@@ -7,6 +7,7 @@ import OptionsResponse from '../../src/responses/options-response';
 import UserStateResponse from '../../src/responses/user-state-response';
 import SelectLocaleResponse from '../../src/responses/select-locale-response';
 import CompositeResponse from '../../src/responses/composite-response';
+import RedirectResponse from '../../src/responses/redirect-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -14,6 +15,7 @@ test('should return correct types for responses for cli platform', t => {
   const userStateResponse = new UserStateResponse({ foo: 1 });
   const selectLocaleResponse = new SelectLocaleResponse({ locale: 'en' });
   const compositeResponse = new CompositeResponse();
+  const redirectResponse = new RedirectResponse({ path: 'default' });
   const user = { platformType: 'cli' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -21,12 +23,14 @@ test('should return correct types for responses for cli platform', t => {
   const h3 = HandlerFactory.getHandler({ response: userStateResponse, user });
   const h4 = HandlerFactory.getHandler({ response: selectLocaleResponse, user });
   const h5 = HandlerFactory.getHandler({ response: compositeResponse, user });
+  const h6 = HandlerFactory.getHandler({ response: redirectResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
   t.is(h3.type, 'user-state-response-handler');
   t.is(h4.type, 'user-state-response-handler');
   t.is(h5.type, 'composite-response-handler');
+  t.is(h6.type, 'redirect-response-handler');
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -35,6 +39,7 @@ test('should return correct types for responses for telegram platform', t => {
   const userStateResponse = new UserStateResponse({ foo: 1 });
   const selectLocaleResponse = new SelectLocaleResponse({ locale: 'en' });
   const compositeResponse = new CompositeResponse();
+  const redirectResponse = new RedirectResponse({ path: 'default' });
   const user = { platformType: 'telegram' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -42,12 +47,14 @@ test('should return correct types for responses for telegram platform', t => {
   const h3 = HandlerFactory.getHandler({ response: userStateResponse, user });
   const h4 = HandlerFactory.getHandler({ response: selectLocaleResponse, user });
   const h5 = HandlerFactory.getHandler({ response: compositeResponse, user });
+  const h6 = HandlerFactory.getHandler({ response: redirectResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
   t.is(h3.type, 'user-state-response-handler');
   t.is(h4.type, 'user-state-response-handler');
   t.is(h5.type, 'composite-response-handler');
+  t.is(h6.type, 'redirect-response-handler');
 });
 
 test('should pass user if user-related or composite', t => {
@@ -56,6 +63,7 @@ test('should pass user if user-related or composite', t => {
   const userStateResponse = new UserStateResponse({ foo: 1 });
   const selectLocaleResponse = new SelectLocaleResponse({ locale: 'en' });
   const compositeResponse = new CompositeResponse();
+  const redirectResponse = new RedirectResponse({ path: 'default' });
   const user = { platformType: 'cli' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -63,10 +71,12 @@ test('should pass user if user-related or composite', t => {
   const h3 = HandlerFactory.getHandler({ response: userStateResponse, user });
   const h4 = HandlerFactory.getHandler({ response: selectLocaleResponse, user });
   const h5 = HandlerFactory.getHandler({ response: compositeResponse, user });
+  const h6 = HandlerFactory.getHandler({ response: redirectResponse, user });
 
   t.falsy(h1.user);
   t.falsy(h2.user);
   t.truthy(h3.user);
   t.truthy(h4.user);
   t.truthy(h5.user);
+  t.truthy(h6.user);
 });

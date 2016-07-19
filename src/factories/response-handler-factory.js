@@ -3,18 +3,25 @@ import OptionsResponseHandler from '../response-handlers/cli/options-response-ha
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
+import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
+
+// updating map?
+// update test/factories/response-handler-factory-test.js
+
 const map = {
   cli: {
     text: TextResponseHandler,
     options: OptionsResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
+    redirect: RedirectResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
     options: NotImplementedResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
+    redirect: RedirectResponseHandler,
   },
 };
 
@@ -36,6 +43,7 @@ export default class ResponseHandlerFactory {
    *
    * @author Roman Pushkin (roman.pushkin@gmail.com)
    * @date 2016-07-15
+   * @param {Object} options - hash of options.
    * @param {Response} options.response - response instance.
    * @param {User} options.user - user instance.
    */
@@ -46,7 +54,7 @@ export default class ResponseHandlerFactory {
     const t = response.type.toLowerCase();
     const klass = map[platformType][t];
 
-    if (t.includes('user') || t === 'composite') {
+    if (t.includes('user') || t === 'composite' || t === 'redirect') {
       return new klass({ response, user }); // eslint-disable-line new-cap
     }
 
