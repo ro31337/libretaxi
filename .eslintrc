@@ -7,3 +7,4 @@ env:
 
 rules:
   "no-undef": 0
+  "no-underscore-dangle": 0 # otherwise fails with i18n.__('...')

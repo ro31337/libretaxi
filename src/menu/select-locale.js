@@ -1,3 +1,4 @@
+import Action from '../action';
 /**
  * Select locale menu action, stubbed for now.
  *
@@ -6,7 +7,7 @@
  * @version 1.2
  * @since 0.1.0
  */
-export default class SelectLocale {
+export default class SelectLocale extends Action {
   /**
    * Stub method
    *
