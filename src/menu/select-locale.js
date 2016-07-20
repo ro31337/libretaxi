@@ -1,4 +1,6 @@
 import Action from '../action';
+import objectAssign from 'object-assign';
+
 /**
  * Select locale menu action, stubbed for now.
  *
@@ -8,6 +10,14 @@ import Action from '../action';
  * @since 0.1.0
  */
 export default class SelectLocale extends Action {
+
+  /**
+   * Constructor.
+   */
+  constructor(options) {
+    super(objectAssign({ type: 'select-locale' }, options));
+  }
+
   /**
    * Stub method
    *
