@@ -1,4 +1,5 @@
 import SelectLocale from './menu/select-locale';
+import Foo from './menu/foo';
 
 /**
  * @typedef Routes
@@ -22,6 +23,7 @@ import SelectLocale from './menu/select-locale';
 const routes = {
   default: SelectLocale,
   'select-locale': SelectLocale,
+  foo: Foo,
 };
 
 export default routes;

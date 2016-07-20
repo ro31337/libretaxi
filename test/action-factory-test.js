@@ -6,7 +6,9 @@ import ActionFactory from '../src/action-factory';
 test('should return routes by menu location', t => {
   // update here when you have more routes
   const a1 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'select-locale' } });
+  const a2 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'foo' } });
   t.is(a1.type, 'select-locale');
+  t.is(a2.type, 'foo');
 });
 
 test('should have default route', t => {
@@ -14,10 +16,10 @@ test('should have default route', t => {
 });
 
 test.cb('should fail when route key not found', t => {
-  const err = 'Can\'t find route key "foo" in routes';
+  const err = 'Can\'t find route key "foobar" in routes';
 
   t.throws(() => {
-    ActionFactory.fromMenuLocation({ state: { menuLocation: 'foo' } });
+    ActionFactory.fromMenuLocation({ state: { menuLocation: 'foobar' } });
   }, err);
 
   t.end();
