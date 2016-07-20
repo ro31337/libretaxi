@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "dependencies": {},
   "devDependencies": {
+    "app-root-path": "^1.2.1",
     "ava": "^0.15.2",
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.1",
