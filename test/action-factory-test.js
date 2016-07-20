@@ -5,7 +5,7 @@ import ActionFactory from '../src/action-factory';
 
 test('should return routes by menu location', t => {
   // update here when you have more routes
-  t.truthy(ActionFactory.fromMenuLocation('select-language'));
+  t.truthy(ActionFactory.fromMenuLocation('select-locale'));
 });
 
 test('should have default route', t => {
