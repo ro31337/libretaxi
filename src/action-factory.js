@@ -20,7 +20,7 @@ export default class ActionFactory {
    * @date 2016-05-26
    * @version 1.1
    * @since 0.1.0
-   * @param {user} - {@link User} instance. Action is created
+   * @param {User} user - {@link User} instance. Action is created
    * based on the following variables:
    *  - `user.state.menuLocation` (optional) - menu location
    *  - `user.state.locale` (optional) - locale (`en`, `ru`, etc.)
