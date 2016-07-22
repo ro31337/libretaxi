@@ -1,6 +1,6 @@
 /* eslint-disable no-new, no-unused-vars */
 import test from 'ava';
-import routes from '../../src/routes'; // to aviod curcular dependencies
+import routes from '../../src/routes'; // to aviod circular dependencies
 import SelectLocale from '../../src/menu/select-locale';
 
 test('can be constructed with default parameters', t => {
