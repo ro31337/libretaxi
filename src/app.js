@@ -9,7 +9,7 @@ log.debug(__('app.welcome_banner'));
 
 new User({ platformType: 'cli', platformId: '1' }).load().then((user) => {
   const f = (arg) => {
-    // console.log(`Current user state:`);
+    // console.log('Current user state:');
     // console.dir(user.state);
 
     const action = ActionFactory.fromMenuLocation(user);

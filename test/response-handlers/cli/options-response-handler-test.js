@@ -3,7 +3,7 @@ import test from 'ava';
 import OptionsResponseHandler from '../../../src/response-handlers/cli/options-response-handler';
 import OptionsResponse from '../../../src/responses/options-response';
 import checkNotNullTest from '../../helpers/check-not-null.js';
-import ss from '../../spec-support';
+import { ss } from '../../spec-support';
 
 checkNotNullTest('response', (args) => { new OptionsResponseHandler(args); });
 
