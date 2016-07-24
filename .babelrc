@@ -1,9 +1,9 @@
 {
   "presets": [
-    "es2015",
-    "stage-2"
+    "node6"
   ],
   "plugins": [
+    "transform-es2015-classes",
     "syntax-async-functions",
     "transform-regenerator"
   ]
