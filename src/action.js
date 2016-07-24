@@ -116,4 +116,8 @@ export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'ty
     }
     return this.get();
   }
+
+  t(token) {
+    return this.i18n.__(`${this.type}.${token}`);
+  }
 }

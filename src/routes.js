@@ -1,4 +1,5 @@
 import SelectLocale from './menu/select-locale';
+import SelectUserType from './menu/select-user-type';
 import Foo from './menu/foo';
 
 /**
@@ -23,6 +24,7 @@ import Foo from './menu/foo';
 const routes = {
   default: SelectLocale,
   'select-locale': SelectLocale,
+  'select-user-type': SelectUserType,
   foo: Foo,
 };
 

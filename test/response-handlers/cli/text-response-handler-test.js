@@ -2,7 +2,7 @@
 import test from 'ava';
 import TextResponseHandler from '../../../src/response-handlers/cli/text-response-handler';
 import checkNotNullTest from '../../helpers/check-not-null.js';
-import ss from '../../spec-support';
+import { ss } from '../../spec-support';
 
 checkNotNullTest('response', (args) => { new TextResponseHandler(args); });
 
