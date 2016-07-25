@@ -25,7 +25,6 @@
     "inquirer": "^1.1.2",
     "mixwith": "^0.1.1",
     "moment": "^2.14.1",
-    "nyc": "^6.6.1",
     "object-assign": "^4.1.0",
     "oboe": "^2.1.2",
     "sinon": "^1.17.4",
@@ -33,9 +32,8 @@
     "winston": "^2.2.0"
   },
   "scripts": {
-    "test": "npm run lint && npm run ava ./test/before-all.js && npm run cover && cat mincoverage.txt",
+    "test": "npm run lint && npm run ava ./test/before-all.js && npm run ava",
     "lint": "eslint src test",
-    "cover": "nyc npm run ava",
     "ava": "ava --require babel-register",
     "start": "babel-node ./src/app.js",
     "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json"
