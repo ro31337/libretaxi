@@ -4,6 +4,7 @@
 	"select-user-type.who_you_are": "Кто вы? (потом можно изменить в настройках)",
 	"select-user-type.taxi": "Водитель такси",
 	"select-user-type.passenger": "Пассажир",
+	"request-phone.type_your_phone": "Отправьте ваш местный номер, чтобы водители могли вам позвонить при необходимости.",
 	"__locale__": "ru",
 	"__eof__": "__eof__"
 }

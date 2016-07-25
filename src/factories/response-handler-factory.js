@@ -4,7 +4,7 @@ import UserStateResponseHandler from '../response-handlers/user-state-response-h
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
-
+import RequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
 // updating map?
 // update test/factories/response-handler-factory-test.js
 
@@ -15,6 +15,7 @@ const map = {
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
     redirect: RedirectResponseHandler,
+    'request-phone': RequestPhoneResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -22,6 +23,7 @@ const map = {
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
     redirect: RedirectResponseHandler,
+    'request-phone': NotImplementedResponseHandler,
   },
 };
 

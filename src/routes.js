@@ -1,5 +1,6 @@
 import SelectLocale from './menu/select-locale';
 import SelectUserType from './menu/select-user-type';
+import RequestPhone from './menu/request-phone';
 import Foo from './menu/foo';
 
 /**
@@ -25,6 +26,7 @@ const routes = {
   default: SelectLocale,
   'select-locale': SelectLocale,
   'select-user-type': SelectUserType,
+  'request-phone': RequestPhone,
   foo: Foo,
 };
 
