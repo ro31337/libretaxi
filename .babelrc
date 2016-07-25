@@ -3,8 +3,9 @@
     "node6"
   ],
   "plugins": [
+    [ "__coverage__", { "ignore": "test/" } ],
     "transform-es2015-classes",
     "syntax-async-functions",
     "transform-regenerator"
-  ]
+  ],
 }
