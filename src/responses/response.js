@@ -24,5 +24,6 @@ export default class Response extends mix(class {}).with(checkNotNull('type'), V
    */
   constructor(options) {
     super(options);
+    this.type = options.type;
   }
 }

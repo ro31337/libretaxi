@@ -21,4 +21,5 @@ export default new Set([
   'error',
   'user-state',
   'composite',
+  'request-phone',
 ]);
