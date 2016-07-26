@@ -25,6 +25,7 @@ export default class ResponseHandler extends mix(class {})
     super(options);
     this.response = options.response;
     this.type = options.type;
+    this.user = options.user;
   }
 
   /**

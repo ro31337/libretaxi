@@ -24,7 +24,6 @@ export default class RedirectResponseHandler extends
    */
   constructor(options) {
     super(objectAssign({ type: 'redirect-response-handler' }, options));
-    this.user = options.user;
   }
 
   /**

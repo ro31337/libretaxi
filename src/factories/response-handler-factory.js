@@ -56,10 +56,6 @@ export default class ResponseHandlerFactory {
     const t = response.type.toLowerCase();
     const klass = map[platformType][t];
 
-    if (t.includes('user') || t === 'composite' || t === 'redirect') {
-      return new klass({ response, user }); // eslint-disable-line new-cap
-    }
-
-    return new klass({ response }); // eslint-disable-line new-cap
+    return new klass({ response, user }); // eslint-disable-line new-cap
   }
 }
