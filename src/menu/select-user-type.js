@@ -51,6 +51,7 @@ export default class SelectUserType extends Action {
   post(value) {
     return new CompositeResponse()
       .add(new UserStateResponse({ userType: value }))
+      .add(new TextResponse({ message: '👌 OK!' }))
       .add(new RedirectResponse({ path: 'request-phone' }));
   }
 }

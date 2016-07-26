@@ -26,6 +26,8 @@ test('should return composite response on post', t => {
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'user-state');
   t.is(response.responses[0].state.userType, 'taxi');
-  t.is(response.responses[1].type, 'redirect');
-  t.is(response.responses[1].path, 'request-phone');
+  t.is(response.responses[1].type, 'text');
+  t.is(response.responses[1].message, '👌 OK!');
+  t.is(response.responses[2].type, 'redirect');
+  t.is(response.responses[2].path, 'request-phone');
 });
