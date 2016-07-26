@@ -51,6 +51,6 @@ export default class SelectUserType extends Action {
   post(value) {
     return new CompositeResponse()
       .add(new UserStateResponse({ userType: value }))
-      .add(new RedirectResponse({ path: 'default' }));
+      .add(new RedirectResponse({ path: 'request-phone' }));
   }
 }

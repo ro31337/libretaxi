@@ -14,7 +14,7 @@ import inquirer from 'inquirer';
  */
 export default class RequestPhoneResponseHandler extends ResponseHandler {
   constructor(options) {
-    super(Object.assign({ type: 'request-phone-response-handler' }, options));
+    super(Object.assign({ type: 'cli-request-phone-response-handler' }, options));
     this.lib = options.lib || inquirer;
   }
 
