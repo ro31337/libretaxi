@@ -24,7 +24,6 @@ export default class UserStateResponseHandler extends
    */
   constructor(options) {
     super(objectAssign({ type: 'user-state-response-handler' }, options));
-    this.user = options.user;
   }
 
   /**

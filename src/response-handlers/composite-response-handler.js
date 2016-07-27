@@ -25,7 +25,6 @@ export default class CompositeResponseHandler extends
    */
   constructor(options) {
     super(objectAssign({ type: 'composite-response-handler' }, options));
-    this.user = options.user;
   }
 
   /**
