@@ -4,13 +4,15 @@ import routes from '../../src/routes'; // to aviod circular dependencies
 import SelectUserType from '../../src/menu/select-user-type';
 import { i18n } from '../spec-support';
 
+const user = {};
+
 test('can be constructed with default parameters', t => {
-  new SelectUserType({ i18n });
+  new SelectUserType({ i18n, user });
   t.pass();
 });
 
 test('should return composite response on get', t => {
-  const action = new SelectUserType({ i18n });
+  const action = new SelectUserType({ i18n, user });
   const response = action.get();
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'text');
@@ -21,7 +23,7 @@ test('should return composite response on get', t => {
 });
 
 test('should return composite response on post', t => {
-  const action = new SelectUserType({ i18n });
+  const action = new SelectUserType({ i18n, user });
   const response = action.post('taxi');
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'user-state');

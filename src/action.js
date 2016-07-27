@@ -17,7 +17,7 @@ import checkNotNull from './validations/check-not-null.js';
  * @version 1.1
  * @since 0.1.0
  */
-export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'type'])) {
+export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'type', 'user'])) {
   /**
    * Constructor.
    *
@@ -29,6 +29,7 @@ export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'ty
     super(options);
     this.i18n = options.i18n;
     this.type = options.type;
+    this.user = options.user;
     this.state = options.state ? options.state : {};
   }
 

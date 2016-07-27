@@ -4,16 +4,17 @@ import Action from '../src/action';
 import checkNotNullTest from './helpers/check-not-null.js';
 import { i18n } from './spec-support';
 
-checkNotNullTest(['i18n', 'type'], (args) => { new Action(args); });
+checkNotNullTest(['i18n', 'type', 'user'], (args) => { new Action(args); });
+const user = {};
 
 test('can be constructed with default parameters', t => {
-  new Action({ i18n, type: 'foo' });
+  new Action({ i18n, type: 'foo', user });
   t.pass();
 });
 
 test.cb('should throw error when for missing methods', t => {
   const err = 'not implemented';
-  const action = new Action({ i18n, type: 'foo' });
+  const action = new Action({ i18n, type: 'foo', user });
 
   t.throws(() => { action.post(); }, err);
   t.throws(() => { action.text(); }, err);
@@ -24,19 +25,19 @@ test.cb('should throw error when for missing methods', t => {
 });
 
 test('should set state if not specified', t => {
-  const action = new Action({ i18n, type: 'foo' });
+  const action = new Action({ i18n, type: 'foo', user });
   t.truthy(action.state);
   t.pass();
 });
 
 test('should set state if specified', t => {
-  const action = new Action({ i18n, state: { a: 1 }, type: 'foo' });
+  const action = new Action({ i18n, state: { a: 1 }, type: 'foo', user });
   t.is(action.state.a, 1);
   t.pass();
 });
 
 test.cb('should call get on `call` when arg is not provided', t => {
-  const action = new Action({ i18n, type: 'foo' });
+  const action = new Action({ i18n, type: 'foo', user });
   action.get = () => {
     t.pass();
     t.end();
@@ -45,7 +46,7 @@ test.cb('should call get on `call` when arg is not provided', t => {
 });
 
 test.cb('should call post on `call` when arg is provided', t => {
-  const action = new Action({ i18n, type: 'foo' });
+  const action = new Action({ i18n, type: 'foo', user });
   action.post = (arg) => {
     t.is(arg, 123);
     t.end();
@@ -54,6 +55,6 @@ test.cb('should call post on `call` when arg is provided', t => {
 });
 
 test('translation helper method should work', t => {
-  const action = new Action({ i18n, type: 'select-user-type' });
+  const action = new Action({ i18n, type: 'select-user-type', user });
   t.is(action.t('who_you_are'), 'Who you are? (select for now, you can change it later)');
 });
