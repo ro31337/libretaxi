@@ -45,6 +45,6 @@ export default class ActionFactory {
     });
 
     t.setLocale(locale);
-    return new action({ i18n: t }); // eslint-disable-line new-cap
+    return new action({ i18n: t, user }); // eslint-disable-line new-cap
   }
 }

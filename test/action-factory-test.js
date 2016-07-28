@@ -45,3 +45,8 @@ test('should support ru locale', t => {
   t.is(action.i18n.locale, 'ru');
   t.is(action.i18n.__('__locale__'), 'ru');
 });
+
+test('should provision action with user object', t => {
+  const action = ActionFactory.fromMenuLocation({ state: {} });
+  t.truthy(action.user);
+});

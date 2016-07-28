@@ -4,13 +4,15 @@ import routes from '../../src/routes'; // to aviod circular dependencies
 import RequestPhone from '../../src/menu/request-phone';
 import { i18n } from '../spec-support';
 
+const user = {};
+
 test('can be constructed with default parameters', t => {
-  new RequestPhone({ i18n });
+  new RequestPhone({ i18n, user });
   t.pass();
 });
 
 test('should return composite response on get', t => {
-  const action = new RequestPhone({ i18n });
+  const action = new RequestPhone({ i18n, user });
   const response = action.get();
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'text');
@@ -19,7 +21,7 @@ test('should return composite response on get', t => {
 });
 
 test('should return composite response on post', t => {
-  const action = new RequestPhone({ i18n });
+  const action = new RequestPhone({ i18n, user });
   const response = action.post('+1 (555) 111-22-33');
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'text');
