@@ -1,6 +1,7 @@
 import SelectLocale from './menu/select-locale';
 import SelectUserType from './menu/select-user-type';
 import RequestPhone from './menu/request-phone';
+import PassengerIndex from './menu/passenger/index';
 import Foo from './menu/foo';
 
 /**
@@ -27,9 +28,11 @@ const routes = {
   'select-locale': SelectLocale,
   'select-user-type': SelectUserType,
   'request-phone': RequestPhone,
-  'passenger-index': Foo,
+  'passenger-index': PassengerIndex,
   'taxi-vehicle-config': Foo,
   foo: Foo,
+  settings: Foo,
+  'passenger-request-location': Foo,
 };
 
 export default routes;

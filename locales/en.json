@@ -13,6 +13,14 @@
 	"request-phone.type_your_phone_desc": "This message is displayed when we ask users to send their phone number before they can use our services.",
 	"request-phone.all_set": "👌 We're all set, you're good to order a ride now!",
 	"request-phone.all_set_desc": "We display this message when passenger done entering his phone number, and when all configuration is done, and when passenger can make an order.",
+	"passenger-index.choose_taxi_type": "Which type of taxi do you want?",
+	"passenger-index.choose_taxi_type_desc": "We show this message on the passenger's main screen. We ask what type of taxi passenger wants: car or bike.",
+	"passenger-index.car": "🚖 Car",
+	"passenger-index.car_desc": "We show this text on the button when passenger wants to select the car type of taxi s/he wants",
+	"passenger-index.bike": "🏍 Bike (often cheaper)",
+	"passenger-index.bike_desc": "We show this text on the button when passenger wants to select the bike type of taxi s/he wants. Cheaper shows that bike is often cheaper than a car.",
+	"passenger-index.s": "Settings",
+	"passenger-index.s_desc": "We show this text on the button on the main passenger's screen, when user clicks, s/he goes to settings.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
