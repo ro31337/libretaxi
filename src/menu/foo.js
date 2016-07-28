@@ -26,15 +26,6 @@ export default class Foo extends Action {
    * @return {TextResponse} - returns sample text message
    */
   get() {
-    return new TextResponse({ message: 'You\'re located at foo action now' });
-  }
-
-  /**
-   * Returns sample text message.
-   *
-   * @return {CompositeResponse} - composite response with text message and redirect.
-   */
-  post(value) { // eslint-disable-line no-unused-vars
     return new CompositeResponse()
       .add(new TextResponse({ message: 'Redirecting from foo to default route...' }))
       .add(new RedirectResponse({ path: 'default' }));
