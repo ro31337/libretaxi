@@ -27,6 +27,8 @@ const routes = {
   'select-locale': SelectLocale,
   'select-user-type': SelectUserType,
   'request-phone': RequestPhone,
+  'passenger-index': Foo,
+  'taxi-vehicle-config': Foo,
   foo: Foo,
 };
 

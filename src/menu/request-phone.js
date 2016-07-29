@@ -36,18 +36,29 @@ export default class RequestPhone extends Action {
   }
 
   /**
-   * Shows OK, sets selected user's phone and redirects.
+   * Shows OK, sets selected user's phone and redirects, based on `userType`:
+   * - taxi - to `taxi-vehicle-config`
+   * - passenger - to `passenger-index`
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
-   * which contains:
-   * - {@link TextResponse}
-   * - {@link UserStateResponse}
-   * - {@link RedirectResponse}
    */
   post(value) {
-    return new CompositeResponse()
-      .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new UserStateResponse({ phone: value }))
-      .add(new RedirectResponse({ path: 'default' }));
+    const response = new CompositeResponse()
+      .add(new UserStateResponse({ phone: value }));
+
+    switch (this.user.state.userType) {
+      case 'taxi':
+        response.add(new TextResponse({ message: '👌 OK!' }));
+        response.add(new RedirectResponse({ path: 'taxi-vehicle-config' }));
+        break;
+      case 'passenger':
+        response.add(new TextResponse({ message: this.t('all_set') }));
+        response.add(new RedirectResponse({ path: 'passenger-index' }));
+        break;
+      default:
+        throw new Error('unsupported user type');
+    }
+
+    return response;
   }
 }
