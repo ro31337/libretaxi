@@ -22,4 +22,5 @@ export default new Set([
   'user-state',
   'composite',
   'request-phone',
+  'request-location',
 ]);
