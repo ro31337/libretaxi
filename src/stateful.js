@@ -1,6 +1,5 @@
-require('dotenv').config();
 import objectAssign from 'object-assign';
-import Firebase from 'firebase';
+import firebaseDB from './firebase-db';
 import { ArgumentError } from './validations/errors';
 
 /**
@@ -82,9 +81,7 @@ const stateful = (superclass) => {
       const key = this.stateful.key;
       const table = this.stateful.table;
       this.state = {};
-      // remove trailing slash if any
-      const str = process.env.STATEFUL_CONNSTR.replace(/\/$/, '');
-      this.stateful.firebaseUrl = `${str}/${table}/${key}`;
+      this.firebasePath = `${table}/${key}`;
     }
 
     /**
@@ -100,7 +97,7 @@ const stateful = (superclass) => {
     load() {
       this.init();
       return new Promise((resolve) => {
-        this.db = new Firebase(this.stateful.firebaseUrl);
+        this.db = firebaseDB.ref(this.firebasePath);
         this.db.on('value', (snapshot) => {
           const value = snapshot.val();
 
