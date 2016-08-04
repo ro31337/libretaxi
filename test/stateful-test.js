@@ -26,6 +26,9 @@ test.cb('should load initial state from storage', t => {
       t.is(state.foo, 11);
       t.is(state.bar, 22);
       t.end();
+    })
+    .catch((err) => {
+      t.fail(`ERR2: ${err}`);
     });
   };
 
@@ -34,6 +37,9 @@ test.cb('should load initial state from storage', t => {
     t.is(state.foo, 1);
     t.is(state.bar, 2);
     checkAnother();
+  })
+  .catch((err) => {
+    t.fail(`ERR1: ${err}`);
   });
 });
 
@@ -42,6 +48,9 @@ test.cb('should have state if key not exists', t => {
   new Demo('non_existing_key').load().then((demo) => {
     t.truthy(demo.state);
     t.end();
+  })
+  .catch((err) => {
+    t.fail(`ERR3: ${err}`);
   });
 });
 
@@ -53,6 +62,9 @@ test.cb('should save state and execute callback', t => {
     new Demo('test_state_key').load().then((demo) => {
       t.is(demo.state.x, 3);
       t.end();
+    })
+    .catch((err) => {
+      t.fail(`ERR4: ${err}`);
     });
   };
 
@@ -60,6 +72,9 @@ test.cb('should save state and execute callback', t => {
     const state = demo.state;
     state.x = 3;
     demo.save(callback); // line A
+  })
+  .catch((err) => {
+    t.fail(`ERR5: ${err}`);
   });
 });
 
@@ -71,6 +86,9 @@ test.cb('should save state without callback', t => {
     new Demo('test_state_key').load().then((demo) => {
       t.is(demo.state.y, 4);
       t.end();
+    })
+    .catch((err) => {
+      t.fail(`ERR6: ${err}`);
     });
   };
 
@@ -80,6 +98,9 @@ test.cb('should save state without callback', t => {
     demo.save();
 
     setTimeout(verify, 300); // line B
+  })
+  .catch((err) => {
+    t.fail(`ERR7: ${err}`);
   });
 });
 
@@ -95,6 +116,9 @@ test.cb('should update state values', t => {
     t.is(demo.state.prop2, 2);
     t.is(demo.state.foo, 1); // should not affect existing data
     t.end();
+  })
+  .catch((err) => {
+    t.fail(`ERR8: ${err}`);
   });
 });
 
@@ -109,12 +133,18 @@ test.cb('should sync values between two storages with the same key', t => {
         t.end();
       }
     }, 100);
+  })
+  .catch((err) => {
+    t.fail(`ERR9: ${err}`);
   });
 
   new Demo('must_sync').load().then((demo) => {
     const state = demo.state;
     state.foo = 123;
     demo.save();
+  })
+  .catch((err) => {
+    t.fail(`ERR10: ${err}`);
   });
 });
 
@@ -125,6 +155,9 @@ test.cb('should not sync values when disposed', t => {
       const state = demo.state;
       state.foo = 123;
       demo.save();
+    })
+    .catch((err) => {
+      t.fail(`ERR11: ${err}`);
     });
   };
 
@@ -145,5 +178,8 @@ test.cb('should not sync values when disposed', t => {
       t.pass();
       t.end();
     }, 1000);
+  })
+  .catch((err) => {
+    t.fail(`ERR12: ${err}`);
   });
 });
