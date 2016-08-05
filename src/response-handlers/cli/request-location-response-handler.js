@@ -20,7 +20,7 @@ export default class RequestLocationResponseHandler extends ResponseHandler {
 
   /**
    * Handler entry point.
-   * Prompts the user to type phone number.
+   * Prompts the user to choose location.
    */
   call(onResult) {
     const choices = [];
