@@ -9,6 +9,7 @@ import SelectLocaleResponse from '../../src/responses/select-locale-response';
 import CompositeResponse from '../../src/responses/composite-response';
 import RedirectResponse from '../../src/responses/redirect-response';
 import RequestPhoneResponse from '../../src/responses/request-phone-response';
+import RequestLocationResponse from '../../src/responses/request-location-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -18,6 +19,7 @@ test('should return correct types for responses for cli platform', t => {
   const compositeResponse = new CompositeResponse();
   const redirectResponse = new RedirectResponse({ path: 'default' });
   const requestPhoneResponse = new RequestPhoneResponse();
+  const requestLocationResponse = new RequestLocationResponse();
   const user = { platformType: 'cli' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -27,6 +29,7 @@ test('should return correct types for responses for cli platform', t => {
   const h5 = HandlerFactory.getHandler({ response: compositeResponse, user });
   const h6 = HandlerFactory.getHandler({ response: redirectResponse, user });
   const h7 = HandlerFactory.getHandler({ response: requestPhoneResponse, user });
+  const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -35,6 +38,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h5.type, 'composite-response-handler');
   t.is(h6.type, 'redirect-response-handler');
   t.is(h7.type, 'cli-request-phone-response-handler');
+  t.is(h8.type, 'cli-request-location-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -43,6 +47,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h5.user);
   t.truthy(h6.user);
   t.truthy(h7.user);
+  t.truthy(h8.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -53,6 +58,7 @@ test('should return correct types for responses for telegram platform', t => {
   const compositeResponse = new CompositeResponse();
   const redirectResponse = new RedirectResponse({ path: 'default' });
   const requestPhoneResponse = new RequestPhoneResponse();
+  const requestLocationResponse = new RequestLocationResponse();
   const user = { platformType: 'telegram' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -62,6 +68,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h5 = HandlerFactory.getHandler({ response: compositeResponse, user });
   const h6 = HandlerFactory.getHandler({ response: redirectResponse, user });
   const h7 = HandlerFactory.getHandler({ response: requestPhoneResponse, user });
+  const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -70,6 +77,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h5.type, 'composite-response-handler');
   t.is(h6.type, 'redirect-response-handler');
   t.is(h7.type, 'not-implemented-response-handler');
+  t.is(h8.type, 'not-implemented-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -78,4 +86,5 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h5.user);
   t.truthy(h6.user);
   t.truthy(h7.user);
+  t.truthy(h8.user);
 });
