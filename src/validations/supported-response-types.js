@@ -23,4 +23,5 @@ export default new Set([
   'composite',
   'request-phone',
   'request-location',
+  'update-location',
 ]);
