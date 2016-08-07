@@ -14,6 +14,11 @@ test('user can be constructed with default parameters', t => {
   t.pass();
 });
 
+test('saves userKey', t => {
+  const u = new User({ platformType: 'cli', platformId: 1 });
+  t.is(u.userKey, 'cli_1');
+});
+
 test('user can be constructed with extra parameters', t => {
   new User({ platformType: 'cli', platformId: 1, extra: 555 });
   t.pass();
