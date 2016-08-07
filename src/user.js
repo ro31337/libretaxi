@@ -30,12 +30,12 @@ export default class User extends
     super(options);
     objectAssign(this, options);
 
-    const statefulKey = new StatefulKey({
+    this.userKey = new StatefulKey({
       platformType: this.platformType,
       platformId: this.platformId }).toString();
 
     this.stateful = {
-      key: statefulKey,
+      key: this.userKey,
       table: 'users',
     };
   }
