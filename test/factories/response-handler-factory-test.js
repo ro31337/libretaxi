@@ -11,6 +11,7 @@ import RedirectResponse from '../../src/responses/redirect-response';
 import RequestPhoneResponse from '../../src/responses/request-phone-response';
 import RequestLocationResponse from '../../src/responses/request-location-response';
 import UpdateLocationResponse from '../../src/responses/update-location-response';
+import RequestUserInputResponse from '../../src/responses/request-user-input-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -22,6 +23,7 @@ test('should return correct types for responses for cli platform', t => {
   const requestPhoneResponse = new RequestPhoneResponse();
   const requestLocationResponse = new RequestLocationResponse();
   const updateLocationResponse = new UpdateLocationResponse({ location: [37.421955, -122.084058] });
+  const requestUserInputResponse = new RequestUserInputResponse();
   const user = { platformType: 'cli' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -33,6 +35,7 @@ test('should return correct types for responses for cli platform', t => {
   const h7 = HandlerFactory.getHandler({ response: requestPhoneResponse, user });
   const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
+  const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -43,6 +46,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h7.type, 'cli-request-phone-response-handler');
   t.is(h8.type, 'cli-request-location-response-handler');
   t.is(h9.type, 'update-location-response-handler');
+  t.is(h10.type, 'cli-request-user-input-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -53,6 +57,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h7.user);
   t.truthy(h8.user);
   t.truthy(h9.user);
+  t.truthy(h10.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -65,6 +70,7 @@ test('should return correct types for responses for telegram platform', t => {
   const requestPhoneResponse = new RequestPhoneResponse();
   const requestLocationResponse = new RequestLocationResponse();
   const updateLocationResponse = new UpdateLocationResponse({ location: [37.421955, -122.084058] });
+  const requestUserInputResponse = new RequestUserInputResponse();
   const user = { platformType: 'telegram' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
@@ -76,6 +82,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h7 = HandlerFactory.getHandler({ response: requestPhoneResponse, user });
   const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
+  const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -86,6 +93,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h7.type, 'not-implemented-response-handler');
   t.is(h8.type, 'not-implemented-response-handler');
   t.is(h9.type, 'update-location-response-handler');
+  t.is(h10.type, 'not-implemented-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -96,4 +104,5 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h7.user);
   t.truthy(h8.user);
   t.truthy(h9.user);
+  t.truthy(h10.user);
 });
