@@ -24,4 +24,5 @@ export default new Set([
   'request-phone',
   'request-location',
   'update-location',
+  'request-user-input',
 ]);
