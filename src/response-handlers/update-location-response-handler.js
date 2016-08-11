@@ -28,7 +28,15 @@ export default class UpdateLocationResponseHandler extends
    */
   constructor(options) {
     super(Object.assign({ type: 'update-location-response-handler' }, options));
-    this.geoFire = new GeoFire(firebaseDB.ref('users'));
+  }
+
+  /**
+   * Ensures that database connection is initialized.
+   * @private
+   */
+  ensureInitialized() {
+    if (this.geoFire) return;
+    this.geoFire = new GeoFire(firebaseDB.config().ref('users'));
   }
 
   /**
@@ -36,6 +44,7 @@ export default class UpdateLocationResponseHandler extends
    * Updates user's location and saves to storage. Calls `onResult` when saved.
    */
   call(onResult) {
+    this.ensureInitialized();
     this.geoFire.set(this.user.userKey, this.response.location).then(() => {
       onResult();
     })
