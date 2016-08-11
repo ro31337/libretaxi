@@ -7,6 +7,7 @@ import RedirectResponseHandler from '../response-handlers/redirect-response-hand
 import RequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
 import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler'; // eslint-disable-line max-len
 import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler'; // eslint-disable-line max-len
+import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler'; // eslint-disable-line max-len
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -21,6 +22,7 @@ const map = {
     'request-phone': RequestPhoneResponseHandler,
     'request-location': RequestLocationResponseHandler,
     'update-location': UpdateLocationResponseHandler,
+    'request-user-input': RequestUserInputResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -31,6 +33,7 @@ const map = {
     'request-phone': NotImplementedResponseHandler,
     'request-location': NotImplementedResponseHandler,
     'update-location': UpdateLocationResponseHandler,
+    'request-user-input': NotImplementedResponseHandler,
   },
 };
 
