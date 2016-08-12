@@ -97,7 +97,7 @@ const stateful = (superclass) => {
     load() {
       this.init();
       return new Promise((resolve) => {
-        this.db = firebaseDB.ref(this.firebasePath);
+        this.db = firebaseDB.config().ref(this.firebasePath);
         this.db.on('value', (snapshot) => {
           const value = snapshot.val();
 
