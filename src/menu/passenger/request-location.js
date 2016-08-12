@@ -36,7 +36,7 @@ export default class PassengerRequestLocation extends Action {
 
   /**
    * Saves user's location to the database, responds with OK message, and
-   * redirects to `looking-for-taxi` menu action.
+   * redirects to `passenger-request-destination` menu action.
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
@@ -44,12 +44,12 @@ export default class PassengerRequestLocation extends Action {
    * that contains the following responses:
    * - {@link UpdateLocationResponse}
    * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `looking-for-taxi`.
+   * - {@link RedirectResponse} - with redirect to `passenger-request-destination`.
    */
   post(value) {
     return new CompositeResponse()
       .add(new UpdateLocationResponse({ location: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'looking-for-taxi' }));
+      .add(new RedirectResponse({ path: 'passenger-request-destination' }));
   }
 }

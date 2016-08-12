@@ -27,7 +27,7 @@ export default class RequestUserInputResponseHandler extends ResponseHandler {
       {
         type: 'input',
         name: 'message',
-        message: 'Your input',
+        message: 'Your input:',
       },
     ];
     this.lib.prompt(q).then((data) => {

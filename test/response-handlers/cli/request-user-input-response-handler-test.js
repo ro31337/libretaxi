@@ -35,7 +35,7 @@ test.cb('calls inquirer library with correct parameters', t => {
       {
         type: 'input',
         name: 'message',
-        message: 'Your input',
+        message: 'Your input:',
       },
     ]));
     t.end();

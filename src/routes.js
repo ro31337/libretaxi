@@ -3,6 +3,7 @@ import SelectUserType from './menu/select-user-type';
 import RequestPhone from './menu/request-phone';
 import PassengerIndex from './menu/passenger/index';
 import PassengerRequestLocation from './menu/passenger/request-location';
+import PassengerRequestDestination from './menu/passenger/request-destination';
 import Foo from './menu/foo';
 
 /**
@@ -34,6 +35,7 @@ const routes = {
   foo: Foo,
   settings: Foo,
   'passenger-request-location': PassengerRequestLocation,
+  'passenger-request-destination': PassengerRequestDestination,
   'looking-for-taxi': Foo,
 };
 

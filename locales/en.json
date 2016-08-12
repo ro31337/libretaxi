@@ -23,6 +23,8 @@
 	"passenger-index.s_desc": "We show this text on the button on the main passenger's screen, when user clicks, s/he goes to settings.",
 	"passenger-request-location.provide_location": "Please provide your current location, so we'll try to find nearest taxis to you.",
 	"passenger-request-location.provide_location_desc": "We show this message when we want the passenger to provide his/her location.",
+	"passenger-request-destination.provide_destination": "Where are you going? Street address or just few words is OK.",
+	"passenger-request-destination.provide_destination_desc": "Message is shown when we ask passenger to provide destination. It is NOT request for current location, it is destination - the place where passenger is going!",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
