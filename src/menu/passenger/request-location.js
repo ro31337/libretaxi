@@ -2,6 +2,7 @@ import Action from '../../action';
 import RequestLocationResponse from '../../responses/request-location-response';
 import CompositeResponse from '../../responses/composite-response';
 import UpdateLocationResponse from '../../responses/update-location-response';
+import UserStateResponse from '../../responses/user-state-response';
 import TextResponse from '../../responses/text-response';
 import RedirectResponse from '../../responses/redirect-response';
 /**
@@ -49,6 +50,7 @@ export default class PassengerRequestLocation extends Action {
   post(value) {
     return new CompositeResponse()
       .add(new UpdateLocationResponse({ location: value }))
+      .add(new UserStateResponse({ location: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
       .add(new RedirectResponse({ path: 'passenger-request-destination' }));
   }

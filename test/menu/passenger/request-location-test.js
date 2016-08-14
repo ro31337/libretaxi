@@ -26,8 +26,10 @@ test('should return composite response on post', t => {
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'update-location');
   t.deepEqual(response.responses[0].location, [37.421955, -122.084058]);
-  t.is(response.responses[1].type, 'text');
-  t.is(response.responses[1].message, '👌 OK!');
-  t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'passenger-request-destination');
+  t.is(response.responses[1].type, 'user-state');
+  t.deepEqual(response.responses[1].state.location, [37.421955, -122.084058]);
+  t.is(response.responses[2].type, 'text');
+  t.is(response.responses[2].message, '👌 OK!');
+  t.is(response.responses[3].type, 'redirect');
+  t.is(response.responses[3].path, 'passenger-request-destination');
 });
