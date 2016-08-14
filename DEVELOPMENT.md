@@ -99,6 +99,11 @@ npm run esdoc
 
 Command above will automatically generate and open generated documentation in your browser. It's recommended to execute this command every time you create/update docs for your classes.
 
+Linux tweaks
+============
+
+This package is using unicode emojis. [Click here](https://github.com/eosrei/emojione-color-font#install-on-ubuntu-linux) to install them. Unfortunately, on Linux they are in one color in Terminal and in Atom editor. Update this doc if you were able to make them in color in Terminal and/or Atom editor.
+
 Tests
 =====
 
