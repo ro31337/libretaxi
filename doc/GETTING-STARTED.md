@@ -16,8 +16,8 @@ In this file you'll see your pre-defined database connection. It should work,
 but make sure you have your own credentials file outside this project and
 your own url. Shared development environment is not a good thing.
 
-At the moment there is no instructions on how to `./cheaptaxi-staging-credentials.json`
-generate this file. It will be added later (or feel free to add one if you read this).
+At the moment there are no instructions on how to generate `./cheaptaxi-staging-credentials.json`
+file. Docs to be added later (or feel free to add).
 
 You don't need to configure Telegram tokens, because handlers are not implemented
 at the moment.
@@ -35,7 +35,7 @@ package that we use to mock Firebase for local tests.
 
 ## Step 3. Install Redis.
 
-Redis installation is covered in [REDIS.md](doc/REDIS.md). Nothing fancy here. `before-all` test
+Redis installation is covered in [REDIS.md](REDIS.md). Nothing fancy here. `before-all` test
 will fail if you did something wrong.
 
 ## You're good now!
