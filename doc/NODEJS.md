@@ -5,7 +5,7 @@ places where ES6 is [still not supported](http://node.green/).
 
 ## Install Node.js
 
-Before you start, install the right version of Node.js. See [.node-version](https://github.com/ro31337/cheaptaxi/blob/master/.node-version).
+Before you start, install the right version of Node.js. See [.node-version](.node-version).
 
 The best way to install Node.js is to install [Node Version Manager](https://github.com/creationix/nvm#install-script) first. Basic commands are:
 

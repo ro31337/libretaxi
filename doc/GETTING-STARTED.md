@@ -35,7 +35,7 @@ package that we use to mock Firebase for local tests.
 
 ## Step 3. Install Redis.
 
-Redis installation is covered in [REDIS.md](https://github.com/ro31337/cheaptaxi/blob/master/doc/REDIS.md). Nothing fancy here. `before-all` test
+Redis installation is covered in [REDIS.md](doc/REDIS.md). Nothing fancy here. `before-all` test
 will fail if you did something wrong.
 
 ## You're good now!

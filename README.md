@@ -1,9 +1,9 @@
 # Development guidelines
 
-* [Installing Node.js](https://github.com/ro31337/cheaptaxi/blob/master/doc/NODEJS.md)
-* [Getting started](https://github.com/ro31337/cheaptaxi/blob/master/doc/GETTING-STARTED.md)
-* [Redis](https://github.com/ro31337/cheaptaxi/blob/master/doc/REDIS.md)
-* [Esdoc](https://github.com/ro31337/cheaptaxi/blob/master/doc/ESDOC.md)
+* [Installing Node.js](doc/NODEJS.md)
+* [Getting started](doc/GETTING-STARTED.md)
+* [Redis](doc/REDIS.md)
+* [Esdoc](doc/ESDOC.md)
 
 ## Linux tweaks
 
