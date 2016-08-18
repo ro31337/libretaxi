@@ -1,58 +1,10 @@
-Cheap Taxi
-==========
+# Development guidelines
 
-Cheap Taxi, Telegram Bot ([@cheaptaxi_bot](https://telegram.me/goa_bot))
+* [Installing Node.js](doc/NODEJS.md)
+* [Getting started](doc/GETTING-STARTED.md)
+* [Redis](doc/REDIS.md)
+* [Esdoc](doc/ESDOC.md)
 
-Install & Configure
-===================
+## Linux tweaks
 
-```
-npm i
-cp .env-sample .env
-```
-
-Update your `.env` file:
-
-`TELEGRAM_TOKEN` - obtain your token
-[here](https://core.telegram.org/bots#botfather). Token should look like this:
-
-```
-177081234:AbcdeE3879823SKjwhk2934
-```
-
-
-`STATEFUL_CONNSTR` - [Firebase](https://www.firebase.com) connection string
-for stateful objects.
-
-Example:
-
-```
-https://state-test.firebaseio.com/
-```
-
-Run
-===
-
-```
-npm start
-```
-
-Tests
-=====
-
-**IMPORTANT** Make sure `127.0.0.1 localhost.firebaseio.test` is specified
-in your `/etc/hosts`. Look [here](https://github.com/urish/firebase-server/blob/master/README.md)
-for more info.
-
-```
-npm test
-```
-
-Documentation
-=============
-
-Command below will generate documentation based on comments from source code:
-
-```
-npm run esdoc
-```
+This package is using unicode emojis. [Click here](https://github.com/eosrei/emojione-color-font#install-on-ubuntu-linux) to install them. Unfortunately, on Linux they are in one color in Terminal and in Atom editor. Update this doc if you were able to make them in color in Terminal and/or Atom editor.

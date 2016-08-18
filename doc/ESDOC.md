@@ -1,30 +1,9 @@
-Development guidelines
-======================
+# Esdoc
 
-[Esdoc](https://esdoc.org/) is used. Marking your classes/functions with esdoc
-is mandatory. Tests are mandatory.
+Esdoc is used to generate detailed documentation and measures documentation coverage.
+It's mandatory to use Esdoc comments in this project.
 
-Install Node.js
-===============
-
-Before you start, install the right version of Node.js. See [.node-version](https://github.com/ro31337/cheaptaxi/blob/master/.node-version).
-
-The best way to install Node.js is to install [Node Version Manager](https://github.com/creationix/nvm#install-script) first. Basic commands are:
-
-* `nvm ls` - show the list of locally installed Node.js versions.
-* `nvm ls-remote` - show the list of available remote Node.js versions.
-* `nvm install v6.3.1` - installs Node.js version 6.3.1
-* `nvm --help` - for the list of other commands.
-
-When you typed `nvm install v6.3.1` (or other version) make sure Node.js works by typing:
-
-* `node -v` - show version of Node
-* `npm -v` - show version of Node Package Manager (this is NOT `nvm`!)
-
-Now you're good to run  `npm i` from cloned project directory to install dependencies. `master` branch should be up to date and you can type `npm test` (see "Tests" section below) and `npm start` right after `npm i`.
-
-Format of esdoc
-===============
+## Format of esdoc
 
 Sample comment:
 
@@ -66,8 +45,7 @@ Along with tags described above, these tags are also highly recommended to use:
 * `@interface` - to mark class as interface
 * `@implements {MyInterface}` - to show that class implements interface
 
-Esdoc editor configuration
-==========================
+## Esdoc editor configuration
 
 [dockblockr](https://atom.io/packages/docblockr) plugin is used for Atom (this plugin is also available for Sublime Text).
 
@@ -90,27 +68,12 @@ Two important settings for docblockr (in Atom: `Cmd+Shift+P` -> `View installed 
 
 See also: [Configuration section on dockblockr plugin page](https://atom.io/packages/docblockr).
 
-Generate documentation
-======================
+## Generate documentation
 
-```
+```bash
 npm run esdoc
 ```
 
-Command above will automatically generate and open generated documentation in your browser. It's recommended to execute this command every time you create/update docs for your classes.
-
-Linux tweaks
-============
-
-This package is using unicode emojis. [Click here](https://github.com/eosrei/emojione-color-font#install-on-ubuntu-linux) to install them. Unfortunately, on Linux they are in one color in Terminal and in Atom editor. Update this doc if you were able to make them in color in Terminal and/or Atom editor.
-
-Tests
-=====
-
-**IMPORTANT** Make sure `127.0.0.1 localhost.firebaseio.test` is specified
-in your `/etc/hosts`. Look [here](https://github.com/urish/firebase-server/blob/master/README.md)
-for more info.
-
-```
-npm test
-```
+Command above will automatically generate documentation. `open ./esdoc/index.html`
+to open docs in your browser. It's recommended to execute `npm run esdoc` every
+time you create/update docs for your classes.
