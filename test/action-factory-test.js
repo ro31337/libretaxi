@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 /* eslint-disable no-unused-vars */
 import test from 'ava';
-import ActionFactory from '../src/action-factory';
+import ActionFactory from '../src/factories/action-factory';
 
 test('should return routes by menu location', t => {
   // update here when you have more routes

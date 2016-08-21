@@ -1,4 +1,4 @@
-import routes from './routes';
+import routes from '../routes';
 import i18n from 'i18n';
 import appRoot from 'app-root-path';
 
