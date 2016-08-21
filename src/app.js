@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Log from './log';
 import './init';
 import ActionFactory from './factories/action-factory';
@@ -26,8 +27,9 @@ const callAction = (options) => {
   const handler = ResponseHandlerFactory.getHandler({ response, user });
 
   const empty = () => {};
-  const postNextMessage = (retVal) => {
-    queue.create('call-action', { userKey: user.userKey, arg: retVal, route: user.state.menuLocation })
+  const postNextMessage = (arg) => {
+    const userKey = user.userKey;
+    queue.create('call-action', { userKey, arg, route: user.state.menuLocation })
       .priority('high')
       .save();
   };
@@ -47,15 +49,16 @@ queue.process('call-action', (job, done) => {
       route: data.route,
     });
   })
-  .catch((err) => console.log(err)) // eslint-disable-line no-console
+  .catch((err) => console.log(err))
   .then(() => done()); // = finally. Always call "done" kue callback.
 });
 
 // Create and queue initial `call-action`.
 
 UserFactory.fromUserKey('cli_1').load().then((user) => {
-  queue.create('call-action', { userKey: user.userKey, route: user.state.menuLocation || 'default' })
+  const userKey = user.userKey;
+  queue.create('call-action', { userKey, route: user.state.menuLocation || 'default' })
     .priority('high')
     .save();
 })
-.catch((err) => console.log(err)); // eslint-disable-line no-console
+.catch((err) => console.log(err));
