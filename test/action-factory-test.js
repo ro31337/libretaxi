@@ -3,10 +3,19 @@
 import test from 'ava';
 import ActionFactory from '../src/factories/action-factory';
 
+// update _two_ next test cases when you have more routes in `routes.js`
+
 test('should return routes by menu location', t => {
-  // update here when you have more routes
   const a1 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'select-locale' } });
   const a2 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'foo' } });
+  t.is(a1.type, 'select-locale');
+  t.is(a2.type, 'foo');
+});
+
+test('should return routes by route', t => {
+  const user = { state: {} };
+  const a1 = ActionFactory.fromRoute({ route: 'select-locale', user });
+  const a2 = ActionFactory.fromRoute({ route: 'foo', user });
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
 });

@@ -27,13 +27,30 @@ export default class ActionFactory {
    * @return {Object} Instance of `Action`
    */
   static fromMenuLocation(user) {
-    const location = user.state.menuLocation || 'default';
+    const route = user.state.menuLocation || 'default';
+    return this.fromRoute({ user, route });
+  }
+
+  /**
+   * Creates concrete `Action` instance based on route.
+   *
+   * @author Roman Pushkin (roman.pushkin@gmail.com)
+   * @date 2016-08-21
+   * @version 1.1
+   * @since 0.1.0
+   * @param {User} obj.user - {@link User} instance.
+   * @param {string} obj.route - route key from {@link Routes}.
+   * @return {Object} Instance of `Action`
+   */
+  static fromRoute(obj) {
+    const user = obj.user;
+    const route = obj.route;
     const locale = user.state.locale || 'en';
 
-    const action = routes[location];
+    const action = routes[route];
 
     if (!action) {
-      throw new Error(`Can't find route key "${location}" in routes`);
+      throw new Error(`Can't find route key "${route}" in routes`);
     }
 
     const t = {};

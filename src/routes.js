@@ -39,4 +39,6 @@ const routes = {
   'looking-for-taxi': Foo,
 };
 
+// Adding more routes? update `action-factory-test.js`
+
 export default routes;
