@@ -1,10 +1,10 @@
-import SelectLocale from './menu/select-locale';
-import SelectUserType from './menu/select-user-type';
-import RequestPhone from './menu/request-phone';
-import PassengerIndex from './menu/passenger/index';
-import PassengerRequestLocation from './menu/passenger/request-location';
-import PassengerRequestDestination from './menu/passenger/request-destination';
-import Foo from './menu/foo';
+import SelectLocale from './actions/menu/select-locale';
+import SelectUserType from './actions/menu/select-user-type';
+import RequestPhone from './actions/menu/request-phone';
+import PassengerIndex from './actions/menu/passenger/index';
+import PassengerRequestLocation from './actions/menu/passenger/request-location';
+import PassengerRequestDestination from './actions/menu/passenger/request-destination';
+import Foo from './actions/menu/foo';
 
 /**
  * @typedef Routes

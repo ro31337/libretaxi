@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 import test from 'ava';
-import Foo from '../../src/menu/foo';
+import Foo from '../../src/actions/menu/foo';
 
 const user = {};
 

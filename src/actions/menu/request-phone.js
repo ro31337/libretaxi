@@ -1,10 +1,10 @@
-import Action from '../action';
+import Action from '../../action';
 import objectAssign from 'object-assign';
-import RequestPhoneResponse from '../responses/request-phone-response';
-import CompositeResponse from '../responses/composite-response';
-import UserStateResponse from '../responses/user-state-response';
-import TextResponse from '../responses/text-response';
-import RedirectResponse from '../responses/redirect-response';
+import RequestPhoneResponse from '../../responses/request-phone-response';
+import CompositeResponse from '../../responses/composite-response';
+import UserStateResponse from '../../responses/user-state-response';
+import TextResponse from '../../responses/text-response';
+import RedirectResponse from '../../responses/redirect-response';
 
 /**
  * Request phone menu action.

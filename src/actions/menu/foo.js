@@ -1,8 +1,8 @@
-import Action from './../action';
+import Action from '../../action';
 import objectAssign from 'object-assign';
-import CompositeResponse from '../responses/composite-response';
-import TextResponse from '../responses/text-response';
-import RedirectResponse from '../responses/redirect-response';
+import CompositeResponse from '../../responses/composite-response';
+import TextResponse from '../../responses/text-response';
+import RedirectResponse from '../../responses/redirect-response';
 
 /**
  * Sample menu action.

@@ -1,9 +1,9 @@
-import Action from '../../action';
-import RequestUserInputResponse from '../../responses/request-user-input-response';
-import CompositeResponse from '../../responses/composite-response';
-import UserStateResponse from '../../responses/user-state-response';
-import TextResponse from '../../responses/text-response';
-import RedirectResponse from '../../responses/redirect-response';
+import Action from '../../../action';
+import RequestUserInputResponse from '../../../responses/request-user-input-response';
+import CompositeResponse from '../../../responses/composite-response';
+import UserStateResponse from '../../../responses/user-state-response';
+import TextResponse from '../../../responses/text-response';
+import RedirectResponse from '../../../responses/redirect-response';
 /**
  * Passenger request destination menu action.
  * Asking passenger to provide destination.

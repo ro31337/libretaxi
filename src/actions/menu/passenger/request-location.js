@@ -1,10 +1,10 @@
-import Action from '../../action';
-import RequestLocationResponse from '../../responses/request-location-response';
-import CompositeResponse from '../../responses/composite-response';
-import UpdateLocationResponse from '../../responses/update-location-response';
-import UserStateResponse from '../../responses/user-state-response';
-import TextResponse from '../../responses/text-response';
-import RedirectResponse from '../../responses/redirect-response';
+import Action from '../../../action';
+import RequestLocationResponse from '../../../responses/request-location-response';
+import CompositeResponse from '../../../responses/composite-response';
+import UpdateLocationResponse from '../../../responses/update-location-response';
+import UserStateResponse from '../../../responses/user-state-response';
+import TextResponse from '../../../responses/text-response';
+import RedirectResponse from '../../../responses/redirect-response';
 /**
  * Passenger request location menu action.
  * Asking passenger to provide location.

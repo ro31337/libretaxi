@@ -1,10 +1,10 @@
-import Action from '../action';
+import Action from '../../action';
 import objectAssign from 'object-assign';
-import OptionsResponse from '../responses/options-response';
-import CompositeResponse from '../responses/composite-response';
-import SelectLocaleResponse from '../responses/select-locale-response';
-import TextResponse from '../responses/text-response';
-import RedirectResponse from '../responses/redirect-response';
+import OptionsResponse from '../../responses/options-response';
+import CompositeResponse from '../../responses/composite-response';
+import SelectLocaleResponse from '../../responses/select-locale-response';
+import TextResponse from '../../responses/text-response';
+import RedirectResponse from '../../responses/redirect-response';
 /**
  * Select locale menu action.
  *
