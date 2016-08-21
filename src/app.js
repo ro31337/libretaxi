@@ -1,6 +1,6 @@
 import Log from './log';
 import './init';
-import ActionFactory from './action-factory';
+import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
 import UserFactory from './factories/user-factory';
 import kue from 'kue';
