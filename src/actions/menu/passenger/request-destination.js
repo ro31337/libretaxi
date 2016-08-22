@@ -4,6 +4,9 @@ import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import SubmitOrderResponse from '../../../responses/submit-order-response';
+import Firebase from 'firebase';
+
 /**
  * Passenger request destination menu action.
  * Asking passenger to provide destination.
@@ -48,6 +51,12 @@ export default class PassengerRequestDestination extends Action {
   post(value) {
     return new CompositeResponse()
       .add(new UserStateResponse({ destination: value }))
+      .add(new SubmitOrderResponse({
+        passengerKey: this.user.userKey,
+        passengerLocation: this.user.state.location,
+        passengerDestination: value,
+        createdAt: Firebase.database.ServerValue.TIMESTAMP,
+      }))
       .add(new TextResponse({ message: '👌 OK!' }))
       .add(new RedirectResponse({ path: 'looking-for-taxi' }));
   }

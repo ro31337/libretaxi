@@ -5,6 +5,8 @@ import SubmitOrderResponse from '../../../../src/responses/submit-order-response
 import checkNotNullTest from '../../../helpers/check-not-null.js';
 import FirebaseServer from 'firebase-server';
 import firebaseDB from '../../../../src/firebase-db';
+import { ss } from '../../../spec-support';
+import sinon from 'sinon';
 
 let server = null;
 const response = new SubmitOrderResponse({
@@ -29,8 +31,9 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test.cb('should create order when called', t => {
-  t.plan(7);
+test.cb('should create order and inform passenger when called', t => {
+  t.plan(8);
+  const informPassengerSpy = ss.sinon.spy();
 
   const assert = () => {
     const db = firebaseDB.config().ref('orders');
@@ -60,11 +63,13 @@ test.cb('should create order when called', t => {
       t.is(v.passengerKey, 'cli_1');
       t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
       t.truthy(v.createdAt);
+      t.truthy(informPassengerSpy.calledWith('cli_1'));
       t.end();
     });
   };
 
   const handler = new SubmitOrderResponseHandler({ response });
+  handler.informPassenger = informPassengerSpy;
   handler.call(assert);
 });
 
@@ -92,4 +97,25 @@ test.cb('handles error while saving location', t => {
   const handler = new SubmitOrderResponseHandler({ response });
   handler.geoFire = fakeGeoFire;
   handler.call(() => {});
+});
+
+test('should post message to the queue when informing passenger', t => {
+  // arrange
+  const queue = {};
+  const create = ss.sinon.stub().returns(queue);
+  const priority = ss.sinon.stub().returns(queue);
+  const save = ss.sinon.stub().returns(queue);
+  Object.assign(queue, { create, priority, save });
+
+  // act
+  const handler = new SubmitOrderResponseHandler({ response: {}, queue });
+  handler.informPassenger('cli_1');
+
+  // assert
+  t.truthy(create
+    .calledWith('call-action', { userKey: 'cli_1', route: 'order-submitted', once: true }));
+  t.truthy(priority.calledWith('high'));
+  t.truthy(save.calledWith());
+  sinon.assert.callOrder(create, priority, save);
+  t.pass();
 });

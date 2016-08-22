@@ -5,6 +5,7 @@ import PassengerIndex from './actions/menu/passenger/index';
 import PassengerRequestLocation from './actions/menu/passenger/request-location';
 import PassengerRequestDestination from './actions/menu/passenger/request-destination';
 import Foo from './actions/menu/foo';
+import OrderSubmitted from './actions/phantom/order-submitted';
 
 /**
  * @typedef Routes
@@ -37,6 +38,7 @@ const routes = {
   'passenger-request-location': PassengerRequestLocation,
   'passenger-request-destination': PassengerRequestDestination,
   'looking-for-taxi': Foo,
+  'order-submitted': OrderSubmitted,
 };
 
 // Adding more routes? update `action-factory-test.js`

@@ -3,6 +3,7 @@ import GeoFire from 'geofire';
 import firebaseDB from '../firebase-db';
 import uuid from 'node-uuid';
 import Order from '../order';
+import kue from 'kue';
 
 /**
  * Submit order response handler.
@@ -29,6 +30,7 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
    */
   constructor(options) {
     super(Object.assign({ type: 'submit-order-response-handler' }, options));
+    this.queue = options.queue || kue.createQueue();
   }
 
   /**
@@ -56,6 +58,7 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
         // 3. assign properties from response and save
         Object.assign(order.state, r.order);
         order.save(() => {
+          this.informPassenger(r.order.passengerKey);
           onResult();
         });
       })
@@ -68,5 +71,15 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
       // no idea how to test it, untested code in this block
       console.log(`Error in SubmitOrderResponseHandler (stateful): ${err}`); // eslint-disable-line no-console, max-len
     });
+  }
+
+  /**
+   * @private
+   */
+  informPassenger(userKey) {
+    // console.dir(this.queue.create());
+    this.queue.create('call-action', { userKey, route: 'order-submitted', once: true })
+      .priority('high')
+      .save();
   }
 }
