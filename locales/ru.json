@@ -12,6 +12,7 @@
 	"passenger-index.s": "Настройки",
 	"passenger-request-location.provide_location": "Отправьте свое месторасположение, чтобы мы смогли найти ближайшие к вам такси.",
 	"passenger-request-destination.provide_destination": "Куда вы направляетесь? Пожалуйста, укажите точный адрес (так, чтобы он был понятен для навигатора) или просто как можно подробнее опишите место.",
+	"order-submitted.order_submitted": "Заказ отправлен, подбираем водителей, одну минутку.",
 	"__locale__": "ru",
 	"__eof__": "__eof__"
 }

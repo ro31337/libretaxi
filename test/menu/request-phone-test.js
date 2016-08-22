@@ -1,7 +1,7 @@
 /* eslint-disable no-new, no-unused-vars */
 import test from 'ava';
 import routes from '../../src/routes'; // to aviod circular dependencies
-import RequestPhone from '../../src/menu/request-phone';
+import RequestPhone from '../../src/actions/menu/request-phone';
 import { i18n } from '../spec-support';
 
 test('can be constructed with default parameters', t => {

@@ -29,7 +29,7 @@ export default class SubmitOrderResponse extends
    *   passengerKey: 'cli_1',
    *   passengerLocation: [37.421955, -122.084058],
    *   passengerDestination: 'South San Francisco BART station',
-   *   createdAt: Firebase.ServerValue.TIMESTAMP,
+   *   createdAt: Firebase.database.ServerValue.TIMESTAMP,
    * });
    */
   constructor(order) {

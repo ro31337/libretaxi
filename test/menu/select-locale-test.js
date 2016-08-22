@@ -1,7 +1,7 @@
 /* eslint-disable no-new, no-unused-vars */
 import test from 'ava';
 import routes from '../../src/routes'; // to aviod circular dependencies
-import SelectLocale from '../../src/menu/select-locale';
+import SelectLocale from '../../src/actions/menu/select-locale';
 
 const user = {};
 
