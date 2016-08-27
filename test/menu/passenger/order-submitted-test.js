@@ -1,7 +1,7 @@
 /* eslint-disable no-new, no-unused-vars */
 import test from 'ava';
 import routes from '../../../src/routes'; // to aviod circular dependencies
-import OrderSubmitted from '../../../src/actions/phantom/order-submitted';
+import OrderSubmitted from '../../../src/actions/menu/passenger/order-submitted';
 import { i18n } from '../../spec-support';
 
 const user = {};

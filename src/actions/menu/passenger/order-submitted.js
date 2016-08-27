@@ -1,7 +1,7 @@
-import Action from '../../action';
-import TextResponse from '../../responses/text-response';
-import CompositeResponse from '../../responses/composite-response';
-import RedirectResponse from '../../responses/redirect-response';
+import Action from '../../../action';
+import TextResponse from '../../../responses/text-response';
+import CompositeResponse from '../../../responses/composite-response';
+import RedirectResponse from '../../../responses/redirect-response';
 
 /**
  * Order submitted action. Used to inform the passenger that order
