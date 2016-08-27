@@ -27,4 +27,5 @@ export default new Set([
   'request-user-input',
   'submit-order',
   'empty',
+  'cancel-current-order',
 ]);
