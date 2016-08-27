@@ -32,7 +32,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should create order and inform passenger when called', t => {
-  t.plan(8);
+  t.plan(9);
   const informPassengerSpy = ss.sinon.spy();
 
   const assert = () => {
@@ -62,6 +62,7 @@ test.cb('should create order and inform passenger when called', t => {
       t.deepEqual(v.passengerLocation, [37.421955, -122.084058]);
       t.is(v.passengerKey, 'cli_1');
       t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
+      t.is(v.status, 'new');
       t.truthy(v.createdAt);
       t.truthy(informPassengerSpy.calledWith('cli_1'));
       t.end();

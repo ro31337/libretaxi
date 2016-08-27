@@ -57,6 +57,7 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
       this.geoFire.set(order.orderKey, r.order.passengerLocation).then(() => {
         // 3. assign properties from response and save
         Object.assign(order.state, r.order);
+        order.state.status = 'new'; // eslint-disable-line no-param-reassign
         order.save(() => {
           this.informPassenger(r.order.passengerKey);
           onResult();
