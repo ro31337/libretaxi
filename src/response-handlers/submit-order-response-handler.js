@@ -77,8 +77,23 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
    * @private
    */
   informPassenger(userKey) {
-    // console.dir(this.queue.create());
-    this.queue.create('call-action', { userKey, route: 'order-submitted', once: true })
+    // IMPORTANT!
+    // Note `delay(1000)` below. Unfortunately, this delay is mandatory.
+    // We need this delay because in `passenger/request-destination.js` we
+    // have composite response that contains the following sequence:
+    //
+    // * UserStateResponse
+    // * SubmitOrderResponse
+    // * TextResponse({ message: '👌 OK!' }))
+    // * RedirectResponse({ path: 'blank-screen' }));
+    //
+    // And we execute this code on the second step (SubmitOrderResponse).
+    // Somehow we need to make sure that all next steps were done, before we
+    // can go post to the queue request to call another action. Now it's done
+    // with delay(1000), but it's definitely an area of improvement.
+
+    this.queue.create('call-action', { userKey, route: 'order-submitted' })
+      .delay(1000) // !!!
       .priority('high')
       .save();
   }

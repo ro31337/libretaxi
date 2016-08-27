@@ -103,9 +103,10 @@ test('should post message to the queue when informing passenger', t => {
   // arrange
   const queue = {};
   const create = ss.sinon.stub().returns(queue);
+  const delay = ss.sinon.stub().returns(queue);
   const priority = ss.sinon.stub().returns(queue);
   const save = ss.sinon.stub().returns(queue);
-  Object.assign(queue, { create, priority, save });
+  Object.assign(queue, { create, delay, priority, save });
 
   // act
   const handler = new SubmitOrderResponseHandler({ response: {}, queue });
@@ -113,9 +114,10 @@ test('should post message to the queue when informing passenger', t => {
 
   // assert
   t.truthy(create
-    .calledWith('call-action', { userKey: 'cli_1', route: 'order-submitted', once: true }));
+    .calledWith('call-action', { userKey: 'cli_1', route: 'order-submitted' }));
+  t.truthy(delay.calledWith(1000));
   t.truthy(priority.calledWith('high'));
   t.truthy(save.calledWith());
-  sinon.assert.callOrder(create, priority, save);
+  sinon.assert.callOrder(create, delay, priority, save);
   t.pass();
 });
