@@ -1,9 +1,13 @@
 import Action from '../../action';
 import TextResponse from '../../responses/text-response';
+import CompositeResponse from '../../responses/composite-response';
+import RedirectResponse from '../../responses/redirect-response';
 
 /**
- * Order submitted phantom action. Used to inform the passenger that order
- * has been submitted. To be used in {@link SubmitOrderResponseHandler}.
+ * Order submitted action. Used to inform the passenger that order
+ * has been submitted, and redirects passenger from the blank screen.
+ * To be used in {@link SubmitOrderResponseHandler}. Implements `call` method
+ * (the same handler for `get` and `post`).
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-08-20
@@ -19,11 +23,14 @@ export default class OrderSubmitted extends Action {
   }
 
   /**
-   * Returns text message.
+   * Returns text message and temporarily redirects to `foo`.
    *
-   * @return {TextResponse} - message informing the user that order has been submitted.
+   * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
+   * which contains {@link TextResponse} and {@link RedirectResponse}.
    */
   call() {
-    return new TextResponse({ message: this.t('order_submitted') });
+    return new CompositeResponse()
+      .add(new TextResponse({ message: this.t('order_submitted') }))
+      .add(new RedirectResponse({ path: 'foo' }));
   }
 }
