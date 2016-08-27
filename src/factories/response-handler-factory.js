@@ -9,6 +9,7 @@ import RequestLocationResponseHandler from '../response-handlers/cli/request-loc
 import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler'; // eslint-disable-line max-len
 import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler'; // eslint-disable-line max-len
 import SubmitOrderResponseHandler from '../response-handlers/submit-order-response-handler'; // eslint-disable-line max-len
+import EmptyResponseHandler from '../response-handlers/empty-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -25,6 +26,7 @@ const map = {
     'update-location': UpdateLocationResponseHandler,
     'request-user-input': RequestUserInputResponseHandler,
     'submit-order': SubmitOrderResponseHandler,
+    empty: EmptyResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -37,6 +39,7 @@ const map = {
     'update-location': UpdateLocationResponseHandler,
     'request-user-input': NotImplementedResponseHandler,
     'submit-order': SubmitOrderResponseHandler,
+    empty: EmptyResponseHandler,
   },
 };
 
