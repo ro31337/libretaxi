@@ -39,14 +39,14 @@ export default class PassengerRequestDestination extends Action {
 
   /**
    * Saves user's destination to state. Responds with OK message, and
-   * redirects to `looking-for-taxi` menu action.
+   * redirects to blank screen (menu action).
    *
    * @param {string} value - string that represents destination.
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * that contains the following responses:
    * - {@link UserStateResponse} - with `destination` prop set to `value`
    * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `looking-for-taxi`.
+   * - {@link RedirectResponse} - with redirect to blank screen.
    */
   post(value) {
     return new CompositeResponse()
@@ -58,6 +58,6 @@ export default class PassengerRequestDestination extends Action {
         createdAt: Firebase.database.ServerValue.TIMESTAMP,
       }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'looking-for-taxi' }));
+      .add(new RedirectResponse({ path: 'blank-screen' }));
   }
 }

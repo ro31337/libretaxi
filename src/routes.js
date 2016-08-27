@@ -38,7 +38,6 @@ const routes = {
   settings: Foo,
   'passenger-request-location': PassengerRequestLocation,
   'passenger-request-destination': PassengerRequestDestination,
-  'looking-for-taxi': Foo,
   'order-submitted': OrderSubmitted,
   'blank-screen': BlankScreen,
 };
