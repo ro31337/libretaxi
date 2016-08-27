@@ -5,7 +5,7 @@ import PassengerIndex from './actions/menu/passenger/index';
 import PassengerRequestLocation from './actions/menu/passenger/request-location';
 import PassengerRequestDestination from './actions/menu/passenger/request-destination';
 import Foo from './actions/menu/foo';
-import OrderSubmitted from './actions/phantom/order-submitted';
+import OrderSubmitted from './actions/menu/passenger/order-submitted';
 import BlankScreen from './actions/menu/blank-screen';
 
 /**
