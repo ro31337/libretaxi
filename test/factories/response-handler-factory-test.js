@@ -13,6 +13,7 @@ import RequestLocationResponse from '../../src/responses/request-location-respon
 import UpdateLocationResponse from '../../src/responses/update-location-response';
 import RequestUserInputResponse from '../../src/responses/request-user-input-response';
 import SubmitOrderResponse from '../../src/responses/submit-order-response';
+import EmptyResponse from '../../src/responses/empty-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -31,6 +32,7 @@ test('should return correct types for responses for cli platform', t => {
     passengerDestination: 'South San Francisco BART station, CA, 94080',
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
   });
+  const emptyResponse = new EmptyResponse();
 
   const user = { platformType: 'cli' };
 
@@ -45,6 +47,7 @@ test('should return correct types for responses for cli platform', t => {
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
   const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
   const h11 = HandlerFactory.getHandler({ response: submitOrderResponse, user });
+  const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -57,6 +60,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h9.type, 'update-location-response-handler');
   t.is(h10.type, 'cli-request-user-input-response-handler');
   t.is(h11.type, 'submit-order-response-handler');
+  t.is(h12.type, 'empty-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -69,6 +73,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h9.user);
   t.truthy(h10.user);
   t.truthy(h11.user);
+  t.truthy(h12.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -89,6 +94,7 @@ test('should return correct types for responses for telegram platform', t => {
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
   });
   const user = { platformType: 'telegram' };
+  const emptyResponse = new EmptyResponse();
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
   const h2 = HandlerFactory.getHandler({ response: optionsResponse, user });
@@ -101,6 +107,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
   const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
   const h11 = HandlerFactory.getHandler({ response: submitOrderResponse, user });
+  const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -113,6 +120,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h9.type, 'update-location-response-handler');
   t.is(h10.type, 'not-implemented-response-handler');
   t.is(h11.type, 'submit-order-response-handler');
+  t.is(h12.type, 'empty-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -125,4 +133,5 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h9.user);
   t.truthy(h10.user);
   t.truthy(h11.user);
+  t.truthy(h12.user);
 });

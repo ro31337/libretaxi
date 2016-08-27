@@ -6,6 +6,7 @@ import PassengerRequestLocation from './actions/menu/passenger/request-location'
 import PassengerRequestDestination from './actions/menu/passenger/request-destination';
 import Foo from './actions/menu/foo';
 import OrderSubmitted from './actions/phantom/order-submitted';
+import BlankScreen from './actions/menu/blank-screen';
 
 /**
  * @typedef Routes
@@ -37,8 +38,8 @@ const routes = {
   settings: Foo,
   'passenger-request-location': PassengerRequestLocation,
   'passenger-request-destination': PassengerRequestDestination,
-  'looking-for-taxi': Foo,
   'order-submitted': OrderSubmitted,
+  'blank-screen': BlankScreen,
 };
 
 // Adding more routes? update `action-factory-test.js`
