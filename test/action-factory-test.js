@@ -18,6 +18,7 @@ test('should return routes by menu location', t => {
   const a10 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-request-destination' } }); // eslint-disable-line max-len
   const a11 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'looking-for-taxi' } });
   const a12 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'order-submitted' } });
+  const a13 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'blank-screen' } });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -31,6 +32,7 @@ test('should return routes by menu location', t => {
   t.is(a10.type, 'passenger-request-destination');
   t.is(a11.type, 'foo');
   t.is(a12.type, 'order-submitted');
+  t.is(a13.type, 'blank-screen');
 });
 
 test('should return routes by route', t => {
@@ -47,6 +49,7 @@ test('should return routes by route', t => {
   const a10 = ActionFactory.fromRoute({ route: 'passenger-request-destination', user });
   const a11 = ActionFactory.fromRoute({ route: 'looking-for-taxi', user });
   const a12 = ActionFactory.fromRoute({ route: 'order-submitted', user });
+  const a13 = ActionFactory.fromRoute({ route: 'blank-screen', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -60,6 +63,7 @@ test('should return routes by route', t => {
   t.is(a10.type, 'passenger-request-destination');
   t.is(a11.type, 'foo');
   t.is(a12.type, 'order-submitted');
+  t.is(a13.type, 'blank-screen');
 });
 
 test('should have default route', t => {
