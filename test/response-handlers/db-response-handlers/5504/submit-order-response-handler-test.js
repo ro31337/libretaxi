@@ -1,4 +1,4 @@
-/* eslint-disable no-new, no-console */
+/* eslint-disable no-new, no-console, no-unused-vars */
 import test from 'ava';
 import SubmitOrderResponseHandler from '../../../../src/response-handlers/submit-order-response-handler'; // eslint-disable-line max-len
 import SubmitOrderResponse from '../../../../src/responses/submit-order-response';
@@ -8,6 +8,7 @@ import firebaseDB from '../../../../src/firebase-db';
 import { ss } from '../../../spec-support';
 import sinon from 'sinon';
 import User from '../../../../src/user';
+import queueFacade from '../../../../src/queue-facade';
 
 let server = null;
 const response = new SubmitOrderResponse({
@@ -105,23 +106,14 @@ test.cb('handles error while saving location', t => {
 
 test('should post message to the queue when informing passenger', t => {
   // arrange
-  const queue = {};
-  const create = ss.sinon.stub().returns(queue);
-  const delay = ss.sinon.stub().returns(queue);
-  const priority = ss.sinon.stub().returns(queue);
-  const save = ss.sinon.stub().returns(queue);
-  Object.assign(queue, { create, delay, priority, save });
+  const spy = ss.sinon.spy();
+  queueFacade.callActionWithDelay = spy;
 
   // act
-  const handler = new SubmitOrderResponseHandler({ response: {}, queue });
+  const handler = new SubmitOrderResponseHandler({ response: {} });
   handler.informPassenger('cli_1');
 
   // assert
-  t.truthy(create
-    .calledWith('call-action', { userKey: 'cli_1', route: 'order-submitted' }));
-  t.truthy(delay.calledWith(1000));
-  t.truthy(priority.calledWith('high'));
-  t.truthy(save.calledWith());
-  sinon.assert.callOrder(create, delay, priority, save);
+  t.truthy(spy.calledWith({ userKey: 'cli_1', route: 'order-submitted' }));
   t.pass();
 });
