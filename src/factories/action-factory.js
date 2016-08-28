@@ -38,6 +38,7 @@ export default class ActionFactory {
    * @date 2016-08-21
    * @version 1.1
    * @since 0.1.0
+   * @param {Object} obj - hash of parameters
    * @param {User} obj.user - {@link User} instance.
    * @param {string} obj.route - route key from {@link Routes}.
    * @return {Object} Instance of `Action`
