@@ -4,9 +4,8 @@ import './init';
 import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
 import UserFactory from './factories/user-factory';
-import kue from 'kue';
+import queue from './queue-facade';
 
-const queue = kue.createQueue();
 const log = new Log();
 log.debug(__('app.welcome_banner'));
 
@@ -29,9 +28,7 @@ const callAction = (options) => {
   const empty = () => {};
   const postNextMessage = (arg) => {
     const userKey = user.userKey;
-    queue.create('call-action', { userKey, arg, route: user.state.menuLocation })
-      .priority('high')
-      .save();
+    queue.callAction({ userKey, arg, route: user.state.menuLocation });
   };
   const done = options.once ? empty : postNextMessage;
   handler.call(done);
@@ -40,7 +37,7 @@ const callAction = (options) => {
 // Response handler loop.
 // When `call-action` is posted with `queue.create`, it's processed here.
 
-queue.process('call-action', (job, done) => {
+queue.processCallAction((job, done) => {
   const data = job.data;
   UserFactory.fromUserKey(data.userKey).load().then((user) => {
     callAction({
@@ -57,8 +54,6 @@ queue.process('call-action', (job, done) => {
 
 UserFactory.fromUserKey('cli_1').load().then((user) => {
   const userKey = user.userKey;
-  queue.create('call-action', { userKey, route: user.state.menuLocation || 'default' })
-    .priority('high')
-    .save();
+  queue.callAction({ userKey, route: user.state.menuLocation || 'default' });
 })
 .catch((err) => console.log(err));
