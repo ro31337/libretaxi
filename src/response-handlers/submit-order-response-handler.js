@@ -81,6 +81,6 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
    * @private
    */
   informPassenger(userKey) {
-    queue.callActionWithDelay({ userKey, route: 'order-submitted' });
+    queue.redirectToAction({ userKey, route: 'order-submitted' });
   }
 }

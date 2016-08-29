@@ -107,7 +107,7 @@ test.cb('handles error while saving location', t => {
 test('should post message to the queue when informing passenger', t => {
   // arrange
   const spy = ss.sinon.spy();
-  queueFacade.callActionWithDelay = spy;
+  queueFacade.redirectToAction = spy;
 
   // act
   const handler = new SubmitOrderResponseHandler({ response: {} });
