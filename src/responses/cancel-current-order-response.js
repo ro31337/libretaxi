@@ -1,6 +1,4 @@
 import Response from './response';
-import { mix } from 'mixwith';
-import checkNotNull from '../validations/check-not-null';
 
 /**
  * "Cancel current order" response. Used to cancel current order from
@@ -12,14 +10,11 @@ import checkNotNull from '../validations/check-not-null';
  * @version 1.1
  * @since 0.1.0
  */
-export default class CancelCurrentOrderResponse extends
- mix(Response).with(checkNotNull('passengerKey')) {
-  /**
+export default class CancelCurrentOrderResponse extends Response {
+   /**
    * Constructor.
-   * @param {string} options.passengerKey - passenger key
    */
-  constructor(options) {
-    super(Object.assign({ type: 'cancel-current-order' }, options));
-    Object.assign(this, options);
+  constructor() {
+    super({ type: 'cancel-current-order' });
   }
 }

@@ -1,6 +1,8 @@
 import Action from '../../../action';
 import TextResponse from '../../../responses/text-response';
 import CompositeResponse from '../../../responses/composite-response';
+import OptionsResponse from '../../../responses/options-response';
+import CancelCurrentOrderResponse from '../../../responses/cancel-current-order-response';
 import RedirectResponse from '../../../responses/redirect-response';
 
 /**
@@ -28,9 +30,24 @@ export default class OrderSubmitted extends Action {
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link RedirectResponse}.
    */
-  call() {
+  get() {
     return new CompositeResponse()
       .add(new TextResponse({ message: this.t('order_submitted') }))
-      .add(new RedirectResponse({ path: 'foo' }));
+      .add(new OptionsResponse({
+        rows: [
+          [
+            { label: this.t('cancel'), value: 'cancel' },
+          ],
+        ],
+      }));
+  }
+
+  post(value) {
+    if (value === 'cancel') {
+      return new CompositeResponse()
+        .add(new CancelCurrentOrderResponse())
+        .add(new RedirectResponse({ path: 'blank-screen' }));
+    }
+    return null;
   }
 }

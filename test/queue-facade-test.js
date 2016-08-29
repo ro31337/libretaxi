@@ -56,3 +56,15 @@ test('should process \'call-action\' messages', t => {
   // assert
   t.truthy(myQueue.process.calledWith('call-action', { foo3: 'bar3' }));
 });
+
+test('should call callActionWithDelay on redirectToAction', t => {
+  // arrange
+  const spy = ss.sinon.spy();
+  queue.callActionWithDelay = spy;
+
+  // act
+  queue.redirectToAction({ userKey: 'cli_1', route: 'test-action' });
+
+  // assert
+  t.truthy(spy.calledWith({ userKey: 'cli_1', arg: 'test-action', route: 'redirect' }));
+});

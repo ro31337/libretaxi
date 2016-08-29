@@ -27,6 +27,10 @@
 	"passenger-request-destination.provide_destination_desc": "Message is shown when we ask passenger to provide destination. It is NOT request for current location, it is destination - the place where passenger is going!",
 	"order-submitted.order_submitted": "Your order submitted, looking for drivers, we'll give you update in a minute.",
 	"order-submitted.order_submitted_desc": "We show this message when passenger submits order. This message is just to inform the user that order has been submitted, and we're looking for drivers.",
+	"order-submitted.cancel": "✖️ Cancel order",
+	"order-submitted.cancel_desc": "Text on the button. We show this button to user so s/he can cancel current order.",
+	"order-cancelled.order_cancelled": "👌 No problem, order has been cancelled.",
+	"order-cancelled.order_cancelled_desc": "We show this message when passenger placed an order, and then clicked \"Cancel\" button for some reason.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

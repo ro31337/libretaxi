@@ -7,6 +7,8 @@ import PassengerRequestDestination from './actions/menu/passenger/request-destin
 import Foo from './actions/menu/foo';
 import OrderSubmitted from './actions/menu/passenger/order-submitted';
 import BlankScreen from './actions/menu/blank-screen';
+import OrderCancelled from './actions/menu/passenger/order-cancelled';
+import Redirect from './actions/menu/redirect';
 
 /**
  * @typedef Routes
@@ -40,6 +42,8 @@ const routes = {
   'passenger-request-destination': PassengerRequestDestination,
   'order-submitted': OrderSubmitted,
   'blank-screen': BlankScreen,
+  'order-cancelled': OrderCancelled,
+  redirect: Redirect,
 };
 
 // Adding more routes? update `action-factory-test.js`

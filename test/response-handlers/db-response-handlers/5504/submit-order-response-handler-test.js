@@ -7,6 +7,7 @@ import FirebaseServer from 'firebase-server';
 import firebaseDB from '../../../../src/firebase-db';
 import { ss } from '../../../spec-support';
 import sinon from 'sinon';
+import User from '../../../../src/user';
 import queueFacade from '../../../../src/queue-facade';
 
 let server = null;
@@ -33,45 +34,48 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should create order and inform passenger when called', t => {
-  t.plan(8);
+  t.plan(10);
   const informPassengerSpy = ss.sinon.spy();
+  new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
+    const assert = () => {
+      const db = firebaseDB.config().ref('orders');
+      db.on('value', (snapshot) => {
+        const obj = snapshot.val();
 
-  const assert = () => {
-    const db = firebaseDB.config().ref('orders');
-    db.on('value', (snapshot) => {
-      const obj = snapshot.val();
+        /* Database should look like this:
 
-      /* Database should look like this:
+        { '27455828-d309-4370-bb10-6674d9d467f9':
+           { createdAt: 1471578557107,
+             g: '9q9hvumneq',
+             l: [ 37.421955, -122.084058 ],
+             passengerDestination: 'South San Francisco BART station, CA, 94080',
+             passengerKey: 'cli_1',
+             passengerLocation: [ 37.421955, -122.084058 ] } }
 
-      { '27455828-d309-4370-bb10-6674d9d467f9':
-         { createdAt: 1471578557107,
-           g: '9q9hvumneq',
-           l: [ 37.421955, -122.084058 ],
-           passengerDestination: 'South San Francisco BART station, CA, 94080',
-           passengerKey: 'cli_1',
-           passengerLocation: [ 37.421955, -122.084058 ] } }
+        Only one key-value pair. So we just need to get the first value.
+        */
 
-      Only one key-value pair. So we just need to get the first value.
-      */
+        t.is(Object.keys(obj).length, 1); // there should be 1 record
+        const firstKey = Object.keys(obj)[0]; // first key (guid)
+        const v = obj[firstKey]; // get the value (order properties)
 
-      t.is(Object.keys(obj).length, 1); // there should be 1 record
-      const firstKey = Object.keys(obj)[0]; // first key (guid)
-      const v = obj[firstKey]; // get the value (order properties)
+        t.truthy(v.g); // geoFire metadata should be truthy
+        t.deepEqual(v.l, [37.421955, -122.084058]); // geoFire location
+        t.deepEqual(v.passengerLocation, [37.421955, -122.084058]);
+        t.is(v.passengerKey, 'cli_1');
+        t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
+        t.is(v.status, 'new');
+        t.truthy(v.createdAt);
+        t.truthy(informPassengerSpy.calledWith('cli_1'));
+        t.is(user.state.currentOrderKey, firstKey);
+        t.end();
+      });
+    };
 
-      t.truthy(v.g); // geoFire metadata should be truthy
-      t.deepEqual(v.l, [37.421955, -122.084058]); // geoFire location
-      t.deepEqual(v.passengerLocation, [37.421955, -122.084058]);
-      t.is(v.passengerKey, 'cli_1');
-      t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
-      t.truthy(v.createdAt);
-      t.truthy(informPassengerSpy.calledWith('cli_1'));
-      t.end();
-    });
-  };
-
-  const handler = new SubmitOrderResponseHandler({ response });
-  handler.informPassenger = informPassengerSpy;
-  handler.call(assert);
+    const handler = new SubmitOrderResponseHandler({ response, user });
+    handler.informPassenger = informPassengerSpy;
+    handler.call(assert);
+  });
 });
 
 test.cb('handles error while saving location', t => {
@@ -103,7 +107,7 @@ test.cb('handles error while saving location', t => {
 test('should post message to the queue when informing passenger', t => {
   // arrange
   const spy = ss.sinon.spy();
-  queueFacade.callActionWithDelay = spy;
+  queueFacade.redirectToAction = spy;
 
   // act
   const handler = new SubmitOrderResponseHandler({ response: {} });

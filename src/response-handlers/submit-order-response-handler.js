@@ -56,9 +56,14 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
       this.geoFire.set(order.orderKey, r.order.passengerLocation).then(() => {
         // 3. assign properties from response and save
         Object.assign(order.state, r.order);
+        order.state.status = 'new'; // eslint-disable-line no-param-reassign
         order.save(() => {
-          this.informPassenger(r.order.passengerKey);
-          onResult();
+          // 4. update user `currentOrder` property
+          this.user.state.currentOrderKey = order.orderKey;
+          this.user.save(() => {
+            this.informPassenger(r.order.passengerKey);
+            onResult();
+          });
         });
       })
       .catch((err) => {
@@ -76,6 +81,6 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
    * @private
    */
   informPassenger(userKey) {
-    queue.callActionWithDelay({ userKey, route: 'order-submitted' });
+    queue.redirectToAction({ userKey, route: 'order-submitted' });
   }
 }
