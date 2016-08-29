@@ -56,6 +56,20 @@ export default class QueueFacade {
   }
 
   /**
+   * Redirects to action with delay. Works exactly the same as `callActionWithDelay`,
+   * but calls {@link Redirect} action. Used to set `menuLocation`. Note that currently
+   * you can't provide argument (`arg`), so you can redirect only to `get` method.
+   *
+   * @param {Object} options - hash of parameters
+   * @param {string} options.userKey - represents the user for whom action should be executed.
+   * @param {string} options.route - route for this action, see {@link Routes} for full list.
+   * @see https://github.com/ro31337/cheaptaxi/issues/208#issuecomment-243022762
+   */
+  static redirectToAction(options) {
+    this.callActionWithDelay({ userKey: options.userKey, arg: options.route, route: 'redirect' });
+  }
+
+  /**
    * Sets up a callback to process all `call-action` messages.
    *
    * @param {Function} callback - function to be executed for each queue message.

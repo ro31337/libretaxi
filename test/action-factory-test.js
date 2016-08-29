@@ -19,6 +19,7 @@ test('should return routes by menu location', t => {
   const a11 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'order-submitted' } });
   const a12 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'blank-screen' } });
   const a13 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'order-cancelled' } });
+  const a14 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'redirect' } });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -33,6 +34,7 @@ test('should return routes by menu location', t => {
   t.is(a11.type, 'order-submitted');
   t.is(a12.type, 'blank-screen');
   t.is(a13.type, 'order-cancelled');
+  t.is(a14.type, 'redirect');
 });
 
 test('should return routes by route', t => {
@@ -50,6 +52,7 @@ test('should return routes by route', t => {
   const a11 = ActionFactory.fromRoute({ route: 'order-submitted', user });
   const a12 = ActionFactory.fromRoute({ route: 'blank-screen', user });
   const a13 = ActionFactory.fromRoute({ route: 'order-cancelled', user });
+  const a14 = ActionFactory.fromRoute({ route: 'redirect', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -64,6 +67,7 @@ test('should return routes by route', t => {
   t.is(a11.type, 'order-submitted');
   t.is(a12.type, 'blank-screen');
   t.is(a13.type, 'order-cancelled');
+  t.is(a14.type, 'redirect');
 });
 
 test('should have default route', t => {
