@@ -29,7 +29,7 @@ test('should return composite response on post for taxi', t => {
   t.is(response.responses[1].type, 'text');
   t.is(response.responses[1].message, '👌 OK!');
   t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'taxi-vehicle-config');
+  t.is(response.responses[2].path, 'driver-select-taxi-type');
 });
 
 test('should return different composite response on post for passenger', t => {
