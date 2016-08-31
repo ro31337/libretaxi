@@ -12,7 +12,7 @@ test('should return routes by menu location', t => {
   const a4 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'select-user-type' } });
   const a5 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'request-phone' } });
   const a6 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-index' } });
-  const a7 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'taxi-vehicle-config' } });
+  const a7 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-select-taxi-type' } });
   const a8 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'settings' } });
   const a9 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-request-location' } }); // eslint-disable-line max-len
   const a10 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-request-destination' } }); // eslint-disable-line max-len
@@ -27,7 +27,7 @@ test('should return routes by menu location', t => {
   t.is(a4.type, 'select-user-type');
   t.is(a5.type, 'request-phone');
   t.is(a6.type, 'passenger-index');
-  t.is(a7.type, 'foo');
+  t.is(a7.type, 'driver-select-taxi-type');
   t.is(a8.type, 'foo');
   t.is(a9.type, 'passenger-request-location');
   t.is(a10.type, 'passenger-request-destination');
@@ -45,7 +45,7 @@ test('should return routes by route', t => {
   const a4 = ActionFactory.fromRoute({ route: 'select-user-type', user });
   const a5 = ActionFactory.fromRoute({ route: 'request-phone', user });
   const a6 = ActionFactory.fromRoute({ route: 'passenger-index', user });
-  const a7 = ActionFactory.fromRoute({ route: 'taxi-vehicle-config', user });
+  const a7 = ActionFactory.fromRoute({ route: 'driver-select-taxi-type', user });
   const a8 = ActionFactory.fromRoute({ route: 'settings', user });
   const a9 = ActionFactory.fromRoute({ route: 'passenger-request-location', user });
   const a10 = ActionFactory.fromRoute({ route: 'passenger-request-destination', user });
@@ -60,7 +60,7 @@ test('should return routes by route', t => {
   t.is(a4.type, 'select-user-type');
   t.is(a5.type, 'request-phone');
   t.is(a6.type, 'passenger-index');
-  t.is(a7.type, 'foo');
+  t.is(a7.type, 'driver-select-taxi-type');
   t.is(a8.type, 'foo');
   t.is(a9.type, 'passenger-request-location');
   t.is(a10.type, 'passenger-request-destination');

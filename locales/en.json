@@ -31,6 +31,14 @@
 	"order-submitted.cancel_desc": "Text on the button. We show this button to user so s/he can cancel current order.",
 	"order-cancelled.order_cancelled": "👌 No problem, order has been cancelled.",
 	"order-cancelled.order_cancelled_desc": "We show this message when passenger placed an order, and then clicked \"Cancel\" button for some reason.",
+	"driver-select-taxi-type.select_taxi_type": "Select the type of vehicle you're going to use for the taxi. If can pick only one. If you have more than one, pick the one you use more often.",
+	"driver-select-taxi-type.select_taxi_type_desc": "Asking the driver to provider vehicle type.",
+	"driver-select-taxi-type.scooter": "🛵 Scooter",
+	"driver-select-taxi-type.scooter_desc": "We show this as text on the button when driver select motor scooter as his type of vehicle.",
+	"driver-select-taxi-type.bike": "🏍 Bike",
+	"driver-select-taxi-type.bike_desc": "We show this as text on the button when driver select motor bike as his type of vehicle.",
+	"driver-select-taxi-type.car": "🚗 Car",
+	"driver-select-taxi-type.car_desc": "We show this as text on the button when driver select car as his type of vehicle.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

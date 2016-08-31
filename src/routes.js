@@ -9,6 +9,7 @@ import OrderSubmitted from './actions/menu/passenger/order-submitted';
 import BlankScreen from './actions/menu/blank-screen';
 import OrderCancelled from './actions/menu/passenger/order-cancelled';
 import Redirect from './actions/menu/redirect';
+import SelectTaxiType from './actions/menu/driver/select-taxi-type';
 
 /**
  * @typedef Routes
@@ -35,7 +36,6 @@ const routes = {
   'select-user-type': SelectUserType,
   'request-phone': RequestPhone,
   'passenger-index': PassengerIndex,
-  'taxi-vehicle-config': Foo,
   foo: Foo,
   settings: Foo,
   'passenger-request-location': PassengerRequestLocation,
@@ -44,6 +44,7 @@ const routes = {
   'blank-screen': BlankScreen,
   'order-cancelled': OrderCancelled,
   redirect: Redirect,
+  'driver-select-taxi-type': SelectTaxiType,
 };
 
 // Adding more routes? update `action-factory-test.js`
