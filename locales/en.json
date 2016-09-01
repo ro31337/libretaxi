@@ -39,6 +39,8 @@
 	"driver-select-taxi-type.bike_desc": "We show this as text on the button when driver select motor bike as his type of vehicle.",
 	"driver-select-taxi-type.car": "🚗 Car",
 	"driver-select-taxi-type.car_desc": "We show this as text on the button when driver select car as his type of vehicle.",
+	"driver-select-taxi-type.error_only_known_type": "Unknown choice, please pick scooter, bike or car only.",
+	"driver-select-taxi-type.error_only_known_type_desc": "This is error message. We show this error when user somehow selected something different from scooter, bike or car.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

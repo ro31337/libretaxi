@@ -19,6 +19,7 @@
 	"driver-select-taxi-type.scooter": "🛵 Скутер",
 	"driver-select-taxi-type.bike": "🏍 Байк",
 	"driver-select-taxi-type.car": "🚗 Машина",
+	"driver-select-taxi-type.error_only_known_type": "Не могу понять ваш выбор, выберите из списка: скутер, байк или машина.",
 	"__locale__": "ru",
 	"__eof__": "__eof__"
 }
