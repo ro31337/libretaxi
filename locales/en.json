@@ -21,6 +21,8 @@
 	"passenger-index.bike_desc": "We show this text on the button when passenger wants to select the bike type of taxi s/he wants. Cheaper shows that bike is often cheaper than a car.",
 	"passenger-index.s": "Settings",
 	"passenger-index.s_desc": "We show this text on the button on the main passenger's screen, when user clicks, s/he goes to settings.",
+	"passenger-index.error_only_known_type": "Unknown choice, please pick bike, car or settings.",
+	"passenger-index.error_only_known_type_desc": "This is error message that is shown to the passenger when s/he picks the taxi type s/he want to order. We show this error when user somehow selected something different from bike or car.",
 	"passenger-request-location.provide_location": "Please provide your current location, so we'll try to find nearest taxis to you.",
 	"passenger-request-location.provide_location_desc": "We show this message when we want the passenger to provide his/her location.",
 	"passenger-request-destination.provide_destination": "Where are you going? Please type exact street address (so driver's navigator will understand it), or describe the place with as much details as possible.",
@@ -40,7 +42,7 @@
 	"driver-select-taxi-type.car": "🚗 Car",
 	"driver-select-taxi-type.car_desc": "We show this as text on the button when driver select car as his type of vehicle.",
 	"driver-select-taxi-type.error_only_known_type": "Unknown choice, please pick scooter, bike or car only.",
-	"driver-select-taxi-type.error_only_known_type_desc": "This is error message. We show this error when user somehow selected something different from scooter, bike or car.",
+	"driver-select-taxi-type.error_only_known_type_desc": "This is error message that is shown to the taxi driver when s/he tries to pick the vehicle type s/he wants to use for the taxi. We show this error when user somehow selected something different from scooter, bike or car.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

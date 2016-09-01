@@ -5,6 +5,8 @@ import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import ErrorResponse from '../../../responses/error-response';
+
 /**
  * Passenger index: asks to choose taxi type.
  *
@@ -65,7 +67,7 @@ export default class PassengerIndex extends Action {
         response.add(new RedirectResponse({ path: 'settings' }));
         break;
       default:
-        throw new Error(`unsupported choice '${value}'`);
+        response.add(new ErrorResponse({ message: this.t('error_only_known_type') }));
     }
 
     return response;

@@ -50,11 +50,10 @@ test('should return different composite response on post for settings', t => {
   t.is(response.responses[0].path, 'settings');
 });
 
-test.cb('should throw error on post for unknown reaction', t => {
+test('should return error on post for unknown reaction', t => {
   const action = new PassengerIndex({ i18n, user });
-  const err = 'unsupported choice \'whatever\'';
-
-  t.plan(1);
-  t.throws(() => { action.post('whatever'); }, err);
-  t.end();
+  const response = action.post('whatever');
+  t.is(response.type, 'composite');
+  t.is(response.responses[0].type, 'error');
+  t.is(response.responses[0].message, i18n.__('passenger-index.error_only_known_type'));
 });
