@@ -43,11 +43,10 @@ test('should return composite response on post for scooter, bike, and car', t =>
   }
 });
 
-test.cb('should throw error on post for unknown reaction', t => {
+test('should return error on post with unknown reaction', t => {
   const action = new SelectTaxiType({ i18n, user });
-  const err = 'unsupported choice \'whatever\'';
-
-  t.plan(1);
-  t.throws(() => { action.post('whatever'); }, err);
-  t.end();
+  const response = action.post('whatever');
+  t.is(response.type, 'composite');
+  t.is(response.responses[0].type, 'error');
+  t.is(response.responses[0].message, i18n.__('driver-select-taxi-type.error_only_known_type'));
 });

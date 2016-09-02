@@ -4,6 +4,8 @@ import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import ErrorResponse from '../../../responses/error-response';
+
 /**
  * Select taxi type for driver (menu action).
  *
@@ -46,6 +48,7 @@ export default class SelectTaxiType extends Action {
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} + {@link UserStateResponse} + {@link RedirectResponse}
+   * @return {ErrorResponse} when posted value is unknown
    */
   post(value) {
     const response = new CompositeResponse();
@@ -59,7 +62,7 @@ export default class SelectTaxiType extends Action {
         response.add(new RedirectResponse({ path: 'foo' }));
         break;
       default:
-        throw new Error(`unsupported choice '${value}'`);
+        response.add(new ErrorResponse({ message: this.t('error_only_known_type') }));
     }
 
     return response;

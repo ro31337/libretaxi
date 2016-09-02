@@ -4,6 +4,7 @@ import CompositeResponse from '../../../responses/composite-response';
 import OptionsResponse from '../../../responses/options-response';
 import CancelCurrentOrderResponse from '../../../responses/cancel-current-order-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import ErrorResponse from '../../../responses/error-response';
 
 /**
  * Order submitted action. Used to inform the passenger that order
@@ -42,12 +43,20 @@ export default class OrderSubmitted extends Action {
       }));
   }
 
+  /**
+   * Cancels current order and redirects to `blank-screen`. If input is incorrect,
+   * returns error.
+   *
+   * @return {CompositeResponse} - containing {@link CancelCurrentOrderResponse}
+   * and {@link RedirectResponse}
+   * @return {ErrorResponse} - when input is incorrect
+   */
   post(value) {
     if (value === 'cancel') {
       return new CompositeResponse()
         .add(new CancelCurrentOrderResponse())
         .add(new RedirectResponse({ path: 'blank-screen' }));
     }
-    return null;
+    return new ErrorResponse({ message: this.t('error_incorrect_input') });
   }
 }

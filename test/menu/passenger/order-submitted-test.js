@@ -29,3 +29,10 @@ test('should return composite response on post', t => {
   t.is(response.responses[1].type, 'redirect');
   t.is(response.responses[1].path, 'blank-screen');
 });
+
+test('should return error response on posting unexpected input', t => {
+  const action = new OrderSubmitted({ i18n, user });
+  const response = action.post('whatever');
+  t.is(response.type, 'error');
+  t.is(response.message, i18n.__('order-submitted.error_incorrect_input'));
+});
