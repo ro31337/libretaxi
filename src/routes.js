@@ -10,6 +10,7 @@ import BlankScreen from './actions/menu/blank-screen';
 import OrderCancelled from './actions/menu/passenger/order-cancelled';
 import Redirect from './actions/menu/redirect';
 import SelectTaxiType from './actions/menu/driver/select-taxi-type';
+import ExplainCheckins from './actions/menu/driver/explain-checkins';
 
 /**
  * @typedef Routes
@@ -45,6 +46,7 @@ const routes = {
   'order-cancelled': OrderCancelled,
   redirect: Redirect,
   'driver-select-taxi-type': SelectTaxiType,
+  'driver-explain-checkins': ExplainCheckins,
 };
 
 // Adding more routes? update `action-factory-test.js`

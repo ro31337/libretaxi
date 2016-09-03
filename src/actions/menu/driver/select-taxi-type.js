@@ -59,7 +59,7 @@ export default class SelectTaxiType extends Action {
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ taxiType: value }));
-        response.add(new RedirectResponse({ path: 'foo' }));
+        response.add(new RedirectResponse({ path: 'driver-explain-checkins' }));
         break;
       default:
         response.add(new ErrorResponse({ message: this.t('error_only_known_type') }));
