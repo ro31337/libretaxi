@@ -39,7 +39,7 @@ test('should return composite response on post for scooter, bike, and car', t =>
     t.is(response.responses[1].type, 'user-state');
     t.is(response.responses[1].state.taxiType, reaction);
     t.is(response.responses[2].type, 'redirect');
-    t.is(response.responses[2].path, 'foo');
+    t.is(response.responses[2].path, 'driver-explain-checkins');
   }
 });
 
