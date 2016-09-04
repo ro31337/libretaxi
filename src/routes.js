@@ -11,6 +11,7 @@ import OrderCancelled from './actions/menu/passenger/order-cancelled';
 import Redirect from './actions/menu/redirect';
 import SelectTaxiType from './actions/menu/driver/select-taxi-type';
 import ExplainCheckins from './actions/menu/driver/explain-checkins';
+import DriverRequestLocation from './actions/menu/driver/request-location';
 
 /**
  * @typedef Routes
@@ -47,6 +48,7 @@ const routes = {
   redirect: Redirect,
   'driver-select-taxi-type': SelectTaxiType,
   'driver-explain-checkins': ExplainCheckins,
+  'driver-request-location': DriverRequestLocation,
 };
 
 // Adding more routes? update `action-factory-test.js`

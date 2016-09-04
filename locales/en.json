@@ -49,6 +49,8 @@
 	"driver-explain-checkins.text_desc": "Text for drivers explaining how check-ins work and why do we need them.",
 	"driver-explain-checkins.next": "Next",
 	"driver-explain-checkins.next_desc": "Text for the button, on clicking next we'll jump to the next screen.",
+	"driver-request-location.provide_location": "Please provide your current location, so passengers around can find you.",
+	"driver-request-location.provide_location_desc": "We show this message when we want the driver to provide his/her location.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
