@@ -51,6 +51,10 @@
 	"driver-explain-checkins.next_desc": "Text for the button, on clicking next we'll jump to the next screen.",
 	"driver-request-location.provide_location": "Please provide your current location, so passengers around can find you.",
 	"driver-request-location.provide_location_desc": "We show this message when we want the driver to provide his/her location.",
+	"driver-explain-whats-next.text": "We're all set! What's next? You'll be notified about passengers around you. Maybe in an hour or on the next day. Just keep this app running. Also, check-in every time when you change your location. And spread the word, tell about the app to your friends! For now, click \"Next\".",
+	"driver-explain-whats-next.text_desc": "Explanation to the driver about next steps after providing all necessary information.",
+	"driver-explain-whats-next.next": "Next",
+	"driver-explain-whats-next.next_desc": "Text for the button, on clicking next we'll jump to the next screen.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

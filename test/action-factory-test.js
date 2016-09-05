@@ -22,6 +22,7 @@ test('should return routes by menu location', t => {
   const a14 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'redirect' } });
   const a15 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-explain-checkins' } }); // eslint-disable-line max-len
   const a16 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-request-location' } }); // eslint-disable-line max-len
+  const a17 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-explain-whats-next' } }); // eslint-disable-line max-len
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -39,6 +40,7 @@ test('should return routes by menu location', t => {
   t.is(a14.type, 'redirect');
   t.is(a15.type, 'driver-explain-checkins');
   t.is(a16.type, 'driver-request-location');
+  t.is(a17.type, 'driver-explain-whats-next');
 });
 
 test('should return routes by route', t => {
@@ -59,6 +61,7 @@ test('should return routes by route', t => {
   const a14 = ActionFactory.fromRoute({ route: 'redirect', user });
   const a15 = ActionFactory.fromRoute({ route: 'driver-explain-checkins', user });
   const a16 = ActionFactory.fromRoute({ route: 'driver-request-location', user });
+  const a17 = ActionFactory.fromRoute({ route: 'driver-explain-whats-next', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -76,6 +79,7 @@ test('should return routes by route', t => {
   t.is(a14.type, 'redirect');
   t.is(a15.type, 'driver-explain-checkins');
   t.is(a16.type, 'driver-request-location');
+  t.is(a17.type, 'driver-explain-whats-next');
 });
 
 test('should have default route', t => {

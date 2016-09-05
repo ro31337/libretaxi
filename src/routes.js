@@ -12,6 +12,7 @@ import Redirect from './actions/menu/redirect';
 import SelectTaxiType from './actions/menu/driver/select-taxi-type';
 import ExplainCheckins from './actions/menu/driver/explain-checkins';
 import DriverRequestLocation from './actions/menu/driver/request-location';
+import ExplainWhatsNext from './actions/menu/driver/explain-whats-next';
 
 /**
  * @typedef Routes
@@ -49,6 +50,7 @@ const routes = {
   'driver-select-taxi-type': SelectTaxiType,
   'driver-explain-checkins': ExplainCheckins,
   'driver-request-location': DriverRequestLocation,
+  'driver-explain-whats-next': ExplainWhatsNext,
 };
 
 // Adding more routes? update `action-factory-test.js`
