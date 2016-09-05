@@ -13,6 +13,7 @@ import SelectTaxiType from './actions/menu/driver/select-taxi-type';
 import ExplainCheckins from './actions/menu/driver/explain-checkins';
 import DriverRequestLocation from './actions/menu/driver/request-location';
 import ExplainWhatsNext from './actions/menu/driver/explain-whats-next';
+import DriverIndex from './actions/menu/driver/index';
 
 /**
  * @typedef Routes
@@ -51,6 +52,7 @@ const routes = {
   'driver-explain-checkins': ExplainCheckins,
   'driver-request-location': DriverRequestLocation,
   'driver-explain-whats-next': ExplainWhatsNext,
+  'driver-index': DriverIndex,
 };
 
 // Adding more routes? update `action-factory-test.js`

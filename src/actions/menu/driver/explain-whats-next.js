@@ -40,13 +40,13 @@ export default class ExplainWhatsNext extends Action {
   }
 
   /**
-   * Shows "OK" and redirects to `foo`
+   * Shows "OK" and redirects to `index`
    *
    * @return {CompositeResponse} - composite response with OK text and redirect
    */
   post() {
     return new CompositeResponse()
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'foo' }));
+      .add(new RedirectResponse({ path: 'driver-index' }));
   }
 }
