@@ -55,6 +55,14 @@
 	"driver-explain-whats-next.text_desc": "Explanation to the driver about next steps after providing all necessary information.",
 	"driver-explain-whats-next.next": "Next",
 	"driver-explain-whats-next.next_desc": "Text for the button, on clicking next we'll jump to the next screen.",
+	"driver-index.checkin": "📍 Checkin",
+	"driver-index.checkin_desc": "Checkin button text. Used to to check-in and update driver's location.",
+	"driver-index.disable_notifications": "🔕 Disable notifications",
+	"driver-index.disable_notifications_desc": "Disable notifications button text for drivers. Used to disable notifications about passengers around.",
+	"driver-index.settings": "🔧 Settings",
+	"driver-index.settings_desc": "Setting button text.",
+	"driver-index.unknown_choice": "Unknown choice, please try again.",
+	"driver-index.unknown_choice_desc": "When driver on the main screen selected something wrong we show this error message.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
