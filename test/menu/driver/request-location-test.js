@@ -31,5 +31,5 @@ test('should return composite response on post', t => {
   t.is(response.responses[2].type, 'text');
   t.is(response.responses[2].message, '👌 OK!');
   t.is(response.responses[3].type, 'redirect');
-  t.is(response.responses[3].path, 'foo');
+  t.is(response.responses[3].path, 'driver-explain-whats-next');
 });

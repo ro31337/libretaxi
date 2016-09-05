@@ -5,24 +5,24 @@ import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
 
 /**
- * Explain check-ins for driver (menu action).
+ * Explain what's next for driver (menu action).
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @date 2016-08-30
+ * @date 2016-09-04
  * @version 1.1
  * @since 0.1.0
  */
-export default class ExplainCheckins extends Action {
+export default class ExplainWhatsNext extends Action {
 
   /**
    * Constructor.
    */
   constructor(options) {
-    super(Object.assign({ type: 'driver-explain-checkins' }, options));
+    super(Object.assign({ type: 'driver-explain-whats-next' }, options));
   }
 
   /**
-   * Returns explanation (on why do we need check-ins), and "Next" button.
+   * Returns "what's next" explanation, and "Next" button.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link OptionsResponse}.
@@ -40,13 +40,13 @@ export default class ExplainCheckins extends Action {
   }
 
   /**
-   * Shows "OK" and redirects to `driver-request-location`
+   * Shows "OK" and redirects to `foo`
    *
    * @return {CompositeResponse} - composite response with OK text and redirect
    */
   post() {
     return new CompositeResponse()
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'driver-request-location' }));
+      .add(new RedirectResponse({ path: 'foo' }));
   }
 }

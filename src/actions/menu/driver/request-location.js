@@ -37,7 +37,7 @@ export default class DriverRequestLocation extends Action {
 
   /**
    * Saves user's location to the database, responds with OK message, and
-   * temporarily redirects to `foo` menu action.
+   * redirects to `explain-whats-next` menu action.
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
@@ -45,13 +45,13 @@ export default class DriverRequestLocation extends Action {
    * that contains the following responses:
    * - {@link UpdateLocationResponse}
    * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `foo`.
+   * - {@link RedirectResponse} - with redirect to `explain-whats-next`.
    */
   post(value) {
     return new CompositeResponse()
       .add(new UpdateLocationResponse({ location: value }))
       .add(new UserStateResponse({ location: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'foo' }));
+      .add(new RedirectResponse({ path: 'driver-explain-whats-next' }));
   }
 }
