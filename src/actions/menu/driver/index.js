@@ -54,6 +54,9 @@ export default class DriverIndex extends Action {
 
     switch (value) {
       case 'checkin':
+        response.add(new TextResponse({ message: '👌 OK!' }));
+        response.add(new RedirectResponse({ path: 'driver-checkin' }));
+        break;
       case 'disable_notifications':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new RedirectResponse({ path: 'foo' }));

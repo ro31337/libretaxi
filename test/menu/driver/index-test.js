@@ -23,18 +23,26 @@ test('should return options response on get', t => {
   t.is(response.rows[0][2].label, i18n.__('driver-index.settings'));
 });
 
-test('should return composite response on post for checkin and disable_notifications', t => {
-  const reactions = ['checkin', 'disable_notifications'];
+test('should return composite response on post for checkin', t => {
   const action = new DriverIndex({ i18n, user });
 
-  for (const reaction of reactions) {
-    const response = action.post(reaction);
-    t.is(response.type, 'composite');
-    t.is(response.responses[0].type, 'text');
-    t.is(response.responses[0].message, '👌 OK!');
-    t.is(response.responses[1].type, 'redirect');
-    t.is(response.responses[1].path, 'foo');
-  }
+  const response = action.post('checkin');
+  t.is(response.type, 'composite');
+  t.is(response.responses[0].type, 'text');
+  t.is(response.responses[0].message, '👌 OK!');
+  t.is(response.responses[1].type, 'redirect');
+  t.is(response.responses[1].path, 'driver-checkin');
+});
+
+test('should return composite response on post for disable_notifications', t => {
+  const action = new DriverIndex({ i18n, user });
+
+  const response = action.post('disable_notifications');
+  t.is(response.type, 'composite');
+  t.is(response.responses[0].type, 'text');
+  t.is(response.responses[0].message, '👌 OK!');
+  t.is(response.responses[1].type, 'redirect');
+  t.is(response.responses[1].path, 'foo');
 });
 
 test('should return different composite response on post for settings', t => {

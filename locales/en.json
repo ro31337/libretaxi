@@ -63,6 +63,10 @@
 	"driver-index.settings_desc": "Setting button text.",
 	"driver-index.unknown_choice": "Unknown choice, please try again.",
 	"driver-index.unknown_choice_desc": "When driver on the main screen selected something wrong we show this error message.",
+	"driver-checkin.provide_location": "Please send your current location, so passengers around will be able to find you.",
+	"driver-checkin.provide_location_desc": "We show this message to drivers when they check-in and we want them to provide current location.",
+	"driver-checkin.ok": "👌 OK! Thanks for checking-in! Don't forget to check-in every hour or when you changed your location!",
+	"driver-checkin.ok_desc": "We show this message to drivers when they check-in.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
