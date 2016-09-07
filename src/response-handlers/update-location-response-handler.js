@@ -3,6 +3,7 @@ import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
 import GeoFire from 'geofire';
 import firebaseDB from '../firebase-db';
+import Firebase from 'firebase';
 
 /**
  * Update location response handler.
@@ -45,12 +46,15 @@ export default class UpdateLocationResponseHandler extends
    */
   call(onResult) {
     this.ensureInitialized();
-    this.geoFire.set(this.user.userKey, this.response.location).then(() => {
-      onResult();
-    })
-    .catch((err) => {
-      console.log(`Error in UpdateLocationResponseHandler: ${err}`); // eslint-disable-line no-console, max-len
-      onResult();
+    this.user.setState({ locationUpdatedAt: Firebase.database.ServerValue.TIMESTAMP });
+    this.user.save(() => {
+      this.geoFire.set(this.user.userKey, this.response.location).then(() => {
+        onResult();
+      })
+      .catch((err) => {
+        console.log(`Error in UpdateLocationResponseHandler: ${err}`); // eslint-disable-line no-console, max-len
+        onResult();
+      });
     });
   }
 }
