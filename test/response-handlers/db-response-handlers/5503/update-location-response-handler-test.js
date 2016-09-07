@@ -28,23 +28,25 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('updates user object', t => {
-  t.plan(4);
+  t.plan(6);
 
   new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
     t.falsy(user.state.l);
+    t.falsy(user.state.locationUpdatedAt);
 
     const response = new UpdateLocationResponse({ location: [37.421955, -122.084058] });
     const handler = new UpdateLocationResponseHandler({ response, user });
 
     handler.call(() => {
       t.truthy(user.state.l);
+      t.is(user.state.locationUpdatedAt > 1473218180745, true); // 07 Sep 2016 03:16:20.745 GMT
       t.is(user.state.l[0], 37.421955);
       t.is(user.state.l[1], -122.084058);
       t.end();
     });
   });
 });
-
+//
 test.cb('handles error while saving location', t => {
   const err = 'Sample error';
 
