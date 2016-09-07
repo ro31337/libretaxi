@@ -14,6 +14,7 @@ import ExplainCheckins from './actions/menu/driver/explain-checkins';
 import DriverRequestLocation from './actions/menu/driver/request-location';
 import ExplainWhatsNext from './actions/menu/driver/explain-whats-next';
 import DriverIndex from './actions/menu/driver/index';
+import DriverCheckin from './actions/menu/driver/checkin';
 
 /**
  * @typedef Routes
@@ -53,6 +54,7 @@ const routes = {
   'driver-request-location': DriverRequestLocation,
   'driver-explain-whats-next': ExplainWhatsNext,
   'driver-index': DriverIndex,
+  'driver-checkin': DriverCheckin,
 };
 
 // Adding more routes? update `action-factory-test.js`
