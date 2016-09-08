@@ -16,10 +16,10 @@ test('should return options response on get', t => {
   const response = action.get();
   t.is(response.type, 'options');
   t.is(response.rows[0][0].value, 'checkin');
-  t.is(response.rows[0][1].value, 'disable_notifications');
+  t.is(response.rows[0][1].value, 'mute');
   t.is(response.rows[0][2].value, 'settings');
   t.is(response.rows[0][0].label, i18n.__('driver-index.checkin'));
-  t.is(response.rows[0][1].label, i18n.__('driver-index.disable_notifications'));
+  t.is(response.rows[0][1].label, i18n.__('driver-index.mute'));
   t.is(response.rows[0][2].label, i18n.__('driver-index.settings'));
 });
 
@@ -34,10 +34,10 @@ test('should return composite response on post for checkin', t => {
   t.is(response.responses[1].path, 'driver-checkin');
 });
 
-test('should return composite response on post for disable_notifications', t => {
+test('should return composite response on post for mute', t => {
   const action = new DriverIndex({ i18n, user });
 
-  const response = action.post('disable_notifications');
+  const response = action.post('mute');
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, '👌 OK!');

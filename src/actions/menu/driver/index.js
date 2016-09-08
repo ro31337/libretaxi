@@ -24,7 +24,7 @@ export default class DriverIndex extends Action {
   }
 
   /**
-   * Returns list of available options: checkin, disable notification, settings
+   * Returns list of available options: checkin, mute, settings
    *
    * @return {OptionsResponse} - response with options
    */
@@ -33,7 +33,7 @@ export default class DriverIndex extends Action {
       rows: [
         [
           { label: this.t('checkin'), value: 'checkin' },
-          { label: this.t('disable_notifications'), value: 'disable_notifications' },
+          { label: this.t('mute'), value: 'mute' },
           { label: this.t('settings'), value: 'settings' },
         ],
       ],
@@ -57,7 +57,7 @@ export default class DriverIndex extends Action {
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new RedirectResponse({ path: 'driver-checkin' }));
         break;
-      case 'disable_notifications':
+      case 'mute':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new RedirectResponse({ path: 'foo' }));
         break;
