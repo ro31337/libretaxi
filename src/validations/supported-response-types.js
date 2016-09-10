@@ -28,4 +28,5 @@ export default new Set([
   'submit-order',
   'empty',
   'cancel-current-order',
+  'if',
 ]);

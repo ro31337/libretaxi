@@ -16,6 +16,7 @@ import SubmitOrderResponse from '../../src/responses/submit-order-response';
 import EmptyResponse from '../../src/responses/empty-response';
 import CancelCurrentOrderResponse from '../../src/responses/cancel-current-order-response';
 import ErrorResponse from '../../src/responses/error-response';
+import IfResponse from '../../src/responses/if-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -37,6 +38,7 @@ test('should return correct types for responses for cli platform', t => {
   const emptyResponse = new EmptyResponse();
   const cancelCurrentOrderResponse = new CancelCurrentOrderResponse();
   const errorResponse = new ErrorResponse({ message: 'foo' });
+  const ifResponse = new IfResponse({ condition: {}, ok: {} });
 
   const user = { platformType: 'cli' };
 
@@ -54,6 +56,7 @@ test('should return correct types for responses for cli platform', t => {
   const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
   const h13 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
   const h14 = HandlerFactory.getHandler({ response: errorResponse, user });
+  const h15 = HandlerFactory.getHandler({ response: ifResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -69,6 +72,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h12.type, 'empty-response-handler');
   t.is(h13.type, 'cancel-current-order-response-handler');
   t.is(h14.type, 'cli-error-response-handler');
+  t.is(h15.type, 'if-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -84,6 +88,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h12.user);
   t.truthy(h13.user);
   t.truthy(h14.user);
+  t.truthy(h15.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -107,6 +112,7 @@ test('should return correct types for responses for telegram platform', t => {
   const emptyResponse = new EmptyResponse();
   const cancelCurrentOrderResponse = new CancelCurrentOrderResponse();
   const errorResponse = new ErrorResponse({ message: 'foo' });
+  const ifResponse = new IfResponse({ condition: {}, ok: {} });
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
   const h2 = HandlerFactory.getHandler({ response: optionsResponse, user });
@@ -122,6 +128,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
   const h13 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
   const h14 = HandlerFactory.getHandler({ response: errorResponse, user });
+  const h15 = HandlerFactory.getHandler({ response: ifResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -137,6 +144,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h12.type, 'empty-response-handler');
   t.is(h13.type, 'cancel-current-order-response-handler');
   t.is(h14.type, 'not-implemented-response-handler');
+  t.is(h15.type, 'if-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -152,4 +160,5 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h12.user);
   t.truthy(h13.user);
   t.truthy(h14.user);
+  t.truthy(h15.user);
 });

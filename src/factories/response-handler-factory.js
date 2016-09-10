@@ -12,6 +12,7 @@ import SubmitOrderResponseHandler from '../response-handlers/submit-order-respon
 import EmptyResponseHandler from '../response-handlers/empty-response-handler';
 import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-current-order-response-handler'; // eslint-disable-line max-len
 import ErrorResponseHandler from '../response-handlers/cli/error-response-handler';
+import IfResponseHandler from '../response-handlers/if-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -31,6 +32,7 @@ const map = {
     empty: EmptyResponseHandler,
     'cancel-current-order': CancelCurrentOrderResponseHandler,
     error: ErrorResponseHandler,
+    if: IfResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -46,6 +48,7 @@ const map = {
     empty: EmptyResponseHandler,
     'cancel-current-order': CancelCurrentOrderResponseHandler,
     error: NotImplementedResponseHandler,
+    if: IfResponseHandler,
   },
 };
 
