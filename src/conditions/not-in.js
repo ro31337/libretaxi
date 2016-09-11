@@ -12,7 +12,7 @@ import Condition from './condition';
  */
 export default class NotIn extends Condition {
   constructor(value, arr) {
-    super();
+    super({ type: 'not-in' });
     this.value = value;
     this.arr = arr;
   }

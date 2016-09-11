@@ -11,7 +11,7 @@ import Condition from './condition';
  */
 export default class Equals extends Condition {
   constructor(actual, expected) {
-    super();
+    super({ type: 'equals' });
     this.actual = actual;
     this.expected = expected;
   }

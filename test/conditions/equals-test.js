@@ -3,9 +3,10 @@ import test from 'ava';
 import Equals from '../../src/conditions/equals';
 
 test('can be constructed with default parameters', t => {
-  new Equals(2 + 2, 4);
-  new Equals(2 + 2, 5);
-  t.pass();
+  const c1 = new Equals(2 + 2, 4);
+  const c2 = new Equals(2 + 2, 5);
+  t.is(c1.type, 'equals');
+  t.is(c2.type, 'equals');
 });
 
 test('should be truthy for truthy condition', t => {

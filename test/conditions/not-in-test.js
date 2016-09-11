@@ -3,8 +3,8 @@ import test from 'ava';
 import NotIn from '../../src/conditions/not-in';
 
 test('can be constructed with default parameters', t => {
-  new NotIn(2, [2, 4, 6]);
-  t.pass();
+  const c1 = new NotIn(2, [2, 4, 6]);
+  t.is(c1.type, 'not-in');
 });
 
 test('should be truthy when element not in', t => {
