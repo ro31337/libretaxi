@@ -68,6 +68,8 @@ test('should return routes by route', t => {
   const a17 = ActionFactory.fromRoute({ route: 'driver-explain-whats-next', user });
   const a18 = ActionFactory.fromRoute({ route: 'driver-index', user });
   const a19 = ActionFactory.fromRoute({ route: 'driver-checkin', user });
+  const a20 = ActionFactory.fromRoute({ route: 'driver-mute', user });
+  const a21 = ActionFactory.fromRoute({ route: 'driver-unmute', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -88,6 +90,8 @@ test('should return routes by route', t => {
   t.is(a17.type, 'driver-explain-whats-next');
   t.is(a18.type, 'driver-index');
   t.is(a19.type, 'driver-checkin');
+  t.is(a20.type, 'driver-mute');
+  t.is(a21.type, 'driver-unmute');
 });
 
 test('should have default route', t => {
