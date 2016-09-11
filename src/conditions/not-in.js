@@ -1,19 +1,20 @@
 import Condition from './condition';
 
 /**
- * Equals Condition.
+ * Not In Condition.
+ * Accepts value and array. Returns true if value is not in array.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @date 2016-09-09
+ * @date 2016-09-11
  * @extends {Condition}
  * @version 1.1
  * @since 0.1.0
  */
-export default class Equals extends Condition {
-  constructor(actual, expected) {
-    super({ type: 'equals' });
-    this.actual = actual;
-    this.expected = expected;
+export default class NotIn extends Condition {
+  constructor(value, arr) {
+    super({ type: 'not-in' });
+    this.value = value;
+    this.arr = arr;
   }
 
   /**
@@ -23,6 +24,6 @@ export default class Equals extends Condition {
    * returns `false`.
    */
   call() {
-    return this.actual === this.expected;
+    return !this.arr.includes(this.value);
   }
 }

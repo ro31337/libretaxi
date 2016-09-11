@@ -1,3 +1,6 @@
+import checkNotNull from '../validations/check-not-null.js';
+import { mix } from 'mixwith';
+
 /**
  * Condition.
  *
@@ -7,7 +10,18 @@
  * @version 1.1
  * @since 0.1.0
  */
-export default class Condition {
+export default class Condition extends mix(class {}).with(checkNotNull('type')) {
+  /**
+   * Constructor.
+   *
+   * @type {Object}
+   * @param {string} options.type - Condition type, for example: `if`
+   */
+  constructor(options) {
+    super(options);
+    this.type = options.type;
+  }
+
   /**
    * Entry point for condition.
    *
