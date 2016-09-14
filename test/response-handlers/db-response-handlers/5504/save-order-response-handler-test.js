@@ -1,7 +1,7 @@
 /* eslint-disable no-new, no-console, no-unused-vars */
 import test from 'ava';
-import SubmitOrderResponseHandler from '../../../../src/response-handlers/submit-order-response-handler'; // eslint-disable-line max-len
-import SubmitOrderResponse from '../../../../src/responses/submit-order-response';
+import SaveOrderResponseHandler from '../../../../src/response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
+import SaveOrderResponse from '../../../../src/responses/submit-order/save-order-response';
 import checkNotNullTest from '../../../helpers/check-not-null.js';
 import FirebaseServer from 'firebase-server';
 import firebaseDB from '../../../../src/firebase-db';
@@ -11,7 +11,7 @@ import User from '../../../../src/user';
 import queueFacade from '../../../../src/queue-facade';
 
 let server = null;
-const response = new SubmitOrderResponse({
+const response = new SaveOrderResponse({
   passengerKey: 'cli_1',
   passengerLocation: [37.421955, -122.084058],
   passengerDestination: 'South San Francisco BART station, CA, 94080',
@@ -26,16 +26,15 @@ test.after.always('guaranteed cleanup', () => {
   server.close();
 });
 
-checkNotNullTest('response', (args) => { new SubmitOrderResponseHandler(args); });
+checkNotNullTest('response', (args) => { new SaveOrderResponseHandler(args); });
 
 test('can be constructed with default parameters', t => {
-  new SubmitOrderResponseHandler({ response: {} });
+  new SaveOrderResponseHandler({ response: {} });
   t.pass();
 });
 
 test.cb('should create order and inform passenger when called', t => {
-  t.plan(10);
-  const informPassengerSpy = ss.sinon.spy();
+  t.plan(9);
   new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
     const assert = () => {
       const db = firebaseDB.config().ref('orders');
@@ -66,14 +65,12 @@ test.cb('should create order and inform passenger when called', t => {
         t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
         t.is(v.status, 'new');
         t.truthy(v.createdAt);
-        t.truthy(informPassengerSpy.calledWith('cli_1'));
         t.is(user.state.currentOrderKey, firstKey);
         t.end();
       });
     };
 
-    const handler = new SubmitOrderResponseHandler({ response, user });
-    handler.informPassenger = informPassengerSpy;
+    const handler = new SaveOrderResponseHandler({ response, user });
     handler.call(assert);
   });
 });
@@ -83,7 +80,7 @@ test.cb('handles error while saving location', t => {
 
   // assert function, to be executed on `act`
   const assert = (actualMessage) => {
-    const expectedMessage = `Error in SubmitOrderResponseHandler (geoFire): ${err}`;
+    const expectedMessage = `Error in SaveOrderResponseHandler (geoFire): ${err}`;
     t.is(actualMessage, expectedMessage);
     t.end();
 
@@ -99,21 +96,7 @@ test.cb('handles error while saving location', t => {
   const fakeGeoFire = { set: () => new Promise((resolve, reject) => { reject(err); }) };
 
   // act
-  const handler = new SubmitOrderResponseHandler({ response });
+  const handler = new SaveOrderResponseHandler({ response });
   handler.geoFire = fakeGeoFire;
   handler.call(() => {});
-});
-
-test('should post message to the queue when informing passenger', t => {
-  // arrange
-  const spy = ss.sinon.spy();
-  queueFacade.redirectToAction = spy;
-
-  // act
-  const handler = new SubmitOrderResponseHandler({ response: {} });
-  handler.informPassenger('cli_1');
-
-  // assert
-  t.truthy(spy.calledWith({ userKey: 'cli_1', route: 'order-submitted' }));
-  t.pass();
 });

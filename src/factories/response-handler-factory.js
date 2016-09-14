@@ -8,11 +8,11 @@ import RequestPhoneResponseHandler from '../response-handlers/cli/request-phone-
 import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler'; // eslint-disable-line max-len
 import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler'; // eslint-disable-line max-len
 import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler'; // eslint-disable-line max-len
-import SubmitOrderResponseHandler from '../response-handlers/submit-order-response-handler'; // eslint-disable-line max-len
 import EmptyResponseHandler from '../response-handlers/empty-response-handler';
 import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-current-order-response-handler'; // eslint-disable-line max-len
 import ErrorResponseHandler from '../response-handlers/cli/error-response-handler';
 import IfResponseHandler from '../response-handlers/if-response-handler';
+import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -28,11 +28,11 @@ const map = {
     'request-location': RequestLocationResponseHandler,
     'update-location': UpdateLocationResponseHandler,
     'request-user-input': RequestUserInputResponseHandler,
-    'submit-order': SubmitOrderResponseHandler,
     empty: EmptyResponseHandler,
     'cancel-current-order': CancelCurrentOrderResponseHandler,
     error: ErrorResponseHandler,
     if: IfResponseHandler,
+    'save-order': SaveOrderResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -44,11 +44,11 @@ const map = {
     'request-location': NotImplementedResponseHandler,
     'update-location': UpdateLocationResponseHandler,
     'request-user-input': NotImplementedResponseHandler,
-    'submit-order': SubmitOrderResponseHandler,
     empty: EmptyResponseHandler,
     'cancel-current-order': CancelCurrentOrderResponseHandler,
     error: NotImplementedResponseHandler,
     if: IfResponseHandler,
+    'save-order': SaveOrderResponseHandler,
   },
 };
 

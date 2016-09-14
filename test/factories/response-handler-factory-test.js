@@ -12,11 +12,11 @@ import RequestPhoneResponse from '../../src/responses/request-phone-response';
 import RequestLocationResponse from '../../src/responses/request-location-response';
 import UpdateLocationResponse from '../../src/responses/update-location-response';
 import RequestUserInputResponse from '../../src/responses/request-user-input-response';
-import SubmitOrderResponse from '../../src/responses/submit-order-response';
 import EmptyResponse from '../../src/responses/empty-response';
 import CancelCurrentOrderResponse from '../../src/responses/cancel-current-order-response';
 import ErrorResponse from '../../src/responses/error-response';
 import IfResponse from '../../src/responses/if-response';
+import SaveOrderResponse from '../../src/responses/submit-order/save-order-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -29,16 +29,16 @@ test('should return correct types for responses for cli platform', t => {
   const requestLocationResponse = new RequestLocationResponse();
   const updateLocationResponse = new UpdateLocationResponse({ location: [37.421955, -122.084058] });
   const requestUserInputResponse = new RequestUserInputResponse();
-  const submitOrderResponse = new SubmitOrderResponse({
+  const emptyResponse = new EmptyResponse();
+  const cancelCurrentOrderResponse = new CancelCurrentOrderResponse();
+  const errorResponse = new ErrorResponse({ message: 'foo' });
+  const ifResponse = new IfResponse({ condition: {}, ok: {} });
+  const saveOrderResponse = new SaveOrderResponse({
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
   });
-  const emptyResponse = new EmptyResponse();
-  const cancelCurrentOrderResponse = new CancelCurrentOrderResponse();
-  const errorResponse = new ErrorResponse({ message: 'foo' });
-  const ifResponse = new IfResponse({ condition: {}, ok: {} });
 
   const user = { platformType: 'cli' };
 
@@ -52,11 +52,11 @@ test('should return correct types for responses for cli platform', t => {
   const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
   const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
-  const h11 = HandlerFactory.getHandler({ response: submitOrderResponse, user });
-  const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
-  const h13 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
-  const h14 = HandlerFactory.getHandler({ response: errorResponse, user });
-  const h15 = HandlerFactory.getHandler({ response: ifResponse, user });
+  const h11 = HandlerFactory.getHandler({ response: emptyResponse, user });
+  const h12 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
+  const h13 = HandlerFactory.getHandler({ response: errorResponse, user });
+  const h14 = HandlerFactory.getHandler({ response: ifResponse, user });
+  const h15 = HandlerFactory.getHandler({ response: saveOrderResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -68,11 +68,11 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h8.type, 'cli-request-location-response-handler');
   t.is(h9.type, 'update-location-response-handler');
   t.is(h10.type, 'cli-request-user-input-response-handler');
-  t.is(h11.type, 'submit-order-response-handler');
-  t.is(h12.type, 'empty-response-handler');
-  t.is(h13.type, 'cancel-current-order-response-handler');
-  t.is(h14.type, 'cli-error-response-handler');
-  t.is(h15.type, 'if-response-handler');
+  t.is(h11.type, 'empty-response-handler');
+  t.is(h12.type, 'cancel-current-order-response-handler');
+  t.is(h13.type, 'cli-error-response-handler');
+  t.is(h14.type, 'if-response-handler');
+  t.is(h15.type, 'save-order-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -102,17 +102,18 @@ test('should return correct types for responses for telegram platform', t => {
   const requestLocationResponse = new RequestLocationResponse();
   const updateLocationResponse = new UpdateLocationResponse({ location: [37.421955, -122.084058] });
   const requestUserInputResponse = new RequestUserInputResponse();
-  const submitOrderResponse = new SubmitOrderResponse({
-    passengerKey: 'telegram_31337',
-    passengerLocation: [37.421955, -122.084058],
-    passengerDestination: 'South San Francisco BART station, CA, 94080',
-    createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
-  });
-  const user = { platformType: 'telegram' };
   const emptyResponse = new EmptyResponse();
   const cancelCurrentOrderResponse = new CancelCurrentOrderResponse();
   const errorResponse = new ErrorResponse({ message: 'foo' });
   const ifResponse = new IfResponse({ condition: {}, ok: {} });
+  const saveOrderResponse = new SaveOrderResponse({
+    passengerKey: 'cli_1',
+    passengerLocation: [37.421955, -122.084058],
+    passengerDestination: 'South San Francisco BART station, CA, 94080',
+    createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
+  });
+
+  const user = { platformType: 'telegram' };
 
   const h1 = HandlerFactory.getHandler({ response: textResponse, user });
   const h2 = HandlerFactory.getHandler({ response: optionsResponse, user });
@@ -124,11 +125,11 @@ test('should return correct types for responses for telegram platform', t => {
   const h8 = HandlerFactory.getHandler({ response: requestLocationResponse, user });
   const h9 = HandlerFactory.getHandler({ response: updateLocationResponse, user });
   const h10 = HandlerFactory.getHandler({ response: requestUserInputResponse, user });
-  const h11 = HandlerFactory.getHandler({ response: submitOrderResponse, user });
-  const h12 = HandlerFactory.getHandler({ response: emptyResponse, user });
-  const h13 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
-  const h14 = HandlerFactory.getHandler({ response: errorResponse, user });
-  const h15 = HandlerFactory.getHandler({ response: ifResponse, user });
+  const h11 = HandlerFactory.getHandler({ response: emptyResponse, user });
+  const h12 = HandlerFactory.getHandler({ response: cancelCurrentOrderResponse, user });
+  const h13 = HandlerFactory.getHandler({ response: errorResponse, user });
+  const h14 = HandlerFactory.getHandler({ response: ifResponse, user });
+  const h15 = HandlerFactory.getHandler({ response: saveOrderResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -140,11 +141,11 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h8.type, 'not-implemented-response-handler');
   t.is(h9.type, 'update-location-response-handler');
   t.is(h10.type, 'not-implemented-response-handler');
-  t.is(h11.type, 'submit-order-response-handler');
-  t.is(h12.type, 'empty-response-handler');
-  t.is(h13.type, 'cancel-current-order-response-handler');
-  t.is(h14.type, 'not-implemented-response-handler');
-  t.is(h15.type, 'if-response-handler');
+  t.is(h11.type, 'empty-response-handler');
+  t.is(h12.type, 'cancel-current-order-response-handler');
+  t.is(h13.type, 'not-implemented-response-handler');
+  t.is(h14.type, 'if-response-handler');
+  t.is(h15.type, 'save-order-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);

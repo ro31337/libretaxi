@@ -1,18 +1,17 @@
-import Response from './response';
+import Response from '../response';
 import { mix } from 'mixwith';
-import checkNotNull from '../validations/check-not-null';
+import checkNotNull from '../../validations/check-not-null';
 
 /**
- * Submit order response. Used to submit passenger's order.
- * See constructor arguments for more details.
+ * Save order response.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {Response}
- * @date 2016-08-13
+ * @date 2016-09-13
  * @version 1.1
  * @since 0.1.0
  */
-export default class SubmitOrderResponse extends
+export default class SaveOrderResponse extends
   mix(Response).with(checkNotNull(['passengerKey', 'passengerLocation', 'passengerDestination', 'createdAt'])) { // eslint-disable-line max-len
   /**
    * Constructor.
@@ -25,7 +24,7 @@ export default class SubmitOrderResponse extends
    * (time since the Unix epoch, in milliseconds)
    * @see https://www.firebase.com/docs/web/api/servervalue/timestamp.html
    * @example
-   * r = new SubmitOrderResponse({
+   * r = new SaveOrderResponse({
    *   passengerKey: 'cli_1',
    *   passengerLocation: [37.421955, -122.084058],
    *   passengerDestination: 'South San Francisco BART station',
@@ -33,8 +32,8 @@ export default class SubmitOrderResponse extends
    * });
    */
   constructor(order) {
-    const opts = Object.assign({ type: 'submit-order' }, order);
+    const opts = Object.assign({ type: 'save-order' }, order);
     super(opts);
-    Object.assign(this, { type: 'submit-order', order });
+    Object.assign(this, { type: 'save-order', order });
   }
 }

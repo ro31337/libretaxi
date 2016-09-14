@@ -27,7 +27,7 @@ test('should return composite response on post', t => {
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'user-state');
   t.is(response.responses[0].state.destination, '702 marshal street, redwood city');
-  t.is(response.responses[1].type, 'submit-order');
+  t.is(response.responses[1].type, 'save-order');
   t.is(response.responses[1].order.passengerKey, 'cli_1');
   t.deepEqual(response.responses[1].order.passengerLocation, [37.421955, -122.084058]);
   t.is(response.responses[1].order.passengerDestination, '702 marshal street, redwood city');

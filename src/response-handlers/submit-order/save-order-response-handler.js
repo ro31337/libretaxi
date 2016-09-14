@@ -1,27 +1,23 @@
-import ResponseHandler from './response-handler';
+import ResponseHandler from '../response-handler';
 import GeoFire from 'geofire';
-import firebaseDB from '../firebase-db';
+import firebaseDB from '../../firebase-db';
 import uuid from 'node-uuid';
-import Order from '../order';
-import queue from '../queue-facade';
+import Order from '../../order';
 
 /**
- * Submit order response handler.
+ * Save order response handler.
  * Creates {@link Order} entity based on {@link SubmitOrderResponse} properties.
  * Sets Order location with geofire package. Geofire updates Order object with
  * `g` and `l` properties. Rest of the properties are copied from {@link SubmitOrderResponse}.
  * `orderKey` is guid.
  *
- * Drivers are subscribed to orders in their area. So when new order within
- * specific area is created, drivers in this area immediately get notified.
- *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {ResponseHandler}
- * @date 2016-08-18
+ * @date 2016-09-13
  * @version 1.1
  * @since 0.1.0
  */
-export default class SubmitOrderResponseHandler extends ResponseHandler {
+export default class SaveOrderResponseHandler extends ResponseHandler {
 
   /**
    * Constructor.
@@ -29,7 +25,7 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
    * @param {Object} response - {@link SubmitOrderResponse} instance.
    */
   constructor(options) {
-    super(Object.assign({ type: 'submit-order-response-handler' }, options));
+    super(Object.assign({ type: 'save-order-response-handler' }, options));
   }
 
   /**
@@ -61,26 +57,18 @@ export default class SubmitOrderResponseHandler extends ResponseHandler {
           // 4. update user `currentOrder` property
           this.user.state.currentOrderKey = order.orderKey;
           this.user.save(() => {
-            this.informPassenger(r.order.passengerKey);
             onResult();
           });
         });
       })
       .catch((err) => {
-        console.log(`Error in SubmitOrderResponseHandler (geoFire): ${err}`); // eslint-disable-line no-console, max-len
+        console.log(`Error in SaveOrderResponseHandler (geoFire): ${err}`); // eslint-disable-line no-console, max-len
         onResult();
       });
     })
     .catch((err) => {
       // no idea how to test it, untested code in this block
-      console.log(`Error in SubmitOrderResponseHandler (stateful): ${err}`); // eslint-disable-line no-console, max-len
+      console.log(`Error in SaveOrderResponseHandler (stateful): ${err}`); // eslint-disable-line no-console, max-len
     });
-  }
-
-  /**
-   * @private
-   */
-  informPassenger(userKey) {
-    queue.redirectToAction({ userKey, route: 'order-submitted' });
   }
 }

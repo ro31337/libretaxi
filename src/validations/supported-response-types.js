@@ -25,8 +25,8 @@ export default new Set([
   'request-location',
   'update-location',
   'request-user-input',
-  'submit-order',
   'empty',
   'cancel-current-order',
   'if',
+  'save-order',
 ]);
