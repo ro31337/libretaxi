@@ -36,6 +36,12 @@ See also:
 up and running with the following command: `redis-cli ping`. It should respond
 with `PONG`.
 
+If something goes wrong, try:
+
+```bash
+sudo service redis-server restart
+```
+
 ## Basic Redis commands
 
 In most cases you don't need to think about it, but here are few commands that
