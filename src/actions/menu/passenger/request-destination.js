@@ -4,7 +4,7 @@ import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
-import SubmitOrderResponse from '../../../responses/submit-order-response';
+import SubmitOrderResponse from '../../../responses/submit-order/submit-order-response';
 import Firebase from 'firebase';
 
 /**

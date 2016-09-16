@@ -15,7 +15,7 @@
     "babel-preset-node6": "^11.0.0",
     "babel-register": "^6.9.0",
     "dotenv": "^2.0.0",
-    "esdoc": "^0.4.7",
+    "esdoc": "^0.4.8",
     "eslint": "^3.0.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.10.2",
