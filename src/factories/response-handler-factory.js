@@ -13,6 +13,7 @@ import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-curre
 import ErrorResponseHandler from '../response-handlers/cli/error-response-handler';
 import IfResponseHandler from '../response-handlers/if-response-handler';
 import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
+import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler'; // eslint-disable-line max-len
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -33,6 +34,7 @@ const map = {
     error: ErrorResponseHandler,
     if: IfResponseHandler,
     'save-order': SaveOrderResponseHandler,
+    'inform-passenger': InformPassengerResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -49,6 +51,7 @@ const map = {
     error: NotImplementedResponseHandler,
     if: IfResponseHandler,
     'save-order': SaveOrderResponseHandler,
+    'inform-passenger': InformPassengerResponseHandler,
   },
 };
 

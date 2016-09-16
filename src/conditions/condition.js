@@ -6,6 +6,7 @@ import { mix } from 'mixwith';
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-09-09
+ * @extends checkNotNull
  * @abstract
  * @version 1.1
  * @since 0.1.0
