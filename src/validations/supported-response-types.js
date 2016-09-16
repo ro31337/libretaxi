@@ -29,4 +29,5 @@ export default new Set([
   'cancel-current-order',
   'if',
   'save-order',
+  'inform-passenger',
 ]);
