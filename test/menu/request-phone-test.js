@@ -18,8 +18,8 @@ test('should return composite response on get', t => {
   t.is(response.responses[1].type, 'request-phone');
 });
 
-test('should return composite response on post for taxi', t => {
-  const user = { state: { userType: 'taxi' } };
+test('should return composite response on post for driver', t => {
+  const user = { state: { userType: 'driver' } };
 
   const action = new RequestPhone({ i18n, user });
   const response = action.post('+1 (555) 111-22-33');
