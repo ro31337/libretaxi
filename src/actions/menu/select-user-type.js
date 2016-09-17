@@ -35,7 +35,7 @@ export default class SelectUserType extends Action {
       .add(new OptionsResponse({
         rows: [
           [
-            { label: this.t('taxi'), value: 'taxi' },
+            { label: this.t('driver'), value: 'driver' },
             { label: this.t('passenger'), value: 'passenger' },
           ],
         ],

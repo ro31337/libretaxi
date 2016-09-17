@@ -37,7 +37,7 @@ export default class RequestPhone extends Action {
 
   /**
    * Shows OK, sets selected user's phone and redirects, based on `userType`:
-   * - taxi - to `driver-select-taxi-type`
+   * - driver - to `driver-select-vehicle-type`
    * - passenger - to `passenger-index`
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
@@ -47,9 +47,9 @@ export default class RequestPhone extends Action {
       .add(new UserStateResponse({ phone: value }));
 
     switch (this.user.state.userType) {
-      case 'taxi':
+      case 'driver':
         response.add(new TextResponse({ message: '👌 OK!' }));
-        response.add(new RedirectResponse({ path: 'driver-select-taxi-type' }));
+        response.add(new RedirectResponse({ path: 'driver-select-vehicle-type' }));
         break;
       case 'passenger':
         response.add(new TextResponse({ message: this.t('all_set') }));

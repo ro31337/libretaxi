@@ -18,16 +18,16 @@ test('should return composite response on get', t => {
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, i18n.__('select-user-type.who_you_are'));
   t.is(response.responses[1].type, 'options');
-  t.is(response.responses[1].rows[0][0].value, 'taxi');
+  t.is(response.responses[1].rows[0][0].value, 'driver');
   t.is(response.responses[1].rows[0][1].value, 'passenger');
 });
 
 test('should return composite response on post', t => {
   const action = new SelectUserType({ i18n, user });
-  const response = action.post('taxi');
+  const response = action.post('driver');
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'user-state');
-  t.is(response.responses[0].state.userType, 'taxi');
+  t.is(response.responses[0].state.userType, 'driver');
   t.is(response.responses[1].type, 'text');
   t.is(response.responses[1].message, '👌 OK!');
   t.is(response.responses[2].type, 'redirect');

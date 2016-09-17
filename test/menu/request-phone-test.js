@@ -18,8 +18,8 @@ test('should return composite response on get', t => {
   t.is(response.responses[1].type, 'request-phone');
 });
 
-test('should return composite response on post for taxi', t => {
-  const user = { state: { userType: 'taxi' } };
+test('should return composite response on post for driver', t => {
+  const user = { state: { userType: 'driver' } };
 
   const action = new RequestPhone({ i18n, user });
   const response = action.post('+1 (555) 111-22-33');
@@ -29,7 +29,7 @@ test('should return composite response on post for taxi', t => {
   t.is(response.responses[1].type, 'text');
   t.is(response.responses[1].message, '👌 OK!');
   t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'driver-select-taxi-type');
+  t.is(response.responses[2].path, 'driver-select-vehicle-type');
 });
 
 test('should return different composite response on post for passenger', t => {

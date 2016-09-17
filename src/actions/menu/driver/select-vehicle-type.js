@@ -7,31 +7,31 @@ import RedirectResponse from '../../../responses/redirect-response';
 import ErrorResponse from '../../../responses/error-response';
 
 /**
- * Select taxi type for driver (menu action).
+ * Select vehicle type for driver (menu action).
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-08-30
  * @version 1.1
  * @since 0.1.0
  */
-export default class SelectTaxiType extends Action {
+export default class SelectVehicleType extends Action {
 
   /**
    * Constructor.
    */
   constructor(options) {
-    super(Object.assign({ type: 'driver-select-taxi-type' }, options));
+    super(Object.assign({ type: 'driver-select-vehicle-type' }, options));
   }
 
   /**
-   * Returns list of available taxi types (scooter, bike, and car).
+   * Returns list of available vehivle types (scooter, bike, and car).
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link OptionsResponse}.
    */
   get() {
     return new CompositeResponse()
-      .add(new TextResponse({ message: this.t('select_taxi_type') }))
+      .add(new TextResponse({ message: this.t('select') }))
       .add(new OptionsResponse({
         rows: [
           [
@@ -44,7 +44,7 @@ export default class SelectTaxiType extends Action {
   }
 
   /**
-   * Saves `taxiType` to user's state and temporarily redirects to stub menu action.
+   * Saves `vehicleType` to user's state and temporarily redirects to stub menu action.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} + {@link UserStateResponse} + {@link RedirectResponse}
@@ -58,7 +58,7 @@ export default class SelectTaxiType extends Action {
       case 'bike':
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
-        response.add(new UserStateResponse({ taxiType: value }));
+        response.add(new UserStateResponse({ vehicleType: value }));
         response.add(new RedirectResponse({ path: 'driver-explain-checkins' }));
         break;
       default:
