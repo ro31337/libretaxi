@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
-import Log from './log';
+import log from './log';
 import './init';
 import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
 import UserFactory from './factories/user-factory';
 import queue from './queue-facade';
 
-const log = new Log();
-log.debug(__('app.welcome_banner'));
+log.debug('Application started');
 
 // Function to handle actions.
 // 1. Action is created based on provided `options.route`.

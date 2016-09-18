@@ -1,8 +1,4 @@
 {
-	"app.welcome_banner": "Welcome to this application!",
-	"app.welcome_banner_desc": "Welcome message is displayed every time when application starts. It is visible to administrators only.",
-	"init.init_complete": "Init complete, default language set to %s",
-	"init.init_complete_desc": "Message is displayed when application has been initialized, all of the data has been loaded into memory, all packages have been configured. Message is visible to administrators only.",
 	"select-user-type.who_you_are": "Who you are? (select for now, you can change it later)",
 	"select-user-type.who_you_are_desc": "At the very beginning user must select type, so we're asking if the user is taxi driver or passenger",
 	"select-user-type.driver": "Taxi driver",
