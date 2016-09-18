@@ -36,7 +36,7 @@ export default class PassengerIndex extends Action {
       .add(new OptionsResponse({
         rows: [
           [
-            { label: this.t('bike'), value: 'bike' },
+            { label: this.t('motorbike'), value: 'motorbike' },
             { label: this.t('car'), value: 'car' },
             { label: this.t('s'), value: 'settings' },
           ],
@@ -57,7 +57,7 @@ export default class PassengerIndex extends Action {
     const response = new CompositeResponse();
 
     switch (value) {
-      case 'bike':
+      case 'motorbike':
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ vehicleType: value }));
