@@ -1,6 +1,4 @@
 {
-	"app.welcome_banner": "Добро пожаловать в это приложение!",
-	"init.init_complete": "Инициализация завершена, язык по-умолчанию %s",
 	"select-user-type.who_you_are": "Кто вы? (потом можно изменить в настройках)",
 	"select-user-type.driver": "Водитель такси",
 	"select-user-type.passenger": "Пассажир",
