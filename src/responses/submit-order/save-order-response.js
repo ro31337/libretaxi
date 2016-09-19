@@ -12,7 +12,13 @@ import checkNotNull from '../../validations/check-not-null';
  * @since 0.1.0
  */
 export default class SaveOrderResponse extends
-  mix(Response).with(checkNotNull(['passengerKey', 'passengerLocation', 'passengerDestination', 'createdAt'])) { // eslint-disable-line max-len
+  mix(Response).with(checkNotNull([
+    'passengerKey',
+    'passengerLocation',
+    'passengerDestination',
+    'createdAt',
+    'requestedVehicleType',
+  ])) {
   /**
    * Constructor.
    *

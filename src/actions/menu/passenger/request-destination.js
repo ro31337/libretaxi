@@ -56,6 +56,7 @@ export default class PassengerRequestDestination extends Action {
         passengerLocation: this.user.state.location,
         passengerDestination: value,
         createdAt: Firebase.database.ServerValue.TIMESTAMP,
+        requestedVehicleType: this.user.state.requestedVehicleType,
       }))
       .add(new TextResponse({ message: '👌 OK!' }))
       .add(new RedirectResponse({ path: 'blank-screen' }));
