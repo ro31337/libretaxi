@@ -43,7 +43,7 @@ export default class SelectVehicleType extends Action {
   }
 
   /**
-   * Saves `vehicleType` to user's state and temporarily redirects to stub menu action.
+   * Saves `vehicleType` to user's state and redirects to action explaining checkins.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} + {@link UserStateResponse} + {@link RedirectResponse}
