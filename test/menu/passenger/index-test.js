@@ -36,7 +36,7 @@ test('should return composite response on post for bike and car', t => {
     t.is(response.responses[0].type, 'text');
     t.is(response.responses[0].message, '👌 OK!');
     t.is(response.responses[1].type, 'user-state');
-    t.is(response.responses[1].state.vehicleType, reaction);
+    t.is(response.responses[1].state.requestedVehicleType, reaction);
     t.is(response.responses[2].type, 'redirect');
     t.is(response.responses[2].path, 'passenger-request-location');
   }

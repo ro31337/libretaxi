@@ -45,7 +45,7 @@ export default class PassengerIndex extends Action {
   }
 
   /**
-   * Saves `vehicleType` to user's state and redirects to request location action.
+   * Saves requested vehicle type to user's state and redirects to request location action.
    * When settings is picked, redirects to settings.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
@@ -60,7 +60,7 @@ export default class PassengerIndex extends Action {
       case 'motorbike':
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
-        response.add(new UserStateResponse({ vehicleType: value }));
+        response.add(new UserStateResponse({ requestedVehicleType: value }));
         response.add(new RedirectResponse({ path: 'passenger-request-location' }));
         break;
       case 'settings':

@@ -4,7 +4,9 @@ import routes from '../../../src/routes'; // to aviod circular dependencies
 import PassengerRequestDestination from '../../../src/actions/menu/passenger/request-destination';
 import { i18n } from '../../spec-support';
 
-const user = { userKey: 'cli_1', state: { location: [37.421955, -122.084058] } };
+const user = {
+  userKey: 'cli_1',
+  state: { location: [37.421955, -122.084058], requestedVehicleType: 'motorbike' } };
 
 test('can be constructed with default parameters', t => {
   new PassengerRequestDestination({ i18n, user });
@@ -37,6 +39,7 @@ test('should return composite response on post', t => {
   t.deepEqual(response.responses[1].responses[0].order.passengerLocation, [37.421955, -122.084058]);
   t.is(response.responses[1].responses[0].order.passengerDestination, '702 marshal street, redwood city'); // eslint-disable-line max-len
   t.truthy(response.responses[1].responses[0].order.createdAt);
+  t.is(response.responses[1].responses[0].order.requestedVehicleType, 'motorbike');
 
   // and 2. inform passenger
   t.is(response.responses[1].responses[1].type, 'inform-passenger');
