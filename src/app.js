@@ -4,9 +4,19 @@ import './init';
 import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
 import UserFactory from './factories/user-factory';
-import queue from './queue-facade';
+import CliCaQueue from './queue/cli-ca-queue';
 
 log.debug('Application started');
+
+// Create and queue initial `call-action`.
+const instanceUserKey = 'cli_1';
+const queue = new CliCaQueue({ userKey: instanceUserKey });
+
+UserFactory.fromUserKey(instanceUserKey).load().then((user) => {
+  const userKey = user.userKey;
+  queue.create({ userKey, route: user.state.menuLocation || 'default' });
+})
+.catch((err) => console.log(err));
 
 // Function to handle actions.
 // 1. Action is created based on provided `options.route`.
@@ -27,7 +37,7 @@ const callAction = (options) => {
   const empty = () => {};
   const postNextMessage = (arg) => {
     const userKey = user.userKey;
-    queue.callAction({ userKey, arg, route: user.state.menuLocation });
+    queue.create({ userKey, arg, route: user.state.menuLocation });
   };
   const done = options.once ? empty : postNextMessage;
   handler.call(done);
@@ -36,7 +46,7 @@ const callAction = (options) => {
 // Response handler loop.
 // When `call-action` is posted with `queue.create`, it's processed here.
 
-queue.processCallAction((job, done) => {
+queue.process((job, done) => {
   const data = job.data;
   UserFactory.fromUserKey(data.userKey).load().then((user) => {
     callAction({
@@ -48,11 +58,3 @@ queue.processCallAction((job, done) => {
   .catch((err) => console.log(err))
   .then(() => done()); // = finally. Always call "done" kue callback.
 });
-
-// Create and queue initial `call-action`.
-
-UserFactory.fromUserKey('cli_1').load().then((user) => {
-  const userKey = user.userKey;
-  queue.callAction({ userKey, route: user.state.menuLocation || 'default' });
-})
-.catch((err) => console.log(err));

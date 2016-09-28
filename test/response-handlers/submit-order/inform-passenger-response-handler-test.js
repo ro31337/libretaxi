@@ -4,7 +4,6 @@ import InformPassengerResponseHandler from '../../../src/response-handlers/submi
 import InformPassengerResponse from '../../../src/responses/submit-order/inform-passenger-response';
 import checkNotNullTest from '../../helpers/check-not-null.js';
 import { ss } from '../../spec-support';
-import queueFacade from '../../../src/queue-facade';
 
 checkNotNullTest('response', (args) => { new InformPassengerResponseHandler(args); });
 
@@ -18,10 +17,10 @@ test.cb('should post message to the queue when informing passenger', t => {
   t.plan(1);
   const response = new InformPassengerResponse({ passengerKey: 'cli_1' });
   const spy = ss.sinon.spy();
-  queueFacade.redirectToAction = spy;
+  const handler = new InformPassengerResponseHandler({ response });
+  handler.queue = { redirect: spy };
 
   // act
-  const handler = new InformPassengerResponseHandler({ response });
   handler.call(() => {
     // assert
     t.truthy(spy.calledWith({ userKey: 'cli_1', route: 'order-submitted' }));
