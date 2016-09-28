@@ -8,7 +8,6 @@ import firebaseDB from '../../../../src/firebase-db';
 import { ss } from '../../../spec-support';
 import sinon from 'sinon';
 import User from '../../../../src/user';
-import queueFacade from '../../../../src/queue-facade';
 
 let server = null;
 const response = new SaveOrderResponse({

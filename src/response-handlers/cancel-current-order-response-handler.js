@@ -1,6 +1,6 @@
 import ResponseHandler from './response-handler';
 import Order from '../order';
-import queue from '../queue-facade';
+import CaQueue from '../queue/ca-queue';
 
 /**
  * Submit order response handler.
@@ -27,6 +27,7 @@ export default class CancelCurrentOrderResponseHandler extends ResponseHandler {
    */
   constructor(options) {
     super(Object.assign({ type: 'cancel-current-order-response-handler' }, options));
+    this.queue = new CaQueue();
   }
 
   /**
@@ -59,6 +60,6 @@ export default class CancelCurrentOrderResponseHandler extends ResponseHandler {
    * @private
    */
   informPassenger(userKey) {
-    queue.redirectToAction({ userKey, route: 'order-cancelled' });
+    this.queue.redirect({ userKey, route: 'order-cancelled' });
   }
 }

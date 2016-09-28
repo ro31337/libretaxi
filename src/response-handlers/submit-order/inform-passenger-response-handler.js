@@ -1,5 +1,5 @@
 import ResponseHandler from '../response-handler';
-import queue from '../../queue-facade';
+import CaQueue from '../../queue/ca-queue';
 
 /**
  * Informs passenger that order has been submitted.
@@ -19,6 +19,7 @@ export default class InformPassengerResponseHandler extends ResponseHandler {
    */
   constructor(options) {
     super(Object.assign({ type: 'inform-passenger-response-handler' }, options));
+    this.queue = new CaQueue();
   }
 
   /**
@@ -26,7 +27,7 @@ export default class InformPassengerResponseHandler extends ResponseHandler {
    * Calls `onResult` when saved.
    */
   call(onResult) {
-    queue.redirectToAction({
+    this.queue.redirect({
       userKey: this.response.passengerKey,
       route: 'order-submitted',
     });
