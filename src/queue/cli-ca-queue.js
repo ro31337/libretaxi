@@ -2,11 +2,12 @@ import CaQueue from './ca-queue';
 import Queue from './queue';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
+import kue from 'kue';
 
 /**
  * CLI "Call action" queue. Used to call menu actions in CLI environment only.
  * HACKY! Used for development/testing purposes only. With this type of queue it's
- * possible to run multiple instances of application and communicate between them.
+ * possible to run multiple instances of application.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-09-26
@@ -26,7 +27,9 @@ export default class CliCaQueue extends mix(CaQueue).with(checkNotNull('userKey'
   constructor(options) {
     super(options);
     this.instanceType = `${this.type}-${options.userKey}`;
+    // dependency injection for tests (instanceQueue and instanceKue)
     this.instanceQueue = options.instanceQueue || new Queue({ type: this.instanceType });
+    this.instanceKue = options.instanceKue || kue.createQueue();
     this.recreate = this.recreate.bind(this);
   }
 
@@ -49,7 +52,16 @@ export default class CliCaQueue extends mix(CaQueue).with(checkNotNull('userKey'
    */
   recreate(job, done) {
     const data = job.data;
-    this.instanceQueue.create(data);
+    const destinationType = `${this.type}-${data.userKey}`;
+
+    // create every time, maybe not the best idea, but OK for development/tests
+    this.instanceKue
+      .create(destinationType, data)
+      .save();
+
+    // console.log(`job type: ${job.type}`);
+    // console.log(`current instance type: ${this.instanceType}`);
+    // console.log(`posting to ${destinationType}`);
     done();
   }
 }
