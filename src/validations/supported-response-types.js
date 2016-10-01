@@ -31,4 +31,5 @@ export default new Set([
   'save-order',
   'inform-passenger',
   'interrupt-prompt',
+  'notify-drivers',
 ]);

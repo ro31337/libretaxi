@@ -15,6 +15,7 @@ import ErrorResponseHandler from '../response-handlers/cli/error-response-handle
 import IfResponseHandler from '../response-handlers/if-response-handler';
 import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler';
 import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler';
+import NotifyDriversResponseHandler from '../response-handlers/submit-order/notify-drivers-response-handler';
 import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
 
 // updating map?
@@ -38,6 +39,7 @@ const map = {
     'save-order': SaveOrderResponseHandler,
     'inform-passenger': InformPassengerResponseHandler,
     'interrupt-prompt': InterruptPromptResponseHandler,
+    'notify-drivers': NotifyDriversResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -56,6 +58,7 @@ const map = {
     'save-order': SaveOrderResponseHandler,
     'inform-passenger': InformPassengerResponseHandler,
     'interrupt-prompt': EmptyResponseHandler,
+    'notify-drivers': NotifyDriversResponseHandler,
   },
 };
 

@@ -17,6 +17,7 @@ import DriverIndex from './actions/menu/driver/index';
 import DriverCheckin from './actions/menu/driver/checkin';
 import DriverMute from './actions/menu/driver/mute';
 import DriverUnmute from './actions/menu/driver/unmute';
+import DriverOrderNew from './actions/menu/driver/order/new';
 
 /**
  * @typedef Routes
@@ -59,6 +60,7 @@ const routes = {
   'driver-checkin': DriverCheckin,
   'driver-mute': DriverMute,
   'driver-unmute': DriverUnmute,
+  'driver-order-new': DriverOrderNew,
 };
 
 // Adding more routes? update `action-factory-test.js`

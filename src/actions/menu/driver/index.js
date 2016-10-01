@@ -11,7 +11,8 @@ import Equals from '../../../conditions/equals';
 import NotIn from '../../../conditions/not-in';
 
 /**
- * Driver index menu action.
+ * Driver index menu action. Can be interrupted when new order is placed.
+ * See {@ NotifyDriversResponseHandler} for details.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-09-05
