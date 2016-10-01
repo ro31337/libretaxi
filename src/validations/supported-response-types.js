@@ -30,4 +30,5 @@ export default new Set([
   'if',
   'save-order',
   'inform-passenger',
+  'interrupt-prompt',
 ]);
