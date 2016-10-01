@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import TextResponseHandler from '../response-handlers/cli/text-response-handler';
 import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
@@ -5,15 +6,16 @@ import NotImplementedResponseHandler from '../response-handlers/not-implemented-
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
 import RequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
-import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler'; // eslint-disable-line max-len
-import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler'; // eslint-disable-line max-len
-import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler'; // eslint-disable-line max-len
+import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler';
+import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler';
+import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler';
 import EmptyResponseHandler from '../response-handlers/empty-response-handler';
-import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-current-order-response-handler'; // eslint-disable-line max-len
+import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-current-order-response-handler';
 import ErrorResponseHandler from '../response-handlers/cli/error-response-handler';
 import IfResponseHandler from '../response-handlers/if-response-handler';
-import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
-import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler'; // eslint-disable-line max-len
+import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler';
+import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler';
+import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -35,6 +37,7 @@ const map = {
     if: IfResponseHandler,
     'save-order': SaveOrderResponseHandler,
     'inform-passenger': InformPassengerResponseHandler,
+    'interrupt-prompt': InterruptPromptResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -52,6 +55,7 @@ const map = {
     if: IfResponseHandler,
     'save-order': SaveOrderResponseHandler,
     'inform-passenger': InformPassengerResponseHandler,
+    'interrupt-prompt': EmptyResponseHandler,
   },
 };
 
