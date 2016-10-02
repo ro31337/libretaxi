@@ -1,4 +1,4 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 import winston from 'winston';
 import moment from 'moment';
 import appRoot from 'app-root-path';
@@ -26,10 +26,10 @@ import appRoot from 'app-root-path';
  * @see https://github.com/winstonjs/winston
  * @version 1.2
  * @since 0.1.0
- * @return {Object} Instance of logger
  */
 class Log extends winston.Logger {
   constructor() {
+    dotenv.config();
     const fileTransport = new (winston.transports.File)({
       timestamp() {
         return Date.now();
@@ -51,6 +51,18 @@ class Log extends winston.Logger {
   }
 }
 
-const instance = new Log();
+/**
+ * Stub logger, implements empty {@link Log} interface.
+ *
+ * @author Roman Pushkin (roman.pushkin@gmail.com)
+ * @date 2016-10-01
+ * @version 1.1
+ * @since 0.1.0
+ */
+class StubLog {
+  debug() {}
+}
+
+const instance = process.env.TEST_ENVIRONMENT ? new StubLog() : new Log();
 
 export default instance;

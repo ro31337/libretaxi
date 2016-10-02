@@ -13,4 +13,5 @@ test('response can be constructed with default parameters', t => {
   t.is(r.type, 'composite');
   t.is(r.responses[0].type, 'save-order');
   t.is(r.responses[1].type, 'inform-passenger');
+  t.is(r.responses[2].type, 'notify-drivers');
 });

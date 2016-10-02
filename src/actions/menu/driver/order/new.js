@@ -33,7 +33,7 @@ export default class DriverOrderNew extends Action {
   call() {
     return new CompositeResponse()
       .add(new InterruptPromptResponse())
-      .add(new TextResponse({ message: '🔔 New order!' }))
+      .add(new TextResponse({ message: '🔔 New order!' })) // no i18n, to be changed soon
       .add(new RedirectResponse({ path: 'driver-index' }));
   }
 }
