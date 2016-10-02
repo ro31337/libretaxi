@@ -9,7 +9,14 @@ import CliCaQueue from './queue/cli-ca-queue';
 log.debug('Application started');
 
 // Create and queue initial `call-action`.
-const instanceUserKey = 'cli_1';
+
+if (process.argv.length !== 3) {
+  console.log('Usage: npm start user_key');
+  console.log('Example: npm start cli_1');
+  process.exit();
+}
+
+const instanceUserKey = process.argv[2];
 const queue = new CliCaQueue({ userKey: instanceUserKey });
 
 UserFactory.fromUserKey(instanceUserKey).load().then((user) => {
@@ -25,10 +32,11 @@ UserFactory.fromUserKey(instanceUserKey).load().then((user) => {
 // 4. If `once` is false, message is posted to `kue` when handler is finished.
 
 const callAction = (options) => {
+  // console.dir(options);
   // console.log('Current user state:');
   // console.dir(user.state);
   const user = options.user;
-  const route = options.route;
+  const route = options.route || 'default';
 
   const action = ActionFactory.fromRoute({ route, user });
   const response = action.call(options.arg);

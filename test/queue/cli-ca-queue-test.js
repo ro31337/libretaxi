@@ -2,6 +2,8 @@
 import test from 'ava';
 import CliCaQueue from '../../src/queue/cli-ca-queue';
 import checkNotNullTest from '../helpers/check-not-null.js';
+import { ss } from '../spec-support';
+import sinon from 'sinon';
 
 checkNotNullTest('userKey', (args) => { new CliCaQueue(args); });
 
@@ -56,19 +58,24 @@ test.cb('should subscribe to instance queue messages on process', t => {
   queue.process(cb);
 });
 
-test.cb('should recreate message in instance queue on recreate callback', t => {
-  t.plan(1);
-  const data = { a: 1, b: 2, c: 3 };
+test.cb('should recreate message on recreate callback', t => {
+  t.plan(2);
+
+  const instanceKue = {};
+  const create = ss.sinon.stub().returns(instanceKue);
+  const save = ss.sinon.stub().returns(instanceKue);
+  Object.assign(instanceKue, { create, save });
+
+  const data = { foo: 'bar', userKey: 'cli_2' };
   const job = { data };
   const queue = new CliCaQueue({
     userKey: 'cli_1',
-    instanceQueue: {
-      create: (obj) => {
-        t.deepEqual(obj, data);
-      },
-    },
+    instanceKue,
   });
   const done = () => {
+    t.truthy(create.calledWith('call-action-cli_2', { foo: 'bar', userKey: 'cli_2' }));
+    t.truthy(save.calledWith());
+    sinon.assert.callOrder(create, save);
     t.end();
   };
   queue.recreate(job, done);

@@ -38,7 +38,7 @@
   "scripts": {
     "test": "npm run lint && npm run ava ./test/before-all.js && npm run ava",
     "lint": "eslint src test",
-    "ava": "ava --require babel-register",
+    "ava": "TEST_ENVIRONMENT=true ava --require babel-register",
     "start": "babel-node ./src/app.js",
     "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json"
   },
