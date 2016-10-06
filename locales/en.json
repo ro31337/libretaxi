@@ -67,6 +67,18 @@
 	"driver-checkin.provide_location_desc": "We show this message to drivers when they check-in and we want them to provide current location.",
 	"driver-checkin.ok": "👌 OK! Thanks for checking-in! Don't forget to check-in every hour or when you changed your location!",
 	"driver-checkin.ok_desc": "We show this message to drivers when they check-in.",
+	"driver-order-new.new_order": "🔔 New order!",
+	"driver-order-new.new_order_desc": "We show this message to drivers when they receive new order.",
+	"driver-order-new.distance": "Distance to passenger: %s (since last check-in)",
+	"driver-order-new.distance_desc": "We show this message to drivers when they receive new order.",
+	"driver-order-new.from": "Passenger is located here: %s",
+	"driver-order-new.from_desc": "We show this message to drivers when they receive new order.",
+	"driver-order-new.to": "Passenger is going to: %s",
+	"driver-order-new.to_desc": "We show this message to drivers when they receive new order. Here we show passenger's destination address and maybe some random details.",
+	"driver-order-new.call_to_action": "To accept this order click on \"New orders\" button. If you're not interested, just ignore this message.",
+	"driver-order-new.call_to_action_desc": "We show this message to drivers when they receive new order",
+	"metric-distance.km": "%s km",
+	"metric-distance.km_desc": "Metric distance in kilometers. For example: \"10 km\" is 10 kilometers.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
