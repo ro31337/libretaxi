@@ -12,12 +12,24 @@ test('can be constructed with default parameters', t => {
 });
 
 test('should return composite response on call', t => {
+  const args = { distance: 10, from: [37.421955, -122.084058], to: 'foo' };
   const action = new DriverOrderNew({ i18n, user });
-  const response = action.call();
+  const response = action.call(args);
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'interrupt-prompt');
   t.is(response.responses[1].type, 'text');
-  t.is(response.responses[1].message, '🔔 New order!');
-  t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'driver-index');
+  t.is(response.responses[1].message, i18n.__('driver-order-new.new_order'));
+  t.is(response.responses[2].type, 'text');
+  t.is(response.responses[2].message, i18n.__('driver-order-new.distance', '10.0 km'));
+  t.is(response.responses[3].type, 'text');
+  t.is(response.responses[3].message,
+    i18n.__('driver-order-new.from', 'https://www.google.com/maps?q=37.421955,-122.084058'));
+  t.is(response.responses[4].type, 'text');
+  t.is(response.responses[4].message, i18n.__('driver-order-new.to', 'foo'));
+  t.is(response.responses[5].type, 'text');
+  t.is(response.responses[5].message, i18n.__('driver-order-new.call_to_action'));
+  t.is(response.responses[5].type, 'text');
+  t.is(response.responses[5].message, i18n.__('driver-order-new.call_to_action'));
+  t.is(response.responses[6].type, 'redirect');
+  t.is(response.responses[6].path, 'driver-index');
 });

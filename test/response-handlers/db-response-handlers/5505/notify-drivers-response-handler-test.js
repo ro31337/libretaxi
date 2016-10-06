@@ -154,9 +154,25 @@ test.cb('should not notify driver when driver is busy', t => {
 
 test.cb('should notify driver when matched', t => {
   const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.pass(); t.end(); };
+  const success = () => {
+    t.truthy(handler.queue.create.calledWith({
+      userKey: 'cli_5',
+      arg: { orderKey: 123, distance: 1, from: [1, 2], to: 'foobar' },
+      route: 'driver-order-new',
+    }));
+    t.end();
+  };
   const fail = () => { t.fail(); };
-  handler.order = { state: { status: 'new', requestedVehicleType: 'motorbike' } };
+  handler.order = {
+    orderKey: 123,
+    state: {
+      status: 'new',
+      requestedVehicleType: 'motorbike',
+      passengerLocation: [1, 2],
+      passengerDestination: 'foobar',
+    },
+  };
+  handler.queue = { create: ss.sinon.spy() };
 
   load('cli_5').then((user) => {
     handler.notifyDriver('cli_5', 1, fail, success);
