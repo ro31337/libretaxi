@@ -5,7 +5,7 @@
 	"select-user-type.driver_desc": "User can be either taxi driver, or passenger. User selects this option at the very beginning.",
 	"select-user-type.passenger": "Passenger",
 	"select-user-type.passenger_desc": "User can be either taxi driver, or passenger. User selects this option at the very beginning.",
-	"request-phone.type_your_phone": "Send us your local phone number, so drivers will be able to call you when it's required.",
+	"request-phone.type_your_phone": "Send us your phone number (required). We do not share this number without your permission.",
 	"request-phone.type_your_phone_desc": "This message is displayed when we ask users to send their phone number before they can use our services.",
 	"request-phone.all_set": "👌 We're all set, you're good to order a ride now!",
 	"request-phone.all_set_desc": "We display this message when passenger done entering his phone number, and when all configuration is done, and when passenger can make an order.",
