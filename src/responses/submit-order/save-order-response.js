@@ -16,6 +16,7 @@ export default class SaveOrderResponse extends
     'passengerKey',
     'passengerLocation',
     'passengerDestination',
+    'price',
     'createdAt',
     'requestedVehicleType',
   ])) {
@@ -27,6 +28,7 @@ export default class SaveOrderResponse extends
    * for example: `[37.421955, -122.084058]`
    * @param {string} order.passengerDestination - passenger destination
    * @param {object} order.createdAt - timestamp of when order has been created
+   * @param {string|number} order.price - order price set by the passenger
    * (time since the Unix epoch, in milliseconds)
    * @see https://www.firebase.com/docs/web/api/servervalue/timestamp.html
    * @example
@@ -34,6 +36,7 @@ export default class SaveOrderResponse extends
    *   passengerKey: 'cli_1',
    *   passengerLocation: [37.421955, -122.084058],
    *   passengerDestination: 'South San Francisco BART station',
+   *   price: 100,
    *   createdAt: Firebase.database.ServerValue.TIMESTAMP,
    * });
    */

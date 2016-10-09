@@ -12,7 +12,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test('should return composite response on call', t => {
-  const args = { distance: 10, from: [37.421955, -122.084058], to: 'foo' };
+  const args = { distance: 10, from: [37.421955, -122.084058], to: 'foo', price: 50 };
   const action = new DriverOrderNew({ i18n, user });
   const response = action.call(args);
   t.is(response.type, 'composite');
@@ -27,9 +27,9 @@ test('should return composite response on call', t => {
   t.is(response.responses[4].type, 'text');
   t.is(response.responses[4].message, i18n.__('driver-order-new.to', 'foo'));
   t.is(response.responses[5].type, 'text');
-  t.is(response.responses[5].message, i18n.__('driver-order-new.call_to_action'));
-  t.is(response.responses[5].type, 'text');
-  t.is(response.responses[5].message, i18n.__('driver-order-new.call_to_action'));
-  t.is(response.responses[6].type, 'redirect');
-  t.is(response.responses[6].path, 'driver-index');
+  t.is(response.responses[5].message, i18n.__('driver-order-new.price', 50));
+  t.is(response.responses[6].type, 'text');
+  t.is(response.responses[6].message, i18n.__('driver-order-new.call_to_action'));
+  t.is(response.responses[7].type, 'redirect');
+  t.is(response.responses[7].path, 'driver-index');
 });

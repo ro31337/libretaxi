@@ -7,6 +7,7 @@ checkNotNullTest([
   'passengerKey',
   'passengerLocation',
   'passengerDestination',
+  'price',
   'createdAt',
   'requestedVehicleType'],
   (args) => { new SaveOrderResponse(args); });
@@ -16,6 +17,7 @@ test('response can be constructed with default parameters', t => {
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
+    price: 50,
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
     requestedVehicleType: 'car',
   });
@@ -27,6 +29,7 @@ test('has response parameters accessible by `order` property', t => {
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
+    price: 50,
     createdAt: 123456,
     requestedVehicleType: 'car',
   });

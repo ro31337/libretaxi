@@ -40,6 +40,7 @@ test('should return correct types for responses for cli platform', t => {
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
+    price: 50,
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
     requestedVehicleType: 'car',
   });
@@ -126,6 +127,7 @@ test('should return correct types for responses for telegram platform', t => {
     passengerKey: 'telegram_31337',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
+    price: 50,
     createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
     requestedVehicleType: 'car',
   });

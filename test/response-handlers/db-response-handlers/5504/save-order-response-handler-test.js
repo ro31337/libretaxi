@@ -14,6 +14,7 @@ const response = new SaveOrderResponse({
   passengerKey: 'cli_1',
   passengerLocation: [37.421955, -122.084058],
   passengerDestination: 'South San Francisco BART station, CA, 94080',
+  price: 50,
   createdAt: (new Date).getTime(), // use Firebase Timestamp in your code!
   requestedVehicleType: 'motorbike',
 });
@@ -34,7 +35,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should create order and inform passenger when called', t => {
-  t.plan(10);
+  t.plan(11);
   new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
     const assert = () => {
       const db = firebaseDB.config().ref('orders');
@@ -65,6 +66,7 @@ test.cb('should create order and inform passenger when called', t => {
         t.is(v.passengerDestination, 'South San Francisco BART station, CA, 94080');
         t.is(v.status, 'new');
         t.is(v.requestedVehicleType, 'motorbike');
+        t.is(v.price, 50);
         t.truthy(v.createdAt);
         t.is(user.state.currentOrderKey, firstKey);
         t.end();

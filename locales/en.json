@@ -75,10 +75,16 @@
 	"driver-order-new.from_desc": "We show this message to drivers when they receive new order.",
 	"driver-order-new.to": "Passenger is going to: %s",
 	"driver-order-new.to_desc": "We show this message to drivers when they receive new order. Here we show passenger's destination address and maybe some random details.",
+	"driver-order-new.price": "Passenger is ready to pay: %s (in local currency)",
+	"driver-order-new.price_desc": "We show this message to drivers when they receive new order. This is passenger's price for the order.",
 	"driver-order-new.call_to_action": "To accept this order click on \"New orders\" button. If you're not interested, just ignore this message.",
 	"driver-order-new.call_to_action_desc": "We show this message to drivers when they receive new order",
 	"metric-distance.km": "%s km",
 	"metric-distance.km_desc": "Metric distance in kilometers. For example: \"10 km\" is 10 kilometers.",
+	"passenger-request-price.set_price" : "In this app passenger sets the price 😉 Give us your price (in local currency). How much are you willing to pay? (or type \"0\" [zero] if you don't know)",
+	"passenger-request-price.set_price_desc" : "Here we ask passenger to set the price for the order. In our app passengers set the price for orders.",
+	"passenger-request-price.should_be_numeric" : "Oops, price should be the numeric value (and in local currency)! For example: \"50\". Please try again!",
+	"passenger-request-price.should_be_numeric_desc" : "We show this error text to passenger when s/he entered the price for the order, but the value is not numeric.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

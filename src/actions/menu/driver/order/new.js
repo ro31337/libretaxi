@@ -45,6 +45,7 @@ export default class DriverOrderNew extends Action {
       .add(new TextResponse({ message: this.t('from',
         new GoogleMapsLink(args.from).toString()) }))
       .add(new TextResponse({ message: this.t('to', args.to) }))
+      .add(new TextResponse({ message: this.t('price', args.price) }))
       .add(new TextResponse({ message: this.t('call_to_action') }))
       .add(new RedirectResponse({ path: 'driver-index' }));
   }
