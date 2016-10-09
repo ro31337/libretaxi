@@ -139,6 +139,7 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
         distance,
         from: this.order.state.passengerLocation,
         to: this.order.state.passengerDestination,
+        price: this.order.state.price,
       };
       this.queue.create({ userKey: driverKey, arg, route: 'driver-order-new' }); // eslint-disable-line max-len
       successCallback();

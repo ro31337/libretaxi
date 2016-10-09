@@ -3,49 +3,7 @@
 import test from 'ava';
 import ActionFactory from '../src/factories/action-factory';
 
-// update _two_ next test cases when you have more routes in `routes.js`
-
-test('should return routes by menu location', t => {
-  const a1 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'select-locale' } });
-  const a2 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'foo' } });
-  const a3 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'default' } });
-  const a4 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'select-user-type' } });
-  const a5 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'request-phone' } });
-  const a6 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-index' } });
-  const a7 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-select-vehicle-type' } }); // eslint-disable-line max-len
-  const a8 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'settings' } });
-  const a9 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-request-location' } }); // eslint-disable-line max-len
-  const a10 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'passenger-request-destination' } }); // eslint-disable-line max-len
-  const a11 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'order-submitted' } });
-  const a12 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'blank-screen' } });
-  const a13 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'order-cancelled' } });
-  const a14 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'redirect' } });
-  const a15 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-explain-checkins' } }); // eslint-disable-line max-len
-  const a16 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-request-location' } }); // eslint-disable-line max-len
-  const a17 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-explain-whats-next' } }); // eslint-disable-line max-len
-  const a18 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-index' } });
-  const a19 = ActionFactory.fromMenuLocation({ state: { menuLocation: 'driver-checkin' } });
-
-  t.is(a1.type, 'select-locale');
-  t.is(a2.type, 'foo');
-  t.is(a3.type, 'select-locale');
-  t.is(a4.type, 'select-user-type');
-  t.is(a5.type, 'request-phone');
-  t.is(a6.type, 'passenger-index');
-  t.is(a7.type, 'driver-select-vehicle-type');
-  t.is(a8.type, 'foo');
-  t.is(a9.type, 'passenger-request-location');
-  t.is(a10.type, 'passenger-request-destination');
-  t.is(a11.type, 'order-submitted');
-  t.is(a12.type, 'blank-screen');
-  t.is(a13.type, 'order-cancelled');
-  t.is(a14.type, 'redirect');
-  t.is(a15.type, 'driver-explain-checkins');
-  t.is(a16.type, 'driver-request-location');
-  t.is(a17.type, 'driver-explain-whats-next');
-  t.is(a18.type, 'driver-index');
-  t.is(a19.type, 'driver-checkin');
-});
+// update next test cases when you have more routes in `routes.js`
 
 test('should return routes by route', t => {
   const user = { state: {} };
@@ -70,6 +28,7 @@ test('should return routes by route', t => {
   const a19 = ActionFactory.fromRoute({ route: 'driver-checkin', user });
   const a20 = ActionFactory.fromRoute({ route: 'driver-mute', user });
   const a21 = ActionFactory.fromRoute({ route: 'driver-unmute', user });
+  const a22 = ActionFactory.fromRoute({ route: 'passenger-request-price', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -92,6 +51,7 @@ test('should return routes by route', t => {
   t.is(a19.type, 'driver-checkin');
   t.is(a20.type, 'driver-mute');
   t.is(a21.type, 'driver-unmute');
+  t.is(a22.type, 'passenger-request-price');
 });
 
 test('should have default route', t => {

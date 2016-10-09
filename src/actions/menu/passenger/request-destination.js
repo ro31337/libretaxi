@@ -4,8 +4,6 @@ import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
-import SubmitOrderResponse from '../../../responses/submit-order/submit-order-response';
-import Firebase from 'firebase';
 
 /**
  * Passenger request destination menu action.
@@ -39,26 +37,19 @@ export default class PassengerRequestDestination extends Action {
 
   /**
    * Saves user's destination to state. Responds with OK message, and
-   * redirects to blank screen (menu action).
+   * redirects to request price menu action.
    *
    * @param {string} value - string that represents destination.
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * that contains the following responses:
    * - {@link UserStateResponse} - with `destination` prop set to `value`
    * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to blank screen.
+   * - {@link RedirectResponse} - with redirect to request price menu action
    */
   post(value) {
     return new CompositeResponse()
       .add(new UserStateResponse({ destination: value }))
-      .add(new SubmitOrderResponse({
-        passengerKey: this.user.userKey,
-        passengerLocation: this.user.state.location,
-        passengerDestination: value,
-        createdAt: Firebase.database.ServerValue.TIMESTAMP,
-        requestedVehicleType: this.user.state.requestedVehicleType,
-      }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'blank-screen' }));
+      .add(new RedirectResponse({ path: 'passenger-request-price' }));
   }
 }

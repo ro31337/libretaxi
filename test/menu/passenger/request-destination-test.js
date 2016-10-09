@@ -6,7 +6,8 @@ import { i18n } from '../../spec-support';
 
 const user = {
   userKey: 'cli_1',
-  state: { location: [37.421955, -122.084058], requestedVehicleType: 'motorbike' } };
+  state: {},
+};
 
 test('can be constructed with default parameters', t => {
   new PassengerRequestDestination({ i18n, user });
@@ -29,24 +30,8 @@ test('should return composite response on post', t => {
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'user-state');
   t.is(response.responses[0].state.destination, '702 marshal street, redwood city');
-
-  // composite
-  t.is(response.responses[1].type, 'composite');
-
-  // that contains: 1. save order
-  t.is(response.responses[1].responses[0].type, 'save-order');
-  t.is(response.responses[1].responses[0].order.passengerKey, 'cli_1');
-  t.deepEqual(response.responses[1].responses[0].order.passengerLocation, [37.421955, -122.084058]);
-  t.is(response.responses[1].responses[0].order.passengerDestination, '702 marshal street, redwood city'); // eslint-disable-line max-len
-  t.truthy(response.responses[1].responses[0].order.createdAt);
-  t.is(response.responses[1].responses[0].order.requestedVehicleType, 'motorbike');
-
-  // and 2. inform passenger
-  t.is(response.responses[1].responses[1].type, 'inform-passenger');
-  t.is(response.responses[1].responses[1].passengerKey, 'cli_1');
-
-  t.is(response.responses[2].type, 'text');
-  t.is(response.responses[2].message, '👌 OK!');
-  t.is(response.responses[3].type, 'redirect');
-  t.is(response.responses[3].path, 'blank-screen');
+  t.is(response.responses[1].type, 'text');
+  t.is(response.responses[1].message, '👌 OK!');
+  t.is(response.responses[2].type, 'redirect');
+  t.is(response.responses[2].path, 'passenger-request-price');
 });
