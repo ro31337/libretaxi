@@ -28,6 +28,9 @@ import appRoot from 'app-root-path';
  * @since 0.1.0
  */
 class Log extends winston.Logger {
+  /**
+   * Constructor.
+   */
   constructor() {
     dotenv.config();
     const fileTransport = new (winston.transports.File)({
