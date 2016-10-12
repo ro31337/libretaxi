@@ -32,4 +32,5 @@ export default new Set([
   'inform-passenger',
   'interrupt-prompt',
   'notify-drivers',
+  'inline-options',
 ]);
