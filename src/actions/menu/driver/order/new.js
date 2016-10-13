@@ -5,6 +5,9 @@ import InterruptPromptResponse from '../../../../responses/interrupt-prompt-resp
 import RedirectResponse from '../../../../responses/redirect-response';
 import MetricDistance from '../../../../decorators/distance/metric-distance';
 import GoogleMapsLink from '../../../../decorators/location/google-maps-link';
+import InlineOptionsResponse from '../../../../responses/inline-options-response';
+import If from '../../../../responses/if-response';
+import ZeroPrice from '../../../../conditions/zero-price';
 
 /**
  * Notify driver about new order.
@@ -25,10 +28,11 @@ export default class DriverOrderNew extends Action {
   }
 
   /**
-   * Simplified order notification:
-   * - interrupts current prompt (for CLI only)
-   * - shows order details
-   * - redirects back to `driver-index`
+   * Notify driver about order the following way:
+   * - interrupt current prompt (for CLI only)
+   * - show inline buttons (and set callbacks)
+   * - show order details
+   * - redirect back to `driver-index`
    *
    * @param {object} args - hash of parameters
    * @param {number} args.distance - distance to passenger (in km)
@@ -45,8 +49,31 @@ export default class DriverOrderNew extends Action {
       .add(new TextResponse({ message: this.t('from',
         new GoogleMapsLink(args.from).toString()) }))
       .add(new TextResponse({ message: this.t('to', args.to) }))
-      .add(new TextResponse({ message: this.t('price', args.price) }))
+      .add(new If({
+        condition: new ZeroPrice(args.price),
+        ok: new TextResponse({ message: this.t('price_not_set') }),
+        err: new TextResponse({ message: this.t('price', args.price) }),
+      }))
       .add(new TextResponse({ message: this.t('call_to_action') }))
+      .add(new If({
+        condition: new ZeroPrice(args.price),
+        ok: new InlineOptionsResponse({
+          rows: [
+            [
+              { label: this.t('set_my_price'), value: '2' },
+            ],
+          ],
+        }),
+        err: new InlineOptionsResponse({
+          rows: [
+            [
+              { label: this.t('send_my_number'), value: '1' },
+              { label: this.t('set_my_price'), value: '2' },
+              { label: this.t('offer_discount'), value: '3' },
+            ],
+          ],
+        }),
+      }))
       .add(new RedirectResponse({ path: 'driver-index' }));
   }
 }
