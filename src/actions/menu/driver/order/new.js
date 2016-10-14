@@ -38,6 +38,7 @@ export default class DriverOrderNew extends Action {
    * @param {number} args.distance - distance to passenger (in km)
    * @param {Array} args.from - passenger location, for example `[37.421955, -122.084058]`
    * @param {string} args.to - passenger destination (can contain passenger random comments)
+   * @param {string} args.passengerKey - passenger key
    * @return {CompositeResponse} - composite response
    */
   call(args) {
