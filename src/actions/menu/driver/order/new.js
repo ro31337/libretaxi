@@ -68,7 +68,17 @@ export default class DriverOrderNew extends Action {
         err: new InlineOptionsResponse({
           rows: [
             [
-              { label: this.t('send_my_number'), value: '1' },
+              {
+                label: this.t('send_my_number'),
+                value: JSON.stringify({
+                  route: 'passenger-contact-new-number',
+                  userKey: args.passengerKey,
+                  arg: {
+                    driverPhone: this.user.state.phone,
+                    distance: args.distance,
+                  },
+                }),
+              },
               { label: this.t('set_my_price'), value: '2' },
               { label: this.t('offer_discount'), value: '3' },
             ],

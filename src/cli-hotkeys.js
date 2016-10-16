@@ -17,7 +17,7 @@ class CliHotkeys {
       // handle only if Ctrl is pressed
       if (key && key.ctrl) {
         const callback = this.map[key.name];
-        if (callback) callback();
+        if (callback) callback.call(); // value type is InlineButtonCallback, we need to `.call()`
       }
     });
   }

@@ -19,6 +19,7 @@ import DriverMute from './actions/menu/driver/mute';
 import DriverUnmute from './actions/menu/driver/unmute';
 import DriverOrderNew from './actions/menu/driver/order/new';
 import PassengerRequestPrice from './actions/menu/passenger/request-price';
+import PassengerContactNewNumber from './actions/menu/passenger/contact/new-number';
 
 /**
  * @typedef Routes
@@ -63,6 +64,7 @@ const routes = {
   'driver-unmute': DriverUnmute,
   'driver-order-new': DriverOrderNew,
   'passenger-request-price': PassengerRequestPrice,
+  'passenger-contact-new-number': PassengerContactNewNumber,
 };
 
 // Adding more routes? update `action-factory-test.js`

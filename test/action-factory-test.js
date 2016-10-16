@@ -29,6 +29,7 @@ test('should return routes by route', t => {
   const a20 = ActionFactory.fromRoute({ route: 'driver-mute', user });
   const a21 = ActionFactory.fromRoute({ route: 'driver-unmute', user });
   const a22 = ActionFactory.fromRoute({ route: 'passenger-request-price', user });
+  const a23 = ActionFactory.fromRoute({ route: 'passenger-contact-new-number', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -52,6 +53,7 @@ test('should return routes by route', t => {
   t.is(a20.type, 'driver-mute');
   t.is(a21.type, 'driver-unmute');
   t.is(a22.type, 'passenger-request-price');
+  t.is(a23.type, 'passenger-contact-new-number');
 });
 
 test('should have default route', t => {

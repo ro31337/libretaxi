@@ -2,10 +2,12 @@
 import ResponseHandler from '../response-handler';
 import objectAssign from 'object-assign';
 import hotkeys from '../../cli-hotkeys';
+import InlineButtonCallback from '../common/inline-button-callback';
 
 /**
  * Inline options response cli handler.
- * Prints {@link InlineOptionsResponse} buttons and their hotkeys to console.
+ * Print {@link InlineOptionsResponse} buttons and their hotkeys to console, set callbacks
+ * for these hotkeys.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {ResponseHandler}
@@ -20,7 +22,10 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
 
   /**
    * Handler entry point.
-   * Prints the list of options and their corresponding hotkeys to console.
+   * Print the list of options and their corresponding hotkeys to console,
+   * set callbacks for each hotkey. When hotkey is pressed, new "call action" message is
+   * posted to the queue. Parameters for `queue.create` call are just parsed button value
+   * (from stringified json). See {@link DriverOrderNew} for example.
    */
   call(onResult) {
     hotkeys.clearAll();
@@ -32,7 +37,8 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
       for (const o of row) {
         const key = 'QWERTYUIOP'[i];
         ss.push(`[${o.label}] (^${key})`);
-        hotkeys.set(key, () => console.log(`You pressed ^${key}, value is ${o.value}`));
+        hotkeys.set(key, new InlineButtonCallback({ label: o.label, value: o.value,
+          expectedMenuLocation: 'order-submitted' }));
         i++;
       }
     }
