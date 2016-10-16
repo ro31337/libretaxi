@@ -157,7 +157,14 @@ test.cb('should notify driver when matched', t => {
   const success = () => {
     t.truthy(handler.queue.create.calledWith({
       userKey: 'cli_5',
-      arg: { orderKey: 123, distance: 1, from: [1, 2], to: 'foobar', price: 50 },
+      arg: {
+        orderKey: 123,
+        distance: 1,
+        from: [1, 2],
+        to: 'foobar',
+        price: 50,
+        passengerKey: 'cli_123',
+      },
       route: 'driver-order-new',
     }));
     t.end();
@@ -171,6 +178,7 @@ test.cb('should notify driver when matched', t => {
       passengerLocation: [1, 2],
       passengerDestination: 'foobar',
       price: 50,
+      passengerKey: 'cli_123',
     },
   };
   handler.queue = { create: ss.sinon.spy() };

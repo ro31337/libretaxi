@@ -89,10 +89,12 @@
 	"driver-order-new.price_not_set_desc": "We show this message to drivers on new order when passenger doesn't know the price. In this case drivers must set their price.",
 	"metric-distance.km": "%s km",
 	"metric-distance.km_desc": "Metric distance in kilometers. For example: \"10 km\" is 10 kilometers.",
-	"passenger-request-price.set_price" : "In this app passenger sets the price 😉 Give us your price (in local currency). How much are you willing to pay? (or type \"0\" [zero] if you don't know)",
-	"passenger-request-price.set_price_desc" : "Here we ask passenger to set the price for the order. In our app passengers set the price for orders.",
-	"passenger-request-price.should_be_numeric" : "Oops, price should be the numeric value (and in local currency)! For example: \"50\". Please try again!",
-	"passenger-request-price.should_be_numeric_desc" : "We show this error text to passenger when s/he entered the price for the order, but the value is not numeric.",
+	"passenger-request-price.set_price": "In this app passenger sets the price 😉 Give us your price (in local currency). How much are you willing to pay? (or type \"0\" [zero] if you don't know)",
+	"passenger-request-price.set_price_desc": "Here we ask passenger to set the price for the order. In our app passengers set the price for orders.",
+	"passenger-request-price.should_be_numeric": "Oops, price should be the numeric value (and in local currency)! For example: \"50\". Please try again!",
+	"passenger-request-price.should_be_numeric_desc": "We show this error text to passenger when s/he entered the price for the order, but the value is not numeric.",
+	"passenger-contact-new-number.message": "🔔 Driver accepted your price! Call the driver at {{phone}}. Distance to this driver is ~{{distance}}. Once you've gotten connected with a driver, please press on the button below so that other drivers will know that you've found a ride.",
+	"passenger-contact-new-number.message_desc": "Message we send to passengers when driver accepted their order price.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

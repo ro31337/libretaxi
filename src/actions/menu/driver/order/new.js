@@ -38,6 +38,7 @@ export default class DriverOrderNew extends Action {
    * @param {number} args.distance - distance to passenger (in km)
    * @param {Array} args.from - passenger location, for example `[37.421955, -122.084058]`
    * @param {string} args.to - passenger destination (can contain passenger random comments)
+   * @param {string} args.passengerKey - passenger key
    * @return {CompositeResponse} - composite response
    */
   call(args) {
@@ -67,7 +68,17 @@ export default class DriverOrderNew extends Action {
         err: new InlineOptionsResponse({
           rows: [
             [
-              { label: this.t('send_my_number'), value: '1' },
+              {
+                label: this.t('send_my_number'),
+                value: JSON.stringify({
+                  route: 'passenger-contact-new-number',
+                  userKey: args.passengerKey,
+                  arg: {
+                    driverPhone: this.user.state.phone,
+                    distance: args.distance,
+                  },
+                }),
+              },
               { label: this.t('set_my_price'), value: '2' },
               { label: this.t('offer_discount'), value: '3' },
             ],

@@ -11,7 +11,11 @@ checkNotNullTest('response', (args) => { new InlineOptionsResponseHandler(args);
 
 const response = new InlineOptionsResponse({
   rows: [
-    [{ label: 'One', value: '1' }, { label: 'Two', value: '2' }, { label: 'Three', value: '3' }],
+    [
+      { label: 'One', value: '1' },
+      { label: 'Two', value: '2' },
+      { label: 'Three', value: '3' },
+    ],
   ],
 });
 
@@ -45,6 +49,32 @@ test.cb('should clear all hotkeys and set hotkeys', t => {
     t.truthy(hotkeys.set.calledWith('W'));
     t.truthy(hotkeys.set.calledWith('E'));
     sinon.assert.callOrder(hotkeys.clearAll, hotkeys.set);
+    console.log = tmp;
+    t.end();
+  });
+});
+
+test.cb('should set correct callbacks for hotkeys', t => {
+  const h = new InlineOptionsResponseHandler({ response });
+  const tmp = console.log;
+  const hh = {};
+  console.log = ss.sinon.spy();
+  hotkeys.clearAll = ss.sinon.spy();
+  hotkeys.set = (k, v) => { hh[k] = v; };
+
+  h.call(() => {
+    t.truthy(hh.Q.type, 'inline-button-callback');
+    t.truthy(hh.W.type, 'inline-button-callback');
+    t.truthy(hh.E.type, 'inline-button-callback');
+    t.is(hh.Q.label, 'One');
+    t.is(hh.W.label, 'Two');
+    t.is(hh.E.label, 'Three');
+    t.is(hh.Q.value, '1');
+    t.is(hh.W.value, '2');
+    t.is(hh.E.value, '3');
+    t.is(hh.Q.expectedMenuLocation, 'order-submitted');
+    t.is(hh.W.expectedMenuLocation, 'order-submitted');
+    t.is(hh.E.expectedMenuLocation, 'order-submitted');
     console.log = tmp;
     t.end();
   });
