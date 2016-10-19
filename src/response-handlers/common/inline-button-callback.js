@@ -26,9 +26,9 @@ export default class InlineButtonCallback extends
    * - {string} userKey - action will be executed against this user
    * - {object} arg - parameter(s) to pass to the action
    * - {string} route - action route
-   * @param {string} options.expectedMenuLocation - if user location is different from expected, message
-   * won't be be posted to the queue. Useful when you don't want to interrupt users who are busy
-   * (for example, in settings).
+   * @param {string} options.expectedMenuLocation - if user location is different from expected,
+   * message won't be be posted to the queue. Useful when you don't want to interrupt users who
+   * are busy (for example, in settings).
    * @param {object} options.queue - (optinal) queue dependency injection, useful for tests.
    */
   constructor(options) {
