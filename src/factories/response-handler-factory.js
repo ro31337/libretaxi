@@ -18,6 +18,7 @@ import InformPassengerResponseHandler from '../response-handlers/submit-order/in
 import NotifyDriversResponseHandler from '../response-handlers/submit-order/notify-drivers-response-handler';
 import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
 import InlineOptionsResponseHandler from '../response-handlers/cli/inline-options-response-handler';
+import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -42,6 +43,7 @@ const map = {
     'interrupt-prompt': InterruptPromptResponseHandler,
     'notify-drivers': NotifyDriversResponseHandler,
     'inline-options': InlineOptionsResponseHandler,
+    'call-action': CallActionResponseHandler,
   },
   telegram: {
     text: NotImplementedResponseHandler,
@@ -62,6 +64,7 @@ const map = {
     'interrupt-prompt': EmptyResponseHandler,
     'notify-drivers': NotifyDriversResponseHandler,
     'inline-options': NotImplementedResponseHandler,
+    'call-action': CallActionResponseHandler,
   },
 };
 
