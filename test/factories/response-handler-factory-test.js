@@ -21,6 +21,7 @@ import InformPassengerResponse from '../../src/responses/submit-order/inform-pas
 import InterruptPromptResponse from '../../src/responses/interrupt-prompt-response';
 import NotifyDriversResponse from '../../src/responses/submit-order/notify-drivers-response';
 import InlineOptionsResponse from '../../src/responses/inline-options-response';
+import CallActionResponse from '../../src/responses/call-action-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -49,6 +50,7 @@ test('should return correct types for responses for cli platform', t => {
   const interruptPromptResponse = new InterruptPromptResponse();
   const notifyDriversResponse = new NotifyDriversResponse({ passengerKey: 'cli_1' });
   const inlineOptionsResponse = new InlineOptionsResponse({ rows: [] });
+  const callActionResponse = new CallActionResponse({ userKey: 'cli_1', route: 'default' });
 
   const user = { platformType: 'cli' };
 
@@ -71,6 +73,7 @@ test('should return correct types for responses for cli platform', t => {
   const h17 = HandlerFactory.getHandler({ response: interruptPromptResponse, user });
   const h18 = HandlerFactory.getHandler({ response: notifyDriversResponse, user });
   const h19 = HandlerFactory.getHandler({ response: inlineOptionsResponse, user });
+  const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -91,6 +94,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h17.type, 'interrupt-prompt-response-handler');
   t.is(h18.type, 'notify-drivers-response-handler');
   t.is(h19.type, 'inline-options-response-handler');
+  t.is(h20.type, 'call-action-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -111,6 +115,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h17.user);
   t.truthy(h18.user);
   t.truthy(h19.user);
+  t.truthy(h20.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -140,6 +145,7 @@ test('should return correct types for responses for telegram platform', t => {
   const interruptPromptResponse = new InterruptPromptResponse();
   const notifyDriversResponse = new NotifyDriversResponse({ passengerKey: 'cli_1' });
   const inlineOptionsResponse = new InlineOptionsResponse({ rows: [] });
+  const callActionResponse = new CallActionResponse({ userKey: 'cli_1', route: 'default' });
 
   const user = { platformType: 'telegram' };
 
@@ -162,6 +168,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h17 = HandlerFactory.getHandler({ response: interruptPromptResponse, user });
   const h18 = HandlerFactory.getHandler({ response: notifyDriversResponse, user });
   const h19 = HandlerFactory.getHandler({ response: inlineOptionsResponse, user });
+  const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
 
   t.is(h1.type, 'not-implemented-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
@@ -182,6 +189,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h17.type, 'empty-response-handler');
   t.is(h18.type, 'notify-drivers-response-handler');
   t.is(h19.type, 'not-implemented-response-handler');
+  t.is(h20.type, 'call-action-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -202,4 +210,5 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h17.user);
   t.truthy(h18.user);
   t.truthy(h19.user);
+  t.truthy(h20.user);
 });

@@ -33,4 +33,5 @@ export default new Set([
   'interrupt-prompt',
   'notify-drivers',
   'inline-options',
+  'call-action',
 ]);

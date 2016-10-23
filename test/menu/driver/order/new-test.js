@@ -1,4 +1,4 @@
-/* eslint-disable no-new, no-unused-vars */
+/* eslint-disable no-new, no-unused-vars, max-len */
 import test from 'ava';
 import routes from '../../../../src/routes'; // to aviod circular dependencies
 import DriverOrderNew from '../../../../src/actions/menu/driver/order/new';
@@ -45,7 +45,7 @@ test('should return composite response on call', t => {
   t.is(response.responses[7].err.type, 'inline-options');
   t.is(response.responses[7].err.rows[0][0].label, i18n.__('driver-order-new.send_my_number'));
   t.is(response.responses[7].err.rows[0][0].value,
-    '{"route":"passenger-contact-new-number","userKey":"cli_2","arg":{"driverPhone":"(555) 123-11-22","distance":10}}'); // eslint-disable-line max-len
+    '{"type":"call-action","route":"passenger-contact-new-number","kicker":"order-submitted","userKey":"cli_2","arg":{"driverPhone":"(555) 123-11-22","distance":10}}');
   t.is(response.responses[7].err.rows[0][1].label, i18n.__('driver-order-new.set_my_price'));
   t.is(response.responses[7].err.rows[0][1].value, '2');
   t.is(response.responses[7].err.rows[0][2].label, i18n.__('driver-order-new.offer_discount'));
