@@ -37,8 +37,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
       for (const o of row) {
         const key = 'QWERTYUIOP'[i];
         ss.push(`[${o.label}] (^${key})`);
-        hotkeys.set(key, new InlineButtonCallback({ label: o.label, value: o.value,
-          expectedMenuLocation: 'order-submitted' }));
+        hotkeys.set(key, new InlineButtonCallback({ value: o.value }));
         i++;
       }
     }

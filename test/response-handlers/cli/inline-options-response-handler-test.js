@@ -66,15 +66,9 @@ test.cb('should set correct callbacks for hotkeys', t => {
     t.truthy(hh.Q.type, 'inline-button-callback');
     t.truthy(hh.W.type, 'inline-button-callback');
     t.truthy(hh.E.type, 'inline-button-callback');
-    t.is(hh.Q.label, 'One');
-    t.is(hh.W.label, 'Two');
-    t.is(hh.E.label, 'Three');
     t.is(hh.Q.value, '1');
     t.is(hh.W.value, '2');
     t.is(hh.E.value, '3');
-    t.is(hh.Q.expectedMenuLocation, 'order-submitted');
-    t.is(hh.W.expectedMenuLocation, 'order-submitted');
-    t.is(hh.E.expectedMenuLocation, 'order-submitted');
     console.log = tmp;
     t.end();
   });
