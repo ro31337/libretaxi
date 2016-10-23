@@ -8,6 +8,7 @@ import GoogleMapsLink from '../../../../decorators/location/google-maps-link';
 import InlineOptionsResponse from '../../../../responses/inline-options-response';
 import If from '../../../../responses/if-response';
 import ZeroPrice from '../../../../conditions/zero-price';
+import sendMyNumber from './buttons/send-my-number';
 
 /**
  * Notify driver about new order.
@@ -70,14 +71,7 @@ export default class DriverOrderNew extends Action {
             [
               {
                 label: this.t('send_my_number'),
-                value: JSON.stringify({
-                  route: 'passenger-contact-new-number',
-                  userKey: args.passengerKey,
-                  arg: {
-                    driverPhone: this.user.state.phone,
-                    distance: args.distance,
-                  },
-                }),
+                value: sendMyNumber(args, this.user),
               },
               { label: this.t('set_my_price'), value: '2' },
               { label: this.t('offer_discount'), value: '3' },
