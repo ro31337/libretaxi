@@ -27,8 +27,8 @@ export default class SaveOrderResponse extends
    * @param {Array} order.passengerLocation - passenger location,
    * for example: `[37.421955, -122.084058]`
    * @param {string} order.passengerDestination - passenger destination
-   * @param {object} order.createdAt - timestamp of when order has been created
    * @param {string|number} order.price - order price set by the passenger
+   * @param {object} order.createdAt - timestamp of when order has been created
    * (time since the Unix epoch, in milliseconds)
    * @see https://www.firebase.com/docs/web/api/servervalue/timestamp.html
    * @example
