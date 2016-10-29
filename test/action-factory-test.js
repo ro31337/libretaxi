@@ -31,6 +31,7 @@ test('should return routes by route', t => {
   const a22 = ActionFactory.fromRoute({ route: 'passenger-request-price', user });
   const a23 = ActionFactory.fromRoute({ route: 'passenger-contact-new-number', user });
   const a24 = ActionFactory.fromRoute({ route: 'save-and-redirect', user });
+  const a25 = ActionFactory.fromRoute({ route: 'passenger-contact-driver-price', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -56,6 +57,7 @@ test('should return routes by route', t => {
   t.is(a22.type, 'passenger-request-price');
   t.is(a23.type, 'passenger-contact-new-number');
   t.is(a24.type, 'save-and-redirect');
+  t.is(a25.type, 'passenger-contact-driver-price');
 });
 
 test('should have default route', t => {

@@ -23,7 +23,7 @@
     "firebase-server": "^0.6.0",
     "geofire": "^4.1.1",
     "i18n": "^0.8.3",
-    "inquirer": "git+https://github.com/ro31337/Inquirer.js.git#4d36837",
+    "inquirer": "git+https://github.com/ro31337/Inquirer.js.git#a041b13",
     "kue": "^0.11.1",
     "mixwith": "^0.1.1",
     "moment": "^2.14.1",

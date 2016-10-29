@@ -27,7 +27,6 @@ export default class InterruptPromptResponseHandler extends ResponseHandler {
    * Interrupts input for Inquirer.js library. Calls `onResult` when done.
    */
   call(onResult) {
-    this.inquirer.interruptPrompt();
-    onResult();
+    this.inquirer.interruptPrompt(onResult);
   }
 }

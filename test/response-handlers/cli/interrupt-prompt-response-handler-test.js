@@ -9,7 +9,7 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test.cb('calls interrupt prompt api on call', t => {
+test('calls interrupt prompt api on call', t => {
   // arrange
   t.plan(1);
   const spy = ss.sinon.spy();
@@ -20,9 +20,6 @@ test.cb('calls interrupt prompt api on call', t => {
     },
   });
   // act
-  h.call(() => {
-    // assert
-    t.truthy(spy.calledWith());
-    t.end();
-  });
+  h.call(31337);
+  t.truthy(spy.calledWith(31337));
 });
