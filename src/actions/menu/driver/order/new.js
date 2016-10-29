@@ -9,6 +9,7 @@ import InlineOptionsResponse from '../../../../responses/inline-options-response
 import If from '../../../../responses/if-response';
 import ZeroPrice from '../../../../conditions/zero-price';
 import sendMyNumber from './buttons/send-my-number';
+import setMyPrice from './buttons/set-my-price';
 
 /**
  * Notify driver about new order.
@@ -62,23 +63,21 @@ export default class DriverOrderNew extends Action {
         ok: new InlineOptionsResponse({
           rows: [
             [
-              { label: this.t('set_my_price'), value: '2' },
+              { label: this.t('set_my_price'), value: setMyPrice(args, this.user) },
             ],
           ],
         }),
         err: new InlineOptionsResponse({
           rows: [
             [
-              {
-                label: this.t('send_my_number'),
-                value: sendMyNumber(args, this.user),
-              },
-              { label: this.t('set_my_price'), value: '2' },
+              { label: this.t('send_my_number'), value: sendMyNumber(args, this.user) },
+              { label: this.t('set_my_price'), value: setMyPrice(args, this.user) },
               { label: this.t('offer_discount'), value: '3' },
             ],
           ],
         }),
       }))
       .add(new RedirectResponse({ path: 'driver-index' }));
+      // { label: this.t('offer_discount'), value: '3' },
   }
 }
