@@ -10,6 +10,7 @@ import If from '../../../../responses/if-response';
 import ZeroPrice from '../../../../conditions/zero-price';
 import sendMyNumber from './buttons/send-my-number';
 import setMyPrice from './buttons/set-my-price';
+import offerDiscount from './buttons/offer-discount';
 
 /**
  * Notify driver about new order.
@@ -72,7 +73,7 @@ export default class DriverOrderNew extends Action {
             [
               { label: this.t('send_my_number'), value: sendMyNumber(args, this.user) },
               { label: this.t('set_my_price'), value: setMyPrice(args, this.user) },
-              { label: this.t('offer_discount'), value: '3' },
+              { label: this.t('offer_discount'), value: offerDiscount(args, this.user) },
             ],
           ],
         }),
