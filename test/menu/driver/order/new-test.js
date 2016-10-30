@@ -18,6 +18,7 @@ test('should return composite response on call', t => {
   const response = action.call(args);
   const button1 = '{"type":"call-action","route":"passenger-contact-new-number","kicker":"order-submitted","userKey":"cli_2","arg":{"driverPhone":"(555) 123-11-22","distance":10}}';
   const button2 = '{"type":"call-action","route":"save-and-redirect","kicker":"driver-index","userKey":"cli_1","arg":{"passengerKey":"cli_2","distance":10,"path":"driver-order-set-price"}}';
+  const button3 = '{"type":"call-action","route":"save-and-redirect","kicker":"driver-index","userKey":"cli_1","arg":{"passengerKey":"cli_2","distance":10,"path":"driver-order-offer-discount"}}';
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'interrupt-prompt');
   t.is(response.responses[1].type, 'text');
@@ -50,7 +51,7 @@ test('should return composite response on call', t => {
   t.is(response.responses[7].err.rows[0][1].label, i18n.__('driver-order-new.set_my_price'));
   t.is(response.responses[7].err.rows[0][1].value, button2);
   t.is(response.responses[7].err.rows[0][2].label, i18n.__('driver-order-new.offer_discount'));
-  t.is(response.responses[7].err.rows[0][2].value, '3');
+  t.is(response.responses[7].err.rows[0][2].value, button3);
   t.is(response.responses[8].type, 'redirect');
   t.is(response.responses[8].path, 'driver-index');
 });
