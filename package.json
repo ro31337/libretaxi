@@ -27,6 +27,7 @@
     "kue": "^0.11.1",
     "mixwith": "^0.1.1",
     "moment": "^2.14.1",
+    "node-telegram-bot-api": "^0.24.0",
     "node-uuid": "^1.4.7",
     "object-assign": "^4.1.0",
     "oboe": "^2.1.2",
