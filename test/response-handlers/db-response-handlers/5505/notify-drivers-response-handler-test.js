@@ -7,14 +7,10 @@ import FirebaseServer from 'firebase-server';
 import firebaseDB from '../../../../src/firebase-db';
 import { ss } from '../../../spec-support';
 import sinon from 'sinon';
-import User from '../../../../src/user';
-import UserFactory from '../../../../src/factories/user-factory';
+import { loadUser } from '../../../../src/factories/user-factory';
 
 let server = null;
 const response = new NotifyDriversResponse({ passengerKey: 'cli_1' });
-const load = (userKey) => { // eslint-disable-line arrow-body-style
-  return UserFactory.fromUserKey(userKey).load();
-};
 
 test.before(() => {
   server = new FirebaseServer(5505, 'localhost.firebaseio.test', {
@@ -66,7 +62,7 @@ test('can be constructed with default parameters', t => {
 
 test.cb('should load order and query drivers when called', t => {
   t.plan(2);
-  new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
+  loadUser('cli_1').then((user) => {
     const assert = () => {
       t.is(handler.order.state.foo, 'bar'); // eslint-disable-line no-use-before-define
       t.truthy(handler.queryDrivers.calledWith());  // eslint-disable-line no-use-before-define
@@ -114,7 +110,7 @@ test.cb('should not notify driver when userType is not \'driver\'', t => {
   const fail = (reason) => { t.is(reason, 'userType is not \'driver\''); t.end(); };
   handler.order = { state: { status: 'new' } };
 
-  load('cli_1').then((user) => {
+  loadUser('cli_1').then((user) => {
     handler.notifyDriver('cli_1', 1, fail, success);
   });
 });
@@ -125,7 +121,7 @@ test.cb('should not notify driver when driver is muted', t => {
   const fail = (reason) => { t.is(reason, 'driver is muted'); t.end(); };
   handler.order = { state: { status: 'new' } };
 
-  load('cli_2').then((user) => {
+  loadUser('cli_2').then((user) => {
     handler.notifyDriver('cli_2', 1, fail, success);
   });
 });
@@ -136,7 +132,7 @@ test.cb('should not notify driver when vehicle types don\'t match', t => {
   const fail = (reason) => { t.is(reason, 'vehicle types don\'t match'); t.end(); };
   handler.order = { state: { status: 'new', requestedVehicleType: 'car' } };
 
-  load('cli_3').then((user) => {
+  loadUser('cli_3').then((user) => {
     handler.notifyDriver('cli_3', 1, fail, success);
   });
 });
@@ -147,7 +143,7 @@ test.cb('should not notify driver when driver is busy', t => {
   const fail = (reason) => { t.is(reason, 'driver is busy'); t.end(); };
   handler.order = { state: { status: 'new', requestedVehicleType: 'motorbike' } };
 
-  load('cli_4').then((user) => {
+  loadUser('cli_4').then((user) => {
     handler.notifyDriver('cli_4', 1, fail, success);
   });
 });
@@ -183,7 +179,7 @@ test.cb('should notify driver when matched', t => {
   };
   handler.queue = { create: ss.sinon.spy() };
 
-  load('cli_5').then((user) => {
+  loadUser('cli_5').then((user) => {
     handler.notifyDriver('cli_5', 1, fail, success);
   });
 });

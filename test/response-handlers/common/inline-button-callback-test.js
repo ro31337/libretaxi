@@ -2,8 +2,7 @@
 import test from 'ava';
 import InlineButtonCallback from '../../../src/response-handlers/common/inline-button-callback'; // eslint-disable-line max-len
 import checkNotNullTest from '../../helpers/check-not-null.js';
-import { ss } from '../../spec-support';
-import UserFactory from '../../../src/factories/user-factory';
+import { mockLoadUser } from '../../../src/factories/user-factory';
 import ResponseHandlerFactory from '../../../src/factories/response-handler-factory';
 
 checkNotNullTest('value', (args) => { new InlineButtonCallback(args); });
@@ -22,12 +21,7 @@ test.cb('should execute handler on call', t => {
     f({}); // provide empty user as argument
   };
 
-  // stub UserFactory and return pre-defined user object
-  const myUserFactory = {};
-  const fromUserKey = ss.sinon.stub().returns(myUserFactory);
-  const load = ss.sinon.stub().returns(myUserFactory);
-  Object.assign(myUserFactory, { fromUserKey, load, then });
-  UserFactory.fromUserKey = fromUserKey;
+  mockLoadUser(() => { return { then }; });
 
   // stub ResponseHandlerFactory
   ResponseHandlerFactory.getHandler = () => { return { call: () => t.end() }; };

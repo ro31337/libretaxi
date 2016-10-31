@@ -1,5 +1,5 @@
 import ResponseHandler from './response-handler';
-import UserFactory from '../factories/user-factory';
+import { loadUser } from '../factories/user-factory';
 import CaQueue from '../queue/ca-queue';
 
 /**
@@ -29,7 +29,7 @@ export default class CallActionResponseHandler extends ResponseHandler {
    */
   call(onResult) {
     const { userKey, arg, route, kicker } = this.response;
-    UserFactory.fromUserKey(userKey).load().then((user) => {
+    loadUser(userKey).then((user) => {
       if (!kicker || user.state.menuLocation === kicker) {
         this.queue.create({ userKey, arg, route });
       }
