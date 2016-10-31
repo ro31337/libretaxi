@@ -2,7 +2,7 @@ import ResponseHandler from '../response-handler';
 import GeoFire from 'geofire';
 import firebaseDB from '../../firebase-db';
 import Order from '../../order';
-import UserFactory from '../../factories/user-factory';
+import { loadUser } from '../../factories/user-factory';
 import log from '../../log';
 import CaQueue from '../../queue/ca-queue';
 
@@ -47,7 +47,7 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
     this.ensureInitialized();
     const r = this.response;
 
-    UserFactory.fromUserKey(r.passengerKey).load().then((passenger) => {
+    loadUser(r.passengerKey).then((passenger) => {
       const orderKey = passenger.state.currentOrderKey;
       new Order({ orderKey }).load().then((order) => {
         this.order = order;
@@ -109,7 +109,7 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
       return;
     }
 
-    UserFactory.fromUserKey(driverKey).load().then((user) => {
+    loadUser(driverKey).then((user) => {
       if (user.state.userType !== 'driver') {
         fail('userType is not \'driver\'');
         return;

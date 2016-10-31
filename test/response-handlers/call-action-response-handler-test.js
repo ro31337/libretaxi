@@ -1,7 +1,6 @@
 import test from 'ava';
 import CallActionResponseHandler from '../../src/response-handlers/call-action-response-handler';
-import { ss } from '../spec-support';
-import UserFactory from '../../src/factories/user-factory';
+import { mockLoadUser } from '../../src/factories/user-factory';
 import CallActionResponse from '../../src/responses/call-action-response';
 
 test('can be constructed with default parameters', t => {
@@ -33,12 +32,7 @@ test.cb('should create message and post to the queue', t => {
     f(user);
   };
 
-  // stub UserFactory and return pre-defined user object
-  const myUserFactory = {};
-  const fromUserKey = ss.sinon.stub().returns(myUserFactory);
-  const load = ss.sinon.stub().returns(myUserFactory);
-  Object.assign(myUserFactory, { fromUserKey, load, then });
-  UserFactory.fromUserKey = fromUserKey;
+  mockLoadUser(() => { return { then }; }); // eslint-disable-line arrow-body-style
 
   h.call(() => { t.end(); });
 });
