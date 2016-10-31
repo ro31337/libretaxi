@@ -3,7 +3,7 @@ import log from './log';
 import './init';
 import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
-import UserFactory from './factories/user-factory';
+import { loadUser } from './factories/user-factory';
 import CliCaQueue from './queue/cli-ca-queue';
 
 log.debug('Application started');
@@ -19,7 +19,7 @@ if (process.argv.length !== 3) {
 const instanceUserKey = process.argv[2];
 const queue = new CliCaQueue({ userKey: instanceUserKey });
 
-UserFactory.fromUserKey(instanceUserKey).load().then((user) => {
+loadUser(instanceUserKey).then((user) => {
   const userKey = user.userKey;
   queue.create({ userKey, route: user.state.menuLocation || 'default' });
 })
@@ -56,7 +56,7 @@ const callAction = (options) => {
 
 queue.process((job, done) => {
   const data = job.data;
-  UserFactory.fromUserKey(data.userKey).load().then((user) => {
+  loadUser(data.userKey).then((user) => {
     callAction({
       user,
       arg: data.arg,

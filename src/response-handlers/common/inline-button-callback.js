@@ -1,6 +1,6 @@
 import { mix } from 'mixwith';
 import checkNotNull from '../../validations/check-not-null.js';
-import UserFactory from '../../factories/user-factory';
+import { loadUser } from '../../factories/user-factory';
 import ResponseHandlerFactory from '../../factories/response-handler-factory';
 
 /**
@@ -32,7 +32,7 @@ export default class InlineButtonCallback extends mix(class {}).with(checkNotNul
    */
   call() {
     const response = JSON.parse(this.value);
-    UserFactory.fromUserKey(response.userKey).load().then((user) => {
+    loadUser(response.userKey).then((user) => {
       const handler = ResponseHandlerFactory.getHandler({ response, user });
       handler.call(() => {});
     });
