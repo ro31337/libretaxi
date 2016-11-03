@@ -170,7 +170,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h19 = HandlerFactory.getHandler({ response: inlineOptionsResponse, user });
   const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
 
-  t.is(h1.type, 'not-implemented-response-handler');
+  t.is(h1.type, 'telegram-text-response-handler');
   t.is(h2.type, 'not-implemented-response-handler');
   t.is(h3.type, 'user-state-response-handler');
   t.is(h4.type, 'user-state-response-handler');
@@ -211,4 +211,14 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h18.user);
   t.truthy(h19.user);
   t.truthy(h20.user);
+});
+
+test('should set optional api property platform', t => {
+  const user = { platformType: 'telegram' };
+  const api = { foo: 'bar' };
+  const emptyResponse = new EmptyResponse();
+  const h = HandlerFactory.getHandler({ response: emptyResponse, user, api });
+  t.is(h.type, 'empty-response-handler');
+  t.truthy(h.user);
+  t.deepEqual(h.api, { foo: 'bar' });
 });

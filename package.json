@@ -27,6 +27,7 @@
     "kue": "^0.11.1",
     "mixwith": "^0.1.1",
     "moment": "^2.14.1",
+    "node-telegram-bot-api": "^0.24.0",
     "node-uuid": "^1.4.7",
     "object-assign": "^4.1.0",
     "oboe": "^2.1.2",
@@ -39,7 +40,9 @@
     "test": "npm run lint && npm run ava ./test/before-all.js && npm run ava",
     "lint": "eslint src test",
     "ava": "TEST_ENVIRONMENT=true ava --require babel-register",
-    "start": "babel-node ./src/app.js",
+    "cli": "babel-node ./src/app-cli.js",
+    "telegram": "babel-node ./src/app-telegram.js",
+    "start": "echo ERR: Type \\\"npm run cli [params]\\\" or \\\"npm run telegram [params]\\\"",
     "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json"
   },
   "repository": {

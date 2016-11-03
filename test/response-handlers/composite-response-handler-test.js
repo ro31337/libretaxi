@@ -10,6 +10,12 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
+test('can be constructed with default parameters and api', t => {
+  const h = new CompositeResponseHandler({ response: {}, user: {}, api: { foo: 'bar' } });
+  t.is(h.type, 'composite-response-handler');
+  t.deepEqual(h.api, { foo: 'bar' });
+});
+
 test.cb('executes all response handlers', t => {
   let result = '';
   const user = { platformType: 'cli' };

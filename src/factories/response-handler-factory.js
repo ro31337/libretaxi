@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import TextResponseHandler from '../response-handlers/cli/text-response-handler';
+import CliTextResponseHandler from '../response-handlers/cli/text-response-handler';
 import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
@@ -19,13 +19,14 @@ import NotifyDriversResponseHandler from '../response-handlers/submit-order/noti
 import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
 import InlineOptionsResponseHandler from '../response-handlers/cli/inline-options-response-handler';
 import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
+import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
 
 const map = {
   cli: {
-    text: TextResponseHandler,
+    text: CliTextResponseHandler,
     options: OptionsResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
@@ -46,7 +47,7 @@ const map = {
     'call-action': CallActionResponseHandler,
   },
   telegram: {
-    text: NotImplementedResponseHandler,
+    text: TelegramTextResponseHandler,
     options: NotImplementedResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
@@ -86,17 +87,19 @@ export default class ResponseHandlerFactory {
    *
    * @author Roman Pushkin (roman.pushkin@gmail.com)
    * @date 2016-07-15
-   * @param {Object} options - hash of options.
+   * @param {object} options - hash of options.
    * @param {Response} options.response - response instance.
    * @param {User} options.user - user instance.
+   * @param {object} options.api - (optional) transport library api.
    */
   static getHandler(options) {
     const platformType = options.user.platformType;
     const response = options.response;
     const user = options.user;
+    const api = options.api;
     const t = response.type.toLowerCase();
     const klass = map[platformType][t];
 
-    return new klass({ response, user }); // eslint-disable-line new-cap
+    return new klass({ response, user, api }); // eslint-disable-line new-cap
   }
 }

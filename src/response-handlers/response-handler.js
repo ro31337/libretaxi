@@ -18,7 +18,7 @@ export default class ResponseHandler extends mix(class {})
    *
    * @param {Response} options.response - instance of {@link Response}, related
    * to this handler.
-   * @param {sting} options.type - unique type of response handler. For example:
+   * @param {string} options.type - unique type of response handler. For example:
    * `cli-options-response-handler`. Used in unit testing.
    */
   constructor(options) {
@@ -26,6 +26,7 @@ export default class ResponseHandler extends mix(class {})
     this.response = options.response;
     this.type = options.type;
     this.user = options.user;
+    this.api = options.api;
   }
 
   /**
