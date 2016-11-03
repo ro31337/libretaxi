@@ -17,7 +17,7 @@ export default (options) => { // eslint-disable-line
 
   const action = ActionFactory.fromRoute({ route, user });
   const response = action.call(options.arg);
-  const handler = ResponseHandlerFactory.getHandler({ response, user });
+  const handler = ResponseHandlerFactory.getHandler({ response, user, api: options.api });
 
   const postNextMessage = (arg) => {
     const userKey = user.userKey;

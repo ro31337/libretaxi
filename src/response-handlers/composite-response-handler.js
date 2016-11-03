@@ -20,8 +20,9 @@ export default class CompositeResponseHandler extends
   /**
    * Constructor.
    *
-   * @param {Object} response - {@link UserStateResponse} instance.
-   * @param {Object} user - {@link User} instance.
+   * @param {object} response - {@link UserStateResponse} instance.
+   * @param {object} user - {@link User} instance.
+   * @param {object} api - (optional) transport library api.
    */
   constructor(options) {
     super(objectAssign({ type: 'composite-response-handler' }, options));
@@ -40,8 +41,9 @@ export default class CompositeResponseHandler extends
     }
 
     const user = this.user;
+    const api = this.api;
     const response = this.response.responses[i];
-    const handler = ResponseHandlerFactory.getHandler({ response, user });
+    const handler = ResponseHandlerFactory.getHandler({ response, user, api });
     handler.call((retVal) => {
       this.call(onResult, i + 1, retVal || v);
     });

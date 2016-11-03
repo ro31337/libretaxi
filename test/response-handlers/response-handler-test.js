@@ -10,7 +10,14 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test('saves response', t => {
+test('should set properties', t => {
+  const r = new ResponseHandler({ response: {}, type: 'bar', user: 'user', api: 'api' });
+  t.is(r.api, 'api');
+  t.is(r.user, 'user');
+  t.is(r.type, 'bar');
+});
+
+test('should save response', t => {
   const r = { message: 'foo' };
   const h = new ResponseHandler({ response: r, type: 'bar' });
   t.is(h.response.message, 'foo');
