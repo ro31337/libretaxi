@@ -24,6 +24,10 @@ export default class OptionsResponse extends
    * @type {Object}
    * @param {string} options.rows - Array of rows of options. Where each row is
    * array of objects. Each object must contain two properties: `label` and `value`.
+   * Please note: because of Telegram platform limitations all labels should be unique, see also
+   * {@link OptionsMap}.
+   * @see https://github.com/ro31337/cheaptaxi/issues/301
+   * @see https://github.com/ro31337/cheaptaxi/issues/300
    * @example
    * const r = new OptionsResponse({
    * 	rows: [
