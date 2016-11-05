@@ -171,7 +171,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
 
   t.is(h1.type, 'telegram-text-response-handler');
-  t.is(h2.type, 'not-implemented-response-handler');
+  t.is(h2.type, 'telegram-options-response-handler');
   t.is(h3.type, 'user-state-response-handler');
   t.is(h4.type, 'user-state-response-handler');
   t.is(h5.type, 'composite-response-handler');

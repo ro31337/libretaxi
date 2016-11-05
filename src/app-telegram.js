@@ -4,6 +4,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import { loadUser } from './factories/user-factory';
 import CaQueue from './queue/ca-queue';
 import callAction from './call-action';
+import textToValue from './support/text-to-value';
 
 const api = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 console.log('OK telegram bot is waiting for messages...');
@@ -15,7 +16,11 @@ api.on('message', (msg) => {
   console.log(`Got '${text}' from ${userKey}`);
 
   loadUser(userKey).then((user) => {
-    queue.create({ userKey, route: user.state.menuLocation || 'default' });
+    queue.create({
+      userKey,
+      arg: textToValue(user, text),
+      route: user.state.menuLocation || 'default',
+    });
   });
 });
 
