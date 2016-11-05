@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import CliTextResponseHandler from '../response-handlers/cli/text-response-handler';
-import OptionsResponseHandler from '../response-handlers/cli/options-response-handler';
+import CliOptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
@@ -20,6 +20,7 @@ import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-p
 import InlineOptionsResponseHandler from '../response-handlers/cli/inline-options-response-handler';
 import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
 import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
+import TelegramOptionsResponseHandler from '../response-handlers/telegram/options-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -27,7 +28,7 @@ import TelegramTextResponseHandler from '../response-handlers/telegram/text-resp
 const map = {
   cli: {
     text: CliTextResponseHandler,
-    options: OptionsResponseHandler,
+    options: CliOptionsResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
     redirect: RedirectResponseHandler,
@@ -48,7 +49,7 @@ const map = {
   },
   telegram: {
     text: TelegramTextResponseHandler,
-    options: NotImplementedResponseHandler,
+    options: TelegramOptionsResponseHandler,
     'user-state': UserStateResponseHandler,
     composite: CompositeResponseHandler,
     redirect: RedirectResponseHandler,
