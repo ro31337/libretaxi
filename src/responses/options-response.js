@@ -26,6 +26,8 @@ export default class OptionsResponse extends
    * array of objects. Each object must contain two properties: `label` and `value`.
    * Please note: because of Telegram platform limitations all labels should be unique, see also
    * {@link OptionsMap}.
+   * @param {string} options.message - (optional) message to display before rendering the list
+   * of options
    * @see https://github.com/ro31337/cheaptaxi/issues/301
    * @see https://github.com/ro31337/cheaptaxi/issues/300
    * @example

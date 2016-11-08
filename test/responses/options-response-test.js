@@ -10,8 +10,9 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test('instance should have rows as a property', t => {
-  const r = new OptionsResponse({ rows: [[{ label: 'Ok', value: 'ok' }]] });
+test('instance should have properties', t => {
+  const r = new OptionsResponse({ rows: [[{ label: 'Ok', value: 'ok' }]], message: 'foo' });
   t.truthy(r.rows);
+  t.is(r.message, 'foo');
   t.pass();
 });
