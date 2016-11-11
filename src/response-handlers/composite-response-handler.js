@@ -5,8 +5,8 @@ import checkNotNull from '../validations/check-not-null.js';
 import ResponseHandlerFactory from '../factories/response-handler-factory';
 
 /**
- * User state response handler.
- * Saves {@link UserStateResponse} `state` to {@link User} `state.`
+ * Composite response handler.
+ * Iterate through {@link CompositeResponse} and execute handler for each response.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {ResponseHandler}
@@ -20,7 +20,7 @@ export default class CompositeResponseHandler extends
   /**
    * Constructor.
    *
-   * @param {object} response - {@link UserStateResponse} instance.
+   * @param {object} response - {@link CompositeResponse} instance.
    * @param {object} user - {@link User} instance.
    * @param {object} api - (optional) transport library api.
    */
@@ -29,8 +29,13 @@ export default class CompositeResponseHandler extends
   }
 
   /**
-   * Handler entry point.
-   * Updates user's state and saves to storage. Calls `onResult` when saved.
+   * Iterate through {@link CompositeResponse} and execute handler for each response.
+   *
+   * @param {function} onResult - result callback, passed to every handler. Executed only when
+   * every handler in the chain executed its callback. Note that handlers for some platforms
+   * do not execute callbacks. For example, {@link TelegramOptionsResponseHandler}.
+   * @param {number} index - (optional) current index
+   * @param {number} v - (optional) current value, used for recursively iterating through responses
    */
   call(onResult, index, v) {
     const i = index || 0;

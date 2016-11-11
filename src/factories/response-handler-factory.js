@@ -21,52 +21,58 @@ import InlineOptionsResponseHandler from '../response-handlers/cli/inline-option
 import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
 import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
 import TelegramOptionsResponseHandler from '../response-handlers/telegram/options-response-handler';
+import OptimizedCompositeResponse from '../responses/decorators/optimized-composite-response';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
 
 const map = {
   cli: {
-    text: CliTextResponseHandler,
-    options: CliOptionsResponseHandler,
-    'user-state': UserStateResponseHandler,
-    composite: CompositeResponseHandler,
-    redirect: RedirectResponseHandler,
-    'request-phone': RequestPhoneResponseHandler,
-    'request-location': RequestLocationResponseHandler,
-    'update-location': UpdateLocationResponseHandler,
-    'request-user-input': RequestUserInputResponseHandler,
-    empty: EmptyResponseHandler,
-    'cancel-current-order': CancelCurrentOrderResponseHandler,
-    error: ErrorResponseHandler,
-    if: IfResponseHandler,
-    'save-order': SaveOrderResponseHandler,
-    'inform-passenger': InformPassengerResponseHandler,
-    'interrupt-prompt': InterruptPromptResponseHandler,
-    'notify-drivers': NotifyDriversResponseHandler,
-    'inline-options': InlineOptionsResponseHandler,
-    'call-action': CallActionResponseHandler,
+    text: (...args) => new CliTextResponseHandler(...args),
+    options: (...args) => new CliOptionsResponseHandler(...args),
+    'user-state': (...args) => new UserStateResponseHandler(...args),
+    composite: (...args) => new CompositeResponseHandler(...args),
+    redirect: (...args) => new RedirectResponseHandler(...args),
+    'request-phone': (...args) => new RequestPhoneResponseHandler(...args),
+    'request-location': (...args) => new RequestLocationResponseHandler(...args),
+    'update-location': (...args) => new UpdateLocationResponseHandler(...args),
+    'request-user-input': (...args) => new RequestUserInputResponseHandler(...args),
+    empty: (...args) => new EmptyResponseHandler(...args),
+    'cancel-current-order': (...args) => new CancelCurrentOrderResponseHandler(...args),
+    error: (...args) => new ErrorResponseHandler(...args),
+    if: (...args) => new IfResponseHandler(...args),
+    'save-order': (...args) => new SaveOrderResponseHandler(...args),
+    'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
+    'interrupt-prompt': (...args) => new InterruptPromptResponseHandler(...args),
+    'notify-drivers': (...args) => new NotifyDriversResponseHandler(...args),
+    'inline-options': (...args) => new InlineOptionsResponseHandler(...args),
+    'call-action': (...args) => new CallActionResponseHandler(...args),
   },
   telegram: {
-    text: TelegramTextResponseHandler,
-    options: TelegramOptionsResponseHandler,
-    'user-state': UserStateResponseHandler,
-    composite: CompositeResponseHandler,
-    redirect: RedirectResponseHandler,
-    'request-phone': NotImplementedResponseHandler,
-    'request-location': NotImplementedResponseHandler,
-    'update-location': UpdateLocationResponseHandler,
-    'request-user-input': NotImplementedResponseHandler,
-    empty: EmptyResponseHandler,
-    'cancel-current-order': CancelCurrentOrderResponseHandler,
-    error: NotImplementedResponseHandler,
-    if: IfResponseHandler,
-    'save-order': SaveOrderResponseHandler,
-    'inform-passenger': InformPassengerResponseHandler,
-    'interrupt-prompt': EmptyResponseHandler,
-    'notify-drivers': NotifyDriversResponseHandler,
-    'inline-options': NotImplementedResponseHandler,
-    'call-action': CallActionResponseHandler,
+    text: (...args) => new TelegramTextResponseHandler(...args),
+    options: (...args) => new TelegramOptionsResponseHandler(...args),
+    'user-state': (...args) => new UserStateResponseHandler(...args),
+    composite: (options) => new CompositeResponseHandler(
+      Object.assign(
+        {},
+        options,
+        { response: new OptimizedCompositeResponse({ origin: options.response }) } // decorate `response` parameter
+      )),
+    redirect: (...args) => new RedirectResponseHandler(...args),
+    'request-phone': (...args) => new NotImplementedResponseHandler(...args),
+    'request-location': (...args) => new NotImplementedResponseHandler(...args),
+    'update-location': (...args) => new UpdateLocationResponseHandler(...args),
+    'request-user-input': (...args) => new NotImplementedResponseHandler(...args),
+    empty: (...args) => new EmptyResponseHandler(...args),
+    'cancel-current-order': (...args) => new CancelCurrentOrderResponseHandler(...args),
+    error: (...args) => new NotImplementedResponseHandler(...args),
+    if: (...args) => new IfResponseHandler(...args),
+    'save-order': (...args) => new SaveOrderResponseHandler(...args),
+    'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
+    'interrupt-prompt': (...args) => new EmptyResponseHandler(...args),
+    'notify-drivers': (...args) => new NotifyDriversResponseHandler(...args),
+    'inline-options': (...args) => new NotImplementedResponseHandler(...args),
+    'call-action': (...args) => new CallActionResponseHandler(...args),
   },
 };
 
@@ -99,8 +105,8 @@ export default class ResponseHandlerFactory {
     const user = options.user;
     const api = options.api;
     const t = response.type.toLowerCase();
-    const klass = map[platformType][t];
+    const builder = map[platformType][t];
 
-    return new klass({ response, user, api }); // eslint-disable-line new-cap
+    return builder({ response, user, api });
   }
 }
