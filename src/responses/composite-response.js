@@ -21,19 +21,26 @@ export default class CompositeResponse extends Response {
    * Constructor.
    */
   constructor() {
-    const options = { type: 'composite', responses: [] };
+    const options = { type: 'composite', rr: [] };
     super(options);
     objectAssign(this, options);
   }
 
   /**
-   * Adds response to composite.
+   * Add response to composite.
    *
    * @param {Response} response - Response instance that you want to add to composite.
    * @returns {CompositeResponse} response - returns `this`, so you can chain methods.
    */
   add(response) {
-    this.responses.push(response);
+    this.rr.push(response);
     return this;
+  }
+
+  /**
+   * List of responses.
+   */
+  get responses() {
+    return this.rr;
   }
 }
