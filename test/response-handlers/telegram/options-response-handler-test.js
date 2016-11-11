@@ -30,6 +30,7 @@ test('should call sendMessage', t => {
         ['One', 'Two', 'Three'],
         ['OK', 'Cancel'],
       ],
+      one_time_keyboard: true,
     }),
   }));
 });

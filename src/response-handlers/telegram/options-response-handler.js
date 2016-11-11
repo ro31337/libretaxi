@@ -35,7 +35,7 @@ export default class OptionsResponseHandler extends ResponseHandler {
     const message = this.response.message || 'Your choice?';
     this.api.sendMessage(this.user.platformId, message,
       {
-        reply_markup: JSON.stringify({ keyboard: rows }),
+        reply_markup: JSON.stringify({ keyboard: rows, one_time_keyboard: true }),
       });
   }
 }
