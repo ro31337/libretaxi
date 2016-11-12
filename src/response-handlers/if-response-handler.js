@@ -34,14 +34,15 @@ export default class IfResponseHandler extends
   call(onResult) {
     const user = this.user;
     const r = this.response;
+    const api = this.api;
 
     if (r.condition.call()) {
       const response = r.ok;
-      const handler = ResponseHandlerFactory.getHandler({ response, user });
+      const handler = ResponseHandlerFactory.getHandler({ response, user, api });
       handler.call(onResult);
     } else if (r.err) {
       const response = r.err;
-      const handler = ResponseHandlerFactory.getHandler({ response, user });
+      const handler = ResponseHandlerFactory.getHandler({ response, user, api });
       handler.call(onResult);
     } else {
       onResult();

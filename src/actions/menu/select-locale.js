@@ -5,6 +5,10 @@ import CompositeResponse from '../../responses/composite-response';
 import SelectLocaleResponse from '../../responses/select-locale-response';
 import TextResponse from '../../responses/text-response';
 import RedirectResponse from '../../responses/redirect-response';
+import If from '../../responses/if-response';
+import In from '../../conditions/in';
+import locales from '../../validations/supported-locales';
+
 /**
  * Select locale menu action.
  *
@@ -33,7 +37,7 @@ export default class SelectLocale extends Action {
       .add(new TextResponse({ message: 'Select your language:' }))
       .add(new OptionsResponse({
         rows: [
-          [{ label: 'English', value: 'en' }, { label: 'Русский', value: 'ru' }],
+          [{ label: 'English', value: locales[0] }, { label: 'Русский', value: locales[1] }],
         ],
       }));
   }
@@ -45,9 +49,13 @@ export default class SelectLocale extends Action {
    * which contains {@link SelectLocaleResponse}, and {@link RedirectResponse}.
    */
   post(value) {
-    return new CompositeResponse()
-      .add(new SelectLocaleResponse({ locale: value }))
-      .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'select-user-type' }));
+    return new If({
+      condition: new In(value, locales),
+      ok: new CompositeResponse()
+        .add(new SelectLocaleResponse({ locale: value }))
+        .add(new TextResponse({ message: '👌 OK!' }))
+        .add(new RedirectResponse({ path: 'select-user-type' })),
+      err: this.get(),
+    });
   }
 }

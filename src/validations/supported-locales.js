@@ -1,6 +1,6 @@
 /**
  * @typedef SupportedLocales
- * @desc Hash set that represents the list of currently supported locales:
+ * @desc Array set that represents the list of currently supported locales:
  * - `en` - English locale
  * - `ru` - Russian locale
  * @extends {Set}
@@ -10,8 +10,8 @@
  * @since 0.1.0
  * @example
  * import SupportedLocales from './supported-locales';
- * if (!SupportedLocales.has('cn')) {
+ * if (!SupportedLocales.includes('cn')) {
  *   console.log('locale "cn" is not supported yet');
  * }
  */
-export default new Set(['en', 'ru']);
+export default ['en', 'ru'];
