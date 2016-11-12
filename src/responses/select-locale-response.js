@@ -2,7 +2,6 @@ import UserStateResponse from './user-state-response';
 import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null';
-import checkLocale from '../validations/check-locale';
 /**
  * Select locale response. Used to return response that contains
  * locale (`en`, `ru`, etc..) that should be stored in user state.
@@ -16,7 +15,7 @@ import checkLocale from '../validations/check-locale';
  * @since 0.1.0
  */
 export default class SelectLocaleResponse extends
-  mix(UserStateResponse).with(checkNotNull('locale'), checkLocale) {
+  mix(UserStateResponse).with(checkNotNull('locale')) {
   /**
    * Constructor.
    *

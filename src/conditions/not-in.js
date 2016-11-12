@@ -2,7 +2,7 @@ import Condition from './condition';
 
 /**
  * Not In Condition.
- * Accepts value and array. Returns true if value is not in array.
+ * Accepts value and array. Returns true if array doesn't include value.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-09-11
@@ -20,8 +20,7 @@ export default class NotIn extends Condition {
   /**
    * Entry point for condition.
    *
-   * @returns {boolean} result - returns `true` if actual equals expected, otherwise
-   * returns `false`.
+   * @returns {boolean} result - `true` if array doesn't include value, `false` otherwise.
    */
   call() {
     return !this.arr.includes(this.value);
