@@ -5,7 +5,7 @@ import UserStateResponseHandler from '../response-handlers/user-state-response-h
 import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
-import RequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
+import CliRequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
 import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler';
 import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler';
 import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler';
@@ -22,6 +22,7 @@ import CallActionResponseHandler from '../response-handlers/call-action-response
 import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
 import TelegramOptionsResponseHandler from '../response-handlers/telegram/options-response-handler';
 import OptimizedCompositeResponse from '../responses/decorators/optimized-composite-response';
+import TelegramRequestPhoneResponseHandler from '../response-handlers/telegram/request-phone-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -33,7 +34,7 @@ const map = {
     'user-state': (...args) => new UserStateResponseHandler(...args),
     composite: (...args) => new CompositeResponseHandler(...args),
     redirect: (...args) => new RedirectResponseHandler(...args),
-    'request-phone': (...args) => new RequestPhoneResponseHandler(...args),
+    'request-phone': (...args) => new CliRequestPhoneResponseHandler(...args),
     'request-location': (...args) => new RequestLocationResponseHandler(...args),
     'update-location': (...args) => new UpdateLocationResponseHandler(...args),
     'request-user-input': (...args) => new RequestUserInputResponseHandler(...args),
@@ -59,7 +60,7 @@ const map = {
         { response: new OptimizedCompositeResponse({ origin: options.response }) } // decorate `response` parameter
       )),
     redirect: (...args) => new RedirectResponseHandler(...args),
-    'request-phone': (...args) => new NotImplementedResponseHandler(...args),
+    'request-phone': (...args) => new TelegramRequestPhoneResponseHandler(...args),
     'request-location': (...args) => new NotImplementedResponseHandler(...args),
     'update-location': (...args) => new UpdateLocationResponseHandler(...args),
     'request-user-input': (...args) => new NotImplementedResponseHandler(...args),
