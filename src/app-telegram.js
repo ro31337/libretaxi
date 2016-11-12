@@ -12,13 +12,13 @@ const queue = new CaQueue();
 
 api.on('message', (msg) => {
   const userKey = `telegram_${msg.chat.id}`;
-  const text = msg.text;
-  console.log(`Got '${text}' from ${userKey}`);
+  const something = msg.text || (msg.contact || {}).phone_number;
+  console.log(`Got '${something}' from ${userKey}`);
 
   loadUser(userKey).then((user) => {
     queue.create({
       userKey,
-      arg: textToValue(user, text),
+      arg: msg.text ? textToValue(user, msg.text) : something,
       route: user.state.menuLocation || 'default',
     });
   });
