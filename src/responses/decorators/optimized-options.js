@@ -16,15 +16,14 @@ import Response from '../response';
  * @version 1.1
  * @since 0.1.0
  */
-export default class OptimizedCompositeResponse
-  extends mix(Response).with(checkNotNull('origin')) {
+export default class OptimizedOptions extends mix(Response).with(checkNotNull('origin')) {
   /**
    * Constructor.
    *
    * @param {CompositeResponse} origin - origin response.
    */
   constructor(options) {
-    super(Object.assign({ type: 'optimized-composite' }, options));
+    super(Object.assign({ type: 'optimized-options' }, options));
     this.origin = options.origin;
   }
 

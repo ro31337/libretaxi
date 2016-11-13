@@ -21,7 +21,7 @@ import InlineOptionsResponseHandler from '../response-handlers/cli/inline-option
 import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
 import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
 import TelegramOptionsResponseHandler from '../response-handlers/telegram/options-response-handler';
-import OptimizedCompositeResponse from '../responses/decorators/optimized-composite-response';
+import OptimizedOptions from '../responses/decorators/optimized-options';
 import TelegramRequestPhoneResponseHandler from '../response-handlers/telegram/request-phone-response-handler';
 
 // updating map?
@@ -57,7 +57,7 @@ const map = {
       Object.assign(
         {},
         options,
-        { response: new OptimizedCompositeResponse({ origin: options.response }) } // decorate `response` parameter
+        { response: new OptimizedOptions({ origin: options.response }) } // decorate `response` parameter
       )),
     redirect: (...args) => new RedirectResponseHandler(...args),
     'request-phone': (...args) => new TelegramRequestPhoneResponseHandler(...args),

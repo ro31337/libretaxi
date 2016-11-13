@@ -34,5 +34,5 @@ export default new Set([
   'notify-drivers',
   'inline-options',
   'call-action',
-  'optimized-composite',
+  'optimized-options',
 ]);
