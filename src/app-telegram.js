@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 import './init';
-import TelegramBot from 'node-telegram-bot-api';
+import TelegramBot from 'tgfancy';
 import { loadUser } from './factories/user-factory';
 import CaQueue from './queue/ca-queue';
 import callAction from './call-action';
 import textToValue from './support/text-to-value';
 
-const api = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
+const api = new TelegramBot(process.env.TELEGRAM_TOKEN, {
+  polling: true,
+  tgfancy: { orderedSending: true },
+});
 console.log('OK telegram bot is waiting for messages...');
 const queue = new CaQueue();
 
