@@ -22,10 +22,11 @@ export default class RequestPhoneResponseHandler extends ResponseHandler {
    */
   call() {
     const message = this.response.message || 'Send number by clicking the button below';
+    const buttonText = this.response.buttonText || 'Send number';
     this.api.sendMessage(this.user.platformId, message,
       {
         reply_markup: JSON.stringify({
-          keyboard: [[{ text: 'Send number', request_contact: true }]],
+          keyboard: [[{ text: buttonText, request_contact: true }]],
           one_time_keyboard: true,
         }),
       });

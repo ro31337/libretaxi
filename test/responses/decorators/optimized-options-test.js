@@ -11,7 +11,7 @@ checkNotNullTest('origin', (args) => { new OptimizedOptions(args); });
 
 test('can be constructed with default parameters', t => {
   const r = new OptimizedOptions({ origin: new CompositeResponse() });
-  t.is(r.type, 'optimized-options');
+  t.is(r.type, 'composite');
   t.is(r.origin.type, 'composite');
 });
 
