@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-use-before-define */
 import './init';
 import TelegramBot from 'tgfancy';
 import { loadUser } from './factories/user-factory';
@@ -15,7 +15,7 @@ const queue = new CaQueue();
 
 api.on('message', (msg) => {
   const userKey = `telegram_${msg.chat.id}`;
-  const something = msg.text || (msg.contact || {}).phone_number;
+  const something = msg.text || (msg.contact || {}).phone_number || getLocation(msg);
   console.log(`Got '${something}' from ${userKey}`);
 
   loadUser(userKey).then((user) => {
@@ -41,3 +41,8 @@ queue.process((job, done) => {
   .catch((err) => console.log(err))
   .then(() => done());
 });
+
+const getLocation = (msg) => {
+  if (!msg.location) return undefined;
+  return [msg.location.latitude, msg.location.longitude];
+};
