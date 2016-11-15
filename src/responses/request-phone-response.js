@@ -12,8 +12,15 @@ import Response from './response';
 export default class RequestPhoneResponse extends Response {
   /**
    * Constructor.
+   *
+   * @type {Object}
+   * @param {string} options.message - (optional) message to display before asking the phone,
+   * platform-specific.
+   * @param {string} options.buttonText - (optional) text on the button for asking the phone,
+   * platform-specific.
    */
-  constructor() {
+  constructor(options) {
     super({ type: 'request-phone' });
+    Object.assign(this, options);
   }
 }

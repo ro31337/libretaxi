@@ -175,7 +175,9 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h3.type, 'user-state-response-handler');
   t.is(h4.type, 'user-state-response-handler');
   t.is(h5.type, 'composite-response-handler');
-  t.is(h5.response.type, 'optimized-composite'); // response should be decorated
+  t.is(h5.response.type, 'composite');
+  t.is(h5.response.origin.type, 'composite'); // should be decorated with OptimizedRequestPhone
+  t.is(h5.response.origin.origin.type, 'composite'); // should be decorated OptimizedOptions
   t.is(h6.type, 'redirect-response-handler');
   t.is(h7.type, 'telegram-request-phone-response-handler');
   t.is(h8.type, 'not-implemented-response-handler');

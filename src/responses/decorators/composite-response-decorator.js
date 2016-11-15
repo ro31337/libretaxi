@@ -2,29 +2,26 @@ import { mix } from 'mixwith';
 import checkNotNull from '../../validations/check-not-null';
 import IfResponse from '../if-response';
 import CompositeResponse from '../composite-response';
-import OptionsResponse from '../options-response';
 import Response from '../response';
 
 /**
- * {@link CompositeResponse} decorator. Optimize {@link TextResponse} and
- * {@link OptionsResponse} usage by removing the first one from the list of responses and
- * copying the `message` to the second one.
+ * {@link CompositeResponse} decorator. Used to optimize two responses into one.
  *
+ * @abstract
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {checkNotNull}
- * @date 2016-11-07
+ * @date 2016-11-13
  * @version 1.1
  * @since 0.1.0
  */
-export default class OptimizedCompositeResponse
-  extends mix(Response).with(checkNotNull('origin')) {
+export default class CompositeResponseDecorator extends mix(Response).with(checkNotNull('origin')) {
   /**
    * Constructor.
    *
    * @param {CompositeResponse} origin - origin response.
    */
   constructor(options) {
-    super(Object.assign({ type: 'optimized-composite' }, options));
+    super(options);
     this.origin = options.origin;
   }
 
@@ -48,7 +45,7 @@ export default class OptimizedCompositeResponse
    * Traverse node without modifying existing nodes. This method builds new node tree if node(s)
    * can be optimized.
    *
-   * @private
+   * @protected
    * @param {Response} root - node to traverse
    * @return {Response} node - new or existing node
    */
@@ -66,7 +63,7 @@ export default class OptimizedCompositeResponse
   /**
    * Traverse composite node
    *
-   * @private
+   * @protected
    * @param {CompositeResponse} root - composite node to traverse
    * @return {CompositeResponse} node - new node, optimized if optimization took place
    */
@@ -76,20 +73,29 @@ export default class OptimizedCompositeResponse
     for (let i = 0, len = rr.length; i < len; i++) {
       const r1 = rr[i];
       const r2 = rr[i + 1]; // will return undefined when out of boundaries
-      let current = this.traverse(r1);
-      if (r2 && r1.type === 'text' && r2.type === 'options') {
-        current = new OptionsResponse({ rows: r2.rows, message: r1.message });
+      if (this.optimize(r1, r2, response)) {
         i++;
+      } else {
+        response.add(this.traverse(r1));
       }
-      response.add(current);
     }
     return response;
   }
 
   /**
+   * Optimize response
+   *
+   * @abstract
+   * @protected
+   */
+  optimize(r1, r2, response) { // eslint-disable-line no-unused-vars
+    throw new Error('not implemented');
+  }
+
+  /**
    * Traverse if-node
    *
-   * @private
+   * @protected
    * @param {IfResponse} root - if-node to traverse
    * @return {IfResponse} node - new node, optimized if optimization took place
    */

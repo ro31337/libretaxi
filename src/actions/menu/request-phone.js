@@ -32,7 +32,7 @@ export default class RequestPhone extends Action {
   get() {
     return new CompositeResponse()
       .add(new TextResponse({ message: this.t('type_your_phone') }))
-      .add(new RequestPhoneResponse());
+      .add(new RequestPhoneResponse({ buttonText: this.t('button_text') }));
   }
 
   /**

@@ -16,6 +16,7 @@ test('should return composite response on get', t => {
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, i18n.__('request-phone.type_your_phone'));
   t.is(response.responses[1].type, 'request-phone');
+  t.is(response.responses[1].buttonText, i18n.__('request-phone.button_text'));
 });
 
 test('should return composite response on post for driver', t => {
