@@ -6,7 +6,7 @@ import NotImplementedResponseHandler from '../response-handlers/not-implemented-
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
 import CliRequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
-import RequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler';
+import CliRequestLocationResponseHandler from '../response-handlers/cli/request-location-response-handler';
 import UpdateLocationResponseHandler from '../response-handlers/update-location-response-handler';
 import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler';
 import EmptyResponseHandler from '../response-handlers/empty-response-handler';
@@ -24,6 +24,7 @@ import TelegramOptionsResponseHandler from '../response-handlers/telegram/option
 import OptimizedOptions from '../responses/decorators/optimized-options';
 import TelegramRequestPhoneResponseHandler from '../response-handlers/telegram/request-phone-response-handler';
 import OptimizedRequestPhone from '../responses/decorators/optimized-request-phone';
+import TelegramRequestLocationResponseHandler from '../response-handlers/telegram/request-location-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -36,7 +37,7 @@ const map = {
     composite: (...args) => new CompositeResponseHandler(...args),
     redirect: (...args) => new RedirectResponseHandler(...args),
     'request-phone': (...args) => new CliRequestPhoneResponseHandler(...args),
-    'request-location': (...args) => new RequestLocationResponseHandler(...args),
+    'request-location': (...args) => new CliRequestLocationResponseHandler(...args),
     'update-location': (...args) => new UpdateLocationResponseHandler(...args),
     'request-user-input': (...args) => new RequestUserInputResponseHandler(...args),
     empty: (...args) => new EmptyResponseHandler(...args),
@@ -64,7 +65,7 @@ const map = {
       )),
     redirect: (...args) => new RedirectResponseHandler(...args),
     'request-phone': (...args) => new TelegramRequestPhoneResponseHandler(...args),
-    'request-location': (...args) => new NotImplementedResponseHandler(...args),
+    'request-location': (...args) => new TelegramRequestLocationResponseHandler(...args),
     'update-location': (...args) => new UpdateLocationResponseHandler(...args),
     'request-user-input': (...args) => new NotImplementedResponseHandler(...args),
     empty: (...args) => new EmptyResponseHandler(...args),
