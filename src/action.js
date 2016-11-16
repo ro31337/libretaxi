@@ -118,7 +118,17 @@ export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'ty
     return this.get();
   }
 
+  /**
+   * Translate token using current type
+   */
   t(token, param) {
     return this.i18n.__(`${this.type}.${token}`, param);
+  }
+
+  /**
+   * Translate token using global type
+   */
+  gt(token, param) {
+    return this.i18n.__(`global.${token}`, param);
   }
 }

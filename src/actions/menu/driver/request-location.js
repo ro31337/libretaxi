@@ -32,7 +32,7 @@ export default class DriverRequestLocation extends Action {
   get() {
     return new CompositeResponse()
       .add(new TextResponse({ message: this.t('provide_location') }))
-      .add(new RequestLocationResponse());
+      .add(new RequestLocationResponse({ buttonText: this.gt('location_button_text') }));
   }
 
   /**

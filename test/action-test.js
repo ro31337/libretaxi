@@ -58,3 +58,8 @@ test('translation helper method should work', t => {
   const action = new Action({ i18n, type: 'select-user-type', user });
   t.is(action.t('who_you_are'), 'Who you are? (select for now, you can change it later)');
 });
+
+test('global translation helper method should work', t => {
+  const action = new Action({ i18n, type: 'foo', user });
+  t.is(action.gt('location_button_text'), 'Send location');
+});
