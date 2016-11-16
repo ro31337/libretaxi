@@ -12,8 +12,15 @@ import Response from './response';
 export default class RequestLocationResponse extends Response {
   /**
    * Constructor.
+   *
+   * @type {Object}
+   * @param {string} options.message - (optional) message to display before asking location,
+   * platform-specific.
+   * @param {string} options.buttonText - (optional) text on the button for asking location,
+   * platform-specific.
    */
-  constructor() {
+  constructor(options) {
     super({ type: 'request-location' });
+    Object.assign(this, options);
   }
 }

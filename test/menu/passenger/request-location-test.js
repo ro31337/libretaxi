@@ -18,6 +18,7 @@ test('should return composite response on get', t => {
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, i18n.__('passenger-request-location.provide_location'));
   t.is(response.responses[1].type, 'request-location');
+  t.is(response.responses[1].buttonText, i18n.__('global.location_button_text'));
 });
 
 test('should return composite response on post', t => {

@@ -25,6 +25,7 @@ import OptimizedOptions from '../responses/decorators/optimized-options';
 import TelegramRequestPhoneResponseHandler from '../response-handlers/telegram/request-phone-response-handler';
 import OptimizedRequestPhone from '../responses/decorators/optimized-request-phone';
 import TelegramRequestLocationResponseHandler from '../response-handlers/telegram/request-location-response-handler';
+import OptimizedRequestLocation from '../responses/decorators/optimized-request-location';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -60,7 +61,14 @@ const map = {
         {},
         options,
         {
-          response: new OptimizedRequestPhone({ origin: new OptimizedOptions({ origin: options.response }) }), // decorate `response` parameter
+          response:
+            new OptimizedRequestLocation({
+              origin:
+                new OptimizedRequestPhone({
+                  origin:
+                    new OptimizedOptions({ origin: options.response }),
+                }),
+            }),
         },
       )),
     redirect: (...args) => new RedirectResponseHandler(...args),
