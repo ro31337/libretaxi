@@ -62,13 +62,11 @@ const map = {
         options,
         {
           response:
-            new OptimizedRequestLocation({
-              origin:
-                new OptimizedRequestPhone({
-                  origin:
-                    new OptimizedOptions({ origin: options.response }),
-                }),
-            }),
+            new OptimizedRequestLocation(
+                new OptimizedRequestPhone(
+                    new OptimizedOptions(options.response),
+                ),
+            ),
         },
       )),
     redirect: (...args) => new RedirectResponseHandler(...args),
