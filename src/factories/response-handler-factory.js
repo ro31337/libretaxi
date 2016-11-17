@@ -11,7 +11,7 @@ import UpdateLocationResponseHandler from '../response-handlers/update-location-
 import RequestUserInputResponseHandler from '../response-handlers/cli/request-user-input-response-handler';
 import EmptyResponseHandler from '../response-handlers/empty-response-handler';
 import CancelCurrentOrderResponseHandler from '../response-handlers/cancel-current-order-response-handler';
-import ErrorResponseHandler from '../response-handlers/cli/error-response-handler';
+import CliErrorResponseHandler from '../response-handlers/cli/error-response-handler';
 import IfResponseHandler from '../response-handlers/if-response-handler';
 import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler';
 import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler';
@@ -26,6 +26,7 @@ import TelegramRequestPhoneResponseHandler from '../response-handlers/telegram/r
 import OptimizedRequestPhone from '../responses/decorators/optimized-request-phone';
 import TelegramRequestLocationResponseHandler from '../response-handlers/telegram/request-location-response-handler';
 import OptimizedRequestLocation from '../responses/decorators/optimized-request-location';
+import TelegramErrorResponseHandler from '../response-handlers/telegram/error-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -43,7 +44,7 @@ const map = {
     'request-user-input': (...args) => new RequestUserInputResponseHandler(...args),
     empty: (...args) => new EmptyResponseHandler(...args),
     'cancel-current-order': (...args) => new CancelCurrentOrderResponseHandler(...args),
-    error: (...args) => new ErrorResponseHandler(...args),
+    error: (...args) => new CliErrorResponseHandler(...args),
     if: (...args) => new IfResponseHandler(...args),
     'save-order': (...args) => new SaveOrderResponseHandler(...args),
     'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
@@ -76,7 +77,7 @@ const map = {
     'request-user-input': (...args) => new EmptyResponseHandler(...args),
     empty: (...args) => new EmptyResponseHandler(...args),
     'cancel-current-order': (...args) => new CancelCurrentOrderResponseHandler(...args),
-    error: (...args) => new NotImplementedResponseHandler(...args),
+    error: (...args) => new TelegramErrorResponseHandler(...args),
     if: (...args) => new IfResponseHandler(...args),
     'save-order': (...args) => new SaveOrderResponseHandler(...args),
     'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
