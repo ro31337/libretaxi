@@ -186,7 +186,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h10.type, 'empty-response-handler');
   t.is(h11.type, 'empty-response-handler');
   t.is(h12.type, 'cancel-current-order-response-handler');
-  t.is(h13.type, 'not-implemented-response-handler');
+  t.is(h13.type, 'telegram-error-response-handler');
   t.is(h14.type, 'if-response-handler');
   t.is(h15.type, 'save-order-response-handler');
   t.is(h16.type, 'inform-passenger-response-handler');
