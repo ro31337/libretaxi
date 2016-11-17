@@ -14,15 +14,6 @@ import CompositeResponseDecorator from './composite-response-decorator';
  */
 export default class OptimizedRequestLocation extends CompositeResponseDecorator {
   /**
-   * Constructor.
-   *
-   * @param {Response} origin - origin response.
-   */
-  constructor(options) {
-    super(Object.assign({ type: 'composite' }, options));
-  }
-
-  /**
    * Optimize response
    *
    * @override

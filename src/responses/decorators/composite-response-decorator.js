@@ -1,5 +1,3 @@
-import { mix } from 'mixwith';
-import checkNotNull from '../../validations/check-not-null';
 import IfResponse from '../if-response';
 import CompositeResponse from '../composite-response';
 import Response from '../response';
@@ -9,20 +7,21 @@ import Response from '../response';
  *
  * @abstract
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @extends {checkNotNull}
+ * @extends {Response}
  * @date 2016-11-13
  * @version 1.1
  * @since 0.1.0
  */
-export default class CompositeResponseDecorator extends mix(Response).with(checkNotNull('origin')) {
+export default class CompositeResponseDecorator extends Response {
   /**
    * Constructor.
    *
+   * @type object
    * @param {CompositeResponse} origin - origin response.
    */
-  constructor(options) {
-    super(options);
-    this.origin = options.origin;
+  constructor(origin) {
+    super({ type: 'composite' });
+    this.origin = origin;
   }
 
   /**
