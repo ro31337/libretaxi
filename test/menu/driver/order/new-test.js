@@ -2,7 +2,7 @@
 import test from 'ava';
 import routes from '../../../../src/routes'; // to aviod circular dependencies
 import DriverOrderNew from '../../../../src/actions/menu/driver/order/new';
-import { i18n } from '../../../spec-support';
+import { i18n, ss } from '../../../spec-support';
 
 const user = { userKey: 'cli_1', state: { phone: '(555) 123-11-22' } };
 
@@ -16,9 +16,6 @@ test('should return composite response on call', t => {
     passengerKey: 'cli_2' };
   const action = new DriverOrderNew({ i18n, user });
   const response = action.call(args);
-  const button1 = '{"type":"call-action","route":"passenger-contact-new-number","kicker":"order-submitted","userKey":"cli_2","arg":{"driverPhone":"(555) 123-11-22","distance":10}}';
-  const button2 = '{"type":"call-action","route":"save-and-redirect","kicker":"driver-index","userKey":"cli_1","arg":{"passengerKey":"cli_2","distance":10,"path":"driver-order-set-price"}}';
-  const button3 = '{"type":"call-action","route":"save-and-redirect","kicker":"driver-index","userKey":"cli_1","arg":{"passengerKey":"cli_2","distance":10,"path":"driver-order-offer-discount"}}';
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'interrupt-prompt');
   t.is(response.responses[1].type, 'text');
@@ -39,19 +36,58 @@ test('should return composite response on call', t => {
   t.is(response.responses[5].err.message, i18n.__('driver-order-new.price', '50'));
   t.is(response.responses[6].type, 'text');
   t.is(response.responses[6].message, i18n.__('driver-order-new.call_to_action'));
-  t.is(response.responses[7].type, 'if');
-  t.is(response.responses[7].condition.type, 'zero-price');
-  t.is(response.responses[7].condition.value, '50');
-  t.is(response.responses[7].ok.type, 'inline-options');
-  t.is(response.responses[7].ok.rows[0][0].label, i18n.__('driver-order-new.set_my_price'));
-  t.is(response.responses[7].ok.rows[0][0].value, button2);
-  t.is(response.responses[7].err.type, 'inline-options');
-  t.is(response.responses[7].err.rows[0][0].label, i18n.__('driver-order-new.send_my_number'));
-  t.is(response.responses[7].err.rows[0][0].value, button1);
-  t.is(response.responses[7].err.rows[0][1].label, i18n.__('driver-order-new.set_my_price'));
-  t.is(response.responses[7].err.rows[0][1].value, button2);
-  t.is(response.responses[7].err.rows[0][2].label, i18n.__('driver-order-new.offer_discount'));
-  t.is(response.responses[7].err.rows[0][2].value, button3);
-  t.is(response.responses[8].type, 'redirect');
-  t.is(response.responses[8].path, 'driver-index');
+  t.is(response.responses[7].type, 'user-state');
+  t.is(response.responses[8].type, 'if');
+  t.is(response.responses[8].condition.type, 'zero-price');
+  t.is(response.responses[8].condition.value, '50');
+  t.is(response.responses[8].ok.type, 'inline-options');
+  t.is(response.responses[8].ok.rows[0][0].label, i18n.__('driver-order-new.set_my_price'));
+  const button2 = response.responses[8].ok.rows[0][0].value;
+  t.regex(button2, ss.guidRegex);
+  t.is(response.responses[8].err.type, 'inline-options');
+  t.is(response.responses[8].err.rows[0][0].label, i18n.__('driver-order-new.send_my_number'));
+  const button1 = response.responses[8].err.rows[0][0].value;
+  t.regex(button1, ss.guidRegex);
+  t.is(response.responses[8].err.rows[0][1].label, i18n.__('driver-order-new.set_my_price'));
+  t.is(response.responses[8].err.rows[0][1].value, button2);
+  t.is(response.responses[8].err.rows[0][2].label, i18n.__('driver-order-new.offer_discount'));
+  const button3 = response.responses[8].err.rows[0][2].value;
+  t.regex(button3, ss.guidRegex);
+  t.is(response.responses[9].type, 'redirect');
+  t.is(response.responses[9].path, 'driver-index');
+
+  t.deepEqual(response.responses[7].state.inlineValues.hash[button1], {
+    type: 'call-action',
+    route: 'passenger-contact-new-number',
+    kicker: 'order-submitted',
+    userKey: 'cli_2',
+    arg: {
+      driverPhone: '(555) 123-11-22',
+      distance: 10,
+    },
+  });
+
+  t.deepEqual(response.responses[7].state.inlineValues.hash[button2], {
+    type: 'call-action',
+    route: 'save-and-redirect',
+    kicker: 'driver-index',
+    userKey: 'cli_1',
+    arg: {
+      passengerKey: 'cli_2',
+      distance: 10,
+      path: 'driver-order-set-price',
+    },
+  });
+
+  t.deepEqual(response.responses[7].state.inlineValues.hash[button3], {
+    type: 'call-action',
+    route: 'save-and-redirect',
+    kicker: 'driver-index',
+    userKey: 'cli_1',
+    arg: {
+      passengerKey: 'cli_2',
+      distance: 10,
+      path: 'driver-order-offer-discount',
+    },
+  });
 });

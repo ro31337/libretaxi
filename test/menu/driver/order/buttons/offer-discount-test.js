@@ -14,8 +14,8 @@ test('can be constructed with default parameters', t => {
 });
 
 test('factory method should return stringified json response', t => {
-  const json = offerDiscount({ passengerKey: 'cli_1', distance: 5 }, { userKey: 'cli_2' });
-  t.deepEqual(JSON.parse(json), {
+  const response = offerDiscount({ passengerKey: 'cli_1', distance: 5 }, { userKey: 'cli_2' });
+  t.deepEqual(response, {
     type: 'call-action',
     route: 'save-and-redirect',
     kicker: 'driver-index',
