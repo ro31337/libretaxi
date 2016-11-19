@@ -42,20 +42,17 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
  * @param {User} driver - driver user object (`driver.state.phone` is required)
  * @return {string} instance - stringified instance of "send my number button" response
  *
- * TODO: return parameter should be either signed, or stored in the database under guid,
- * otherwise it's theoretically possible to execute arbitrary response expression.
- *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-10-22
  * @version 1.1
  * @since 0.1.0
  */
 export default (args, driver) => { // eslint-disable-line
-  return JSON.stringify(new SendMyNumber({
+  return new SendMyNumber({
     userKey: args.passengerKey,
     arg: {
       driverPhone: driver.state.phone,
       distance: args.distance,
     },
-  }));
+  });
 };

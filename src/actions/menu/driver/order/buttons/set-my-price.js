@@ -42,21 +42,18 @@ export class SetMyPrice extends
  * @param {User} driver - driver user object
  * @return {string} instance - stringified instance of "set my price button" response
  *
- * TODO: return parameter should be either signed, or stored in the database under guid,
- * otherwise it's theoretically possible to execute arbitrary response expression.
- *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-10-27
  * @version 1.1
  * @since 0.1.0
  */
 export default (args, driver) => { // eslint-disable-line
-  return JSON.stringify(new SetMyPrice({
+  return new SetMyPrice({
     userKey: driver.userKey,
     arg: {
       passengerKey: args.passengerKey,
       distance: args.distance,
       path: 'driver-order-set-price',
     },
-  }));
+  });
 };

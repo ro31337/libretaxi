@@ -8,9 +8,9 @@ import GoogleMapsLink from '../../../../decorators/location/google-maps-link';
 import InlineOptionsResponse from '../../../../responses/inline-options-response';
 import If from '../../../../responses/if-response';
 import ZeroPrice from '../../../../conditions/zero-price';
-import sendMyNumber from './buttons/send-my-number';
-import setMyPrice from './buttons/set-my-price';
-import offerDiscount from './buttons/offer-discount';
+import inlineButtons from './buttons/inline-buttons';
+import HistoryHash from '../../../../support/history-hash';
+import UserStateResponse from '../../../../responses/user-state-response';
 
 /**
  * Notify driver about new order.
@@ -45,6 +45,10 @@ export default class DriverOrderNew extends Action {
    * @return {CompositeResponse} - composite response
    */
   call(args) {
+    const buttons = inlineButtons(args, this.user);
+    const inlineValues = {}; // key-value where key is `guid`, value is `response`
+    Object.keys(buttons).forEach((k) => { inlineValues[buttons[k].guid] = buttons[k].response; });
+
     return new CompositeResponse()
       .add(new InterruptPromptResponse())
       .add(new TextResponse({ message: this.t('new_order') }))
@@ -59,21 +63,24 @@ export default class DriverOrderNew extends Action {
         err: new TextResponse({ message: this.t('price', args.price) }),
       }))
       .add(new TextResponse({ message: this.t('call_to_action') }))
+      .add(new UserStateResponse({
+        inlineValues: new HistoryHash(this.user.state.inlineValues).merge(inlineValues),
+      }))
       .add(new If({
         condition: new ZeroPrice(args.price),
         ok: new InlineOptionsResponse({
           rows: [
             [
-              { label: this.t('set_my_price'), value: setMyPrice(args, this.user) },
+              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
             ],
           ],
         }),
         err: new InlineOptionsResponse({
           rows: [
             [
-              { label: this.t('send_my_number'), value: sendMyNumber(args, this.user) },
-              { label: this.t('set_my_price'), value: setMyPrice(args, this.user) },
-              { label: this.t('offer_discount'), value: offerDiscount(args, this.user) },
+              { label: this.t('send_my_number'), value: buttons.sendMyNumber.guid },
+              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
+              { label: this.t('offer_discount'), value: buttons.offerDiscount.guid },
             ],
           ],
         }),

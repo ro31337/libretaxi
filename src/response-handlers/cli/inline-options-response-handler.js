@@ -16,8 +16,16 @@ import InlineButtonCallback from '../common/inline-button-callback';
  * @since 0.1.0
  */
 export default class InlineOptionsResponseHandler extends ResponseHandler {
+
+  /**
+   * Constructor.
+   *
+   * @type Object
+   * @param {User} options.user - user
+   */
   constructor(options) {
     super(objectAssign({ type: 'inline-options-response-handler' }, options));
+    this.user = options.user;
   }
 
   /**
@@ -37,7 +45,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
       for (const o of row) {
         const key = 'QWERTYUIOP'[i];
         ss.push(`[${o.label}] (^${key})`);
-        hotkeys.set(key, new InlineButtonCallback({ value: o.value }));
+        hotkeys.set(key, new InlineButtonCallback({ user: this.user, value: o.value }));
         i++;
       }
     }

@@ -1,7 +1,7 @@
 import { mix } from 'mixwith';
 import checkNotNull from '../../validations/check-not-null.js';
-import { loadUser } from '../../factories/user-factory';
 import ResponseHandlerFactory from '../../factories/response-handler-factory';
+import EmptyResponse from '../../responses/empty-response';
 
 /**
  * Inline button callback. Executes handler against stringified response stored in
@@ -20,21 +20,22 @@ export default class InlineButtonCallback extends mix(class {}).with(checkNotNul
    *
    * @param {object} options - hash of parameters
    * @param {string} options.value - stringified {@link Response}
+   * @param {User} options.user - user
    */
   constructor(options) {
     super(options);
     this.type = 'inline-button-callback';
     this.value = options.value;
+    this.user = options.user;
   }
 
   /**
    * Callback entry point. Calls handler against response.
    */
   call() {
-    const response = JSON.parse(this.value);
-    loadUser(response.userKey).then((user) => {
-      const handler = ResponseHandlerFactory.getHandler({ response, user });
-      handler.call(() => {});
-    });
+    const response = ((this.user.state.inlineValues || {}).hash || {})[this.value] ||
+      new EmptyResponse();
+    const handler = ResponseHandlerFactory.getHandler({ response, user: this.user });
+    handler.call(() => {});
   }
 }
