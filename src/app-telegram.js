@@ -5,6 +5,7 @@ import { loadUser } from './factories/user-factory';
 import CaQueue from './queue/ca-queue';
 import callAction from './call-action';
 import textToValue from './support/text-to-value';
+import InlineButtonCallback from './response-handlers/common/inline-button-callback';
 
 const api = new TelegramBot(process.env.TELEGRAM_TOKEN, {
   polling: true,
@@ -24,6 +25,21 @@ api.on('message', (msg) => {
       arg: msg.text ? textToValue(user, msg.text) : something,
       route: user.state.menuLocation || 'default',
     });
+  });
+});
+
+api.on('callback_query', (msg) => {
+  const userKey = `telegram_${msg.from.id}`;
+  const data = msg.data;
+  console.log(`Got inline button value ${data} from ${userKey}`);
+
+  loadUser(userKey).then((user) => {
+    new InlineButtonCallback({ user, value: data, api }).call();
+  });
+
+  api.editMessageText('✔️ You replied to this order', {
+    chat_id: msg.message.chat.id,
+    message_id: msg.message.message_id,
   });
 });
 

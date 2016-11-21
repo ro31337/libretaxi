@@ -18,7 +18,7 @@ export default class InterruptPromptResponseHandler extends ResponseHandler {
    * @param {Object} response - {@link InterruptPromptResponse} instance.
    */
   constructor(options) {
-    super(Object.assign({ type: 'interrupt-prompt-response-handler' }, options));
+    super(Object.assign({ type: 'cli-interrupt-prompt-response-handler' }, options));
     this.inquirer = options.inquirer || inquirer;
   }
 

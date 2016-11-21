@@ -91,9 +91,9 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h14.type, 'if-response-handler');
   t.is(h15.type, 'save-order-response-handler');
   t.is(h16.type, 'inform-passenger-response-handler');
-  t.is(h17.type, 'interrupt-prompt-response-handler');
+  t.is(h17.type, 'cli-interrupt-prompt-response-handler');
   t.is(h18.type, 'notify-drivers-response-handler');
-  t.is(h19.type, 'inline-options-response-handler');
+  t.is(h19.type, 'cli-inline-options-response-handler');
   t.is(h20.type, 'call-action-response-handler');
 
   t.truthy(h1.user);
@@ -190,9 +190,9 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h14.type, 'if-response-handler');
   t.is(h15.type, 'save-order-response-handler');
   t.is(h16.type, 'inform-passenger-response-handler');
-  t.is(h17.type, 'empty-response-handler');
+  t.is(h17.type, 'telegram-interrupt-prompt-response-handler');
   t.is(h18.type, 'notify-drivers-response-handler');
-  t.is(h19.type, 'not-implemented-response-handler');
+  t.is(h19.type, 'telegram-inline-options-response-handler');
   t.is(h20.type, 'call-action-response-handler');
 
   t.truthy(h1.user);

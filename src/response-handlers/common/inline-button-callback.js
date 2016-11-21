@@ -13,20 +13,22 @@ import EmptyResponse from '../../responses/empty-response';
  * @version 1.1
  * @since 0.1.0
  */
-export default class InlineButtonCallback extends mix(class {}).with(checkNotNull('value')) {
+export default class InlineButtonCallback extends
+  mix(class {}).with(checkNotNull(['value', 'user'])) {
 
   /**
    * Constructor.
    *
    * @param {object} options - hash of parameters
-   * @param {string} options.value - stringified {@link Response}
+   * @param {string} options.value - guid key for `user.state.inlineValues`, see {@link HistoryHash}
+   * and {@link DriverOrderNew}.
    * @param {User} options.user - user
+   * @param {Object} options.api - (optional) transport library api.
    */
   constructor(options) {
     super(options);
     this.type = 'inline-button-callback';
-    this.value = options.value;
-    this.user = options.user;
+    Object.assign(this, options);
   }
 
   /**
@@ -35,7 +37,7 @@ export default class InlineButtonCallback extends mix(class {}).with(checkNotNul
   call() {
     const response = ((this.user.state.inlineValues || {}).hash || {})[this.value] ||
       new EmptyResponse();
-    const handler = ResponseHandlerFactory.getHandler({ response, user: this.user });
+    const handler = ResponseHandlerFactory.getHandler({ response, user: this.user, api: this.api });
     handler.call(() => {});
   }
 }

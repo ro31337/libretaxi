@@ -24,7 +24,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
    * @param {User} options.user - user
    */
   constructor(options) {
-    super(objectAssign({ type: 'inline-options-response-handler' }, options));
+    super(objectAssign({ type: 'cli-inline-options-response-handler' }, options));
     this.user = options.user;
   }
 
