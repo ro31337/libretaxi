@@ -2,7 +2,7 @@
 import CliTextResponseHandler from '../response-handlers/cli/text-response-handler';
 import CliOptionsResponseHandler from '../response-handlers/cli/options-response-handler';
 import UserStateResponseHandler from '../response-handlers/user-state-response-handler';
-import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler';
+import NotImplementedResponseHandler from '../response-handlers/not-implemented-response-handler'; // eslint-disable-line no-unused-vars
 import CompositeResponseHandler from '../response-handlers/composite-response-handler';
 import RedirectResponseHandler from '../response-handlers/redirect-response-handler';
 import CliRequestPhoneResponseHandler from '../response-handlers/cli/request-phone-response-handler';
@@ -16,8 +16,8 @@ import IfResponseHandler from '../response-handlers/if-response-handler';
 import SaveOrderResponseHandler from '../response-handlers/submit-order/save-order-response-handler';
 import InformPassengerResponseHandler from '../response-handlers/submit-order/inform-passenger-response-handler';
 import NotifyDriversResponseHandler from '../response-handlers/submit-order/notify-drivers-response-handler';
-import InterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
-import InlineOptionsResponseHandler from '../response-handlers/cli/inline-options-response-handler';
+import CliInterruptPromptResponseHandler from '../response-handlers/cli/interrupt-prompt-response-handler';
+import CliInlineOptionsResponseHandler from '../response-handlers/cli/inline-options-response-handler';
 import CallActionResponseHandler from '../response-handlers/call-action-response-handler';
 import TelegramTextResponseHandler from '../response-handlers/telegram/text-response-handler';
 import TelegramOptionsResponseHandler from '../response-handlers/telegram/options-response-handler';
@@ -27,6 +27,8 @@ import OptimizedRequestPhone from '../responses/decorators/optimized-request-pho
 import TelegramRequestLocationResponseHandler from '../response-handlers/telegram/request-location-response-handler';
 import OptimizedRequestLocation from '../responses/decorators/optimized-request-location';
 import TelegramErrorResponseHandler from '../response-handlers/telegram/error-response-handler';
+import TelegramInlineOptionsResponseHandler from '../response-handlers/telegram/inline-options-response-handler';
+import TelegramInterruptPromptResponseHandler from '../response-handlers/telegram/interrupt-prompt-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -48,9 +50,9 @@ const map = {
     if: (...args) => new IfResponseHandler(...args),
     'save-order': (...args) => new SaveOrderResponseHandler(...args),
     'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
-    'interrupt-prompt': (...args) => new InterruptPromptResponseHandler(...args),
+    'interrupt-prompt': (...args) => new CliInterruptPromptResponseHandler(...args),
     'notify-drivers': (...args) => new NotifyDriversResponseHandler(...args),
-    'inline-options': (...args) => new InlineOptionsResponseHandler(...args),
+    'inline-options': (...args) => new CliInlineOptionsResponseHandler(...args),
     'call-action': (...args) => new CallActionResponseHandler(...args),
   },
   telegram: {
@@ -64,9 +66,9 @@ const map = {
         {
           response:
             new OptimizedRequestLocation(
-                new OptimizedRequestPhone(
-                    new OptimizedOptions(options.response),
-                ),
+              new OptimizedRequestPhone(
+                new OptimizedOptions(options.response),
+              ),
             ),
         },
       )),
@@ -81,9 +83,9 @@ const map = {
     if: (...args) => new IfResponseHandler(...args),
     'save-order': (...args) => new SaveOrderResponseHandler(...args),
     'inform-passenger': (...args) => new InformPassengerResponseHandler(...args),
-    'interrupt-prompt': (...args) => new EmptyResponseHandler(...args),
+    'interrupt-prompt': (...args) => new TelegramInterruptPromptResponseHandler(...args),
     'notify-drivers': (...args) => new NotifyDriversResponseHandler(...args),
-    'inline-options': (...args) => new NotImplementedResponseHandler(...args),
+    'inline-options': (...args) => new TelegramInlineOptionsResponseHandler(...args),
     'call-action': (...args) => new CallActionResponseHandler(...args),
   },
 };

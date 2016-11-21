@@ -3,6 +3,7 @@ import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
 import ResponseHandlerFactory from '../factories/response-handler-factory';
+import log from '../log';
 
 /**
  * Composite response handler.
@@ -48,7 +49,11 @@ export default class CompositeResponseHandler extends
     const user = this.user;
     const api = this.api;
     const response = this.response.responses[i];
+    log.debug(`response type: ${response.type}`);
+
     const handler = ResponseHandlerFactory.getHandler({ response, user, api });
+    log.debug(`handler type: ${handler.type}`);
+
     handler.call((retVal) => {
       this.call(onResult, i + 1, retVal || v);
     });

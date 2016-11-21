@@ -4,7 +4,7 @@ import InlineButtonCallback from '../../../src/response-handlers/common/inline-b
 import checkNotNullTest from '../../helpers/check-not-null.js';
 import ResponseHandlerFactory from '../../../src/factories/response-handler-factory';
 
-checkNotNullTest('value', (args) => { new InlineButtonCallback(args); });
+checkNotNullTest(['value', 'user'], (args) => { new InlineButtonCallback(args); });
 
 test('can be constructed with default parameters', t => {
   const cb = new InlineButtonCallback({ value: { foo: 'bar' }, user: {} });

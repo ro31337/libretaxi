@@ -25,7 +25,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should print the message to console', t => {
-  const h = new InlineOptionsResponseHandler({ response });
+  const h = new InlineOptionsResponseHandler({ response, user: {} });
   const tmp = console.log;
   console.log = ss.sinon.spy();
 
@@ -37,7 +37,7 @@ test.cb('should print the message to console', t => {
 });
 
 test.cb('should clear all hotkeys and set hotkeys', t => {
-  const h = new InlineOptionsResponseHandler({ response });
+  const h = new InlineOptionsResponseHandler({ response, user: {} });
   const tmp = console.log;
   console.log = ss.sinon.spy();
   hotkeys.clearAll = ss.sinon.spy();
@@ -55,7 +55,7 @@ test.cb('should clear all hotkeys and set hotkeys', t => {
 });
 
 test.cb('should set correct callbacks for hotkeys', t => {
-  const h = new InlineOptionsResponseHandler({ response });
+  const h = new InlineOptionsResponseHandler({ response, user: {} });
   const tmp = console.log;
   const hh = {};
   console.log = ss.sinon.spy();

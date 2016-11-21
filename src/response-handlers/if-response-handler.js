@@ -19,8 +19,10 @@ export default class IfResponseHandler extends
   /**
    * Constructor.
    *
+   * @type {Object}
    * @param {Object} response - {@link IfResponse} instance.
    * @param {Object} user - {@link User} instance.
+   * @param {object} api - (optional) transport library api.
    */
   constructor(options) {
     super(Object.assign({ type: 'if-response-handler' }, options));
