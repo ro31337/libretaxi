@@ -29,6 +29,7 @@ import OptimizedRequestLocation from '../responses/decorators/optimized-request-
 import TelegramErrorResponseHandler from '../response-handlers/telegram/error-response-handler';
 import TelegramInlineOptionsResponseHandler from '../response-handlers/telegram/inline-options-response-handler';
 import TelegramInterruptPromptResponseHandler from '../response-handlers/telegram/interrupt-prompt-response-handler';
+import ConcatText from '../responses/decorators/concat-text';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -67,7 +68,9 @@ const map = {
           response:
             new OptimizedRequestLocation(
               new OptimizedRequestPhone(
-                new OptimizedOptions(options.response),
+                new OptimizedOptions(
+                  new ConcatText(options.response)
+                ),
               ),
             ),
         },
