@@ -19,7 +19,7 @@ export default class OptimizedRequestLocation extends CompositeResponseDecorator
    * @override
    */
   optimize(r1, r2, response) {
-    if (r2 && r1.type === 'text' && r2.type === 'request-location') {
+    if (r2 && r1.type === 'text' && r2.type === 'request-location' && !r2.message) {
       response.add(new RequestLocationResponse({ message: r1.message, buttonText: r2.buttonText }));
       return true;
     }

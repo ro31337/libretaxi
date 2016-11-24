@@ -18,25 +18,25 @@ test('should return composite response on call', t => {
   const response = action.call(args);
   t.is(response.type, 'composite');
   t.is(response.responses[0].type, 'interrupt-prompt');
-  t.is(response.responses[1].type, 'text');
-  t.is(response.responses[1].message, i18n.__('driver-order-new.new_order'));
+  t.is(response.responses[1].type, 'user-state');
   t.is(response.responses[2].type, 'text');
-  t.is(response.responses[2].message, i18n.__('driver-order-new.distance', '10.0 km'));
+  t.is(response.responses[2].message, i18n.__('driver-order-new.new_order'));
   t.is(response.responses[3].type, 'text');
-  t.is(response.responses[3].message,
-    i18n.__('driver-order-new.from', 'https://www.google.com/maps?q=37.421955,-122.084058'));
+  t.is(response.responses[3].message, i18n.__('driver-order-new.distance', '10.0 km'));
   t.is(response.responses[4].type, 'text');
-  t.is(response.responses[4].message, i18n.__('driver-order-new.to', 'foo'));
-  t.is(response.responses[5].type, 'if');
-  t.is(response.responses[5].condition.type, 'zero-price');
-  t.is(response.responses[5].condition.value, '50');
-  t.is(response.responses[5].ok.type, 'text');
-  t.is(response.responses[5].ok.message, i18n.__('driver-order-new.price_not_set'));
-  t.is(response.responses[5].err.type, 'text');
-  t.is(response.responses[5].err.message, i18n.__('driver-order-new.price', '50'));
-  t.is(response.responses[6].type, 'text');
-  t.is(response.responses[6].message, i18n.__('driver-order-new.call_to_action'));
-  t.is(response.responses[7].type, 'user-state');
+  t.is(response.responses[4].message,
+    i18n.__('driver-order-new.from', 'https://www.google.com/maps?q=37.421955,-122.084058'));
+  t.is(response.responses[5].type, 'text');
+  t.is(response.responses[5].message, i18n.__('driver-order-new.to', 'foo'));
+  t.is(response.responses[6].type, 'if');
+  t.is(response.responses[6].condition.type, 'zero-price');
+  t.is(response.responses[6].condition.value, '50');
+  t.is(response.responses[6].ok.type, 'text');
+  t.is(response.responses[6].ok.message, i18n.__('driver-order-new.price_not_set'));
+  t.is(response.responses[6].err.type, 'text');
+  t.is(response.responses[6].err.message, i18n.__('driver-order-new.price', '50'));
+  t.is(response.responses[7].type, 'text');
+  t.is(response.responses[7].message, i18n.__('driver-order-new.call_to_action'));
   t.is(response.responses[8].type, 'if');
   t.is(response.responses[8].condition.type, 'zero-price');
   t.is(response.responses[8].condition.value, '50');
@@ -56,7 +56,7 @@ test('should return composite response on call', t => {
   t.is(response.responses[9].type, 'redirect');
   t.is(response.responses[9].path, 'driver-index');
 
-  t.deepEqual(response.responses[7].state.inlineValues.hash[button1], {
+  t.deepEqual(response.responses[1].state.inlineValues.hash[button1], {
     type: 'call-action',
     route: 'passenger-contact-new-number',
     kicker: 'order-submitted',
@@ -67,7 +67,7 @@ test('should return composite response on call', t => {
     },
   });
 
-  t.deepEqual(response.responses[7].state.inlineValues.hash[button2], {
+  t.deepEqual(response.responses[1].state.inlineValues.hash[button2], {
     type: 'call-action',
     route: 'save-and-redirect',
     kicker: 'driver-index',
@@ -79,7 +79,7 @@ test('should return composite response on call', t => {
     },
   });
 
-  t.deepEqual(response.responses[7].state.inlineValues.hash[button3], {
+  t.deepEqual(response.responses[1].state.inlineValues.hash[button3], {
     type: 'call-action',
     route: 'save-and-redirect',
     kicker: 'driver-index',

@@ -19,7 +19,7 @@ export default class OptimizedOptions extends CompositeResponseDecorator {
    * @override
    */
   optimize(r1, r2, response) {
-    if (r2 && r1.type === 'text' && r2.type === 'options') {
+    if (r2 && r1.type === 'text' && r2.type === 'options' && !r2.message) {
       response.add(new OptionsResponse({ rows: r2.rows, message: r1.message }));
       return true;
     }

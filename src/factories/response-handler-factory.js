@@ -30,6 +30,7 @@ import TelegramErrorResponseHandler from '../response-handlers/telegram/error-re
 import TelegramInlineOptionsResponseHandler from '../response-handlers/telegram/inline-options-response-handler';
 import TelegramInterruptPromptResponseHandler from '../response-handlers/telegram/interrupt-prompt-response-handler';
 import ConcatText from '../responses/decorators/concat-text';
+import OptimizedInlineOptions from '../responses/decorators/optimized-inline-options';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -66,10 +67,12 @@ const map = {
         options,
         {
           response:
-            new OptimizedRequestLocation(
-              new OptimizedRequestPhone(
-                new OptimizedOptions(
-                  new ConcatText(options.response)
+            new OptimizedInlineOptions(
+              new OptimizedRequestLocation(
+                new OptimizedRequestPhone(
+                  new OptimizedOptions(
+                    new ConcatText(options.response)
+                  ),
                 ),
               ),
             ),
