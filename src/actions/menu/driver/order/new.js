@@ -51,6 +51,9 @@ export default class DriverOrderNew extends Action {
 
     return new CompositeResponse()
       .add(new InterruptPromptResponse())
+      .add(new UserStateResponse({
+        inlineValues: new HistoryHash(this.user.state.inlineValues).merge(inlineValues),
+      }))
       .add(new TextResponse({ message: this.t('new_order') }))
       .add(new TextResponse({ message: this.t('distance',
         new MetricDistance(this.i18n, args.distance).toString()) }))
@@ -63,9 +66,6 @@ export default class DriverOrderNew extends Action {
         err: new TextResponse({ message: this.t('price', args.price) }),
       }))
       .add(new TextResponse({ message: this.t('call_to_action') }))
-      .add(new UserStateResponse({
-        inlineValues: new HistoryHash(this.user.state.inlineValues).merge(inlineValues),
-      }))
       .add(new If({
         condition: new ZeroPrice(args.price),
         ok: new InlineOptionsResponse({
