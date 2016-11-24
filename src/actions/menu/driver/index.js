@@ -38,20 +38,16 @@ export default class DriverIndex extends Action {
       condition: new Equals(this.user.state.muted, true),
       ok: new OptionsResponse({
         rows: [
-          [
-            { label: this.t('checkin'), value: 'checkin' },
-            { label: this.t('unmute'), value: 'unmute' },
-            { label: this.t('settings'), value: 'settings' },
-          ],
+          [{ label: this.t('checkin'), value: 'checkin' }],
+          [{ label: this.t('unmute'), value: 'unmute' }],
+          [{ label: this.t('settings'), value: 'settings' }],
         ],
       }),
       err: new OptionsResponse({
         rows: [
-          [
-            { label: this.t('checkin'), value: 'checkin' },
-            { label: this.t('mute'), value: 'mute' },
-            { label: this.t('settings'), value: 'settings' },
-          ],
+          [{ label: this.t('checkin'), value: 'checkin' }],
+          [{ label: this.t('mute'), value: 'mute' }],
+          [{ label: this.t('settings'), value: 'settings' }],
         ],
       }),
     });

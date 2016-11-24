@@ -70,18 +70,14 @@ export default class DriverOrderNew extends Action {
         condition: new ZeroPrice(args.price),
         ok: new InlineOptionsResponse({
           rows: [
-            [
-              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
-            ],
+            [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
           ],
         }),
         err: new InlineOptionsResponse({
           rows: [
-            [
-              { label: this.t('send_my_number'), value: buttons.sendMyNumber.guid },
-              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
-              { label: this.t('offer_discount'), value: buttons.offerDiscount.guid },
-            ],
+            [{ label: this.t('send_my_number'), value: buttons.sendMyNumber.guid }],
+            [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
+            [{ label: this.t('offer_discount'), value: buttons.offerDiscount.guid }],
           ],
         }),
       }))
