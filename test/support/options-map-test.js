@@ -4,6 +4,7 @@ import OptionsMap from '../../src/support/options-map';
 import OptionsResponse from '../../src/responses/options-response';
 import CompositeResponse from '../../src/responses/composite-response';
 import TextResponse from '../../src/responses/text-response';
+import If from '../../src/responses/if-response';
 import checkNotNullTest from '../helpers/check-not-null';
 
 checkNotNullTest('response', (args) => { new OptionsMap(args); });
@@ -74,6 +75,36 @@ test('should parse nested composite response with mixed responses', t => {
   const response = new CompositeResponse()
     .add(cr1)
     .add(cr2);
+
+  const om = new OptionsMap({ response });
+  const map = om.parse();
+  t.is(Object.keys(map).length, 4);
+  t.is(map.one, '1');
+  t.is(map.two, '2');
+  t.is(map.three, '3');
+  t.is(map.four, '4');
+});
+
+test('should support if response', t => {
+  const response1 = new OptionsResponse({ rows:
+  [
+    [
+      { label: 'one', value: '1' },
+      { label: 'two', value: '2' },
+    ],
+  ] });
+  const response2 = new OptionsResponse({ rows:
+  [
+    [
+      { label: 'three', value: '3' },
+      { label: 'four', value: '4' },
+    ],
+  ] });
+  const response = new If({
+    condition: {},
+    ok: response1,
+    err: response2,
+  });
 
   const om = new OptionsMap({ response });
   const map = om.parse();

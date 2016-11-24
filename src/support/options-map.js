@@ -51,6 +51,9 @@ export default class OptionsMap extends mix(class {}).with(checkNotNull('respons
     if (current.type === 'composite') {
       this.parseComposite(current, map);
     }
+    if (current.type === 'if') {
+      this.parseIf(current, map);
+    }
   }
 
   /**
@@ -75,5 +78,15 @@ export default class OptionsMap extends mix(class {}).with(checkNotNull('respons
     for (const response of current.responses) {
       this.parseNode(response, map);
     }
+  }
+
+  /**
+   * Parse {@link IfResponse} node, recursively parse subnodes.
+   *
+   * @private
+   */
+  parseIf(current, map) {
+    if (current.ok) this.parseNode(current.ok, map);
+    if (current.err) this.parseNode(current.err, map);
   }
 }
