@@ -24,19 +24,19 @@ test('should return options response on get', t => {
 
   t.is(okResponse.type, 'options');
   t.is(okResponse.rows[0][0].value, 'checkin');
-  t.is(okResponse.rows[0][1].value, 'unmute');
-  t.is(okResponse.rows[0][2].value, 'settings');
+  t.is(okResponse.rows[1][0].value, 'unmute');
+  t.is(okResponse.rows[2][0].value, 'settings');
   t.is(okResponse.rows[0][0].label, i18n.__('driver-index.checkin'));
-  t.is(okResponse.rows[0][1].label, i18n.__('driver-index.unmute'));
-  t.is(okResponse.rows[0][2].label, i18n.__('driver-index.settings'));
+  t.is(okResponse.rows[1][0].label, i18n.__('driver-index.unmute'));
+  t.is(okResponse.rows[2][0].label, i18n.__('driver-index.settings'));
 
   t.is(errResponse.type, 'options');
   t.is(errResponse.rows[0][0].value, 'checkin');
-  t.is(errResponse.rows[0][1].value, 'mute');
-  t.is(errResponse.rows[0][2].value, 'settings');
+  t.is(errResponse.rows[1][0].value, 'mute');
+  t.is(errResponse.rows[2][0].value, 'settings');
   t.is(errResponse.rows[0][0].label, i18n.__('driver-index.checkin'));
-  t.is(errResponse.rows[0][1].label, i18n.__('driver-index.mute'));
-  t.is(errResponse.rows[0][2].label, i18n.__('driver-index.settings'));
+  t.is(errResponse.rows[1][0].label, i18n.__('driver-index.mute'));
+  t.is(errResponse.rows[2][0].label, i18n.__('driver-index.settings'));
 });
 
 test('should return composite response on post', t => {
