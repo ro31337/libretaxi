@@ -1,5 +1,6 @@
 import ActionFactory from './factories/action-factory';
 import ResponseHandlerFactory from './factories/response-handler-factory';
+import log from './log';
 
 // Function to handle actions.
 // 1. Action is created based on provided `options.route`.
@@ -16,6 +17,8 @@ export default (options) => { // eslint-disable-line
   const queue = options.queue;
 
   const action = ActionFactory.fromRoute({ route, user });
+  log.debug(`calling ${action.type} with ${options.arg}`);
+  log.debug(options.arg);
   const response = action.call(options.arg);
   const handler = ResponseHandlerFactory.getHandler({ response, user, api: options.api });
 

@@ -78,6 +78,8 @@ export default class CompositeResponseDecorator extends Response {
         response.add(this.traverse(r1));
       }
     }
+    // if was optimized, try to optimize one more time
+    if (response.responses.length !== rr.length) return this.traverseComposite(response);
     return response;
   }
 
