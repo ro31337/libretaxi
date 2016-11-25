@@ -25,6 +25,7 @@ export default class RequestLocationResponseHandler extends ResponseHandler {
     const buttonText = this.response.buttonText || 'Send location';
     this.api.sendMessage(this.user.platformId, message,
       {
+        disable_notification: true,
         reply_markup: JSON.stringify({
           keyboard: [[{ text: buttonText, request_location: true }]],
           one_time_keyboard: true,

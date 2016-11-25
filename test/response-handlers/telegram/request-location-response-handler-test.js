@@ -18,6 +18,7 @@ test('should call sendMessage', t => {
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'Send location by clicking the button below',
     {
+      disable_notification: true,
       reply_markup:
         JSON.stringify({
           keyboard: [[{ text: 'Send location', request_location: true }]],
@@ -33,6 +34,7 @@ test('should call sendMessage with custom message', t => {
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'foo',
     {
+      disable_notification: true,
       reply_markup:
         JSON.stringify({
           keyboard: [[{ text: 'Send location', request_location: true }]],

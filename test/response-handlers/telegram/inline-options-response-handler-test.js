@@ -25,20 +25,22 @@ test.cb('should call sendMessage', t => {
   const h = new InlineOptionsResponseHandler({ response: responseObject, user });
   h.api = { sendMessage: ss.sinon.spy() };
   h.call(() => { // should call onResult
-    t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', { reply_markup:
-      JSON.stringify({
-        inline_keyboard: [
-          [
-            { text: 'One', callback_data: '1' },
-            { text: 'Two', callback_data: '2' },
-            { text: 'Three', callback_data: '3' },
+    t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', {
+      disable_notification: true,
+      reply_markup:
+        JSON.stringify({
+          inline_keyboard: [
+            [
+              { text: 'One', callback_data: '1' },
+              { text: 'Two', callback_data: '2' },
+              { text: 'Three', callback_data: '3' },
+            ],
+            [
+              { text: 'OK', callback_data: 'ok' },
+              { text: 'Cancel', callback_data: 'cancel' },
+            ],
           ],
-          [
-            { text: 'OK', callback_data: 'ok' },
-            { text: 'Cancel', callback_data: 'cancel' },
-          ],
-        ],
-      }),
+        }),
     }));
     t.end();
   });
@@ -53,20 +55,22 @@ test.cb('should call sendMessage with default message', t => {
   });
   h.api = { sendMessage: ss.sinon.spy() };
   h.call(() => { // should call onResult
-    t.truthy(h.api.sendMessage.calledWith(31337, 'foo', { reply_markup:
-      JSON.stringify({
-        inline_keyboard: [
-          [
-            { text: 'One', callback_data: '1' },
-            { text: 'Two', callback_data: '2' },
-            { text: 'Three', callback_data: '3' },
+    t.truthy(h.api.sendMessage.calledWith(31337, 'foo', {
+      disable_notification: true,
+      reply_markup:
+        JSON.stringify({
+          inline_keyboard: [
+            [
+              { text: 'One', callback_data: '1' },
+              { text: 'Two', callback_data: '2' },
+              { text: 'Three', callback_data: '3' },
+            ],
+            [
+              { text: 'OK', callback_data: 'ok' },
+              { text: 'Cancel', callback_data: 'cancel' },
+            ],
           ],
-          [
-            { text: 'OK', callback_data: 'ok' },
-            { text: 'Cancel', callback_data: 'cancel' },
-          ],
-        ],
-      }),
+        }),
     }));
     t.end();
   });
