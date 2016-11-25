@@ -79,7 +79,7 @@
 	"driver-order-new.to_desc": "We show this message to drivers when they receive new order. Here we show passenger's destination address and maybe some random details.",
 	"driver-order-new.price": "Passenger is ready to pay: %s (in local currency)",
 	"driver-order-new.price_desc": "We show this message to drivers when they receive new order. This is passenger's price for the order.",
-	"driver-order-new.call_to_action": "To accept this order click on the button below. If you're not interested, just ignore this message.",
+	"driver-order-new.call_to_action": "Please choose an action 👇 or ignore this message",
 	"driver-order-new.call_to_action_desc": "We show this message to drivers when they receive new order",
 	"driver-order-new.send_my_number": "Send my number",
 	"driver-order-new.send_my_number_desc": "We show this message to drivers as a text on the button when drivers receive new order. When driver clicks on this button, we send driver's phone number to passenger. Keep this text as short as possible.",
@@ -107,6 +107,10 @@
 	"passenger-contact-driver-discount.message_desc": "Message we send to passengers when driver offers discount.",
 	"global.location_button_text": "Send location",
 	"global.location_button_text_desc": "Text on the button when we ask user to provide location",
+	"global.default_options_message": "Please choose an action from menu below 👇",
+	"global.default_options_message_desc": "Default message we show to users when they can pick action from the menu. Menu is always located below the message.",
+	"global.default_inline_options_message": "Click on the button 👇 or ignore this message",
+	"global.default_inline_options_message_desc": "Default message we show to users when they can pick action from inline menu. Menu is always located below the message.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

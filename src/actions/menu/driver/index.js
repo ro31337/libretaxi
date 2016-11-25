@@ -42,6 +42,7 @@ export default class DriverIndex extends Action {
           [{ label: this.t('unmute'), value: 'unmute' }],
           [{ label: this.t('settings'), value: 'settings' }],
         ],
+        defaultMessage: this.gt('default_options_message'),
       }),
       err: new OptionsResponse({
         rows: [
@@ -49,6 +50,7 @@ export default class DriverIndex extends Action {
           [{ label: this.t('mute'), value: 'mute' }],
           [{ label: this.t('settings'), value: 'settings' }],
         ],
+        defaultMessage: this.gt('default_options_message'),
       }),
     });
   }

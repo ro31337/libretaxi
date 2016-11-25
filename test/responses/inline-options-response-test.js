@@ -15,7 +15,7 @@ test('instance should have properties', t => {
     rows: [[{ label: 'Ok', value: 'ok' }]],
     message: 'foo',
     defaultMessage: 'bar',
-   });
+  });
   t.truthy(r.rows);
   t.is(r.message, 'foo');
   t.is(r.defaultMessage, 'bar');

@@ -34,3 +34,22 @@ test('should call sendMessage', t => {
     }),
   }));
 });
+
+test('should call sendMessage with default text message', t => {
+  const user = { platformId: 31337 };
+  const h = new OptionsResponseHandler({
+    response: new OptionsResponse({ rows: responseObject.rows, defaultMessage: 'default message' }),
+    user,
+  });
+  h.api = { sendMessage: ss.sinon.spy() };
+  h.call(() => t.fail()); // and should not call onResult
+  t.truthy(h.api.sendMessage.calledWith(31337, 'default message', { reply_markup:
+    JSON.stringify({
+      keyboard: [
+        ['One', 'Two', 'Three'],
+        ['OK', 'Cancel'],
+      ],
+      one_time_keyboard: true,
+    }),
+  }));
+});
