@@ -20,8 +20,10 @@ export default class TextResponseHandler extends ResponseHandler {
    * Prints the message to telegram.
    */
   call(onResult) {
-    this.api.sendMessage(this.user.platformId, this.response.message,
+    const message = this.response.message || '';
+    this.api.sendMessage(this.user.platformId, message,
       {
+        disable_notification: !message.includes('🔔'),
         reply_markup: JSON.stringify({ hide_keyboard: true }),
       });
     onResult();
