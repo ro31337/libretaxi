@@ -22,6 +22,7 @@ export default class ErrorResponseHandler extends ResponseHandler {
   call(onResult) {
     this.api.sendMessage(this.user.platformId, `❌ ${this.response.message}`,
       {
+        disable_notification: true,
         reply_markup: JSON.stringify({ hide_keyboard: true }),
       });
     onResult();

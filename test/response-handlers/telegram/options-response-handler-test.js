@@ -24,14 +24,16 @@ test('should call sendMessage', t => {
   const h = new OptionsResponseHandler({ response: responseObject, user });
   h.api = { sendMessage: ss.sinon.spy() };
   h.call(() => t.fail()); // and should not call onResult
-  t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', { reply_markup:
-    JSON.stringify({
-      keyboard: [
-        ['One', 'Two', 'Three'],
-        ['OK', 'Cancel'],
-      ],
-      one_time_keyboard: true,
-    }),
+  t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', {
+    disable_notification: true,
+    reply_markup:
+      JSON.stringify({
+        keyboard: [
+          ['One', 'Two', 'Three'],
+          ['OK', 'Cancel'],
+        ],
+        one_time_keyboard: true,
+      }),
   }));
 });
 
@@ -43,13 +45,15 @@ test('should call sendMessage with default text message', t => {
   });
   h.api = { sendMessage: ss.sinon.spy() };
   h.call(() => t.fail()); // and should not call onResult
-  t.truthy(h.api.sendMessage.calledWith(31337, 'default message', { reply_markup:
-    JSON.stringify({
-      keyboard: [
-        ['One', 'Two', 'Three'],
-        ['OK', 'Cancel'],
-      ],
-      one_time_keyboard: true,
-    }),
+  t.truthy(h.api.sendMessage.calledWith(31337, 'default message', {
+    disable_notification: true,
+    reply_markup:
+      JSON.stringify({
+        keyboard: [
+          ['One', 'Two', 'Three'],
+          ['OK', 'Cancel'],
+        ],
+        one_time_keyboard: true,
+      }),
   }));
 });

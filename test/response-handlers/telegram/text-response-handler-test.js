@@ -11,7 +11,7 @@ test('can be constructed with default parameters', t => {
   t.is(r.type, 'telegram-text-response-handler');
 });
 
-test.cb('should send message to specified user with api', t => {
+test.cb('should send message with notification disabled', t => {
   // arrange
   const r = { message: 'foo' };
   const h = new TextResponseHandler({ response: r });
@@ -21,7 +21,30 @@ test.cb('should send message to specified user with api', t => {
   // act
   h.call(() => {
     // assert
-    t.truthy(h.api.sendMessage.calledWith(31337, 'foo'));
+    t.truthy(h.api.sendMessage.calledWith(31337, 'foo',
+      {
+        disable_notification: true,
+        reply_markup: JSON.stringify({ hide_keyboard: true }),
+      }));
+    t.end();
+  });
+});
+
+test.cb('should send message with bell with notification enabled', t => {
+  // arrange
+  const r = { message: '🔔 foo' };
+  const h = new TextResponseHandler({ response: r });
+  h.user = { platformId: 31337 };
+  h.api = { sendMessage: ss.sinon.spy() };
+
+  // act
+  h.call(() => {
+    // assert
+    t.truthy(h.api.sendMessage.calledWith(31337, '🔔 foo',
+      {
+        disable_notification: false,
+        reply_markup: JSON.stringify({ hide_keyboard: true }),
+      }));
     t.end();
   });
 });

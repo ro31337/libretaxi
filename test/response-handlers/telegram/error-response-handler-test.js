@@ -21,7 +21,10 @@ test.cb('should send message to specified user with api', t => {
   // act
   h.call(() => {
     // assert
-    t.truthy(h.api.sendMessage.calledWith(31337, '❌ foo'));
+    t.truthy(h.api.sendMessage.calledWith(31337, '❌ foo', {
+      disable_notification: true,
+      reply_markup: JSON.stringify({ hide_keyboard: true }),
+    }));
     t.end();
   });
 });
