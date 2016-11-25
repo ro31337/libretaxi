@@ -11,8 +11,13 @@ test('can be constructed with default parameters', t => {
 });
 
 test('instance should have properties', t => {
-  const r = new InlineOptionsResponse({ rows: [[{ label: 'Ok', value: 'ok' }]], message: 'foo' });
+  const r = new InlineOptionsResponse({
+    rows: [[{ label: 'Ok', value: 'ok' }]],
+    message: 'foo',
+    defaultMessage: 'bar',
+   });
   t.truthy(r.rows);
   t.is(r.message, 'foo');
+  t.is(r.defaultMessage, 'bar');
   t.pass();
 });

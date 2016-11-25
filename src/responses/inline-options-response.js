@@ -30,6 +30,7 @@ export default class InlineOptionsResponse extends
    * array of objects. Each object must contain two properties: `label` and `value`.
    * @param {string} options.message - (optional) message to display before rendering the list
    * of options
+   * @param {string} options.defaultMessage - (optional) same as `message`, but safe to replace
    * @example
    * const r = new InlineOptionsResponse({
    * 	rows: [
