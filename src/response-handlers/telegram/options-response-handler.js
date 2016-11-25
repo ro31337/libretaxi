@@ -32,7 +32,7 @@ export default class OptionsResponseHandler extends ResponseHandler {
     // convert rows to Telegram compatible rows
     const rows = Array.from(this.response.rows, row => Array.from(row, o => o.label));
 
-    const message = this.response.message || 'Your choice?';
+    const message = this.response.message || this.response.defaultMessage || 'Your choice?';
     this.api.sendMessage(this.user.platformId, message,
       {
         reply_markup: JSON.stringify({ keyboard: rows, one_time_keyboard: true }),

@@ -72,6 +72,7 @@ export default class DriverOrderNew extends Action {
           rows: [
             [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
           ],
+          defaultMessage: this.gt('default_inline_options_message'),
         }),
         err: new InlineOptionsResponse({
           rows: [
@@ -79,6 +80,7 @@ export default class DriverOrderNew extends Action {
             [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
             [{ label: this.t('offer_discount'), value: buttons.offerDiscount.guid }],
           ],
+          defaultMessage: this.gt('default_inline_options_message'),
         }),
       }))
       .add(new RedirectResponse({ path: 'driver-index' }));

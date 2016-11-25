@@ -43,3 +43,31 @@ test.cb('should call sendMessage', t => {
     t.end();
   });
 });
+
+test.cb('should call sendMessage with default message', t => {
+  t.plan(1);
+  const user = { platformId: 31337 };
+  const h = new InlineOptionsResponseHandler({
+    response: new InlineOptionsResponse({ rows: responseObject.rows, defaultMessage: 'foo' }),
+    user,
+  });
+  h.api = { sendMessage: ss.sinon.spy() };
+  h.call(() => { // should call onResult
+    t.truthy(h.api.sendMessage.calledWith(31337, 'foo', { reply_markup:
+      JSON.stringify({
+        inline_keyboard: [
+          [
+            { text: 'One', callback_data: '1' },
+            { text: 'Two', callback_data: '2' },
+            { text: 'Three', callback_data: '3' },
+          ],
+          [
+            { text: 'OK', callback_data: 'ok' },
+            { text: 'Cancel', callback_data: 'cancel' },
+          ],
+        ],
+      }),
+    }));
+    t.end();
+  });
+});

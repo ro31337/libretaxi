@@ -28,6 +28,7 @@ export default class OptionsResponse extends
    * {@link OptionsMap}.
    * @param {string} options.message - (optional) message to display before rendering the list
    * of options
+   * @param {string} options.defaultMessage - (optional) same as `message`, but safe to replace
    * @see https://github.com/ro31337/cheaptaxi/issues/301
    * @see https://github.com/ro31337/cheaptaxi/issues/300
    * @example
