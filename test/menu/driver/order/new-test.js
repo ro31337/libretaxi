@@ -23,9 +23,8 @@ test('should return composite response on call', t => {
   t.is(response.responses[2].message, i18n.__('driver-order-new.new_order'));
   t.is(response.responses[3].type, 'text');
   t.is(response.responses[3].message, i18n.__('driver-order-new.distance', '10.0 km'));
-  t.is(response.responses[4].type, 'text');
-  t.is(response.responses[4].message,
-    i18n.__('driver-order-new.from', 'https://www.google.com/maps?q=37.421955,-122.084058'));
+  t.is(response.responses[4].type, 'map');
+  t.deepEqual(response.responses[4].location, [37.421955, -122.084058]);
   t.is(response.responses[5].type, 'text');
   t.is(response.responses[5].message, i18n.__('driver-order-new.to', 'foo'));
   t.is(response.responses[6].type, 'if');
