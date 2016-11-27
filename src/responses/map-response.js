@@ -19,12 +19,9 @@ export default class MapResponse extends mix(Response).with(checkNotNull('locati
    * @type {Object}
    * @param {string} options.location - location, array with two decimal coordinates.
    * For example: `[37.421955, -122.084058]` (location of GooglePlex in MTV)
-   * @param {string} options.message - (optional) message to display before showing the map,
-   * platform-specific
    */
   constructor(options) {
     super(Object.assign({ type: 'map' }, options));
     this.location = options.location;
-    this.message = options.message;
   }
 }

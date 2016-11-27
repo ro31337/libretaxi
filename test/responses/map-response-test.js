@@ -12,10 +12,9 @@ test('can be constructed with default parameters', t => {
   t.pass();
 });
 
-test('should have properties', t => {
-  const r = new MapResponse({ location, message: 'foo' });
+test('should have type', t => {
+  const r = new MapResponse({ location });
   t.is(r.type, 'map');
-  t.is(r.message, 'foo');
 });
 
 test('should save location property', t => {
