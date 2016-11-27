@@ -32,6 +32,7 @@ import TelegramInterruptPromptResponseHandler from '../response-handlers/telegra
 import ConcatText from '../responses/decorators/concat-text';
 import OptimizedInlineOptions from '../responses/decorators/optimized-inline-options';
 import CliMapResponseHandler from '../response-handlers/cli/map-response-handler';
+import TelegramMapResponseHandler from '../response-handlers/telegram/map-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -95,7 +96,7 @@ const map = {
     'notify-drivers': (...args) => new NotifyDriversResponseHandler(...args),
     'inline-options': (...args) => new TelegramInlineOptionsResponseHandler(...args),
     'call-action': (...args) => new CallActionResponseHandler(...args),
-    map: (...args) => new NotImplementedResponseHandler(...args),
+    map: (...args) => new TelegramMapResponseHandler(...args),
   },
 };
 

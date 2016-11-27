@@ -201,7 +201,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h18.type, 'notify-drivers-response-handler');
   t.is(h19.type, 'telegram-inline-options-response-handler');
   t.is(h20.type, 'call-action-response-handler');
-  t.is(h21.type, 'not-implemented-response-handler');
+  t.is(h21.type, 'telegram-map-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
