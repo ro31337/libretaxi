@@ -71,7 +71,7 @@
 	"driver-checkin.ok_desc": "We show this message to drivers when they check-in.",
 	"driver-order-new.new_order": "🔔 New order!",
 	"driver-order-new.new_order_desc": "We show this message to drivers when they receive new order.",
-	"driver-order-new.distance": "Distance to passenger: %s (since last check-in)",
+	"driver-order-new.distance": "Distance to passenger: %s (since your last check-in). Passenger location (click to zoom in):",
 	"driver-order-new.distance_desc": "We show this message to drivers when they receive new order.",
 	"driver-order-new.from": "Passenger is located here: %s",
 	"driver-order-new.from_desc": "We show this message to drivers when they receive new order.",

@@ -1,10 +1,10 @@
 import Action from '../../../../action';
 import CompositeResponse from '../../../../responses/composite-response';
 import TextResponse from '../../../../responses/text-response';
+import MapResponse from '../../../../responses/map-response';
 import InterruptPromptResponse from '../../../../responses/interrupt-prompt-response';
 import RedirectResponse from '../../../../responses/redirect-response';
 import MetricDistance from '../../../../decorators/distance/metric-distance';
-import GoogleMapsLink from '../../../../decorators/location/google-maps-link';
 import InlineOptionsResponse from '../../../../responses/inline-options-response';
 import If from '../../../../responses/if-response';
 import ZeroPrice from '../../../../conditions/zero-price';
@@ -57,8 +57,7 @@ export default class DriverOrderNew extends Action {
       .add(new TextResponse({ message: this.t('new_order') }))
       .add(new TextResponse({ message: this.t('distance',
         new MetricDistance(this.i18n, args.distance).toString()) }))
-      .add(new TextResponse({ message: this.t('from',
-        new GoogleMapsLink(args.from).toString()) }))
+      .add(new MapResponse({ location: args.from }))
       .add(new TextResponse({ message: this.t('to', args.to) }))
       .add(new If({
         condition: new ZeroPrice(args.price),
