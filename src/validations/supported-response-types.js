@@ -34,4 +34,5 @@ export default new Set([
   'notify-drivers',
   'inline-options',
   'call-action',
+  'map',
 ]);
