@@ -1,6 +1,5 @@
 import routes from '../routes';
-import i18n from 'i18n';
-import appRoot from 'app-root-path';
+import initLocale from '../support/init-locale';
 
 /**
  * Action factory, implements factory method(s) to create actions based on
@@ -46,23 +45,12 @@ export default class ActionFactory {
   static fromRoute(obj) {
     const user = obj.user;
     const route = obj.route;
-    const locale = user.state.locale || 'en';
-
     const action = routes[route];
 
     if (!action) {
       throw new Error(`Can't find route key "${route}" in routes`);
     }
 
-    const t = {};
-
-    i18n.configure({
-      locales: ['en', 'ru'],
-      register: t,
-      directory: `${appRoot.path}/locales`,
-    });
-
-    t.setLocale(locale);
-    return new action({ i18n: t, user }); // eslint-disable-line new-cap
+    return new action({ i18n: initLocale(user), user }); // eslint-disable-line new-cap
   }
 }
