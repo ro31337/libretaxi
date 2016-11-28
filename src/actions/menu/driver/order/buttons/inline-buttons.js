@@ -1,6 +1,5 @@
 import sendMyNumber from './send-my-number';
 import setMyPrice from './set-my-price';
-import offerDiscount from './offer-discount';
 import uuid from 'node-uuid';
 
 /**
@@ -14,7 +13,7 @@ import uuid from 'node-uuid';
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-11-19
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  */
 export default (args, driver) => { // eslint-disable-line
@@ -25,10 +24,6 @@ export default (args, driver) => { // eslint-disable-line
     },
     sendMyNumber: {
       response: sendMyNumber(args, driver),
-      guid: uuid.v4(),
-    },
-    offerDiscount: {
-      response: offerDiscount(args, driver),
       guid: uuid.v4(),
     },
   };

@@ -47,11 +47,8 @@ test('should return composite response on call', t => {
   t.is(response.responses[8].err.rows[0][0].label, i18n.__('driver-order-new.send_my_number'));
   const button1 = response.responses[8].err.rows[0][0].value;
   t.regex(button1, ss.guidRegex);
-  t.is(response.responses[8].err.rows[1][0].label, i18n.__('driver-order-new.set_my_price'));
-  t.is(response.responses[8].err.rows[1][0].value, button2);
-  t.is(response.responses[8].err.rows[2][0].label, i18n.__('driver-order-new.offer_discount'));
-  const button3 = response.responses[8].err.rows[2][0].value;
-  t.regex(button3, ss.guidRegex);
+  t.is(response.responses[8].err.rows[0][1].label, i18n.__('driver-order-new.set_my_price'));
+  t.is(response.responses[8].err.rows[0][1].value, button2);
   t.is(response.responses[9].type, 'redirect');
   t.is(response.responses[9].path, 'driver-index');
 
@@ -75,18 +72,6 @@ test('should return composite response on call', t => {
       passengerKey: 'cli_2',
       distance: 10,
       path: 'driver-order-set-price',
-    },
-  });
-
-  t.deepEqual(response.responses[1].state.inlineValues.hash[button3], {
-    type: 'call-action',
-    route: 'save-and-redirect',
-    kicker: 'driver-index',
-    userKey: 'cli_1',
-    arg: {
-      passengerKey: 'cli_2',
-      distance: 10,
-      path: 'driver-order-offer-discount',
     },
   });
 });
