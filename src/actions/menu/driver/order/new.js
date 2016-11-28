@@ -75,14 +75,14 @@ export default class DriverOrderNew extends Action {
         }),
         err: new InlineOptionsResponse({
           rows: [
-            [{ label: this.t('send_my_number'), value: buttons.sendMyNumber.guid }],
-            [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
-            [{ label: this.t('offer_discount'), value: buttons.offerDiscount.guid }],
+            [
+              { label: this.t('send_my_number'), value: buttons.sendMyNumber.guid },
+              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
+            ],
           ],
           defaultMessage: this.gt('default_inline_options_message'),
         }),
       }))
       .add(new RedirectResponse({ path: 'driver-index' }));
-      // { label: this.t('offer_discount'), value: '3' },
   }
 }
