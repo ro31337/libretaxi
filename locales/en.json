@@ -105,6 +105,8 @@
 	"global.default_options_message_desc": "Default message we show to users when they can pick action from the menu. Menu is always located below the message.",
 	"global.default_inline_options_message": "Click on the button 👇 or ignore this message",
 	"global.default_inline_options_message_desc": "Default message we show to users when they can pick action from inline menu. Menu is always located below the message.",
+	"global.replied_to_order": "✔️ You replied to this ☝️ order. Expect a call from the passenger to confirm.",
+	"global.replied_to_order_desc": "We show this message to drivers when they replied to the order by clicking on inline button(s).",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
