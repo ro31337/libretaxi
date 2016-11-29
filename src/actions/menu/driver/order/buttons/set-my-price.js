@@ -20,13 +20,15 @@ export class SetMyPrice extends
   * @param {string} options.userKey - redirect will be executed for this user
   * @param {object} options.arg - hash of parameters for {@link SaveAndRedirect}
   * @param {string} options.arg.passengerKey - passenger user key
+  * @param {string} options.arg.orderKey - order key
   * @param {number} options.arg.distance - distance to driver
   * @param {number} options.arg.path - redirect path
   */
   constructor(options) {
     super(Object.assign({
       route: 'save-and-redirect',
-      kicker: 'driver-index' }, options));
+      kicker: { menuLocation: 'driver-index' },
+    }, options));
   }
 }
 
@@ -52,6 +54,7 @@ export default (args, driver) => { // eslint-disable-line
     userKey: driver.userKey,
     arg: {
       passengerKey: args.passengerKey,
+      orderKey: args.orderKey,
       distance: args.distance,
       path: 'driver-order-set-price',
     },
