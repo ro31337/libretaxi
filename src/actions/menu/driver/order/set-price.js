@@ -45,7 +45,7 @@ export default class DriverOrderSetPrice extends Action {
       .add(new CallActionResponse({
         userKey: arg.passengerKey,
         route: 'passenger-contact-driver-price',
-        kicker: 'order-submitted',
+        kicker: { menuLocation: 'order-submitted', currentOrderKey: arg.orderKey },
         arg: {
           distance: arg.distance,
           driverPhone: this.user.state.phone,

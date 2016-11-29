@@ -13,7 +13,7 @@ test('can be constructed with default parameters', t => {
 
 test('should return composite response on call', t => {
   const args = { distance: 10, from: [37.421955, -122.084058], to: 'foo', price: '50',
-    passengerKey: 'cli_2' };
+    passengerKey: 'cli_2', orderKey: 'd3adb33f' };
   const action = new DriverOrderNew({ i18n, user });
   const response = action.call(args);
   t.is(response.type, 'composite');
@@ -55,8 +55,9 @@ test('should return composite response on call', t => {
   t.deepEqual(response.responses[1].state.inlineValues.hash[button1], {
     type: 'call-action',
     route: 'passenger-contact-new-number',
-    kicker: 'order-submitted',
+    kicker: { menuLocation: 'order-submitted', currentOrderKey: 'd3adb33f' },
     userKey: 'cli_2',
+    orderKey: 'd3adb33f',
     arg: {
       driverPhone: '(555) 123-11-22',
       distance: 10,
@@ -66,12 +67,13 @@ test('should return composite response on call', t => {
   t.deepEqual(response.responses[1].state.inlineValues.hash[button2], {
     type: 'call-action',
     route: 'save-and-redirect',
-    kicker: 'driver-index',
+    kicker: { menuLocation: 'driver-index' },
     userKey: 'cli_1',
     arg: {
       passengerKey: 'cli_2',
       distance: 10,
       path: 'driver-order-set-price',
+      orderKey: 'd3adb33f',
     },
   });
 });

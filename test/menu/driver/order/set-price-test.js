@@ -11,6 +11,7 @@ const user = {
     redirectArgs: {
       passengerKey: 'cli_2',
       distance: 5,
+      orderKey: 'd3adb33f',
     },
   },
 };
@@ -38,7 +39,10 @@ test('should return composite response on post', t => {
   t.is(response.responses[0].type, 'call-action');
   t.is(response.responses[0].userKey, 'cli_2'); // passenger
   t.is(response.responses[0].route, 'passenger-contact-driver-price');
-  t.is(response.responses[0].kicker, 'order-submitted');
+  t.deepEqual(response.responses[0].kicker, {
+    menuLocation: 'order-submitted',
+    currentOrderKey: 'd3adb33f',
+  });
   t.deepEqual(response.responses[0].arg, {
     distance: 5,
     driverPhone: '(555) 123-11-22',

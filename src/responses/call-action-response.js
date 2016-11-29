@@ -21,8 +21,9 @@ export default class CallActionResponse extends
    * @param {string} options.userKey - action will be called for this user
    * @param {string} options.route - action route, see {@link Routes}
    * @param {object|string} options.arg - (optional) argument(s) for action
-   * @param {string} options.kicker - (optional) expected menu location before calling the action.
-   * When specified, action is called only if kicker equals user's `menuLocation`.
+   * @param {object} options.kicker - (optional) expected user state properties and their values
+   * before calling the action. When specified, action is called only if kicker props equal
+   * to `user.state` props.
    */
   constructor(options) {
     super(Object.assign({ type: 'call-action' }, options));
