@@ -12,10 +12,10 @@ test('can be constructed with default parameters', t => {
 
 test('can be constructed with default parameters', t => {
   const r = new CallActionResponse({ userKey: 'cli_1', route: 'default', arg: { foo: 'bar' },
-    kicker: 'passenger-index' });
+    kicker: {} });
   t.is(r.type, 'call-action');
   t.is(r.userKey, 'cli_1');
   t.is(r.route, 'default');
   t.deepEqual(r.arg, { foo: 'bar' });
-  t.is(r.kicker, 'passenger-index');
+  t.truthy(r.kicker);
 });

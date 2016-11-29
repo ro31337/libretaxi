@@ -18,6 +18,7 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
   *
   * @param {object} options - hash of parameters
   * @param {string} options.userKey - action will be called for this user
+  * @param {string} options.orderKey - order key
   * @param {object} options.arg - hash of parameters for {@link PassengerContactNewNumber}.
   * @param {string} options.arg.driverPhone - driver phone number
   * @param {number} options.arg.distance - distance to driver
@@ -26,7 +27,8 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
   constructor(options) {
     super(Object.assign({
       route: 'passenger-contact-new-number',
-      kicker: 'order-submitted' }, options));
+      kicker: { menuLocation: 'order-submitted', currentOrderKey: options.orderKey },
+    }, options));
   }
 }
 
@@ -39,6 +41,7 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
  * @param {object} args - hash of parameters
  * @param {string} args.passengerKey - passenger userKey
  * @param {number} args.distance - distance from passenger to driver
+ * @param {string} args.orderKey - order key
  * @param {User} driver - driver user object (`driver.state.phone` is required)
  * @return {string} instance - stringified instance of "send my number button" response
  *
@@ -50,6 +53,7 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
 export default (args, driver) => { // eslint-disable-line
   return new SendMyNumber({
     userKey: args.passengerKey,
+    orderKey: args.orderKey,
     arg: {
       driverPhone: driver.state.phone,
       distance: args.distance,
