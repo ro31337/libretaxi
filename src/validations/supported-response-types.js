@@ -35,4 +35,5 @@ export default new Set([
   'inline-options',
   'call-action',
   'map',
+  'checkin',
 ]);
