@@ -19,27 +19,6 @@ test.before(() => {
         userType: 'passenger',
         currentOrderKey: '53845282-693f-4e7a-8479-87d421db6b94',
       },
-      cli_2: {
-        userType: 'driver',
-        muted: true,
-      },
-      cli_3: {
-        userType: 'driver',
-        muted: false,
-        vehicleType: 'motorbike',
-      },
-      cli_4: {
-        userType: 'driver',
-        muted: false,
-        vehicleType: 'motorbike',
-        menuLocation: 'settings',
-      },
-      cli_5: {
-        userType: 'driver',
-        muted: false,
-        vehicleType: 'motorbike',
-        menuLocation: 'driver-index',
-      },
     },
     orders: {
       '53845282-693f-4e7a-8479-87d421db6b94': {
@@ -90,96 +69,8 @@ test('should query drivers with geofire and setup key_entered callback', t => {
 });
 
 test('should call notify driver method on key_entered callback', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  handler.notifyDriver = ss.sinon.spy();
+  const spy = ss.sinon.spy();
+  const handler = new NotifyDriversResponseHandler({ response, notifyDriver: { call: spy } });
   handler.keyEntered('key', 'location', 'distance');
-  t.truthy(handler.notifyDriver.calledWith('key', 'distance'));
-});
-
-test.cb('should not notify driver when order is not new', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.fail(); };
-  const fail = (reason) => { t.is(reason, 'order is not new'); t.end(); };
-  handler.order = { state: { status: 'old' } };
-  handler.notifyDriver('cli_1', 1, fail, success);
-});
-
-test.cb('should not notify driver when userType is not \'driver\'', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.fail(); };
-  const fail = (reason) => { t.is(reason, 'userType is not \'driver\''); t.end(); };
-  handler.order = { state: { status: 'new' } };
-
-  loadUser('cli_1').then((user) => {
-    handler.notifyDriver('cli_1', 1, fail, success);
-  });
-});
-
-test.cb('should not notify driver when driver is muted', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.fail(); };
-  const fail = (reason) => { t.is(reason, 'driver is muted'); t.end(); };
-  handler.order = { state: { status: 'new' } };
-
-  loadUser('cli_2').then((user) => {
-    handler.notifyDriver('cli_2', 1, fail, success);
-  });
-});
-
-test.cb('should not notify driver when vehicle types don\'t match', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.fail(); };
-  const fail = (reason) => { t.is(reason, 'vehicle types don\'t match'); t.end(); };
-  handler.order = { state: { status: 'new', requestedVehicleType: 'car' } };
-
-  loadUser('cli_3').then((user) => {
-    handler.notifyDriver('cli_3', 1, fail, success);
-  });
-});
-
-test.cb('should not notify driver when driver is busy', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => { t.fail(); };
-  const fail = (reason) => { t.is(reason, 'driver is busy'); t.end(); };
-  handler.order = { state: { status: 'new', requestedVehicleType: 'motorbike' } };
-
-  loadUser('cli_4').then((user) => {
-    handler.notifyDriver('cli_4', 1, fail, success);
-  });
-});
-
-test.cb('should notify driver when matched', t => {
-  const handler = new NotifyDriversResponseHandler({ response });
-  const success = () => {
-    t.truthy(handler.queue.create.calledWith({
-      userKey: 'cli_5',
-      arg: {
-        orderKey: 123,
-        distance: 1,
-        from: [1, 2],
-        to: 'foobar',
-        price: 50,
-        passengerKey: 'cli_123',
-      },
-      route: 'driver-order-new',
-    }));
-    t.end();
-  };
-  const fail = () => { t.fail(); };
-  handler.order = {
-    orderKey: 123,
-    state: {
-      status: 'new',
-      requestedVehicleType: 'motorbike',
-      passengerLocation: [1, 2],
-      passengerDestination: 'foobar',
-      price: 50,
-      passengerKey: 'cli_123',
-    },
-  };
-  handler.queue = { create: ss.sinon.spy() };
-
-  loadUser('cli_5').then((user) => {
-    handler.notifyDriver('cli_5', 1, fail, success);
-  });
+  t.truthy(spy.calledWith('key', 'distance'));
 });

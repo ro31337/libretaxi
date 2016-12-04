@@ -4,7 +4,7 @@ import firebaseDB from '../../firebase-db';
 import Order from '../../order';
 import { loadUser } from '../../factories/user-factory';
 import log from '../../log';
-import CaQueue from '../../queue/ca-queue';
+import NotifyDriver from '../support/notify-driver';
 
 /**
  * Notify drivers about newly created order.
@@ -24,8 +24,8 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
    */
   constructor(options) {
     super(Object.assign({ type: 'notify-drivers-response-handler' }, options));
-    this.queue = options.queue || new CaQueue();
     this.keyEntered = this.keyEntered.bind(this);
+    this.notifyDriver = options.notifyDriver || new NotifyDriver();
   }
 
   /**
@@ -81,69 +81,8 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
    *
    * @private
    */
-  keyEntered(key, location, distance) {
-    log.debug(`user found: key: ${key}, location: ${location}, distance: ${distance}`);
-    this.notifyDriver(key, distance);
-  }
-
-  /**
-   * Load driver, check params and notify when matched.
-   * Keep in mind that geoFire is really simple library and it doesn't allow us to perform
-   * complex queries. So we have to manually check driver properties in our code.
-   *
-   * @param {string} driverKey - driver user key
-   * @param {number} distance - distance from driver to passenger (from geofire library)
-   * @param {function(reason: string)} failCallback - callback to be executed with reason of fail
-   * @param {function()} successCallback - callback to be executed on success
-   * @private
-   */
-  notifyDriver(driverKey, distance, failCallback = () => {}, successCallback = () => {}) {
-    const fail = (reason) => {
-      log.debug(`skip notifying ${driverKey} because ${reason}`);
-      failCallback(reason);
-      return;
-    };
-
-    if (this.order.state.status !== 'new') {
-      fail('order is not new');
-      return;
-    }
-
-    loadUser(driverKey).then((user) => {
-      if (user.state.userType !== 'driver') {
-        fail('userType is not \'driver\'');
-        return;
-      }
-
-      if (user.state.muted) {
-        fail('driver is muted');
-        return;
-      }
-
-      if (user.state.vehicleType !== this.order.state.requestedVehicleType) {
-        fail('vehicle types don\'t match');
-        return;
-      }
-
-      // ignore if driver is busy
-      if (user.state.menuLocation !== 'driver-index') {
-        fail('driver is busy');
-        return;
-      }
-
-      // matched everything, notify!
-      log.debug(`notifying ${driverKey} (distance ${distance}) about the order`);
-
-      const arg = {
-        orderKey: this.order.orderKey,
-        distance,
-        from: this.order.state.passengerLocation,
-        to: this.order.state.passengerDestination,
-        price: this.order.state.price,
-        passengerKey: this.order.state.passengerKey,
-      };
-      this.queue.create({ userKey: driverKey, arg, route: 'driver-order-new' }); // eslint-disable-line max-len
-      successCallback();
-    });
+  keyEntered(userKey, location, distance) {
+    log.debug(`user found: key: ${userKey}, location: ${location}, distance: ${distance}`);
+    this.notifyDriver.call(userKey, distance, this.order);
   }
 }
