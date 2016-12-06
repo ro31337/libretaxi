@@ -4,7 +4,7 @@ import routes from '../../../src/routes'; // to aviod circular dependencies
 import DriverCheckin from '../../../src/actions/menu/driver/checkin';
 import { i18n } from '../../spec-support';
 
-const user = {};
+const user = { userKey: 'cli_1' };
 
 test('can be constructed with default parameters', t => {
   new DriverCheckin({ i18n, user });
@@ -29,8 +29,10 @@ test('should return composite response on post', t => {
   t.deepEqual(response.responses[0].location, [37.421955, -122.084058]);
   t.is(response.responses[1].type, 'user-state');
   t.deepEqual(response.responses[1].state.location, [37.421955, -122.084058]);
-  t.is(response.responses[2].type, 'text');
-  t.is(response.responses[2].message, i18n.__('driver-checkin.ok'));
-  t.is(response.responses[3].type, 'redirect');
-  t.is(response.responses[3].path, 'driver-index');
+  t.is(response.responses[2].type, 'checkin');
+  t.is(response.responses[2].driverKey, 'cli_1');
+  t.is(response.responses[3].type, 'text');
+  t.is(response.responses[3].message, i18n.__('driver-checkin.ok'));
+  t.is(response.responses[4].type, 'redirect');
+  t.is(response.responses[4].path, 'driver-index');
 });

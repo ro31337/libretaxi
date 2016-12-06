@@ -4,6 +4,7 @@ import CompositeResponse from '../../../responses/composite-response';
 import UpdateLocationResponse from '../../../responses/update-location-response';
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
+import CheckinResponse from '../../../responses/checkin-response';
 import RedirectResponse from '../../../responses/redirect-response';
 /**
  * Driver check in menu action.
@@ -41,16 +42,13 @@ export default class DriverCheckin extends Action {
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
-   * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
-   * that contains the following responses:
-   * - {@link UpdateLocationResponse}
-   * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `driver-index`.
+   * @return {CompositeResponse} response - instance of {@link CompositeResponse}
    */
   post(value) {
     return new CompositeResponse()
       .add(new UpdateLocationResponse({ location: value }))
       .add(new UserStateResponse({ location: value }))
+      .add(new CheckinResponse({ driverKey: this.user.userKey }))
       .add(new TextResponse({ message: this.t('ok') }))
       .add(new RedirectResponse({ path: 'driver-index' }));
   }
