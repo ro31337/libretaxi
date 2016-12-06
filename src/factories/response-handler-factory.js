@@ -33,6 +33,7 @@ import ConcatText from '../responses/decorators/concat-text';
 import OptimizedInlineOptions from '../responses/decorators/optimized-inline-options';
 import CliMapResponseHandler from '../response-handlers/cli/map-response-handler';
 import TelegramMapResponseHandler from '../response-handlers/telegram/map-response-handler';
+import CheckinResponseHandler from '../response-handlers/checkin-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -59,6 +60,7 @@ const map = {
     'inline-options': (...args) => new CliInlineOptionsResponseHandler(...args),
     'call-action': (...args) => new CallActionResponseHandler(...args),
     map: (...args) => new CliMapResponseHandler(...args),
+    checkin: (...args) => new CheckinResponseHandler(...args),
   },
   telegram: {
     text: (...args) => new TelegramTextResponseHandler(...args),
@@ -97,6 +99,7 @@ const map = {
     'inline-options': (...args) => new TelegramInlineOptionsResponseHandler(...args),
     'call-action': (...args) => new CallActionResponseHandler(...args),
     map: (...args) => new TelegramMapResponseHandler(...args),
+    checkin: (...args) => new CheckinResponseHandler(...args),
   },
 };
 
