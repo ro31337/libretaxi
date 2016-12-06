@@ -22,6 +22,7 @@ import NotifyDriversResponse from '../../src/responses/submit-order/notify-drive
 import InlineOptionsResponse from '../../src/responses/inline-options-response';
 import CallActionResponse from '../../src/responses/call-action-response';
 import MapResponse from '../../src/responses/map-response';
+import CheckinResponse from '../../src/responses/checkin-response';
 
 test('should return correct types for responses for cli platform', t => {
   const textResponse = new TextResponse({ message: 'foo' });
@@ -52,6 +53,7 @@ test('should return correct types for responses for cli platform', t => {
   const inlineOptionsResponse = new InlineOptionsResponse({ rows: [] });
   const callActionResponse = new CallActionResponse({ userKey: 'cli_1', route: 'default' });
   const mapResponse = new MapResponse({ location: [37.421955, -122.084058] });
+  const checkinResponse = new CheckinResponse({ driverKey: 'cli_1' });
 
   const user = { platformType: 'cli' };
 
@@ -76,6 +78,7 @@ test('should return correct types for responses for cli platform', t => {
   const h19 = HandlerFactory.getHandler({ response: inlineOptionsResponse, user });
   const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
   const h21 = HandlerFactory.getHandler({ response: mapResponse, user });
+  const h22 = HandlerFactory.getHandler({ response: checkinResponse, user });
 
   t.is(h1.type, 'cli-text-response-handler');
   t.is(h2.type, 'cli-options-response-handler');
@@ -98,6 +101,7 @@ test('should return correct types for responses for cli platform', t => {
   t.is(h19.type, 'cli-inline-options-response-handler');
   t.is(h20.type, 'call-action-response-handler');
   t.is(h21.type, 'cli-map-response-handler');
+  t.is(h22.type, 'checkin-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -120,6 +124,7 @@ test('should return correct types for responses for cli platform', t => {
   t.truthy(h19.user);
   t.truthy(h20.user);
   t.truthy(h21.user);
+  t.truthy(h22.user);
 });
 
 test('should return correct types for responses for telegram platform', t => {
@@ -151,6 +156,7 @@ test('should return correct types for responses for telegram platform', t => {
   const inlineOptionsResponse = new InlineOptionsResponse({ rows: [] });
   const callActionResponse = new CallActionResponse({ userKey: 'cli_1', route: 'default' });
   const mapResponse = new MapResponse({ location: [37.421955, -122.084058] });
+  const checkinResponse = new CheckinResponse({ driverKey: 'cli_1' });
 
   const user = { platformType: 'telegram' };
 
@@ -175,6 +181,7 @@ test('should return correct types for responses for telegram platform', t => {
   const h19 = HandlerFactory.getHandler({ response: inlineOptionsResponse, user });
   const h20 = HandlerFactory.getHandler({ response: callActionResponse, user });
   const h21 = HandlerFactory.getHandler({ response: mapResponse, user });
+  const h22 = HandlerFactory.getHandler({ response: checkinResponse, user });
 
   t.is(h1.type, 'telegram-text-response-handler');
   t.is(h2.type, 'telegram-options-response-handler');
@@ -202,6 +209,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.is(h19.type, 'telegram-inline-options-response-handler');
   t.is(h20.type, 'call-action-response-handler');
   t.is(h21.type, 'telegram-map-response-handler');
+  t.is(h22.type, 'checkin-response-handler');
 
   t.truthy(h1.user);
   t.truthy(h2.user);
@@ -224,6 +232,7 @@ test('should return correct types for responses for telegram platform', t => {
   t.truthy(h19.user);
   t.truthy(h20.user);
   t.truthy(h21.user);
+  t.truthy(h22.user);
 });
 
 test('should set optional api property platform', t => {
