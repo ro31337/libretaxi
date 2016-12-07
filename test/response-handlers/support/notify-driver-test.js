@@ -2,6 +2,12 @@
 import test from 'ava';
 import NotifyDriver from '../../../src/response-handlers/support/notify-driver';
 import { ss } from '../../spec-support';
+import Firebase from 'firebase';
+
+test.before(() => {
+  // 1 minute from now, which is enough for tests and not enough for side effects
+  Firebase.database.ServerValue.TIMESTAMP = (new Date).getTime() + 1 * 60 * 1000;
+});
 
 test('can be constructed with default parameters', t => {
   new NotifyDriver();
@@ -27,12 +33,21 @@ test.cb('should not notify driver when order is not new', t => {
   shouldFail(t, 'order is not new', {}, { state: { status: 'old' } });
 });
 
+test.cb('should not notify driver when order is stale', t => {
+  shouldFail(
+    t,
+    'order is stale',
+    {},
+    { state: { status: 'new', createdAt: (new Date).getTime() - 15 * 60 * 1000 } }
+  );
+});
+
 test.cb('should not notify driver when userType is not \'driver\'', t => {
   shouldFail(
     t,
     'userType is not \'driver\'',
     { state: { userType: 'passenger' } },
-    { state: { status: 'new' } },
+    { state: { status: 'new', createdAt: (new Date).getTime() } },
   );
 });
 
@@ -41,7 +56,7 @@ test.cb('should not notify driver when driver is muted', t => {
     t,
     'driver is muted',
     { state: { userType: 'driver', muted: true } },
-    { state: { status: 'new' } },
+    { state: { status: 'new', createdAt: (new Date).getTime() } },
   );
 });
 
@@ -50,7 +65,7 @@ test.cb('should not notify driver when vehicle types don\'t match', t => {
     t,
     'vehicle types don\'t match',
     { state: { userType: 'driver', vehicleType: 'motorbike' } },
-    { state: { status: 'new', requestedVehicleType: 'car' } },
+    { state: { status: 'new', requestedVehicleType: 'car', createdAt: (new Date).getTime() } },
   );
 });
 
@@ -59,7 +74,7 @@ test.cb('should not notify driver when driver is busy', t => {
     t,
     'driver is busy',
     { state: { userType: 'driver', vehicleType: 'car', menuLocation: 'settings' } },
-    { state: { status: 'new', requestedVehicleType: 'car' } },
+    { state: { status: 'new', requestedVehicleType: 'car', createdAt: (new Date).getTime() } },
   );
 });
 
@@ -91,6 +106,7 @@ test.cb('should notify driver when matched', t => {
       passengerDestination: 'foobar',
       price: 50,
       passengerKey: 'cli_123',
+      createdAt: (new Date).getTime(),
     },
   };
   const user = { state: { userType: 'driver', vehicleType: 'car', menuLocation: 'driver-index' } };
