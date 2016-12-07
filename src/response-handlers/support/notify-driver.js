@@ -50,6 +50,12 @@ export default class NotifyDriver {
       return;
     }
 
+    // if order was created more than 15 mins ago
+    if ((new Date()).getTime() > (order.state.createdAt || 0) + 15 * 60 * 1000) {
+      fail('order is stale');
+      return;
+    }
+
     this.loadUser(driverKey).then((user) => {
       if (user.state.userType !== 'driver') {
         fail('userType is not \'driver\'');
