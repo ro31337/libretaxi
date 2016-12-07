@@ -1,7 +1,6 @@
 import CaQueue from '../../queue/ca-queue';
 import { loadUser } from '../../factories/user-factory';
 import log from '../../log';
-import Firebase from 'firebase';
 
 /**
  * Notify driver about order.
@@ -52,7 +51,7 @@ export default class NotifyDriver {
     }
 
     // if order was created more than 15 mins ago
-    if (Firebase.database.ServerValue.TIMESTAMP > (order.state.createdAt || 0) + 15 * 60 * 1000) {
+    if ((new Date()).getTime() > (order.state.createdAt || 0) + 15 * 60 * 1000) {
       fail('order is stale');
       return;
     }

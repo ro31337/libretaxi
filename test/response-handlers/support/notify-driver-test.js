@@ -2,12 +2,6 @@
 import test from 'ava';
 import NotifyDriver from '../../../src/response-handlers/support/notify-driver';
 import { ss } from '../../spec-support';
-import Firebase from 'firebase';
-
-test.before(() => {
-  // 1 minute from now, which is enough for tests and not enough for side effects
-  Firebase.database.ServerValue.TIMESTAMP = (new Date).getTime() + 1 * 60 * 1000;
-});
 
 test('can be constructed with default parameters', t => {
   new NotifyDriver();
@@ -38,7 +32,7 @@ test.cb('should not notify driver when order is stale', t => {
     t,
     'order is stale',
     {},
-    { state: { status: 'new', createdAt: (new Date).getTime() - 15 * 60 * 1000 } }
+    { state: { status: 'new', createdAt: (new Date).getTime() - 15 * 60 * 1000 - 1 } }
   );
 });
 
