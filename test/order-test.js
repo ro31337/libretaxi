@@ -34,3 +34,13 @@ test('should set stateful params', t => {
   t.is(o.stateful.table, 'orders');
   t.pass();
 });
+
+test('should add to notified list and check if user was notified', t => {
+  const order = new Order({ orderKey: '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe' });
+  order.init();
+  order.markNotified('cli_1');
+  order.markNotified('cli_2');
+  t.truthy(order.isNotified('cli_1'));
+  t.truthy(order.isNotified('cli_2'));
+  t.falsy(order.isNotified('cli_3'));
+});

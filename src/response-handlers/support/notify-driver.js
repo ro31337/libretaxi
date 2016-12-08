@@ -56,6 +56,11 @@ export default class NotifyDriver {
       return;
     }
 
+    if (order.isNotified(driverKey)) {
+      fail('driver was already notified');
+      return;
+    }
+
     this.loadUser(driverKey).then((user) => {
       if (user.state.userType !== 'driver') {
         fail('userType is not \'driver\'');
@@ -90,6 +95,9 @@ export default class NotifyDriver {
         passengerKey: order.state.passengerKey,
       };
       this.queue.create({ userKey: driverKey, arg, route: 'driver-order-new' }); // eslint-disable-line max-len
+
+      order.markNotified(driverKey);
+      order.save();
       this.successCallback();
     });
   }
