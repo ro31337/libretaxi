@@ -23,6 +23,7 @@ import PassengerContactNewNumber from './actions/menu/passenger/contact/new-numb
 import SaveAndRedirect from './actions/menu/save-and-redirect';
 import DriverOrderSetPrice from './actions/menu/driver/order/set-price';
 import PassengerContactDriverPrice from './actions/menu/passenger/contact/driver-price';
+import PassengerVerifyLocation from './actions/menu/passenger/verify-location';
 
 /**
  * @typedef Routes
@@ -71,6 +72,7 @@ const routes = {
   'save-and-redirect': SaveAndRedirect,
   'driver-order-set-price': DriverOrderSetPrice,
   'passenger-contact-driver-price': PassengerContactDriverPrice,
+  'passenger-verify-location': PassengerVerifyLocation,
 };
 
 // Adding more routes? update `action-factory-test.js`

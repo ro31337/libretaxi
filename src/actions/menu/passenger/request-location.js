@@ -52,6 +52,6 @@ export default class PassengerRequestLocation extends Action {
       .add(new UpdateLocationResponse({ location: value }))
       .add(new UserStateResponse({ location: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'passenger-request-destination' }));
+      .add(new RedirectResponse({ path: 'passenger-verify-location' }));
   }
 }
