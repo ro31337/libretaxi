@@ -32,5 +32,5 @@ test('should return composite response on post', t => {
   t.is(response.responses[2].type, 'text');
   t.is(response.responses[2].message, '👌 OK!');
   t.is(response.responses[3].type, 'redirect');
-  t.is(response.responses[3].path, 'passenger-request-destination');
+  t.is(response.responses[3].path, 'passenger-verify-location');
 });
