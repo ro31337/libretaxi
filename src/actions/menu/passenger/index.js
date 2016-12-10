@@ -60,7 +60,7 @@ export default class PassengerIndex extends Action {
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ requestedVehicleType: value }));
-        response.add(new RedirectResponse({ path: 'passenger-request-location' }));
+        response.add(new RedirectResponse({ path: 'passenger-verify-cash' }));
         break;
       case 'settings':
         response.add(new RedirectResponse({ path: 'settings' }));
