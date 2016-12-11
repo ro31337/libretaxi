@@ -65,7 +65,7 @@ export default class CheckinResponseHandler extends ResponseHandler {
   queryOrders() {
     const q = this.geoFire.query({
       center: this.driver.state.location,
-      radius: 20,
+      radius: this.driver.state.radius * 1,
     });
 
     q.on('key_entered', this.keyEntered);

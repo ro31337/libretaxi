@@ -61,9 +61,9 @@ test('should query orders with geofire and setup key_entered callback', t => {
   handler.geoFire = {
     query: ss.sinon.stub().returns(geoFireQuery),
   };
-  handler.driver = { state: { location: 'foo' } };
+  handler.driver = { state: { location: 'foo', radius: '5' } };
   handler.queryOrders();
-  t.truthy(handler.geoFire.query.calledWith({ center: 'foo', radius: 20 }));
+  t.truthy(handler.geoFire.query.calledWith({ center: 'foo', radius: 5 }));
   t.truthy(geoFireQuery.on.calledWith('key_entered', handler.keyEntered));
 });
 

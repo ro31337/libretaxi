@@ -64,7 +64,7 @@ test('should query drivers with geofire and setup key_entered callback', t => {
   };
   handler.order = { state: { passengerLocation: 'foo' } };
   handler.queryDrivers();
-  t.truthy(handler.geoFire.query.calledWith({ center: 'foo', radius: 20 }));
+  t.truthy(handler.geoFire.query.calledWith({ center: 'foo', radius: 10 }));
   t.truthy(geoFireQuery.on.calledWith('key_entered', handler.keyEntered));
 });
 
