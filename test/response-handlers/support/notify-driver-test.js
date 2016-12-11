@@ -83,6 +83,22 @@ test.cb('should not notify driver when driver is busy', t => {
   );
 });
 
+test.cb('should not notify driver when radius is less than distance to passenger', t => {
+  shouldFail(
+    t,
+    'distance 1 is greater than driver\'s preferred radius 0.5',
+    {
+      state: {
+        userType: 'driver',
+        vehicleType: 'car',
+        menuLocation: 'driver-index',
+        radius: 0.5,
+      },
+    },
+    { state: { status: 'new', requestedVehicleType: 'car', createdAt: (new Date).getTime() } },
+  );
+});
+
 test.cb('should notify driver when matched', t => {
   t.plan(3);
   const saveSpy = ss.sinon.spy();
@@ -121,7 +137,14 @@ test.cb('should notify driver when matched', t => {
     isNotified: () => { return false; },
     markNotified: markNotifiedSpy,
   };
-  const user = { state: { userType: 'driver', vehicleType: 'car', menuLocation: 'driver-index' } };
+  const user = {
+    state: {
+      radius: 1,
+      userType: 'driver',
+      vehicleType: 'car',
+      menuLocation: 'driver-index',
+    },
+  };
   const subject = new NotifyDriver({
     successCallback,
     failCallback,

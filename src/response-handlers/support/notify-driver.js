@@ -83,6 +83,11 @@ export default class NotifyDriver {
         return;
       }
 
+      if (distance > user.state.radius * 1) {
+        fail(`distance ${distance} is greater than driver's preferred radius ${user.state.radius}`);
+        return;
+      }
+
       // matched everything, notify!
       log.debug(`notifying ${driverKey} (distance ${distance}) about the order`);
 

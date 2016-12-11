@@ -35,6 +35,7 @@ test('should return routes by route', t => {
   const a26 = ActionFactory.fromRoute({ route: 'driver-order-set-price', user });
   const a27 = ActionFactory.fromRoute({ route: 'passenger-verify-location', user });
   const a28 = ActionFactory.fromRoute({ route: 'passenger-verify-cash', user });
+  const a29 = ActionFactory.fromRoute({ route: 'driver-request-radius', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -64,6 +65,7 @@ test('should return routes by route', t => {
   t.is(a26.type, 'driver-order-set-price');
   t.is(a27.type, 'passenger-verify-location');
   t.is(a28.type, 'passenger-verify-cash');
+  t.is(a29.type, 'driver-request-radius');
 });
 
 test('should have default route', t => {
