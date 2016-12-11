@@ -1,14 +1,12 @@
 import Condition from './condition';
+import dotenv from 'dotenv';
 
 /**
- * Numeric Condition.
- * Checks if provided value is "numer-ish" and one of the following:
- * - number
- * - string number
- * - string number with spaces at the beginning or at the end
+ * Radius Condition.
+ * Checks if provided value can be used as radius.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
- * @date 2016-10-08
+ * @date 2016-12-10
  * @extends {Condition}
  * @version 1.1
  * @since 0.1.0
@@ -17,6 +15,7 @@ export default class Radius extends Condition {
   constructor(value) {
     super({ type: 'radius' });
     this.value = value;
+    dotenv.config();
   }
 
   /**
@@ -26,7 +25,7 @@ export default class Radius extends Condition {
    */
   call() {
     return /^\s*\d+\s*$/.test(this.value) &&
-      this.value * 1 <= 10 &&
+      this.value * 1 <= process.env.MAX_RADIUS &&
       this.value * 1 > 0;
   }
 }
