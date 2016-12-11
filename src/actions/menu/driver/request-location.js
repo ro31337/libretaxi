@@ -41,17 +41,13 @@ export default class DriverRequestLocation extends Action {
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
-   * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
-   * that contains the following responses:
-   * - {@link UpdateLocationResponse}
-   * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `explain-whats-next`.
+   * @return {CompositeResponse} response - instance of {@link CompositeResponse}
    */
   post(value) {
     return new CompositeResponse()
       .add(new UpdateLocationResponse({ location: value }))
       .add(new UserStateResponse({ location: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'driver-explain-whats-next' }));
+      .add(new RedirectResponse({ path: 'driver-request-radius' }));
   }
 }
