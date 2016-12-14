@@ -97,7 +97,7 @@
 	"passenger-contact-new-number.message_desc": "Message we send to passengers when driver accepted their order price.",
 	"driver-order-set-price.set_price": "Set your price (in local currency). You can also mention any details. For example: \"20, because of the bridge repair\" or \"15, if traffic is ok\"",
 	"driver-order-set-price.set_price_desc": "Here we tell drivers to set their own price for the order. We show this message when drivers click on \"set price\" button.",
-	"passenger-contact-driver-price.message": "🔔 ⚠️ We have driver's offer for you: \"{{price}}\". If you like it, call the driver at {{phone}}. Distance to this driver is ~{{distance}}. Once you've gotten connected with a driver, please press on the button below so that other drivers will know that you've found a ride.",
+	"passenger-contact-driver-price.message": "🔔 ⚠️ Driver is offering another price: \"{{price}}\". If you like it, call the driver at {{phone}} to confirm. Distance is ~{{distance}}.",
 	"passenger-contact-driver-price.message_desc": "Message we send to passengers when driver offers his own price.",
 	"passenger-verify-location.verify_location": "Please look at the map above (click to zoom in), is this location correct?",
 	"passenger-verify-location.verify_location_desc": "Sometimes phones/devices don't provide correct GPS coordinates, so we have to ask users if location they sent on previous step is correct",
