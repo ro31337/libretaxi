@@ -59,12 +59,13 @@ test.cb('should subscribe to instance queue messages on process', t => {
 });
 
 test.cb('should recreate message on recreate callback', t => {
-  t.plan(2);
+  t.plan(3);
 
   const instanceKue = {};
   const create = ss.sinon.stub().returns(instanceKue);
+  const removeOnComplete = ss.sinon.stub().returns(instanceKue);
   const save = ss.sinon.stub().returns(instanceKue);
-  Object.assign(instanceKue, { create, save });
+  Object.assign(instanceKue, { create, removeOnComplete, save });
 
   const data = { foo: 'bar', userKey: 'cli_2' };
   const job = { data };
@@ -74,8 +75,9 @@ test.cb('should recreate message on recreate callback', t => {
   });
   const done = () => {
     t.truthy(create.calledWith('call-action-cli_2', { foo: 'bar', userKey: 'cli_2' }));
+    t.truthy(removeOnComplete.calledWith(true));
     t.truthy(save.calledWith());
-    sinon.assert.callOrder(create, save);
+    sinon.assert.callOrder(create, removeOnComplete, save);
     t.end();
   };
   queue.recreate(job, done);
