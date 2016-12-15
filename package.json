@@ -1,7 +1,7 @@
 {
-  "name": "cheaptaxi",
+  "name": "libretaxi",
   "version": "0.1.0",
-  "description": "Cheap Taxi, Telegram Bot (@cheaptaxi_bot)",
+  "description": "LibreTaxi (@libretaxi_bot)",
   "main": "src/app.js",
   "dependencies": {},
   "devDependencies": {
@@ -47,14 +47,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ro31337/cheaptaxi.git"
+    "url": "git+https://github.com/ro31337/libretaxi.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ro31337/cheaptaxi/issues"
+    "url": "https://github.com/ro31337/libretaxi/issues"
   },
-  "homepage": "https://github.com/ro31337/cheaptaxi#readme",
+  "homepage": "https://github.com/ro31337/libretaxi#readme",
   "ava": {
     "files": [
       "test/**/*-test.js"

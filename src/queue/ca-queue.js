@@ -63,7 +63,7 @@ export default class CaQueue extends Queue {
    * @param {Object} options - hash of parameters
    * @param {string} options.userKey - represents the user for whom action should be executed.
    * @param {string} options.route - route for this action, see {@link Routes} for full list.
-   * @see https://github.com/ro31337/cheaptaxi/issues/208#issuecomment-243022762
+   * @see https://github.com/ro31337/libretaxi/issues/208#issuecomment-243022762
    */
   redirect(options) {
     this.createDelayed({ userKey: options.userKey, arg: options.route, route: 'redirect' });

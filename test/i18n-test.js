@@ -112,7 +112,7 @@ test.cb('locales should not have duplicates in them', t => {
 test.cb('locales should not have long keys with {{phone}}', t => {
   // The reason for that is how Telegram handles big messages. If the message
   // is more than 200 characters, phone number is not highlighted.
-  // See details here: https://github.com/ro31337/cheaptaxi/issues/366
+  // See details here: https://github.com/ro31337/libretaxi/issues/366
 
   t.plan(NUM_OF_LOCALIZATIONS);
   const walker = walk.walk('../locales', { followLinks: false });

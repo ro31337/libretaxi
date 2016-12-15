@@ -8,8 +8,8 @@ import checkNotNull from '../validations/check-not-null';
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-11-03
- * @see https://github.com/ro31337/cheaptaxi/issues/301
- * @see https://github.com/ro31337/cheaptaxi/issues/300
+ * @see https://github.com/ro31337/libretaxi/issues/301
+ * @see https://github.com/ro31337/libretaxi/issues/300
  * @extends checkNotNull
  * @version 1.1
  * @since 0.1.0
