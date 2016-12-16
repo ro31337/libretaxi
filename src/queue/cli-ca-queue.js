@@ -14,7 +14,7 @@ import kue from 'kue';
  * @extends {CaQueue}
  * @version 1.1
  * @since 0.1.0
- * @see https://github.com/ro31337/cheaptaxi/issues/259
+ * @see https://github.com/ro31337/libretaxi/issues/259
  */
 export default class CliCaQueue extends mix(CaQueue).with(checkNotNull('userKey')) {
 

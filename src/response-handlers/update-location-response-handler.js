@@ -9,14 +9,14 @@ import Firebase from 'firebase';
  * Update location response handler.
  * Saves {@link UpdateLocationResponse} `location` to {@link User} object
  * with geofire package. Geofire updates the object with `g` and `l` properties.
- * For more information see here: https://github.com/ro31337/cheaptaxi/issues/159
+ * For more information see here: https://github.com/ro31337/libretaxi/issues/159
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {ResponseHandler}
  * @date 2016-08-05
  * @version 1.1
  * @since 0.1.0
- * @see https://github.com/ro31337/cheaptaxi/issues/159
+ * @see https://github.com/ro31337/libretaxi/issues/159
  */
 export default class UpdateLocationResponseHandler extends
   mix(ResponseHandler).with(checkNotNull('user')) {

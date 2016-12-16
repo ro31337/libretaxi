@@ -2,7 +2,11 @@
 /.env
 
 # Log files
-cheaptaxi*.log
+libretaxi*.log
+
+# Database files
+libretaxi-development-credentials.json
+libretaxi-production-credentials.json
 
 # nyc test coverage
 .nyc_output
