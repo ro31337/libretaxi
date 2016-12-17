@@ -24,6 +24,7 @@ export default class CallActionResponse extends
    * @param {object} options.kicker - (optional) expected user state properties and their values
    * before calling the action. When specified, action is called only if kicker props equal
    * to `user.state` props.
+   * @param {number} options.delay - (optional) delay to execute this action, msec. 0 by default.
    */
   constructor(options) {
     super(Object.assign({ type: 'call-action' }, options));
