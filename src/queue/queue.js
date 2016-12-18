@@ -38,14 +38,15 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
   }
 
   /**
-   * Creates a message and enqueues with 1 second delay.
+   * Creates a message and enqueues with 1 second delay by default.
    *
    * @param {Object} options - hash of parameters
+   * @param {Number} delay - (optional) delay in msec, 1000 msec by default.
    */
-  createDelayed(options) {
+  createDelayed(options, delay = 1000) {
     this.queue
       .create(this.type, options)
-      .delay(1000)
+      .delay(delay)
       .removeOnComplete(true)
       .save();
   }

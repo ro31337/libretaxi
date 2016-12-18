@@ -48,7 +48,6 @@ test('should create delayed message on createDelayed', t => {
   sinon.assert.callOrder(create, delay, removeOnComplete, save);
 });
 
-
 test('should process \'call-action\' messages', t => {
   // arrange
   const myQueue = { process: ss.sinon.stub() };
@@ -59,4 +58,25 @@ test('should process \'call-action\' messages', t => {
 
   // assert
   t.truthy(myQueue.process.calledWith('test-queue-type3', { foo3: 'bar3' }));
+});
+
+test('should create delayed message with custom delay on createDelayed', t => {
+  // arrange
+  const myQueue = {};
+  const create = ss.sinon.stub().returns(myQueue);
+  const delay = ss.sinon.stub().returns(myQueue);
+  const removeOnComplete = ss.sinon.stub().returns(myQueue);
+  const save = ss.sinon.stub().returns(myQueue);
+  Object.assign(myQueue, { create, delay, removeOnComplete, save });
+  const queue = new Queue({ type: 'test-queue-type2', queue: myQueue });
+
+  // act
+  queue.createDelayed({ foo2: 'bar2' }, 31337);
+
+  // assert
+  t.truthy(create.calledWith('test-queue-type2', { foo2: 'bar2' }));
+  t.truthy(delay.calledWith(31337));
+  t.truthy(removeOnComplete.calledWith(true));
+  t.truthy(save.calledWith());
+  sinon.assert.callOrder(create, delay, removeOnComplete, save);
 });

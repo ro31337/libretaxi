@@ -29,7 +29,7 @@ export default class CallActionResponseHandler extends ResponseHandler {
    * specified, action is created only if `user.menuAction` equals `kicker`.
    */
   call(onResult) {
-    const { userKey, arg, route, kicker } = this.response;
+    const { userKey, arg, route, kicker, delay } = this.response;
     loadUser(userKey).then((user) => {
       if (kicker) { // TODO: good time to refactor kicker into it's own class (kicker.satisfied())
         for (const k of Object.keys(kicker)) {
@@ -44,7 +44,11 @@ export default class CallActionResponseHandler extends ResponseHandler {
         log.debug('Kicker not specified');
       }
       log.debug(`Create queue message for ${userKey}, route ${route}`);
-      this.queue.create({ userKey, arg, route });
+      if (delay) {
+        this.queue.createDelayed({ userKey, arg, route }, delay);
+      } else {
+        this.queue.create({ userKey, arg, route });
+      }
       onResult();
     });
   }

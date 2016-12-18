@@ -5,10 +5,12 @@ import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import ErrorResponse from '../../../responses/error-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import CallActionResponse from '../../../responses/call-action-response';
 import SubmitOrderResponse from '../../../responses/submit-order/submit-order-response';
 import Firebase from 'firebase';
 import If from '../../../responses/if-response';
 import Numeric from '../../../conditions/numeric';
+import uuid from 'node-uuid';
 
 /**
  * Passenger request price menu action.
@@ -49,17 +51,32 @@ export default class PassengerRequestPrice extends Action {
    * if `value` is numeric, and returns error if `value` is not numeric.
    */
   post(value) {
+    const orderKey = uuid.v4();
     return new If({
       condition: new Numeric(value),
       ok: new CompositeResponse()
         .add(new UserStateResponse({ price: value }))
         .add(new SubmitOrderResponse({
+          orderKey,
           passengerKey: this.user.userKey,
           passengerLocation: this.user.state.location,
           passengerDestination: this.user.state.destination,
           price: value,
           createdAt: Firebase.database.ServerValue.TIMESTAMP,
           requestedVehicleType: this.user.state.requestedVehicleType,
+        }))
+        .add(new CallActionResponse({
+          userKey: this.user.userKey,
+          route: 'show-message',
+          arg: {
+            expectedState: {
+              menuLocation: 'order-submitted',
+              currentOrderKey: orderKey,
+            },
+            message: this.t('on_timeout'),
+            path: 'passenger-index',
+          },
+          delay: 20 * 60 * 1000,
         }))
         .add(new TextResponse({ message: '👌 OK!' }))
         .add(new RedirectResponse({ path: 'blank-screen' })),

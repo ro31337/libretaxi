@@ -13,6 +13,7 @@ import checkNotNull from '../../validations/check-not-null';
  */
 export default class SaveOrderResponse extends
   mix(Response).with(checkNotNull([
+    'orderKey',
     'passengerKey',
     'passengerLocation',
     'passengerDestination',
@@ -23,6 +24,8 @@ export default class SaveOrderResponse extends
   /**
    * Constructor.
    *
+   * @type {Object} order
+   * @param {string} order.orderKey - order key, newly generated UUID v.4.
    * @param {string} order.passengerKey - passenger user key, for example: `cli_1`
    * @param {Array} order.passengerLocation - passenger location,
    * for example: `[37.421955, -122.084058]`

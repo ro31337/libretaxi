@@ -1,7 +1,6 @@
 import ResponseHandler from '../response-handler';
 import GeoFire from 'geofire';
 import firebaseDB from '../../firebase-db';
-import uuid from 'node-uuid';
 import Order from '../../order';
 
 /**
@@ -47,7 +46,7 @@ export default class SaveOrderResponseHandler extends ResponseHandler {
     const r = this.response;
 
     // 1. create new order
-    new Order({ orderKey: uuid.v4() }).load().then((order) => {
+    new Order({ orderKey: r.order.orderKey }).load().then((order) => {
       // 2. save with geoFire
       this.geoFire.set(order.orderKey, r.order.passengerLocation).then(() => {
         // 3. assign properties from response and save
