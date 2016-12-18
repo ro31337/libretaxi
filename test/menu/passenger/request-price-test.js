@@ -58,11 +58,20 @@ test('should return conditional response on post', t => {
   // 3. notify drivers
   t.is(okResponse.responses[1].responses[2].type, 'notify-drivers');
   t.is(okResponse.responses[1].responses[2].passengerKey, 'cli_1');
+  // call action to show message in 20 mins
+  t.is(okResponse.responses[2].type, 'call-action');
+  t.is(okResponse.responses[2].userKey, 'cli_1');
+  t.is(okResponse.responses[2].route, 'show-message');
+  t.regex(okResponse.responses[2].arg.expectedState.currentOrderKey, ss.guidRegex);
+  t.is(okResponse.responses[2].arg.expectedState.menuLocation, 'order-submitted');
+  t.is(okResponse.responses[2].arg.message, i18n.__('passenger-request-price.on_timeout'));
+  t.is(okResponse.responses[2].arg.path, 'passenger-index');
+  t.is(okResponse.responses[2].delay, 20 * 60 * 1000);
   // text and redirect
-  t.is(okResponse.responses[2].type, 'text');
-  t.is(okResponse.responses[2].message, '👌 OK!');
-  t.is(okResponse.responses[3].type, 'redirect');
-  t.is(okResponse.responses[3].path, 'blank-screen');
+  t.is(okResponse.responses[3].type, 'text');
+  t.is(okResponse.responses[3].message, '👌 OK!');
+  t.is(okResponse.responses[4].type, 'redirect');
+  t.is(okResponse.responses[4].path, 'blank-screen');
 
   t.is(errResponse.type, 'composite');
   t.is(errResponse.responses[0].type, 'error');

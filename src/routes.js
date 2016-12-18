@@ -26,6 +26,7 @@ import PassengerContactDriverPrice from './actions/menu/passenger/contact/driver
 import PassengerVerifyLocation from './actions/menu/passenger/verify-location';
 import PassengerVerifyCash from './actions/menu/passenger/verify-cash';
 import RequestRadius from './actions/menu/driver/request-radius';
+import ShowMessage from './actions/menu/show-message';
 
 /**
  * @typedef Routes
@@ -77,6 +78,7 @@ const routes = {
   'passenger-verify-location': PassengerVerifyLocation,
   'passenger-verify-cash': PassengerVerifyCash,
   'driver-request-radius': RequestRadius,
+  'show-message': ShowMessage,
 };
 
 // Adding more routes? update `action-factory-test.js`

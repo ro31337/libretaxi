@@ -5,6 +5,7 @@ import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import ErrorResponse from '../../../responses/error-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import CallActionResponse from '../../../responses/call-action-response';
 import SubmitOrderResponse from '../../../responses/submit-order/submit-order-response';
 import Firebase from 'firebase';
 import If from '../../../responses/if-response';
@@ -63,6 +64,19 @@ export default class PassengerRequestPrice extends Action {
           price: value,
           createdAt: Firebase.database.ServerValue.TIMESTAMP,
           requestedVehicleType: this.user.state.requestedVehicleType,
+        }))
+        .add(new CallActionResponse({
+          userKey: this.user.userKey,
+          route: 'show-message',
+          arg: {
+            expectedState: {
+              menuLocation: 'order-submitted',
+              currentOrderKey: orderKey,
+            },
+            message: this.t('on_timeout'),
+            path: 'passenger-index',
+          },
+          delay: 20 * 60 * 1000,
         }))
         .add(new TextResponse({ message: '👌 OK!' }))
         .add(new RedirectResponse({ path: 'blank-screen' })),
