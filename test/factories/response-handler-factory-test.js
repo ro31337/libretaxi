@@ -40,6 +40,7 @@ test('should return correct types for responses for cli platform', t => {
   const errorResponse = new ErrorResponse({ message: 'foo' });
   const ifResponse = new IfResponse({ condition: {}, ok: {} });
   const saveOrderResponse = new SaveOrderResponse({
+    orderKey: 'uuid',
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
@@ -143,6 +144,7 @@ test('should return correct types for responses for telegram platform', t => {
   const errorResponse = new ErrorResponse({ message: 'foo' });
   const ifResponse = new IfResponse({ condition: {}, ok: {} });
   const saveOrderResponse = new SaveOrderResponse({
+    orderKey: 'uuid',
     passengerKey: 'telegram_31337',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',

@@ -11,6 +11,7 @@ import User from '../../../../src/user';
 
 let server = null;
 const response = new SaveOrderResponse({
+  orderKey: '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe',
   passengerKey: 'cli_1',
   passengerLocation: [37.421955, -122.084058],
   passengerDestination: 'South San Francisco BART station, CA, 94080',
@@ -35,7 +36,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test.cb('should create order and inform passenger when called', t => {
-  t.plan(11);
+  t.plan(12);
   new User({ platformType: 'cli', platformId: 1 }).load().then((user) => {
     const assert = () => {
       const db = firebaseDB.config().ref('orders');
@@ -59,6 +60,7 @@ test.cb('should create order and inform passenger when called', t => {
         const firstKey = Object.keys(obj)[0]; // first key (guid)
         const v = obj[firstKey]; // get the value (order properties)
 
+        t.is(firstKey, '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe');
         t.truthy(v.g); // geoFire metadata should be truthy
         t.deepEqual(v.l, [37.421955, -122.084058]); // geoFire location
         t.deepEqual(v.passengerLocation, [37.421955, -122.084058]);

@@ -4,6 +4,7 @@ import SaveOrderResponse from '../../../src/responses/submit-order/save-order-re
 import checkNotNullTest from '../../helpers/check-not-null.js';
 
 checkNotNullTest([
+  'orderKey',
   'passengerKey',
   'passengerLocation',
   'passengerDestination',
@@ -14,6 +15,7 @@ checkNotNullTest([
 
 test('response can be constructed with default parameters', t => {
   new SaveOrderResponse({
+    orderKey: '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe',
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
@@ -26,6 +28,7 @@ test('response can be constructed with default parameters', t => {
 
 test('has response parameters accessible by `order` property', t => {
   const r = new SaveOrderResponse({
+    orderKey: '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe',
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
@@ -33,6 +36,7 @@ test('has response parameters accessible by `order` property', t => {
     createdAt: 123456,
     requestedVehicleType: 'car',
   });
+  t.is(r.order.orderKey, '07b0f3af-7ed5-45c6-bdfe-f61d05a199fe');
   t.is(r.order.passengerKey, 'cli_1');
   t.deepEqual(r.order.passengerLocation, [37.421955, -122.084058]);
   t.is(r.order.passengerDestination, 'South San Francisco BART station, CA, 94080');

@@ -9,6 +9,7 @@ import SubmitOrderResponse from '../../../responses/submit-order/submit-order-re
 import Firebase from 'firebase';
 import If from '../../../responses/if-response';
 import Numeric from '../../../conditions/numeric';
+import uuid from 'node-uuid';
 
 /**
  * Passenger request price menu action.
@@ -49,11 +50,13 @@ export default class PassengerRequestPrice extends Action {
    * if `value` is numeric, and returns error if `value` is not numeric.
    */
   post(value) {
+    const orderKey = uuid.v4();
     return new If({
       condition: new Numeric(value),
       ok: new CompositeResponse()
         .add(new UserStateResponse({ price: value }))
         .add(new SubmitOrderResponse({
+          orderKey,
           passengerKey: this.user.userKey,
           passengerLocation: this.user.state.location,
           passengerDestination: this.user.state.destination,

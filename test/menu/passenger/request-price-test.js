@@ -2,7 +2,7 @@
 import test from 'ava';
 import routes from '../../../src/routes'; // to aviod circular dependencies
 import PassengerRequestPrice from '../../../src/actions/menu/passenger/request-price';
-import { i18n } from '../../spec-support';
+import { i18n, ss } from '../../spec-support';
 
 const user = {
   userKey: 'cli_1',
@@ -51,6 +51,7 @@ test('should return conditional response on post', t => {
   t.truthy(okResponse.responses[1].responses[0].order.createdAt);
   t.is(okResponse.responses[1].responses[0].order.price, '50');
   t.is(okResponse.responses[1].responses[0].order.requestedVehicleType, 'motorbike');
+  t.regex(okResponse.responses[1].responses[0].order.orderKey, ss.guidRegex);
   // 2. inform passenger
   t.is(okResponse.responses[1].responses[1].type, 'inform-passenger');
   t.is(okResponse.responses[1].responses[1].passengerKey, 'cli_1');

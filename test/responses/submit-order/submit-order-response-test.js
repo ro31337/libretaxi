@@ -4,6 +4,7 @@ import SubmitOrderResponse from '../../../src/responses/submit-order/submit-orde
 
 test('response can be constructed with default parameters', t => {
   const r = new SubmitOrderResponse({
+    orderKey: 'uuid',
     passengerKey: 'cli_1',
     passengerLocation: [37.421955, -122.084058],
     passengerDestination: 'South San Francisco BART station, CA, 94080',
