@@ -7,8 +7,10 @@ import callAction from './call-action';
 import textToValue from './support/text-to-value';
 import initLocale from './support/init-locale';
 import InlineButtonCallback from './response-handlers/common/inline-button-callback';
+import Settings from '../settings';
 
-const api = new TelegramBot(process.env.TELEGRAM_TOKEN, {
+const settings = new Settings();
+const api = new TelegramBot(settings.TELEGRAM_TOKEN, {
   polling: true,
   tgfancy: { orderedSending: true },
 });

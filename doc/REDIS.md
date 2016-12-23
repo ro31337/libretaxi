@@ -19,12 +19,10 @@ TODO
 By default, Kue will connect to Redis using the client default settings (port
 defaults to `6379`, host defaults to `127.0.0.1`, prefix defaults to `q`).
 
-In this project we _do_ specify redis connection string in our `.env` file.
-Redis is required to run tests. By default we use DB `0` for development and
-DB `1` for tests.
+In this project we don't specify redis connection string in our `settings.js` file.  It would be nice to have DB `0` for development/production and DB `1` for tests.
 
 `before-all.js` test tries to check if compatible version of Redis is installed,
-and if it's available.
+and if it's available. Redis is required to run tests.
 
 See also:
 

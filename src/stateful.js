@@ -10,7 +10,7 @@ import { ArgumentError } from './validations/errors';
  *
  * Keeps state data, updates state when underlying storage updates.
  * Current implementation is using database. `STATEFUL_CONNSTR` should
- * be present in `.env`.
+ * be present in `settings.js`.
  *
  * Adds the following methods to class:
  *

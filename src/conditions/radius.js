@@ -1,5 +1,5 @@
 import Condition from './condition';
-import dotenv from 'dotenv';
+import Settings from '../../settings';
 
 /**
  * Radius Condition.
@@ -12,10 +12,10 @@ import dotenv from 'dotenv';
  * @since 0.1.0
  */
 export default class Radius extends Condition {
-  constructor(value) {
+  constructor(value, settings) {
     super({ type: 'radius' });
     this.value = value;
-    dotenv.config();
+    this.settings = settings || new Settings();
   }
 
   /**
@@ -25,7 +25,7 @@ export default class Radius extends Condition {
    */
   call() {
     return /^\s*\d+\s*$/.test(this.value) &&
-      this.value * 1 <= process.env.MAX_RADIUS &&
+      this.value * 1 <= this.settings.MAX_RADIUS &&
       this.value * 1 > 0;
   }
 }

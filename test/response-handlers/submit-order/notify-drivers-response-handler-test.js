@@ -1,13 +1,18 @@
 /* eslint-disable no-new, no-unused-vars, max-len */
 import test from 'ava';
-import NotifyDriversResponseHandler from '../../../../src/response-handlers/submit-order/notify-drivers-response-handler';
-import NotifyDriversResponse from '../../../../src/responses/submit-order/notify-drivers-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
+import NotifyDriversResponseHandler from '../../../src/response-handlers/submit-order/notify-drivers-response-handler';
+import NotifyDriversResponse from '../../../src/responses/submit-order/notify-drivers-response';
+import checkNotNullTest from '../../helpers/check-not-null.js';
 import FirebaseServer from 'firebase-server';
-import firebaseDB from '../../../../src/firebase-db';
-import { ss } from '../../../spec-support';
+import firebaseDB, { overrideSettings } from '../../../src/firebase-db';
+import { ss } from '../../spec-support';
 import sinon from 'sinon';
-import { loadUser } from '../../../../src/factories/user-factory';
+import { loadUser } from '../../../src/factories/user-factory';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5505',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 const response = new NotifyDriversResponse({ passengerKey: 'cli_1' });

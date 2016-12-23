@@ -1,7 +1,8 @@
 import firebase from 'firebase';
-import dotenv from 'dotenv';
+import Settings from '../settings';
 
 let firebaseDB;
+let overrides;
 
 /**
  * @typedef firebaseDB
@@ -12,12 +13,6 @@ let firebaseDB;
  * Keeps `config` function that can be used when it's required to initialize
  * database connection. If connection is already present, returns the handle
  * of existing connection.
- *
- * Uses `dotenv` package under the hood to read configuration from your `.env`
- * file:
- *
- * - `STATEFUL_CREDENTIALS_FILE` for credentials file path
- * - `STATEFUL_CONNSTR` for firebase database url (without trailing references).
  *
  * IMPORTANT! Do not call `config()` in your constructor(s). Keep your constructors
  * code-free. With this approach it will be easier to test and develop.
@@ -36,13 +31,12 @@ let firebaseDB;
 const config = () => {
   if (firebaseDB) return firebaseDB;
 
-  // configure dotenv
-  dotenv.config();
+  const settings = new Settings(overrides);
 
   // configuration hash
   const cfg = {
-    serviceAccount: process.env.STATEFUL_CREDENTIALS_FILE, // must be undefined for tests
-    databaseURL: process.env.STATEFUL_CONNSTR,
+    serviceAccount: settings.STATEFUL_CREDENTIALS_FILE, // must be undefined for tests
+    databaseURL: settings.STATEFUL_CONNSTR,
   };
 
   // actual configuration
@@ -50,4 +44,20 @@ const config = () => {
   return firebaseDB;
 };
 
+/**
+ * @typedef firebaseDB
+ * @desc
+ *
+ * Override settings for tests.
+ *
+ * @author Roman Pushkin (roman.pushkin@gmail.com)
+ * @date 2016-12-20
+ * @version 1.1
+ * @since 0.1.0
+ */
+const overrideSettings = (settings) => {
+  overrides = settings;
+};
+
 export default { config };
+export { overrideSettings };
