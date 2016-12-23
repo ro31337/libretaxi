@@ -42,10 +42,10 @@ Along with tags described above, these tags are also highly recommended to use:
 * `@see http://` - use to provide a website link
 * `@extends {ParentClass}` - use to specify parent class
 * `{@link OtherClass}` - use to link documentation between one class and another
-* `@interface` - to mark class as interface
-* `@implements {MyInterface}` - to show that class implements interface
 
 ## Esdoc editor configuration
+
+(Optional. You may want just to copy and paste documentation blocks from other parts of the project).
 
 [dockblockr](https://atom.io/packages/docblockr) plugin is used for Atom (this plugin is also available for Sublime Text).
 
