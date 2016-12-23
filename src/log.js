@@ -11,7 +11,7 @@ import Settings from '../settings';
  * Log level is set to `debug` by default.
  *
  * File transport configures winston to redirect logs into specified file
- * (`LOG_FILE` parameter in `.env`). By default winston writes file
+ * (`LOG_FILE` parameter in `settings.js`). By default winston writes file
  * transport logs in json format, but in this transport format described
  * above is used.
  *

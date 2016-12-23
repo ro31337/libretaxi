@@ -6,11 +6,10 @@ through all the steps.
 ## Step 1. Environment
 
 ```bash
-cp .env-sample .env
+cp settings-sample.js settings.js
 ```
 
-Command above will copy sample environment configuration to `.env`. It's required
-to have your own `.env`.
+Command above will copy sample settings to settings. It's mandatory to have your own `settings.js`.
 
 In this file you'll see your pre-defined database connection. It should work, but make sure you have your own credentials file.
 
