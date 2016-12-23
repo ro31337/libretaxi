@@ -37,7 +37,8 @@ export default class SelectLocale extends Action {
       .add(new TextResponse({ message: 'Select your language:' }))
       .add(new OptionsResponse({
         rows: [
-          [{ label: 'English', value: locales[0] }, { label: 'Русский', value: locales[1] }],
+          [{ label: 'English', value: locales[0] }],
+          [{ label: 'Русский', value: locales[1] }],
         ],
       }));
   }

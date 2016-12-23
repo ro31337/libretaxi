@@ -1,7 +1,5 @@
 import Action from '../../action';
 import objectAssign from 'object-assign';
-import CompositeResponse from '../../responses/composite-response';
-import TextResponse from '../../responses/text-response';
 import RedirectResponse from '../../responses/redirect-response';
 
 /**
@@ -26,8 +24,6 @@ export default class Foo extends Action {
    * @return {TextResponse} - returns sample text message
    */
   get() {
-    return new CompositeResponse()
-      .add(new TextResponse({ message: 'Redirecting from foo to default route...' }))
-      .add(new RedirectResponse({ path: 'default' }));
+    return new RedirectResponse({ path: 'default' });
   }
 }

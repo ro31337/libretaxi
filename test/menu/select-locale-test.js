@@ -16,7 +16,7 @@ const assertGet = (t, response) => {
   t.is(response.responses[0].message, 'Select your language:');
   t.is(response.responses[1].type, 'options');
   t.is(response.responses[1].rows[0][0].value, 'en');
-  t.is(response.responses[1].rows[0][1].value, 'ru');
+  t.is(response.responses[1].rows[1][0].value, 'ru');
 };
 
 test('should return composite response on get', t => {
