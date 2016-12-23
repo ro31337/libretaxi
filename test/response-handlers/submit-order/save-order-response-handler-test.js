@@ -1,13 +1,18 @@
 /* eslint-disable no-new, no-console, no-unused-vars */
 import test from 'ava';
-import SaveOrderResponseHandler from '../../../../src/response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
-import SaveOrderResponse from '../../../../src/responses/submit-order/save-order-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
+import SaveOrderResponseHandler from '../../../src/response-handlers/submit-order/save-order-response-handler'; // eslint-disable-line max-len
+import SaveOrderResponse from '../../../src/responses/submit-order/save-order-response';
+import checkNotNullTest from '../../helpers/check-not-null.js';
 import FirebaseServer from 'firebase-server';
-import firebaseDB from '../../../../src/firebase-db';
-import { ss } from '../../../spec-support';
+import firebaseDB, { overrideSettings } from '../../../src/firebase-db';
+import { ss } from '../../spec-support';
 import sinon from 'sinon';
-import User from '../../../../src/user';
+import User from '../../../src/user';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5504',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 const response = new SaveOrderResponse({

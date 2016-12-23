@@ -1,10 +1,16 @@
 /* eslint-disable no-new */
 import test from 'ava';
-import UserStateResponseHandler from '../../../../src/response-handlers/user-state-response-handler'; // eslint-disable-line max-len
-import UserStateResponse from '../../../../src/responses/user-state-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
-import User from '../../../../src/user';
+import UserStateResponseHandler from '../../src/response-handlers/user-state-response-handler'; // eslint-disable-line max-len
+import UserStateResponse from '../../src/responses/user-state-response';
+import checkNotNullTest from '../helpers/check-not-null.js';
+import User from '../../src/user';
 import FirebaseServer from 'firebase-server';
+import { overrideSettings } from '../../src/firebase-db';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5502',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 

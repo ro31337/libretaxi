@@ -1,10 +1,16 @@
 /* eslint-disable no-new, no-console */
 import test from 'ava';
-import UpdateLocationResponseHandler from '../../../../src/response-handlers/update-location-response-handler'; // eslint-disable-line max-len
-import UpdateLocationResponse from '../../../../src/responses/update-location-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
-import User from '../../../../src/user';
+import UpdateLocationResponseHandler from '../../src/response-handlers/update-location-response-handler'; // eslint-disable-line max-len
+import UpdateLocationResponse from '../../src/responses/update-location-response';
+import checkNotNullTest from '../helpers/check-not-null.js';
+import User from '../../src/user';
 import FirebaseServer from 'firebase-server';
+import { overrideSettings } from '../../src/firebase-db';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5503',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 

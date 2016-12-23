@@ -5,7 +5,7 @@ import Order from '../../order';
 import { loadUser } from '../../factories/user-factory';
 import log from '../../log';
 import NotifyDriver from '../support/notify-driver';
-import dotenv from 'dotenv';
+import Settings from '../../../settings';
 
 /**
  * Notify drivers about newly created order.
@@ -27,6 +27,7 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
     super(Object.assign({ type: 'notify-drivers-response-handler' }, options));
     this.keyEntered = this.keyEntered.bind(this);
     this.notifyDriver = options.notifyDriver || new NotifyDriver();
+    this.settings = options.settings || new Settings();
   }
 
   /**
@@ -36,7 +37,6 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
   ensureInitialized() {
     if (this.geoFire) return;
     this.geoFire = new GeoFire(firebaseDB.config().ref('users'));
-    dotenv.config();
   }
 
   /**
@@ -72,7 +72,7 @@ export default class NotifyDriversResponseHandler extends ResponseHandler {
   queryDrivers() {
     const q = this.geoFire.query({
       center: this.order.state.passengerLocation,
-      radius: process.env.MAX_RADIUS * 1,
+      radius: this.settings.MAX_RADIUS * 1,
     });
 
     q.on('key_entered', this.keyEntered);

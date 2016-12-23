@@ -1,6 +1,12 @@
 import test from 'ava';
 import FirebaseServer from 'firebase-server';
 import Demo from './stateful-demo';
+import { overrideSettings } from '../src/firebase-db';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5000',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 

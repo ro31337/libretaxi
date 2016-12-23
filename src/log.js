@@ -1,7 +1,6 @@
-import dotenv from 'dotenv';
 import winston from 'winston';
 import moment from 'moment';
-import appRoot from 'app-root-path';
+import Settings from '../settings';
 
 /**
  * Logger, based on [winston](https://github.com/winstonjs/winston).
@@ -32,7 +31,7 @@ class Log extends winston.Logger {
    * Constructor.
    */
   constructor() {
-    dotenv.config();
+    const settings = new Settings();
     const fileTransport = new (winston.transports.File)({
       timestamp() {
         return Date.now();
@@ -43,7 +42,7 @@ class Log extends winston.Logger {
 
         return `[${date}] [${options.level}] ${message}`; // skip meta information
       },
-      filename: process.env.LOG_FILE.replace(/%APP_ROOT%/g, appRoot.path),
+      filename: settings.LOG_FILE,
       json: false,
     });
 

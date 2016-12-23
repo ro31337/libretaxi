@@ -1,14 +1,19 @@
 /* eslint-disable no-new, no-unused-vars, max-len, no-use-before-define */
 import test from 'ava';
-import CheckinResponseHandler from '../../../../src/response-handlers/checkin-response-handler';
-import CheckinResponse from '../../../../src/responses/checkin-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
+import CheckinResponseHandler from '../../src/response-handlers/checkin-response-handler';
+import CheckinResponse from '../../src/responses/checkin-response';
+import checkNotNullTest from '../helpers/check-not-null.js';
 import FirebaseServer from 'firebase-server';
-import firebaseDB from '../../../../src/firebase-db';
-import { ss } from '../../../spec-support';
+import firebaseDB, { overrideSettings } from '../../src/firebase-db';
+import { ss } from '../spec-support';
 import sinon from 'sinon';
-import { loadUser } from '../../../../src/factories/user-factory';
-import { loadOrder } from '../../../../src/factories/order-factory';
+import { loadUser } from '../../src/factories/user-factory';
+import { loadOrder } from '../../src/factories/order-factory';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5506',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 const response = new CheckinResponse({ driverKey: 'cli_1' });

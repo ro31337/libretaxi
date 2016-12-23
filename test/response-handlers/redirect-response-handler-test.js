@@ -1,10 +1,16 @@
 /* eslint-disable no-new */
 import test from 'ava';
-import RedirectResponseHandler from '../../../../src/response-handlers/redirect-response-handler';
-import RedirectResponse from '../../../../src/responses/redirect-response';
-import checkNotNullTest from '../../../helpers/check-not-null.js';
-import User from '../../../../src/user';
+import RedirectResponseHandler from '../../src/response-handlers/redirect-response-handler';
+import RedirectResponse from '../../src/responses/redirect-response';
+import checkNotNullTest from '../helpers/check-not-null.js';
+import User from '../../src/user';
 import FirebaseServer from 'firebase-server';
+import { overrideSettings } from '../../src/firebase-db';
+
+overrideSettings({
+  STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5501',
+  STATEFUL_CREDENTIALS_FILE: undefined,
+});
 
 let server = null;
 

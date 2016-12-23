@@ -1,6 +1,3 @@
-# Environment configuration file
-/.env
-
 # Log files
 libretaxi*.log
 
@@ -47,3 +44,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# WebStorm
+.idea
+
+# Settings file
+settings.js
