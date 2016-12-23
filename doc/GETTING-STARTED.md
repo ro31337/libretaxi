@@ -117,6 +117,21 @@ When everything's done, it's time to test and run:
 * `npm run telegram` - Start Telegram bot.
 * `npm run cli` - Start CLI version of the bot.
 
+## Shutting down
+
+It's recommended to shut down Telegram bot gracefully. With `pkill -f "node.*libretaxi"` command you should see the following output:
+
+```
+$ npm run telegram
+
+> libretaxi@0.1.0 telegram /Users/ro/work/libretaxi
+> babel-node ./src/app-telegram.js
+
+OK telegram bot is waiting for messages...
+Shutting down gracefully...
+Kue shutdown: OK
+```
+
 ## Still have issues?
 
 I know we should use Docker, Vagrant or something else. If you feel enthusiastic go ahead and add it! Explain in detail how to use it and create a repo.
