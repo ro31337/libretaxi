@@ -67,7 +67,7 @@
 	"driver-unmute.unmute_ok_desc": "We show this message to drivers when they click \"Unmute\" button in driver index menu.",
 	"driver-checkin.provide_location": "Please share your current location, so passengers around will be able to find you.",
 	"driver-checkin.provide_location_desc": "We show this message to drivers when they check-in and we want them to provide current location.",
-	"driver-checkin.ok": "👌 OK! Thanks for checking-in! Don't forget to check-in every hour or when you changed your location!",
+	"driver-checkin.ok": "👌 Thanks for checking-in! Check-in every hour or when you changed your location! Also, check location above, if it's incorrect, check-in again and then tap on paperclip-location (instead of pressing a button).",
 	"driver-checkin.ok_desc": "We show this message to drivers when they check-in.",
 	"driver-order-new.new_order": "🔔 New order!",
 	"driver-order-new.new_order_desc": "We show this message to drivers when they receive new order.",
