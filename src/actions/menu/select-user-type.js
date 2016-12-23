@@ -34,10 +34,8 @@ export default class SelectUserType extends Action {
       .add(new TextResponse({ message: this.t('who_you_are') }))
       .add(new OptionsResponse({
         rows: [
-          [
-            { label: this.t('driver'), value: 'driver' },
-            { label: this.t('passenger'), value: 'passenger' },
-          ],
+          [{ label: this.t('driver'), value: 'driver' }],
+          [{ label: this.t('passenger'), value: 'passenger' }],
         ],
       }));
   }

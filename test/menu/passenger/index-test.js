@@ -18,11 +18,11 @@ test('should return composite response on get', t => {
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, i18n.__('passenger-index.choose_taxi_type'));
   t.is(response.responses[1].type, 'options');
-  t.is(response.responses[1].rows[0][0].value, 'motorbike');
-  t.is(response.responses[1].rows[1][0].value, 'car');
+  t.is(response.responses[1].rows[0][0].value, 'car');
+  t.is(response.responses[1].rows[1][0].value, 'motorbike');
   t.is(response.responses[1].rows[2][0].value, 'settings');
-  t.is(response.responses[1].rows[0][0].label, i18n.__('passenger-index.motorbike'));
-  t.is(response.responses[1].rows[1][0].label, i18n.__('passenger-index.car'));
+  t.is(response.responses[1].rows[0][0].label, i18n.__('passenger-index.car'));
+  t.is(response.responses[1].rows[1][0].label, i18n.__('passenger-index.motorbike'));
   t.is(response.responses[1].rows[2][0].label, i18n.__('passenger-index.s'));
 });
 

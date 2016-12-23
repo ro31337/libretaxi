@@ -35,8 +35,8 @@ export default class PassengerIndex extends Action {
       .add(new TextResponse({ message: this.t('choose_taxi_type') }))
       .add(new OptionsResponse({
         rows: [
-          [{ label: this.t('motorbike'), value: 'motorbike' }],
           [{ label: this.t('car'), value: 'car' }],
+          [{ label: this.t('motorbike'), value: 'motorbike' }],
           [{ label: this.t('s'), value: 'settings' }],
         ],
         defaultMessage: this.gt('default_options_message'),
