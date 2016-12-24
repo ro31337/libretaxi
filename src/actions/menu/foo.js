@@ -23,7 +23,7 @@ export default class Foo extends Action {
    *
    * @return {TextResponse} - returns sample text message
    */
-  get() {
+  call() {
     return new RedirectResponse({ path: 'default' });
   }
 }
