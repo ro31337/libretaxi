@@ -131,6 +131,8 @@
 	"global.yes_desc": "General text for \"yes\", usually used as button text.",
 	"global.no": "No",
 	"global.no_desc": "General text for \"no\", usually used as button text.",
+	"global.error_try_again": "❌ Oops, can't understand that. Please try again.",
+	"global.error_try_again_desc": "General error message we show to our users.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }
