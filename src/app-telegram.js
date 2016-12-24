@@ -22,7 +22,7 @@ api.on('message', (msg) => {
   const something = msg.text || (msg.contact || {}).phone_number || getLocation(msg);
   console.log(`Got '${something}' from ${userKey}`);
 
-  loadUser(userKey).then((user) => {
+  withUser(userKey, (user) => {
     queue.create({
       userKey,
       arg: msg.text ? textToValue(user, msg.text) : something,
@@ -36,7 +36,7 @@ api.on('callback_query', (msg) => {
   const data = msg.data;
   console.log(`Got inline button value ${data} from ${userKey}`);
 
-  loadUser(userKey).then((user) => {
+  withUser(userKey, (user) => {
     const t = initLocale(user);
     api.editMessageText(t.__('global.replied_to_order'), {
       chat_id: msg.message.chat.id,
@@ -48,7 +48,7 @@ api.on('callback_query', (msg) => {
 
 queue.process((job, done) => {
   const data = job.data;
-  loadUser(data.userKey).then((user) => {
+  withUser(data.userKey, (user) => {
     callAction({
       user,
       arg: data.arg,
@@ -57,7 +57,6 @@ queue.process((job, done) => {
       api,
     });
   })
-  .catch((err) => console.log(err))
   .then(() => done());
 });
 
@@ -73,4 +72,25 @@ process.once('SIGTERM', () => {
 const getLocation = (msg) => {
   if (!msg.location) return undefined;
   return [msg.location.latitude, msg.location.longitude];
+};
+
+const withUser = (userKey, f) => { // eslint-disable-line arrow-body-style
+  return loadUser(userKey)
+    .then((user) => {
+      try {
+        f(user);
+      } catch (e) { handleException(e, user); }
+    })
+    .catch((err) => console.log(err));
+};
+
+const handleException = (ex, user) => {
+  console.log(ex);
+  try {
+    const t = initLocale(user);
+    api.sendMessage(user.platformId, t.__('global.error_try_again'),
+      { disable_notification: true });
+  } catch (e) {
+    console.log(`Exception "${e}" while handing exception "${ex}"`);
+  }
 };
