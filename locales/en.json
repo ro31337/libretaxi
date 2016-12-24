@@ -133,6 +133,8 @@
 	"global.no_desc": "General text for \"no\", usually used as button text.",
 	"global.error_try_again": "❌ Oops, can't understand that. Please try again.",
 	"global.error_try_again_desc": "General error message we show to our users.",
+	"global.error_location": "Oops, can't understand this location. Please click on the button or use paperclip-location to send your GPS coordinates.",
+	"global.error_location_desc": "General error message for location errors. For example, when user tries to type address, but we expect coordinates.",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

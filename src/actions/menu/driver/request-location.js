@@ -5,6 +5,10 @@ import UpdateLocationResponse from '../../../responses/update-location-response'
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import If from '../../../responses/if-response';
+import Location from '../../../conditions/location';
+import ErrorResponse from '../../../responses/error-response';
+
 /**
  * Driver request location menu action.
  * Asking driver to provide location.
@@ -36,18 +40,22 @@ export default class DriverRequestLocation extends Action {
   }
 
   /**
-   * Saves user's location to the database, responds with OK message, and
-   * redirects to `explain-whats-next` menu action.
+   * If location is valid, save user location to database, reply with OK message, and
+   * redirect to `explain-whats-next` menu action.
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
-   * @return {CompositeResponse} response - instance of {@link CompositeResponse}
+   * @return {IfResponse} response - instance of conditional response
    */
   post(value) {
-    return new CompositeResponse()
-      .add(new UpdateLocationResponse({ location: value }))
-      .add(new UserStateResponse({ location: value }))
-      .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'driver-request-radius' }));
+    return new If({
+      condition: new Location(value),
+      ok: new CompositeResponse()
+        .add(new UpdateLocationResponse({ location: value }))
+        .add(new UserStateResponse({ location: value }))
+        .add(new TextResponse({ message: '👌 OK!' }))
+        .add(new RedirectResponse({ path: 'driver-request-radius' })),
+      err: new ErrorResponse({ message: this.gt('error_location') }),
+    });
   }
 }
