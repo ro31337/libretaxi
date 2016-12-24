@@ -5,6 +5,10 @@ import UpdateLocationResponse from '../../../responses/update-location-response'
 import UserStateResponse from '../../../responses/user-state-response';
 import TextResponse from '../../../responses/text-response';
 import RedirectResponse from '../../../responses/redirect-response';
+import If from '../../../responses/if-response';
+import Location from '../../../conditions/location';
+import ErrorResponse from '../../../responses/error-response';
+
 /**
  * Passenger request location menu action.
  * Asking passenger to provide location.
@@ -36,22 +40,22 @@ export default class PassengerRequestLocation extends Action {
   }
 
   /**
-   * Saves user's location to the database, responds with OK message, and
-   * redirects to `passenger-request-destination` menu action.
+   * If location is valid, save user location to database, respond with OK message, and
+   * redirect to `passenger-request-destination` menu action.
    *
    * @param {Array} value - array of two elements that represents location, for
    * example: `[37.421955, -122.084058]`
-   * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
-   * that contains the following responses:
-   * - {@link UpdateLocationResponse}
-   * - {@link TextResponse} - with OK message
-   * - {@link RedirectResponse} - with redirect to `passenger-request-destination`.
+   * @return {IfReponse} response - conditional response
    */
   post(value) {
-    return new CompositeResponse()
-      .add(new UpdateLocationResponse({ location: value }))
-      .add(new UserStateResponse({ location: value }))
-      .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'passenger-verify-location' }));
+    return new If({
+      condition: new Location(value),
+      ok: new CompositeResponse()
+        .add(new UpdateLocationResponse({ location: value }))
+        .add(new UserStateResponse({ location: value }))
+        .add(new TextResponse({ message: '👌 OK!' }))
+        .add(new RedirectResponse({ path: 'passenger-verify-location' })),
+      err: new ErrorResponse({ message: this.gt('error_location') }),
+    });
   }
 }
