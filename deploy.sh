@@ -20,6 +20,6 @@
 # Detach from the session: Ctrl+b, d
 #
 # ~/redeploy-libretaxi.sh:
-# (pkill -f "node.*libretaxi" | true) && sleep 5 && (tmux kill-session -t "bot" | true) && sleep 1 && tmux new-session -s "bot" -n "Prod-bot" -d "cd ~/work/libretaxi/ && git pull && npm i && (npm run telegram) && zsh" && echo OK deployed
+# (pkill -f "node.*libretaxi" | true) && sleep 5 && (tmux kill-session -t "bot" | true) && sleep 1 && tmux new-session -s "bot" -n "Prod-bot" -d "cd ~/work/libretaxi/ && git pull && npm i && (while true;do sleep 2 && npm run telegram;done);bash" && echo OK deployed
 #
 ssh ro@libretaxi.org -t "~/redeploy-libretaxi.sh"
