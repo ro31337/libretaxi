@@ -11,7 +11,7 @@ test('can be constructed with default parameters', t => {
 
 test('should return composite response on get', t => {
   const action = new Foo({ i18n: {}, user });
-  const response = action.get();
+  const response = action.call();
   t.is(response.type, 'redirect');
   t.is(response.path, 'default');
 });
