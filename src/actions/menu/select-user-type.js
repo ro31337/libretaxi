@@ -5,6 +5,9 @@ import CompositeResponse from '../../responses/composite-response';
 import UserStateResponse from '../../responses/user-state-response';
 import TextResponse from '../../responses/text-response';
 import RedirectResponse from '../../responses/redirect-response';
+import If from '../../responses/if-response';
+import In from '../../conditions/in';
+import ErrorResponse from '../../responses/error-response';
 
 /**
  * Select user type menu action.
@@ -24,7 +27,7 @@ export default class SelectUserType extends Action {
   }
 
   /**
-   * Returns text and list of available user types.
+   * Return text and list of available user types.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link TextResponse} and {@link OptionsResponse}.
@@ -41,15 +44,18 @@ export default class SelectUserType extends Action {
   }
 
   /**
-   * Sets selected user type and redirects.
+   * Conditionally set selected user type and redirect.
    *
-   * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
-   * which contains {@link UserStateResponse}, and {@link RedirectResponse}.
+   * @return {IfResponse} response - return conditional response
    */
   post(value) {
-    return new CompositeResponse()
-      .add(new UserStateResponse({ userType: value }))
-      .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'request-phone' }));
+    return new If({
+      condition: new In(value, ['driver', 'passenger']),
+      ok: new CompositeResponse()
+        .add(new UserStateResponse({ userType: value }))
+        .add(new TextResponse({ message: '👌 OK!' }))
+        .add(new RedirectResponse({ path: 'request-phone' })),
+      err: new ErrorResponse({ message: this.gt('error_try_again') }),
+    });
   }
 }
