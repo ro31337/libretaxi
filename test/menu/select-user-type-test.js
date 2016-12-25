@@ -25,11 +25,17 @@ test('should return composite response on get', t => {
 test('should return composite response on post', t => {
   const action = new SelectUserType({ i18n, user });
   const response = action.post('driver');
-  t.is(response.type, 'composite');
-  t.is(response.responses[0].type, 'user-state');
-  t.is(response.responses[0].state.userType, 'driver');
-  t.is(response.responses[1].type, 'text');
-  t.is(response.responses[1].message, '👌 OK!');
-  t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'request-phone');
+  t.is(response.type, 'if');
+  t.is(response.condition.type, 'in');
+  t.is(response.condition.value, 'driver');
+  t.deepEqual(response.condition.arr, ['driver', 'passenger']);
+  t.is(response.ok.type, 'composite');
+  t.is(response.ok.responses[0].type, 'user-state');
+  t.is(response.ok.responses[0].state.userType, 'driver');
+  t.is(response.ok.responses[1].type, 'text');
+  t.is(response.ok.responses[1].message, '👌 OK!');
+  t.is(response.ok.responses[2].type, 'redirect');
+  t.is(response.ok.responses[2].path, 'request-phone');
+  t.is(response.err.type, 'error');
+  t.is(response.err.message, i18n.__('global.error_try_again'));
 });
