@@ -13,6 +13,7 @@ const user = {
       distance: 5,
       orderKey: 'd3adb33f',
     },
+    identity: 31337,
   },
 };
 
@@ -47,6 +48,7 @@ test('should return composite response on post', t => {
     distance: 5,
     driverPhone: '(555) 123-11-22',
     price: '100 with some details',
+    driverIdentity: 31337,
   });
   t.is(response.responses[1].type, 'text');
   t.is(response.responses[1].message, '👌 OK!');

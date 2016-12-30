@@ -14,7 +14,7 @@ test('can be constructed with default parameters', t => {
 });
 
 test('factory method should return stringified json response', t => {
-  const response = sendMyNumber({ passengerKey: 'cli_1', distance: 5, orderKey: 'd3adb33f' }, { state: { phone: '12345' } });
+  const response = sendMyNumber({ passengerKey: 'cli_1', distance: 5, orderKey: 'd3adb33f' }, { state: { phone: '12345', identity: 31337 } });
   // json example:
   // {"type":"call-action","route":"passenger-contact-new-number","kicker":"order-submitted","userKey":"cli_1","arg":{"driverPhone":"12345","distance":5}}
   t.deepEqual(response, {
@@ -26,6 +26,7 @@ test('factory method should return stringified json response', t => {
     arg: {
       driverPhone: '12345',
       distance: 5,
+      driverIdentity: 31337,
     },
   });
 });

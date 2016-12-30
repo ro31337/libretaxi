@@ -95,11 +95,11 @@
 	"passenger-request-price.should_be_numeric_desc": "We show this error text to passenger when s/he entered the price for the order, but the value is not numeric.",
 	"passenger-request-price.on_timeout": "Seems like you're waiting for too long? Sorry about that. If you haven't found a ride, we recommend to try again later.",
 	"passenger-request-price.on_timeout_desc": "We show this message when order was submitted and passenger is waiting for too long. We automatically finish search here.",
-	"passenger-contact-new-number.message": "🔔 Driver accepted your price! Call the driver at {{phone}} to confirm. Distance to driver ~{{distance}}",
+	"passenger-contact-new-number.message": "🔔 {{driver}} accepted your price! Call the driver at {{phone}} to confirm. Distance to driver ~{{distance}}",
 	"passenger-contact-new-number.message_desc": "Message we send to passengers when driver accepted their order price.",
 	"driver-order-set-price.set_price": "Set your price (in local currency). You can include details justifying your price. For example: \"20, because of the bridge repair\" or \"15, if traffic is ok\"",
 	"driver-order-set-price.set_price_desc": "Here we tell drivers to set their own price for the order. We show this message when drivers click on \"set price\" button.",
-	"passenger-contact-driver-price.message": "🔔 ⚠️ Driver offers another price: \"{{price}}\". If you like it, call the driver at {{phone}} to confirm. Distance is ~{{distance}}.",
+	"passenger-contact-driver-price.message": "🔔 ⚠️ {{driver}} offers another price: \"{{price}}\". If you like it, call the driver at {{phone}} to confirm. Distance is ~{{distance}}.",
 	"passenger-contact-driver-price.message_desc": "Message we send to passengers when driver offers his own price.",
 	"passenger-verify-location.verify_location": "Please look at the map above (click to zoom in), is this location correct?",
 	"passenger-verify-location.verify_location_desc": "Sometimes phones/devices don't provide correct GPS coordinates, so we have to ask users if location they sent on previous step is correct",
@@ -135,6 +135,8 @@
 	"global.error_try_again_desc": "General error message we show to our users.",
 	"global.error_location": "Oops, can't understand this location. Please click on the button or use paperclip-location to send your GPS coordinates.",
 	"global.error_location_desc": "General error message for location errors. For example, when user tries to type address, but we expect coordinates.",
+	"global.driver": "Driver",
+	"global.driver_desc": "Driver. Sometimes we just need to use the word \"driver\", so don't think about this too much ;)",
 	"__locale__": "en",
 	"__eof__": "__eof__"
 }

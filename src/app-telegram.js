@@ -30,11 +30,16 @@ api.on('message', (msg) => {
       route: user.state.menuLocation || 'default',
     });
 
-    // update identity so that we catch actual user's first, last name, Telegram id (username)
+    // Update identity so that we catch actual user's first, last name, Telegram id (username).
+    // Params (first, last, username) below can't be undefined (Firebase will throw exception).
     const from = msg.from || {};
     queue.create({
       userKey,
-      arg: { first: from.first_name, last: from.last_name, username: from.username },
+      arg: {
+        first: from.first_name || '',
+        last: from.last_name || '',
+        username: from.username || '',
+      },
       route: 'update-identity',
     });
   });

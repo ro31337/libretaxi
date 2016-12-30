@@ -4,7 +4,7 @@ import routes from '../../../../src/routes'; // to aviod circular dependencies
 import DriverOrderNew from '../../../../src/actions/menu/driver/order/new';
 import { i18n, ss } from '../../../spec-support';
 
-const user = { userKey: 'cli_1', state: { phone: '(555) 123-11-22' } };
+const user = { userKey: 'cli_1', state: { phone: '(555) 123-11-22', identity: 31337 } };
 
 test('can be constructed with default parameters', t => {
   new DriverOrderNew({ i18n, user });
@@ -61,6 +61,7 @@ test('should return composite response on call', t => {
     arg: {
       driverPhone: '(555) 123-11-22',
       distance: 10,
+      driverIdentity: 31337,
     },
   });
 

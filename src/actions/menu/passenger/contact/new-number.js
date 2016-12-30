@@ -4,6 +4,7 @@ import TextResponse from '../../../../responses/text-response';
 import InterruptPromptResponse from '../../../../responses/interrupt-prompt-response';
 import RedirectResponse from '../../../../responses/redirect-response';
 import MetricDistance from '../../../../decorators/distance/metric-distance';
+import Identity from '../../../../decorators/identity';
 
 /**
  * Notify passenger about new driver's phone number. Basically, it means that
@@ -33,13 +34,19 @@ export default class PassengerContactNewNumber extends Action {
    * @param {object} args - hash of parameters
    * @param {number} args.distance - distance to driver (in km)
    * @param {string} args.driverPhone - driver's phone number
+   * @param {object} args.driverIdentity - driver identity
    * @return {CompositeResponse} - composite response
    */
   call(args) {
     return new CompositeResponse()
       .add(new InterruptPromptResponse())
-      .add(new TextResponse({ message: this.t('message', { phone: args.driverPhone,
-        distance: new MetricDistance(this.i18n, args.distance).toString() }) }))
+      .add(new TextResponse({
+        message: this.t('message', {
+          driver: new Identity(this.gt('driver'), args.driverIdentity).toString(),
+          phone: args.driverPhone,
+          distance: new MetricDistance(this.i18n, args.distance).toString(),
+        }),
+      }))
       .add(new RedirectResponse({ path: 'order-submitted' }));
   }
 }
