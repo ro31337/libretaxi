@@ -102,3 +102,27 @@ test('should optimize nested response with if', t => {
   t.is(optimized.responses[0].responses[0].err.responses[0].type, 'text');
   t.is(optimized.responses[0].responses[0].err.responses[0].message, 'baz qux');
 });
+
+test('should not optimize basic response when second message is important', t => {
+  const origin = new CompositeResponse()
+    .add(new TextResponse({ message: 'foo' }))
+    .add(new TextResponse({ message: 'bar', important: true }));
+  const optimized = new ConcatText(origin);
+  t.is(optimized.responses.length, 2);
+  t.is(optimized.responses[0].type, 'text');
+  t.is(optimized.responses[0].message, 'foo');
+  t.is(optimized.responses[1].type, 'text');
+  t.is(optimized.responses[1].message, 'bar');
+});
+
+test('should not optimize basic response when first message is important', t => {
+  const origin = new CompositeResponse()
+    .add(new TextResponse({ message: 'foo', important: true }))
+    .add(new TextResponse({ message: 'bar' }));
+  const optimized = new ConcatText(origin);
+  t.is(optimized.responses.length, 2);
+  t.is(optimized.responses[0].type, 'text');
+  t.is(optimized.responses[0].message, 'foo');
+  t.is(optimized.responses[1].type, 'text');
+  t.is(optimized.responses[1].message, 'bar');
+});

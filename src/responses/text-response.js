@@ -10,7 +10,7 @@ import checkNotNull from '../validations/check-not-null.js';
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {Response}
  * @date 2016-05-04
- * @version 1.2
+ * @version 1.3
  * @since 0.1.0
  */
 export default class TextResponse extends mix(Response).with(checkNotNull('message')) {
@@ -20,9 +20,11 @@ export default class TextResponse extends mix(Response).with(checkNotNull('messa
    * @type {Object}
    * @param {string} options.message - Text message for the user. This parameter
    * is available as object property.
+   * @param {boolean} options.important - (optional) When set to `true`, message won't be optimized
+   * (for example, won't be concatenated with other messages)
    * @throws {ArgumentError} throw error when message parameter not specified.
    * @example
-   * r = new TextResponse({message: 'hello!'});
+   * r = new TextResponse({ message: 'hello!' });
    * console.log(r.message); // prints "hello!"
    * console.log(r.type); // prints "text"
    */

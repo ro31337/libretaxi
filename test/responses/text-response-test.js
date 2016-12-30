@@ -6,12 +6,14 @@ import checkNotNullTest from '../helpers/check-not-null.js';
 checkNotNullTest('message', (args) => { new TextResponse(args); });
 
 test('can be constructed with default parameters', t => {
-  new TextResponse({ message: 'my message' });
+  const r = new TextResponse({ message: 'my message' });
+  t.falsy(r.important);
   t.pass();
 });
 
-test('should save message as property and have text type', t => {
-  const r = new TextResponse({ message: 'my message' });
+test('should save props and have text type', t => {
+  const r = new TextResponse({ message: 'my message', important: true });
   t.is(r.message, 'my message');
+  t.is(r.important, true);
   t.is(r.type, 'text');
 });

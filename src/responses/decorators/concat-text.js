@@ -9,7 +9,7 @@ import CompositeResponseDecorator from './composite-response-decorator';
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @extends {CompositeResponseDecorator}
  * @date 2016-11-15
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  */
 export default class ConcatText extends CompositeResponseDecorator {
@@ -19,7 +19,7 @@ export default class ConcatText extends CompositeResponseDecorator {
    * @override
    */
   optimize(r1, r2, response) {
-    if (r2 && r1.type === 'text' && r2.type === 'text') {
+    if (r2 && r1.type === 'text' && r2.type === 'text' && !r1.important && !r2.important) {
       const m1 = r1.message;
       const m2 = r2.message;
       const separator = m1.length > 20 ? '\n' : ' ';

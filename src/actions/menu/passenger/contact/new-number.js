@@ -43,9 +43,12 @@ export default class PassengerContactNewNumber extends Action {
       .add(new TextResponse({
         message: this.t('message', {
           driver: new Identity(this.gt('driver'), args.driverIdentity).toString(),
-          phone: args.driverPhone,
           distance: new MetricDistance(this.i18n, args.distance).toString(),
         }),
+      }))
+      .add(new TextResponse({
+        message: this.gt('phone', args.driverPhone),
+        important: true,
       }))
       .add(new RedirectResponse({ path: 'order-submitted' }));
   }
