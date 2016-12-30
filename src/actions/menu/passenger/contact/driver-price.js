@@ -45,10 +45,13 @@ export default class PassengerContactDriverPrice extends Action {
       .add(new TextResponse({ message: this.t('message',
         {
           driver: new Identity(this.gt('driver'), args.driverIdentity),
-          phone: args.driverPhone,
           distance: new MetricDistance(this.i18n, args.distance).toString(),
           price: args.price,
         }),
+      }))
+      .add(new TextResponse({
+        message: this.gt('phone', args.driverPhone),
+        important: true,
       }))
       .add(new RedirectResponse({ path: 'order-submitted' }));
   }
