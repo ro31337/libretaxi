@@ -23,10 +23,24 @@ api.on('message', (msg) => {
   console.log(`Got '${something}' from ${userKey}`);
 
   withUser(userKey, (user) => {
+    // post the actual message to the queue
     queue.create({
       userKey,
       arg: msg.text ? textToValue(user, msg.text) : something,
       route: user.state.menuLocation || 'default',
+    });
+
+    // Update identity so that we catch actual user's first, last name, Telegram id (username).
+    // Params (first, last, username) below can't be undefined (Firebase will throw exception).
+    const from = msg.from || {};
+    queue.create({
+      userKey,
+      arg: {
+        first: from.first_name || '',
+        last: from.last_name || '',
+        username: from.username || '',
+      },
+      route: 'update-identity',
     });
   });
 });

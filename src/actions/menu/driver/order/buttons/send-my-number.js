@@ -22,6 +22,7 @@ export class SendMyNumber extends mix(CallActionResponse).with(checkNotNull(['us
   * @param {object} options.arg - hash of parameters for {@link PassengerContactNewNumber}.
   * @param {string} options.arg.driverPhone - driver phone number
   * @param {number} options.arg.distance - distance to driver
+  * @param {number} options.arg.driverIdentity - driver identity
   */
 
   constructor(options) {
@@ -57,6 +58,7 @@ export default (args, driver) => { // eslint-disable-line
     arg: {
       driverPhone: driver.state.phone,
       distance: args.distance,
+      driverIdentity: driver.state.identity,
     },
   });
 };
