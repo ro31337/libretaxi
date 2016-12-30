@@ -1,5 +1,7 @@
 import Action from '../../action';
 import UserStateResponse from '../../responses/user-state-response';
+import CompositeResponse from '../../responses/composite-response';
+import EmptyResponse from '../../responses/empty-response';
 
 /**
  * Update user identity.
@@ -25,15 +27,17 @@ export default class UpdateIdentity extends Action {
    * @param {string} args.first - first name
    * @param {string} args.last - last name
    * @param {string} args.username - platform username (for example, `@ro31337` for Telegram)
-   * @return {UserStateResponse} - response to update state
+   * @return {CompositeResponse} - response to update state
    */
   call(args) {
-    return new UserStateResponse({
-      identity: {
-        first: args.first,
-        last: args.last,
-        username: args.username,
-      },
-    });
+    return new CompositeResponse()
+      .add(new UserStateResponse({
+        identity: {
+          first: args.first,
+          last: args.last,
+          username: args.username,
+        },
+      }))
+      .add(new EmptyResponse()); // prevent calling the next action
   }
 }

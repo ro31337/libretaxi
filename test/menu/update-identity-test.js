@@ -19,10 +19,12 @@ test('should return composite response on call', t => {
     last: 'bar',
     username: 'ro31337',
   });
-  t.is(response.type, 'user-state');
-  t.deepEqual(response.state.identity, {
+  t.is(response.type, 'composite');
+  t.is(response.responses[0].type, 'user-state');
+  t.deepEqual(response.responses[0].state.identity, {
     first: 'foo',
     last: 'bar',
     username: 'ro31337',
   });
+  t.is(response.responses[1].type, 'empty'); // this one is mandatory and required to break the loop
 });

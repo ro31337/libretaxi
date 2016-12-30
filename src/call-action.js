@@ -11,7 +11,7 @@ import log from './log';
 export default (options) => { // eslint-disable-line
   // console.dir(options);
   // console.log('Current user state:');
-  // console.dir(user.state);
+  // console.dir(options.user.state);
   const user = options.user;
   const route = options.route || 'default';
   const queue = options.queue;
