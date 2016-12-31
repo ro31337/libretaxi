@@ -50,7 +50,7 @@ export default class DriverOrderSetPrice extends Action {
           distance: arg.distance,
           driverPhone: this.user.state.phone,
           price: value,
-          driverIdentity: this.user.state.identity,
+          driverIdentity: this.user.state.identity || {},
         },
       }))
       .add(new TextResponse({ message: '👌 OK!' }))
