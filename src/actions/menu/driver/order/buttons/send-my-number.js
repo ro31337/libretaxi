@@ -58,7 +58,7 @@ export default (args, driver) => { // eslint-disable-line
     arg: {
       driverPhone: driver.state.phone,
       distance: args.distance,
-      driverIdentity: driver.state.identity,
+      driverIdentity: driver.state.identity || {},
     },
   });
 };
