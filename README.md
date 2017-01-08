@@ -53,6 +53,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 * [Redis](doc/REDIS.md)
 * [Esdoc](doc/ESDOC.md)
 * [Contributing](doc/CONTRIBUTING.md)
+* [Add translation](doc/TRANSLATE.md)
 
 ## Linux tweaks
 
