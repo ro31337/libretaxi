@@ -25,9 +25,9 @@ Translate all the keys **without** `_desc` suffix. Basically, we use keys with `
 "select-user-type.who_you_are_desc": "At the very beginning user must select type, so we're asking if the user is taxi driver or passenger",
 ```
 
-`Who you are? (select for now, you can change it later)` text above is what you need to translate. And `At the very beginning user must select type, so we're asking if the user is taxi driver or passenger` is explanation for translator like you. So you'll better understand the context of this phrase.
+`Who you are? (select for now, you can change it later)` text above is what you need to translate. And `At the very beginning user must select type, so we're asking if the user is taxi driver or passenger` is explanation for translator, like you. So you'll better understand the context of this phrase.
 
-You don't need explanation if result json-file. Check out [how Russian translation looks like](../locales/ru.json). Also, if you don't know how something, feel free to refer to Russian translation and see how things work there.
+You don't need explanation in result json-file. Check out [how Russian translation looks like](../locales/ru.json). Also, if you don't know how something, feel free to refer to Russian translation and see how things work there.
 
 Also, don't translate key name itself :) You don't need to translate `select-user-type.who_you_are`, translate value only.
 
