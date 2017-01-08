@@ -35,7 +35,7 @@ Also, don't translate key name itself :) You don't need to translate `select-use
 
 Contribute! If you know how git and GitHub works, just create pull request. If you submit translation, you don't need to run tests, update code base, etc. Just submit translation file and LibreTaxi team will do the rest for you.
 
-If you don't know how git and GitHub works, just upload your file to [gist.github.com](http://gist.github.com) or [paste2][https://paste2.org/]. Send a link to LibreTaxi collaborators' email (for example, to `roman.pushkin/at/gmail.com`).
+If you don't know how git and GitHub works, just upload your file to [gist.github.com](http://gist.github.com) or [paste2](https://paste2.org/). Send a link to LibreTaxi collaborators' email (for example, to `roman.pushkin/at/gmail.com`).
 
 ## You're done!
 
