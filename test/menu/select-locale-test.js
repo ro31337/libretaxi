@@ -17,6 +17,7 @@ const assertGet = (t, response) => {
   t.is(response.responses[1].type, 'options');
   t.is(response.responses[1].rows[0][0].value, 'en');
   t.is(response.responses[1].rows[1][0].value, 'ru');
+  t.is(response.responses[1].rows[2][0].value, 'id');
 };
 
 test('should return composite response on get', t => {
@@ -29,7 +30,7 @@ test('should return composite response on post', t => {
   const response = action.post('en');
   t.is(response.type, 'if');
   t.is(response.condition.type, 'in');
-  t.deepEqual(response.condition.arr, ['en', 'ru']);
+  t.deepEqual(response.condition.arr, ['en', 'ru', 'id']);
   t.is(response.condition.value, 'en');
   t.is(response.ok.type, 'composite');
   t.is(response.ok.responses[0].type, 'user-state');
