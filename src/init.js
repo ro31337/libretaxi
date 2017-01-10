@@ -5,7 +5,7 @@ import Settings from '../settings';
 
 const settings = new Settings();
 i18n.configure({
-  locales: ['en', 'ru'],
+  locales: ['en', 'ru', 'id'],
   register: global,
   directory: `${appRoot.path}/locales`,
 });
