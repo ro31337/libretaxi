@@ -22,7 +22,7 @@ test('can be constructed with default parameters', t => {
 test('should call sendMessage', t => {
   const user = { platformId: 31337 };
   const h = new OptionsResponseHandler({ response: responseObject, user });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', {
     disable_notification: true,
@@ -43,7 +43,7 @@ test('should call sendMessage with default text message', t => {
     response: new OptionsResponse({ rows: responseObject.rows, defaultMessage: 'default message' }),
     user,
   });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'default message', {
     disable_notification: true,

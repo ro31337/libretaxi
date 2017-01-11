@@ -23,7 +23,7 @@ test.cb('should call sendMessage', t => {
   t.plan(1);
   const user = { platformId: 31337 };
   const h = new InlineOptionsResponseHandler({ response: responseObject, user });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => { // should call onResult
     t.truthy(h.api.sendMessage.calledWith(31337, 'Your choice?', {
       disable_notification: true,
@@ -53,7 +53,7 @@ test.cb('should call sendMessage with default message', t => {
     response: new InlineOptionsResponse({ rows: responseObject.rows, defaultMessage: 'foo' }),
     user,
   });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => { // should call onResult
     t.truthy(h.api.sendMessage.calledWith(31337, 'foo', {
       disable_notification: true,

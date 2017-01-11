@@ -17,7 +17,7 @@ test.cb('should call sendLocation', t => {
   const user = { platformId: 31337 };
   const response = new MapResponse({ location: [37.421955, -122.084058] });
   const h = new MapResponseHandler({ response, user });
-  h.api = { sendLocation: ss.sinon.spy() };
+  h.api = { sendLocation: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => { // should call onResult
     t.truthy(h.api.sendLocation.calledWith(
       31337,

@@ -14,7 +14,7 @@ test('can be constructed with default parameters', t => {
 test('should call sendMessage', t => {
   const user = { platformId: 31337 };
   const h = new RequestLocationResponseHandler({ response: {}, user });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'Send location by clicking the button below',
     {
@@ -30,7 +30,7 @@ test('should call sendMessage', t => {
 test('should call sendMessage with custom message', t => {
   const user = { platformId: 31337 };
   const h = new RequestLocationResponseHandler({ response: { message: 'foo' }, user });
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
   h.call(() => t.fail()); // and should not call onResult
   t.truthy(h.api.sendMessage.calledWith(31337, 'foo',
     {
