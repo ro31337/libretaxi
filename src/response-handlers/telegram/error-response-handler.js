@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -24,7 +25,7 @@ export default class ErrorResponseHandler extends ResponseHandler {
       {
         disable_notification: true,
         reply_markup: JSON.stringify({ hide_keyboard: true }),
-      });
+      }).catch(console.log.bind(console));
     onResult();
   }
 }

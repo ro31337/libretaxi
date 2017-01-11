@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -30,6 +31,6 @@ export default class RequestLocationResponseHandler extends ResponseHandler {
           keyboard: [[{ text: buttonText, request_location: true }]],
           one_time_keyboard: true,
         }),
-      });
+      }).catch(console.log.bind(console));
   }
 }

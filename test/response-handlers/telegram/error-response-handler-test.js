@@ -16,7 +16,7 @@ test.cb('should send message to specified user with api', t => {
   const r = { message: 'foo' };
   const h = new ErrorResponseHandler({ response: r });
   h.user = { platformId: 31337 };
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
 
   // act
   h.call(() => {

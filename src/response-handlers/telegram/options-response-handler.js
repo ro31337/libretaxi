@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -37,6 +38,6 @@ export default class OptionsResponseHandler extends ResponseHandler {
       {
         disable_notification: true,
         reply_markup: JSON.stringify({ keyboard: rows, one_time_keyboard: true }),
-      });
+      }).catch(console.log.bind(console));
   }
 }

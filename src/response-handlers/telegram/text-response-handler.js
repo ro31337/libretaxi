@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -25,7 +26,7 @@ export default class TextResponseHandler extends ResponseHandler {
       {
         disable_notification: !message.includes('🔔'),
         reply_markup: JSON.stringify({ hide_keyboard: true }),
-      });
+      }).catch(console.log.bind(console));
     onResult();
   }
 }

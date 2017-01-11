@@ -16,7 +16,7 @@ test.cb('should send message with notification disabled', t => {
   const r = { message: 'foo' };
   const h = new TextResponseHandler({ response: r });
   h.user = { platformId: 31337 };
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
 
   // act
   h.call(() => {
@@ -35,7 +35,7 @@ test.cb('should send message with bell with notification enabled', t => {
   const r = { message: '🔔 foo' };
   const h = new TextResponseHandler({ response: r });
   h.user = { platformId: 31337 };
-  h.api = { sendMessage: ss.sinon.spy() };
+  h.api = { sendMessage: ss.sinon.stub().returns({ catch: () => {} }) };
 
   // act
   h.call(() => {

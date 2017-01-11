@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -26,7 +27,7 @@ export default class MapResponseHandler extends ResponseHandler {
       this.response.location[1],
       {
         disable_notification: true,
-      });
+      }).catch(console.log.bind(console));
     onResult();
   }
 }

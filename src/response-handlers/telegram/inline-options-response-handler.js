@@ -1,4 +1,4 @@
-/* eslint-disable arrow-body-style */
+/* eslint-disable arrow-body-style, no-console */
 import ResponseHandler from '../response-handler';
 
 /**
@@ -42,7 +42,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
       {
         disable_notification: true,
         reply_markup: JSON.stringify({ inline_keyboard: rows }),
-      });
+      }).catch(console.log.bind(console));
 
     onResult();
   }
