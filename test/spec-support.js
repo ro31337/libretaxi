@@ -19,7 +19,7 @@ test.afterEach.always(t => {
 const t = {}; // translations
 
 i18n.configure({
-  locales: ['en', 'ru', 'id'],
+  locales: ['en', 'ru', 'id', 'pt-br'],
   register: t,
   directory: `${appRoot.path}/locales`,
 });
