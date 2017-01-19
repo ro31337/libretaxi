@@ -17,7 +17,7 @@ export default (user) => { // eslint-disable-line
   const t = {};
 
   i18n.configure({
-    locales: ['en', 'ru', 'id', 'pt-br'],
+    locales: ['en', 'es', 'id', 'pt-br', 'ru'],
     register: t,
     directory: `${appRoot.path}/locales`,
   });
