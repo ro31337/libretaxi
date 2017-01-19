@@ -39,11 +39,14 @@ export default class SelectLocale extends Action {
         rows: [
           [
             { label: 'English', value: locales[0] },
-            { label: '🇷🇺 Русский', value: locales[1] },
+            { label: 'Español', value: locales[1] },
           ],
           [
             { label: '🇮🇩 Bahasa Indonesia', value: locales[2] },
             { label: '🇧🇷 Português', value: locales[3] },
+          ],
+          [
+            { label: '🇷🇺 Русский', value: locales[4] },
           ],
         ],
       }));
