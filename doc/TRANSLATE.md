@@ -2,7 +2,7 @@
 
 Thanks for your help translating LibreTaxi to other languages. Here is prioritized list of languages we want LibreTaxi translate to:
 
-* Spanish
+* ~~Spanish~~
 * Chinese Mandarin
 * Farsi
 * Hindi
