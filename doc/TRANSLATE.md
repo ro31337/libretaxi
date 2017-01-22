@@ -40,3 +40,9 @@ If you don't know how git and GitHub works, just upload your file to [gist.githu
 ## You're done!
 
 Thanks for translating LibreTaxi and making this project more awesome for people around the world!
+
+## Ready for more?
+
+Nice to hear that! Translating the bot itself is the most important thing, so thanks for that! But there is also website itself - http://libretaxi.org. It's nothing more than a landing page explaining project philosophy and how it works. Can be also useful for people speaking your language. 
+
+Repository for the website is here: https://github.com/ro31337/libretaxi-www. If you feel enthusiastic, please help translating the website into your language. You just need to translate `index.html`, and commit it (or send translated page by email at roman.pushkin/at/gmail). If you want more, you can make two screenshots: one for driver, and one for passenger. [Check out](http://libretaxi.org/index-pt.html) how Portuguese screenshots look like. Pretty cool, huh?
