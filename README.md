@@ -17,6 +17,9 @@ Technical stack:
 Translatable via locale file. Currently has support of the following languages:
 
 * English
+* Spanish
+* Portuguese
+* Indonesian (app only, [help us translating the website](https://github.com/ro31337/libretaxi-www/issues/3))
 * Russian
 
 Server support: macOS and Linux.
