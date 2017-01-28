@@ -21,6 +21,7 @@ Translatable via locale file. Currently has support of the following languages:
 * Portuguese
 * Indonesian (app only, [help us translating the website](https://github.com/ro31337/libretaxi-www/issues/3))
 * Russian
+* (on the way) Persian [help us translating to Persian](https://github.com/ro31337/libretaxi/issues/424)
 
 Server support: macOS and Linux.
 
