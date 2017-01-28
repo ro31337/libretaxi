@@ -2,8 +2,8 @@
 
 Thanks for your help translating LibreTaxi to other languages. Here is prioritized list of languages we want LibreTaxi translate to:
 
-* ~~Spanish translation~~
-* ~~Indonesian translation~~
+* ~~Spanish~~
+* ~~Indonesian~~
 * Chinese Mandarin
 * Persian, some work has been done, **we really need your help** [here](https://github.com/ro31337/libretaxi/issues/424).
 * Hindi
