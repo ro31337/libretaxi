@@ -52,7 +52,7 @@
 	"passenger-contact-driver-price.message": "🔔 ⚠️ {{driver}} sugeriu outro valor: \"{{price}}\". Distância do motorista ~{{distance}}. Se concordar com o preço, ligue para o motorista para confirmar a sua encomenda:",
 	"passenger-verify-location.verify_location": "Por favor, observe o mapa acima (clique para ampliar), este local está correto?",
 	"passenger-verify-location.try_with_paperclip": "Tente enviar sua localização clicando no clipe de papel e, em seguida, em Localização.",
-	"passenger-verify-cash.verify_cash": "Most of our drivers don't accept credit cards. Do you have cash?",
+	"passenger-verify-cash.verify_cash": "A maioria dos nossos motoristas não aceita cartões de crédito. Você tem dinheiro?",
 	"passenger-verify-cash.get_some_cash": "🙁 Desculpe, você deve ter dinheiro antes de fazer uma corrida. Obtenha algum dinheiro e tente novamente!",
 	"driver-request-radius.request_radius": "A que distância do passageiro você estaria interessado em aceitar corridas? Selecione a partir da lista 👇 ou digite um número (até 10 km).",
 	"driver-request-radius.option1": "1 km",
