@@ -91,6 +91,8 @@ In Telegram app open dialog with `@botfather`:
 
 Type `/newbot` command and follow instructions.
 
+Add the token you're given to the `TELEGRAM_TOKEN` field in settings.js
+
 ## Step 4. Add changes to your `hosts` file.
 
 (required for development, optional for production).
