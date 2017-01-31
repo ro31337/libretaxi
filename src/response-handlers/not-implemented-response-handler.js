@@ -1,5 +1,4 @@
 import ResponseHandler from './response-handler';
-import objectAssign from 'object-assign';
 
 /**
  * Not implemented response handler. Stub for not implemented response handlers.
@@ -16,7 +15,7 @@ export default class NotImplementedResponseHandler extends ResponseHandler {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'not-implemented-response-handler' }, options));
+    super(Object.assign({ type: 'not-implemented-response-handler' }, options));
   }
 
   /**

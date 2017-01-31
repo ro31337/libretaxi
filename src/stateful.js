@@ -1,4 +1,3 @@
-import objectAssign from 'object-assign';
 import firebaseDB from './firebase-db';
 import { ArgumentError } from './validations/errors';
 
@@ -102,7 +101,7 @@ const stateful = (superclass) => {
           const value = snapshot.val();
 
           if (value) {
-            objectAssign(this.state, value);
+            Object.assign(this.state, value);
           }
 
           resolve(this);
@@ -135,7 +134,7 @@ const stateful = (superclass) => {
      * @since 0.1.0
      */
     setState(props) {
-      objectAssign(this.state, props);
+      Object.assign(this.state, props);
     }
 
     /**

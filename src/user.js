@@ -1,4 +1,3 @@
-import objectAssign from 'object-assign';
 import stateful from './stateful';
 import StatefulKey from './stateful-key';
 import { mix } from 'mixwith';
@@ -28,7 +27,7 @@ export default class User extends
    */
   constructor(options) {
     super(options);
-    objectAssign(this, options);
+    Object.assign(this, options);
 
     this.userKey = new StatefulKey({
       platformType: this.platformType,

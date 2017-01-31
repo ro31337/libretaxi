@@ -1,5 +1,4 @@
 import ResponseHandler from '../response-handler';
-import objectAssign from 'object-assign';
 
 /**
  * Text response cli handler.
@@ -13,7 +12,7 @@ import objectAssign from 'object-assign';
  */
 export default class TextResponseHandler extends ResponseHandler {
   constructor(options) {
-    super(objectAssign({ type: 'cli-text-response-handler' }, options));
+    super(Object.assign({ type: 'cli-text-response-handler' }, options));
   }
 
   /**

@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
-import objectAssign from 'object-assign';
 import hotkeys from '../../cli-hotkeys';
 import InlineButtonCallback from '../common/inline-button-callback';
 
@@ -24,7 +23,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
    * @param {User} options.user - user
    */
   constructor(options) {
-    super(objectAssign({ type: 'cli-inline-options-response-handler' }, options));
+    super(Object.assign({ type: 'cli-inline-options-response-handler' }, options));
     this.user = options.user;
   }
 
