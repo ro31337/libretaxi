@@ -58,7 +58,7 @@
 	"driver-request-radius.option1": "1 km",
 	"driver-request-radius.option3": "3 km , önerilen",
 	"driver-request-radius.option5": "5 km",
-	"driver-request-radius.should_be_valid": "Girdiğiniz değeri anlayamadık. Lütfen aşağıdan bir uzaklık seçin 👇 ya da 1-10 arası bir sayı girin.",
+	"driver-request-radius.should_be_valid": "Girdiğiniz değeri anlayamadık. Lütfen aşağıdan bir uzaklık seçin 👇 ya da (1 - 10) arası bir sayı girin.",
 	"global.location_button_text": "Konum gönder",
 	"global.default_options_message": "Lütfen, aşağıdaki menüden bir seçim yapınız 👇",
 	"global.default_inline_options_message": "Butona tıklayın 👇 ya da bu mesajı atlayın",
