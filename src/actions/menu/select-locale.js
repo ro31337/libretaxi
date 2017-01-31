@@ -48,6 +48,9 @@ export default class SelectLocale extends Action {
           [
             { label: '🇷🇺 Русский', value: locales[4] },
           ],
+          [
+            { label: 'Français', value: locales[5] },
+          ],
         ],
       }));
   }
