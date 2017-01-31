@@ -1,6 +1,6 @@
 # LibreTaxi, open source alternative for Uber/Lyft
 
-LibreTaxi makes taxi affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
+LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
 
 Available at [@libretaxi_bot](https://telegram.me/libretaxi_bot).
 
@@ -39,7 +39,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 ## Technical roadmap (unordered)
 
 * Make it safer for passengers and drivers
-* Add BitCoin integration
+* Add Bitcoin integration
 * Add drivers/passengers rating
 * Add configuration based on zones and regions
 * Add more vehicle types
