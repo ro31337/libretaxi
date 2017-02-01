@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 /**
  * Composite response.
  * Use to combine multiple responses.
@@ -23,7 +22,7 @@ export default class CompositeResponse extends Response {
   constructor() {
     const options = { type: 'composite', rr: [] };
     super(options);
-    objectAssign(this, options);
+    Object.assign(this, options);
   }
 
   /**

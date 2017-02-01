@@ -1,5 +1,4 @@
 import Action from '../../action';
-import objectAssign from 'object-assign';
 import RedirectResponse from '../../responses/redirect-response';
 
 /**
@@ -15,7 +14,7 @@ export default class Foo extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'foo' }, options));
+    super(Object.assign({ type: 'foo' }, options));
   }
 
   /**

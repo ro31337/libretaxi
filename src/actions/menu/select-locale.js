@@ -1,5 +1,4 @@
 import Action from '../../action';
-import objectAssign from 'object-assign';
 import OptionsResponse from '../../responses/options-response';
 import CompositeResponse from '../../responses/composite-response';
 import SelectLocaleResponse from '../../responses/select-locale-response';
@@ -23,7 +22,7 @@ export default class SelectLocale extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'select-locale' }, options));
+    super(Object.assign({ type: 'select-locale' }, options));
   }
 
   /**
@@ -47,6 +46,7 @@ export default class SelectLocale extends Action {
           ],
           [
             { label: '🇷🇺 Русский', value: locales[4] },
+            { label: '🇹🇷 Türkçe', value: locales[5] },
           ],
           [
             { label: 'Français', value: locales[5] },

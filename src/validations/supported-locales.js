@@ -14,4 +14,4 @@
  *   console.log('locale "cn" is not supported yet');
  * }
  */
-export default ['en', 'es', 'id', 'pt-br', 'ru', 'fr'];
+export default ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'fr'];

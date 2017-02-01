@@ -1,5 +1,4 @@
 import UserStateResponse from './user-state-response';
-import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null';
 /**
@@ -29,6 +28,6 @@ export default class SelectLocaleResponse extends
    */
   constructor(options) {
     super(options);
-    objectAssign(this, options);
+    Object.assign(this, options);
   }
 }

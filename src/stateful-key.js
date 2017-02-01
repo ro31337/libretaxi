@@ -1,4 +1,3 @@
-import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from './validations/check-not-null';
 import checkPlatformType from './validations/check-platform-type';
@@ -30,7 +29,7 @@ export default class StatefulKey extends
    */
   constructor(options) {
     super(options);
-    objectAssign(this, options);
+    Object.assign(this, options);
   }
 
   /**
