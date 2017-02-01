@@ -1,5 +1,5 @@
 {
-	"select-user-type.who_you_are": "Qui êtes-vous ? (Vous pourrez changer votre réponse à tout moment dans les préférences)",
+	"select-user-type.who_you_are": "Quel genre d'utilisateur êtes-vous ? (Vous pourrez changer votre réponse à tout moment dans les préférences)",
 	"select-user-type.driver": "Conducteur",
 	"select-user-type.passenger": "Passager",
 	"request-phone.type_your_phone": "Merci de nous envoyer votre numéro de téléphone. Nous ne le partagerons pas sans votre permission.",
