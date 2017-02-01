@@ -49,7 +49,7 @@ export default class SelectLocale extends Action {
             { label: '🇹🇷 Türkçe', value: locales[5] },
           ],
           [
-            { label: 'Français', value: locales[5] },
+            { label: 'Français', value: locales[6] },
           ],
         ],
       }));
