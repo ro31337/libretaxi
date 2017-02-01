@@ -13,6 +13,8 @@ Command above will copy sample settings to settings. It's mandatory to have your
 
 In this file you'll see your pre-defined database connection. It should work, but make sure you have your own credentials file.
 
+You can also change `this.STATEFUL_CONNSTR` to your Firebase url. In some case, the default connection will just hang after receiving `/start` command.
+
 ## Step 2. Database connection and credentials
 
 It's important to have `./libretaxi-development-credentials.json` before you can run the app.
