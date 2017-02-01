@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 import { ArgumentError } from '../validations/errors';
 import routes from './../routes';
 
@@ -25,7 +24,7 @@ export default class RedirectResponse extends Response {
    * return new RedirectResponse({ path: 'select-locale' });
    */
   constructor(options) {
-    const opts = objectAssign({ type: 'redirect' }, options);
+    const opts = Object.assign({ type: 'redirect' }, options);
     super(opts);
 
     if (!opts.path) {
@@ -36,6 +35,6 @@ export default class RedirectResponse extends Response {
       throw new ArgumentError('path not found');
     }
 
-    objectAssign(this, opts);
+    Object.assign(this, opts);
   }
 }

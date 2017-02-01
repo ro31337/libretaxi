@@ -1,5 +1,4 @@
 import ResponseHandler from './response-handler';
-import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
 
@@ -23,7 +22,7 @@ export default class UserStateResponseHandler extends
    * @param {Object} user - {@link User} instance.
    */
   constructor(options) {
-    super(objectAssign({ type: 'user-state-response-handler' }, options));
+    super(Object.assign({ type: 'user-state-response-handler' }, options));
   }
 
   /**

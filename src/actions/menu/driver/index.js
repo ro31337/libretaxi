@@ -1,6 +1,5 @@
 /* eslint-disable max-len, no-multi-spaces */
 import Action from '../../../action';
-import objectAssign from 'object-assign';
 import OptionsResponse from '../../../responses/options-response';
 import CompositeResponse from '../../../responses/composite-response';
 import TextResponse from '../../../responses/text-response';
@@ -25,7 +24,7 @@ export default class DriverIndex extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'driver-index' }, options));
+    super(Object.assign({ type: 'driver-index' }, options));
   }
 
   /**

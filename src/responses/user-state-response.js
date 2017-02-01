@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 
 /**
  * User state response. Used to update user's state with new values.
@@ -25,6 +24,6 @@ export default class UserStateResponse extends Response {
   constructor(state) {
     const opts = { type: 'user-state', state };
     super(opts);
-    objectAssign(this, opts);
+    Object.assign(this, opts);
   }
 }

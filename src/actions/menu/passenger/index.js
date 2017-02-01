@@ -1,5 +1,4 @@
 import Action from '../../../action';
-import objectAssign from 'object-assign';
 import OptionsResponse from '../../../responses/options-response';
 import CompositeResponse from '../../../responses/composite-response';
 import UserStateResponse from '../../../responses/user-state-response';
@@ -21,7 +20,7 @@ export default class PassengerIndex extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'passenger-index' }, options));
+    super(Object.assign({ type: 'passenger-index' }, options));
   }
 
   /**

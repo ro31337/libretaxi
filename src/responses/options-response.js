@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import ValidatedOptionsResponse from '../validations/validated-options-response';
 import checkNotNull from '../validations/check-not-null.js';
@@ -43,8 +42,8 @@ export default class OptionsResponse extends
    * // row 2:        OK   |   Cancel
    */
   constructor(options) {
-    const opts = objectAssign({ type: 'options' }, options);
+    const opts = Object.assign({ type: 'options' }, options);
     super(opts);
-    objectAssign(this, opts);
+    Object.assign(this, opts);
   }
 }

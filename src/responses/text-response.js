@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
 
@@ -29,8 +28,8 @@ export default class TextResponse extends mix(Response).with(checkNotNull('messa
    * console.log(r.type); // prints "text"
    */
   constructor(options) {
-    const opts = objectAssign({ type: 'text' }, options);
+    const opts = Object.assign({ type: 'text' }, options);
     super(opts);
-    objectAssign(this, opts);
+    Object.assign(this, opts);
   }
 }

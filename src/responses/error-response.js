@@ -1,5 +1,4 @@
 import Response from './response';
-import objectAssign from 'object-assign';
 import { ArgumentError } from '../validations/errors';
 
 /**
@@ -23,13 +22,13 @@ export default class ErrorResponse extends Response {
    * return new ErrorResponse('Number is expected');
    */
   constructor(options) {
-    const opts = objectAssign({ type: 'error' }, options);
+    const opts = Object.assign({ type: 'error' }, options);
     super(opts);
 
     if (!opts.message) {
       throw new ArgumentError('message parameter not specified');
     }
 
-    objectAssign(this, opts);
+    Object.assign(this, opts);
   }
 }

@@ -1,5 +1,4 @@
 import Action from '../../action';
-import objectAssign from 'object-assign';
 import OptionsResponse from '../../responses/options-response';
 import CompositeResponse from '../../responses/composite-response';
 import UserStateResponse from '../../responses/user-state-response';
@@ -23,7 +22,7 @@ export default class SelectUserType extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'select-user-type' }, options));
+    super(Object.assign({ type: 'select-user-type' }, options));
   }
 
   /**

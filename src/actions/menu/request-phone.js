@@ -1,5 +1,4 @@
 import Action from '../../action';
-import objectAssign from 'object-assign';
 import RequestPhoneResponse from '../../responses/request-phone-response';
 import CompositeResponse from '../../responses/composite-response';
 import UserStateResponse from '../../responses/user-state-response';
@@ -20,7 +19,7 @@ export default class RequestPhone extends Action {
    * Constructor.
    */
   constructor(options) {
-    super(objectAssign({ type: 'request-phone' }, options));
+    super(Object.assign({ type: 'request-phone' }, options));
   }
 
   /**

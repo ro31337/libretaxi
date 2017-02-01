@@ -27,7 +27,6 @@
     "mixwith": "^0.1.1",
     "moment": "^2.14.1",
     "node-uuid": "^1.4.7",
-    "object-assign": "^4.1.0",
     "oboe": "^2.1.2",
     "redis": "^2.6.2",
     "sinon": "^1.17.4",
