@@ -56,7 +56,7 @@
 	"passenger-verify-cash.get_some_cash": "🙁 Désolé, vous devez avoir de la monnaie avant de commander une course. Essayez d'en avoir avant de réessayer !",
 	"driver-request-radius.request_radius": "Jusqu'à quelle distance souhaitez-vous être informé des courses ? Sélectionnez depuis la liste 👇 ou tapez un chiffre (jusqu'à 10 km).",
 	"driver-request-radius.option1": "1 km",
-	"driver-request-radius.option3": "3 km, recommendé",
+	"driver-request-radius.option3": "3 km, recommandé",
 	"driver-request-radius.option5": "5 km",
 	"driver-request-radius.should_be_valid": "Choix inconnu. Merci de sélectionner une option 👇 ou saisir un numéro compris entre 1 et 10.",
 	"global.location_button_text": "Partager ma localisation",
