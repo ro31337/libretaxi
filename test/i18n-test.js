@@ -123,7 +123,7 @@ test.cb('locales should not have long keys with {{phone}}', t => {
 
     oboe(fs.createReadStream(path))
       .node('*', (v, k) => {
-        if (v.includes('{{phone}}') && v.length > 150) {
+        if (typeof v === 'string' && v.includes('{{phone}}') && v.length > 150) {
           t.fail(`[${stat.name}] "${k}" value length is ${v.length}, max recommended is 150`);
         }
       })
