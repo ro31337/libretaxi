@@ -50,3 +50,6 @@ node_modules
 
 # Settings file
 settings.js
+
+# Production build directory
+build
