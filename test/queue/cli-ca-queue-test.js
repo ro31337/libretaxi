@@ -19,14 +19,15 @@ test('should have instance type', t => {
 });
 
 test.cb('should call super.process(recreate) on process', t => {
-  t.plan(2);
+  t.plan(3);
   const cb = { cb: true };
   const recreate = { recreate: true };
   const queue = new CliCaQueue({
     userKey: 'cli_1',
     queue: { // inject dependency
-      process: (type, callback) => {
+      process: (type, num, callback) => {
         t.is(type, 'call-action');
+        t.is(num, 20);
         t.is(callback, recreate);
         t.end();
       },
