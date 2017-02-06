@@ -100,9 +100,6 @@ export default class SelectLocale extends Action {
             { label: localeMap.get('ru'), value: 'ru' },
             { label: '... →', value: 'page2' },
           ],
-          [
-            { label: 'Français', value: locales[6] },
-          ],
         ],
       }));
   }
@@ -117,6 +114,9 @@ export default class SelectLocale extends Action {
       .add(new TextResponse({ message: 'Select your language (page 2/2):' }))
       .add(new OptionsResponse({
         rows: [
+          [
+            { label: localeMap.get('fr'), value: 'fr' },
+          ],
           [
             { label: '← ...', value: 'page1' },
             { label: localeMap.get('tr'), value: 'tr' },
