@@ -8,7 +8,7 @@ import UserStateResponse from '../../responses/user-state-response';
 import If from '../../responses/if-response';
 import In from '../../conditions/in';
 import Equals from '../../conditions/equals';
-import locales from '../../validations/supported-locales';
+import locales, { localeMap } from '../../validations/supported-locales';
 
 /**
  * Select locale menu action.
@@ -89,15 +89,15 @@ export default class SelectLocale extends Action {
       .add(new OptionsResponse({
         rows: [
           [
-            { label: 'English', value: locales[0] },
-            { label: 'Español', value: locales[1] },
+            { label: localeMap.get('en'), value: 'en' },
+            { label: localeMap.get('es'), value: 'es' },
           ],
           [
-            { label: '🇮🇩 Bahasa Indonesia', value: locales[2] },
-            { label: '🇧🇷 Português', value: locales[3] },
+            { label: localeMap.get('id'), value: 'id' },
+            { label: localeMap.get('pt-br'), value: 'pt-br' },
           ],
           [
-            { label: '🇷🇺 Русский', value: locales[4] },
+            { label: localeMap.get('ru'), value: 'ru' },
             { label: '... →', value: 'page2' },
           ],
         ],
@@ -116,7 +116,7 @@ export default class SelectLocale extends Action {
         rows: [
           [
             { label: '← ...', value: 'page1' },
-            { label: '🇹🇷 Türkçe', value: locales[5] },
+            { label: localeMap.get('tr'), value: 'tr' },
           ],
         ],
       }));
