@@ -115,6 +115,7 @@ When everything's done, it's time to test and run:
 
 * `npm test` - Run tests. All tests should pass.
 * `npm run telegram` - Start Telegram bot.
+* `npm run build-production && npm run telegram-production` - Start Telegram bot for production.
 * `npm run cli` - Start CLI version of the bot.
 
 ## Shutting down

@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import test from 'ava';
 import i18n from 'i18n';
 import appRoot from 'app-root-path';
+import locales from '../src/validations/supported-locales';
 
 const ss = { // stands for spec support
   guidRegex: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
@@ -19,7 +20,7 @@ test.afterEach.always(t => {
 const t = {}; // translations
 
 i18n.configure({
-  locales: ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'fr'],
+  locales,
   register: t,
   directory: `${appRoot.path}/locales`,
 });

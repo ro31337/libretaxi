@@ -2,10 +2,11 @@ import log from './log';
 import i18n from 'i18n';
 import appRoot from 'app-root-path';
 import Settings from '../settings';
+import locales from './validations/supported-locales';
 
 const settings = new Settings();
 i18n.configure({
-  locales: ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'fr'],
+  locales,
   register: global,
   directory: `${appRoot.path}/locales`,
 });
