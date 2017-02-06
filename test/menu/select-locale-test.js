@@ -28,8 +28,10 @@ const assertPage2 = (t, response) => {
   t.is(response.responses[0].type, 'text');
   t.is(response.responses[0].message, 'Select your language (page 2/2):');
   t.is(response.responses[1].type, 'options');
-  t.is(response.responses[1].rows[0][0].value, 'page1');
-  t.is(response.responses[1].rows[0][1].value, 'tr');
+  t.is(response.responses[1].rows[0][0].value, 'fr');
+  t.is(response.responses[1].rows[0][1].value, 'de');
+  t.is(response.responses[1].rows[1][0].value, 'page1');
+  t.is(response.responses[1].rows[1][1].value, 'tr');
 };
 
 test('should return conditional response on get', t => {
@@ -69,7 +71,8 @@ const assertPost = (t, response) => {
   t.is(response.responses[2].type, 'if');
   t.is(response.responses[2].condition.type, 'in');
   t.is(response.responses[2].condition.value, 'foo');
-  t.deepEqual(response.responses[2].condition.arr, ['en', 'es', 'id', 'pt-br', 'ru', 'tr']);
+  t.deepEqual(response.responses[2].condition.arr,
+    ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'fr', 'de']);
   assertConfirm(t, response.responses[2].ok);
   t.is(response.responses[2].condition.err, undefined);
 };
@@ -80,7 +83,8 @@ test('should return conditional response on post', t => {
   t.is(response.type, 'if');
   t.is(response.condition.type, 'in');
   t.is(response.condition.value, 'foo');
-  t.deepEqual(response.condition.arr, ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'page1', 'page2']);
+  t.deepEqual(response.condition.arr,
+    ['en', 'es', 'id', 'pt-br', 'ru', 'tr', 'fr', 'de', 'page1', 'page2']);
   assertPost(t, response.ok);
   t.is(response.err, undefined);
 });

@@ -115,6 +115,10 @@ export default class SelectLocale extends Action {
       .add(new OptionsResponse({
         rows: [
           [
+            { label: localeMap.get('fr'), value: 'fr' },
+            { label: localeMap.get('de'), value: 'de' },
+          ],
+          [
             { label: '← ...', value: 'page1' },
             { label: localeMap.get('tr'), value: 'tr' },
           ],
