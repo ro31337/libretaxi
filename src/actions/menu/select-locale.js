@@ -100,6 +100,9 @@ export default class SelectLocale extends Action {
             { label: localeMap.get('ru'), value: 'ru' },
             { label: '... →', value: 'page2' },
           ],
+          [
+            { label: 'Français', value: locales[6] },
+          ],
         ],
       }));
   }
