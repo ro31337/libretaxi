@@ -1,5 +1,6 @@
 import i18n from 'i18n';
 import appRoot from 'app-root-path';
+import locales from '../validations/supported-locales';
 
 /**
  * @typedef initLocale
@@ -17,7 +18,7 @@ export default (user) => { // eslint-disable-line
   const t = {};
 
   i18n.configure({
-    locales: ['en', 'es', 'id', 'pt-br', 'ru', 'tr'],
+    locales,
     register: t,
     directory: `${appRoot.path}/locales`,
   });
