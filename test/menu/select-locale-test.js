@@ -49,7 +49,7 @@ const assertConfirm = (t, response) => {
   t.is(response.responses[1].type, 'text');
   t.is(response.responses[1].message, '👌 OK!');
   t.is(response.responses[2].type, 'redirect');
-  t.is(response.responses[2].path, 'select-user-type');
+  t.is(response.responses[2].path, 'confirm-locale');
 };
 
 const assertPost = (t, response) => {

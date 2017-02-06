@@ -65,7 +65,7 @@ export default class SelectLocale extends Action {
     return new CompositeResponse()
       .add(new SelectLocaleResponse({ locale: value }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'select-user-type' }));
+      .add(new RedirectResponse({ path: 'confirm-locale' }));
   }
 
   /**

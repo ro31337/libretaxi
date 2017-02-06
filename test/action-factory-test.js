@@ -38,6 +38,7 @@ test('should return routes by route', t => {
   const a29 = ActionFactory.fromRoute({ route: 'driver-request-radius', user });
   const a30 = ActionFactory.fromRoute({ route: 'show-message', user });
   const a31 = ActionFactory.fromRoute({ route: 'update-identity', user });
+  const a32 = ActionFactory.fromRoute({ route: 'confirm-locale', user });
 
   t.is(a1.type, 'select-locale');
   t.is(a2.type, 'foo');
@@ -70,6 +71,7 @@ test('should return routes by route', t => {
   t.is(a29.type, 'driver-request-radius');
   t.is(a30.type, 'show-message');
   t.is(a31.type, 'update-identity');
+  t.is(a32.type, 'confirm-locale');
 });
 
 test('should have default route', t => {
