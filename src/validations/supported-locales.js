@@ -17,6 +17,7 @@ localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('fr', 'Français');
+localeMap.set('de', 'Deutsch');
 
 /**
  * @typedef SupportedLocales
