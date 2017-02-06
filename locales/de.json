@@ -69,6 +69,6 @@
 	"global.error_location": "Hoppla, kann diesen Standort nicht verstehen. Bitte klicke auf die Taste, oder verwende Büroklammer-Standort um deine GPS-Koordinaten zu senden.",
 	"global.driver": "Fahrer",
 	"global.phone": "☎️ %s",
-	"__locale__": "de-de",
+	"__locale__": "de",
 	"__eof__": "__eof__"
 }
