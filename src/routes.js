@@ -28,6 +28,7 @@ import PassengerVerifyCash from './actions/menu/passenger/verify-cash';
 import RequestRadius from './actions/menu/driver/request-radius';
 import ShowMessage from './actions/menu/show-message';
 import UpdateIdentity from './actions/menu/update-identity';
+import ConfirmLocale from './actions/menu/confirm-locale';
 
 /**
  * @typedef Routes
@@ -81,6 +82,7 @@ const routes = {
   'driver-request-radius': RequestRadius,
   'show-message': ShowMessage,
   'update-identity': UpdateIdentity,
+  'confirm-locale': ConfirmLocale,
 };
 
 // Adding more routes? update `action-factory-test.js`
