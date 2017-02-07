@@ -93,8 +93,8 @@ export default class SelectLocale extends Action {
             { label: localeMap.get('es'), value: 'es' },
           ],
           [
-            { label: localeMap.get('id'), value: 'id' },
-            { label: localeMap.get('pt-br'), value: 'pt-br' },
+            { label: localeMap.get('fa'), value: 'fa' },
+            { label: localeMap.get('zh-cn'), value: 'zh-cn' },
           ],
           [
             { label: localeMap.get('ru'), value: 'ru' },
@@ -114,6 +114,10 @@ export default class SelectLocale extends Action {
       .add(new TextResponse({ message: 'Select your language (page 2/2):' }))
       .add(new OptionsResponse({
         rows: [
+          [
+            { label: localeMap.get('id'), value: 'id' },
+            { label: localeMap.get('pt-br'), value: 'pt-br' },
+          ],
           [
             { label: localeMap.get('fr'), value: 'fr' },
             { label: localeMap.get('de'), value: 'de' },
