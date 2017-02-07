@@ -4,14 +4,18 @@ Thanks for your help translating LibreTaxi to other languages. Here is prioritiz
 
 * ~~Spanish~~
 * ~~Indonesian~~
-* Chinese Mandarin
-* Persian, some work has been done, **we really need your help** [here](https://github.com/ro31337/libretaxi/issues/424).
+* ~~Chinese Mandarin~~
+* Persian, [help us translating the website](https://github.com/ro31337/libretaxi-www/issues/17), **we really need your help** with Persian.
 * Hindi
 * Your language :)
 
 ## How to translate
 
 Translating LibreTaxi is extremely easy. You just need to understand English and be fluent in the language you're translating to. We're on the way to deliver the app to simplify it even more, but for now you just need to translate json file.
+
+## Step 0.
+
+Please go to [PRs list](https://github.com/ro31337/libretaxi/pulls) and lookup your language. If translation is there, no translation is required - all translations will be merged soon. **But we still need your help!** Check "Ready for more?" section below.
 
 ## Step 1.
 

@@ -3,7 +3,7 @@ import walk from 'walk';
 import oboe from 'oboe';
 import fs from 'fs';
 
-const NUM_OF_LOCALIZATIONS = 6;
+const NUM_OF_LOCALIZATIONS = 10;
 
 test.cb('locales should have all keys from en.json, except *_desc', t => {
   t.plan(NUM_OF_LOCALIZATIONS - 1);
@@ -123,7 +123,7 @@ test.cb('locales should not have long keys with {{phone}}', t => {
 
     oboe(fs.createReadStream(path))
       .node('*', (v, k) => {
-        if (v.includes('{{phone}}') && v.length > 150) {
+        if (typeof v === 'string' && v.includes('{{phone}}') && v.length > 150) {
           t.fail(`[${stat.name}] "${k}" value length is ${v.length}, max recommended is 150`);
         }
       })

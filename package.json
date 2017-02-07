@@ -12,6 +12,7 @@
     "babel-plugin-syntax-async-functions": "^6.8.0",
     "babel-plugin-transform-es2015-classes": "^6.9.0",
     "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-plugin-transform-rename-import": "^2.0.0",
     "babel-preset-node6": "^11.0.0",
     "babel-register": "^6.9.0",
     "esdoc": "^0.4.8",
@@ -30,11 +31,14 @@
     "oboe": "^2.1.2",
     "redis": "^2.6.2",
     "sinon": "^1.17.4",
-    "tgfancy": "^0.4.0",
+    "tgfancy": "^0.8.0",
     "walk": "^2.3.9",
     "winston": "^2.2.0"
   },
   "scripts": {
+    "clean": "rm -rf ./build && rm -f ./settings-production.js && mkdir ./build",
+    "build-production": "npm run clean && BABEL_ENV=production babel -d ./build ./src -s false && babel -o settings-production.js settings.js",
+    "telegram-production": "node ./build/app-telegram.js",
     "test": "npm run lint && npm run ava ./test/before-all.js && npm run ava",
     "lint": "eslint src test",
     "ava": "TEST_ENVIRONMENT=true ava --concurrency=5 --require babel-register",
