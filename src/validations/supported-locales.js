@@ -18,6 +18,8 @@ localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
+localeMap.set('fa', 'فارسی');
+localeMap.set('zh-cn', '官话');
 
 /**
  * @typedef SupportedLocales
