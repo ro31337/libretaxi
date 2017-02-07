@@ -5,8 +5,8 @@ Thanks for your help translating LibreTaxi to other languages. Here is prioritiz
 * ~~Spanish~~
 * ~~Indonesian~~
 * ~~Chinese Mandarin~~
-* Persian, [help us translating the website](https://github.com/ro31337/libretaxi-www/issues/17), **we really need your help** with Persian.
-* Hindi
+* ~~Persian~~
+* ~~Hindi~~
 * Your language :)
 
 ## How to translate
