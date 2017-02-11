@@ -10,7 +10,7 @@ import SubmitOrderResponse from '../../../responses/submit-order/submit-order-re
 import Firebase from 'firebase';
 import If from '../../../responses/if-response';
 import Numeric from '../../../conditions/numeric';
-import uuid from 'node-uuid';
+import uuid from 'uuid';
 
 /**
  * Passenger request price menu action.
