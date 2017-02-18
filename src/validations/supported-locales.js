@@ -12,14 +12,14 @@
 const localeMap = new Map();
 localeMap.set('en', 'English');
 localeMap.set('es', 'Español');
-localeMap.set('id', '🇮🇩 Bahasa Indonesia');
-localeMap.set('pt-br', '🇧🇷 Português');
-localeMap.set('ru', '🇷🇺 Русский');
-localeMap.set('tr', '🇹🇷 Türkçe');
-localeMap.set('fr', 'Français');
-localeMap.set('de', 'Deutsch');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
+localeMap.set('ru', '🇷🇺 Русский');
+localeMap.set('id', '🇮🇩 Bahasa Indonesia');
+localeMap.set('pt-br', '🇧🇷 Português');
+localeMap.set('fr', 'Français');
+localeMap.set('de', 'Deutsch');
+localeMap.set('tr', '🇹🇷 Türkçe');
 
 /**
  * @typedef SupportedLocales
