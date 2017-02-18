@@ -7,15 +7,15 @@ import RedirectResponse from '../../responses/redirect-response';
 import UserStateResponse from '../../responses/user-state-response';
 import If from '../../responses/if-response';
 import In from '../../conditions/in';
-import Equals from '../../conditions/equals';
 import locales, { localeMap } from '../../validations/supported-locales';
+import PagedOptions from '../../responses/decorators/paged-options';
 
 /**
  * Select locale menu action.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-05-26
- * @version 1.3
+ * @version 1.4
  * @since 0.1.0
  */
 export default class SelectLocale extends Action {
@@ -30,29 +30,28 @@ export default class SelectLocale extends Action {
   /**
    * Returns greeting text and list of available languages.
    *
-   * @return {IfResponse} Returns instance of conditional response
+   * @return {CompositeResponse} - instance of composite response
    */
   get() {
-    return new If({
-      condition: new Equals(this.user.state.selectLocalePage, 2),
-      ok: this.page2(),
-      err: this.page1(),
-    });
+    const r = this.pagedOptions();
+    return new CompositeResponse()
+      .add(new TextResponse({
+        message: `Select your language (page ${r.currentPage}/${r.totalPages}):`,
+      }))
+      .add(r);
   }
 
   /**
-   * Sets selected locale and redirects.
+   * Conditionally sets selected locale and redirects.
    *
    * @return {CompositeResponse} Returns instance of {@link CompositeResponse}
    * which contains {@link SelectLocaleResponse}, and {@link RedirectResponse}.
    */
   post(value) {
     return new If({
-      condition: new In(value, locales.concat(['page1', 'page2'])),
-      ok: new CompositeResponse()
-        .add(new If({ condition: new Equals(value, 'page1'), ok: this.toPage(1) }))
-        .add(new If({ condition: new Equals(value, 'page2'), ok: this.toPage(2) }))
-        .add(new If({ condition: new In(value, locales), ok: this.confirm(value) })),
+      condition: new In(value, ['next', 'previous']),
+      ok: this.switchPage(value),
+      err: new If({ condition: new In(value, locales), ok: this.confirm(value) }),
     });
   }
 
@@ -69,64 +68,33 @@ export default class SelectLocale extends Action {
   }
 
   /**
-   * Update user state to specific page
+   * Switch page (next/previous).
    *
-   * @param {number} page - page number
+   * @param {string} value - `next` or `previous`.
    * @private
    */
-  toPage(page) {
-    return new UserStateResponse({ selectLocalePage: page });
+  switchPage(value) {
+    const r = this.pagedOptions();
+    const n = r.nextPageNumber(value);
+    return new UserStateResponse({ selectLocalePage: n });
   }
 
   /**
-   * Page 1
+   * Paged options response
    *
    * @private
    */
-  page1() {
-    return new CompositeResponse()
-      .add(new TextResponse({ message: 'Select your language (page 1/2):' }))
-      .add(new OptionsResponse({
+  pagedOptions() {
+    return new PagedOptions(
+      this.user.state.selectLocalePage,
+      new OptionsResponse({
         rows: [
-          [
-            { label: localeMap.get('en'), value: 'en' },
-            { label: localeMap.get('es'), value: 'es' },
-          ],
-          [
-            { label: localeMap.get('fa'), value: 'fa' },
-            { label: localeMap.get('zh-cn'), value: 'zh-cn' },
-          ],
-          [
-            { label: localeMap.get('ru'), value: 'ru' },
-            { label: '... →', value: 'page2' },
-          ],
+          locales.map(locale => ({
+            label: localeMap.get(locale),
+            value: locale }),
+          ),
         ],
-      }));
-  }
-
-  /**
-   * Page 2
-   *
-   * @private
-   */
-  page2() {
-    return new CompositeResponse()
-      .add(new TextResponse({ message: 'Select your language (page 2/2):' }))
-      .add(new OptionsResponse({
-        rows: [
-          [
-            { label: localeMap.get('id'), value: 'id' },
-            { label: localeMap.get('pt-br'), value: 'pt-br' },
-          ],
-          [
-            { label: localeMap.get('fr'), value: 'fr' },
-            { label: localeMap.get('de'), value: 'de' },
-          ],
-          [
-            { label: '← ...', value: 'page1' },
-            { label: localeMap.get('tr'), value: 'tr' },
-          ],
-        ],
-      }));
+      })
+    );
   }
 }
