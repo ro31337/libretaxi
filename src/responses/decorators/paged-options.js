@@ -109,6 +109,22 @@ export default class PagedOptions extends Response {
   }
 
   /**
+   * Return next or previous page number by provided value (`next` or `previous`)
+   *
+   * @param {string} value - `next` or `previous`
+   * @return {number} next or previous page number
+   */
+  nextPageNumber(value) {
+    let n = this.currentPage;
+    const { totalPages } = this;
+    if (value === 'next') { n += 1; }
+    if (value === 'previous') { n -= 1; }
+    if (n < 1) { n = 1; }
+    if (n > totalPages) { n = totalPages; }
+    return n;
+  }
+
+  /**
    * Total number of buttons for this response (wihout next and previous)
    * @private
    */

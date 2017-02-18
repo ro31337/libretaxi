@@ -133,3 +133,12 @@ test('when decorated should keep other origin props', t => {
   t.is(r.message, 'foo');
   t.is(r.defaultMessage, 'bar');
 });
+
+test('should return next or previous page', t => {
+  const r = new PagedOptions(
+    2,
+    new OptionsResponse({ rows: generateButtons(20) }),
+  );
+  t.is(r.nextPageNumber('next'), 3);
+  t.is(r.nextPageNumber('previous'), 1);
+});
