@@ -14,12 +14,13 @@ localeMap.set('en', 'English');
 localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
+localeMap.set('zh-tw', '繁體中文');
 localeMap.set('ru', '🇷🇺 Русский');
-localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
 localeMap.set('tr', '🇹🇷 Türkçe');
+localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 
 /**
  * @typedef SupportedLocales
