@@ -19,6 +19,7 @@ localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
+localeMap.set('pl', '🇵🇱 Język polski');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 
