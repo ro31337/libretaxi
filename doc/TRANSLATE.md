@@ -2,8 +2,8 @@
 
 Thanks for your help translating LibreTaxi to other languages. Here is prioritized list of languages we want LibreTaxi translate to:
 
-* Italian - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/31)
 * Czech - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/32)
+* ~~Italian~~
 * ~~Spanish~~
 * ~~Indonesian~~
 * ~~Chinese Mandarin~~
