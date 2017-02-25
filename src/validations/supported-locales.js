@@ -15,11 +15,12 @@ localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
 localeMap.set('zh-tw', '繁體中文');
-localeMap.set('ru', '🇷🇺 Русский');
-localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
+localeMap.set('it', '🇮🇹 Italiano');
+localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('pl', '🇵🇱 Język polski');
+localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 
