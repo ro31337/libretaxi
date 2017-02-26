@@ -46,7 +46,8 @@
     "cli": "babel-node ./src/app-cli.js",
     "telegram": "babel-node ./src/app-telegram.js",
     "start": "echo ERR: Type \\\"npm run cli [params]\\\" or \\\"npm run telegram [params]\\\"",
-    "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json"
+    "esdoc": "esdoc -c esdoc.json && rm esdoc/package.json",
+    "tools:purge": "babel-node ./src/tools/purge-stale-orders.js"
   },
   "repository": {
     "type": "git",
