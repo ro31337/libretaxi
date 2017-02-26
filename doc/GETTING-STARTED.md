@@ -117,6 +117,7 @@ When everything's done, it's time to test and run:
 * `npm run telegram` - Start Telegram bot.
 * `npm run build-production && npm run telegram-production` - Start Telegram bot for production.
 * `npm run cli` - Start CLI version of the bot.
+* `npm run tools:purge` - Purge stale orders, see [#528](https://github.com/ro31337/libretaxi/issues/528)
 
 ## Shutting down
 
