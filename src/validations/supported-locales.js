@@ -20,7 +20,7 @@ localeMap.set('de', 'Deutsch');
 localeMap.set('it', '🇮🇹 Italiano');
 localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('pl', '🇵🇱 Polski');
-localeMap.set('cz', '🇨🇿 Český');
+localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('ru', '🇷🇺 Русский');
