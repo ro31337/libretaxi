@@ -24,6 +24,7 @@ localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('ru', '🇷🇺 Русский');
+localeMap.set('hi', 'हिन्दी');
 
 /**
  * @typedef SupportedLocales
