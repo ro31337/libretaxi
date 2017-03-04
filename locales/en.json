@@ -108,7 +108,7 @@
 	"passenger-verify-cash.verify_cash": "Most of our drivers don't accept credit cards. Do you have cash?",
 	"passenger-verify-cash.verify_cash_desc": "We display this message to passengers before they can place order. If they don't have cash, on the next step we'll ask them to get some cash.",
 	"passenger-verify-cash.get_some_cash": "🙁 Sorry, you must have cash before you can have a ride. Please try to get some cash and try again!",
-	"passenger-verify-cash.get_some_cash_desc": "Here we ask users to try the different way of sending location. Instead of clicking the button, they can try to use Telegram menu.",
+	"passenger-verify-cash.get_some_cash_desc": "Here we just inform users that they should have cash before they can have a ride.",
 	"driver-request-radius.request_radius": "How far away from your current location do you want to travel to pick up a passenger? Select from the list 👇 or type the number (up to 10 km).",
 	"driver-request-radius.request_radius_desc": "Drivers should select the radius (from 1 to 10 km), so they can be informed about orders nearby. And \"nearby\" definition is always diffrent for each person. So we're letting them choose.",
 	"driver-request-radius.option1": "1 km (~0.6 miles)",
