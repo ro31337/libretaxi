@@ -44,7 +44,7 @@
 	"driver-order-new.set_my_price": "Állítsd be az árajánlatot",
 	"driver-order-new.price_not_set": "Ennek a fuvarnak az árajánlata nem lett beállítva az utas által. Neked kell beállítanod az árajánlatot.",
 	"metric-distance.km": "%s km",
-	"passenger-request-price.set_price": "Ebben az alkalmazásban az utas beállította az árajánlítot 😉 Add meg az árajánlatod (forintban). Mennyit vagy hajlandó fizetni? (vagy adj meg \"0\"-t (nullát), ha nem tudod)",
+	"passenger-request-price.set_price": "Ebben az alkalmazásban az utas beállította az árajánlatot 😉 Add meg az árajánlatod (forintban). Mennyit vagy hajlandó fizetni? (vagy adj meg \"0\"-t (nullát), ha nem tudod)",
 	"passenger-request-price.should_be_numeric": "Hoppá, az árnak számnak kell lennie (forintban)! Például: \"1500\". Próbálkozz újra!",
 	"passenger-request-price.on_timeout": "Régóta vársz? Elnézést kérünk! Ha még nem találtál fuvart, próbálkozz újra később.",
 	"passenger-contact-new-number.message": "🔔 {{driver}} elfogadta az árajánlatod! Távolság a sofőrhöz ~{{distance}}. Hívd fel a sofőrt a fuvarod megerősítéséhez:",
