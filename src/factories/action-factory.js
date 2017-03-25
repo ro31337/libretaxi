@@ -45,12 +45,12 @@ export default class ActionFactory {
   static fromRoute(obj) {
     const user = obj.user;
     const route = obj.route;
-    const action = routes[route];
+    const builder = routes[route];
 
-    if (!action) {
+    if (!builder) {
       throw new Error(`Can't find route key "${route}" in routes`);
     }
 
-    return new action({ i18n: initLocale(user), user }); // eslint-disable-line new-cap
+    return builder({ i18n: initLocale(user), user }); // eslint-disable-line new-cap
   }
 }
