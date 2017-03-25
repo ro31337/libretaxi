@@ -29,6 +29,7 @@ import RequestRadius from './actions/menu/driver/request-radius';
 import ShowMessage from './actions/menu/show-message';
 import UpdateIdentity from './actions/menu/update-identity';
 import ConfirmLocale from './actions/menu/confirm-locale';
+import ParsedLocation from './actions/decorators/parsed-location';
 
 /**
  * @typedef Routes
@@ -41,7 +42,7 @@ import ConfirmLocale from './actions/menu/confirm-locale';
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2016-06-07
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  * @example
  * import routes from './routes';
@@ -50,39 +51,48 @@ import ConfirmLocale from './actions/menu/confirm-locale';
  * const instance = new routes['default'];
  */
 const routes = {
-  default: SelectLocale,
-  'select-locale': SelectLocale,
-  'select-user-type': SelectUserType,
-  'request-phone': RequestPhone,
-  'passenger-index': PassengerIndex,
-  foo: Foo,
-  settings: Foo,
-  'passenger-request-location': PassengerRequestLocation,
-  'passenger-request-destination': PassengerRequestDestination,
-  'order-submitted': OrderSubmitted,
-  'blank-screen': BlankScreen,
-  'order-cancelled': OrderCancelled,
-  redirect: Redirect,
-  'driver-select-vehicle-type': SelectVehicleType,
-  'driver-explain-checkins': ExplainCheckins,
-  'driver-request-location': DriverRequestLocation,
-  'driver-explain-whats-next': ExplainWhatsNext,
-  'driver-index': DriverIndex,
-  'driver-checkin': DriverCheckin,
-  'driver-mute': DriverMute,
-  'driver-unmute': DriverUnmute,
-  'driver-order-new': DriverOrderNew,
-  'passenger-request-price': PassengerRequestPrice,
-  'passenger-contact-new-number': PassengerContactNewNumber,
-  'save-and-redirect': SaveAndRedirect,
-  'driver-order-set-price': DriverOrderSetPrice,
-  'passenger-contact-driver-price': PassengerContactDriverPrice,
-  'passenger-verify-location': PassengerVerifyLocation,
-  'passenger-verify-cash': PassengerVerifyCash,
-  'driver-request-radius': RequestRadius,
-  'show-message': ShowMessage,
-  'update-identity': UpdateIdentity,
-  'confirm-locale': ConfirmLocale,
+  default: (...args) => new SelectLocale(...args),
+  'select-locale': (...args) => new SelectLocale(...args),
+  'select-user-type': (...args) => new SelectUserType(...args),
+  'request-phone': (...args) => new RequestPhone(...args),
+  'passenger-index': (...args) => new PassengerIndex(...args),
+  foo: (...args) => new Foo(...args),
+  settings: (...args) => new Foo(...args),
+  'passenger-request-location': (options) => new ParsedLocation(
+    options,
+    new PassengerRequestLocation(options)
+  ),
+  'passenger-request-destination': (...args) => new PassengerRequestDestination(...args),
+  'order-submitted': (...args) => new OrderSubmitted(...args),
+  'blank-screen': (...args) => new BlankScreen(...args),
+  'order-cancelled': (...args) => new OrderCancelled(...args),
+  redirect: (...args) => new Redirect(...args),
+  'driver-select-vehicle-type': (...args) => new SelectVehicleType(...args),
+  'driver-explain-checkins': (...args) => new ExplainCheckins(...args),
+  'driver-request-location': (options) => new ParsedLocation(
+    options,
+    new DriverRequestLocation(options)
+  ),
+  'driver-explain-whats-next': (...args) => new ExplainWhatsNext(...args),
+  'driver-index': (...args) => new DriverIndex(...args),
+  'driver-checkin': (options) => new ParsedLocation(
+    options,
+    new DriverCheckin(options)
+  ),
+  'driver-mute': (...args) => new DriverMute(...args),
+  'driver-unmute': (...args) => new DriverUnmute(...args),
+  'driver-order-new': (...args) => new DriverOrderNew(...args),
+  'passenger-request-price': (...args) => new PassengerRequestPrice(...args),
+  'passenger-contact-new-number': (...args) => new PassengerContactNewNumber(...args),
+  'save-and-redirect': (...args) => new SaveAndRedirect(...args),
+  'driver-order-set-price': (...args) => new DriverOrderSetPrice(...args),
+  'passenger-contact-driver-price': (...args) => new PassengerContactDriverPrice(...args),
+  'passenger-verify-location': (...args) => new PassengerVerifyLocation(...args),
+  'passenger-verify-cash': (...args) => new PassengerVerifyCash(...args),
+  'driver-request-radius': (...args) => new RequestRadius(...args),
+  'show-message': (...args) => new ShowMessage(...args),
+  'update-identity': (...args) => new UpdateIdentity(...args),
+  'confirm-locale': (...args) => new ConfirmLocale(...args),
 };
 
 // Adding more routes? update `action-factory-test.js`

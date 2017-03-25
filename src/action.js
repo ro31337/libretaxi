@@ -82,30 +82,6 @@ export default class Action extends mix(class {}).with(checkNotNull(['i18n', 'ty
   }
 
   /**
-   * Command guid.
-   * Should be unique value for each command.
-   * It allows to keep the state of command in the database.
-   *
-   * @abstract
-   * @example
-   * id() { return 'f2f727a7-39e7-426d-9514-102ef4a7ecec'; }
-   */
-  id() {
-    throw new Error('not implemented');
-  }
-
-  /**
-   * Command text identifier.
-   * Used for debugging purposes. Not displayed to the user, i18n is not required.
-   * @abstract
-   * @example
-   * text() { return 'Ping Pong'; }
-   */
-  text() {
-    throw new Error('not implemented');
-  }
-
-  /**
    * Calls `get` (if `arg` is empty) or `post` (if `arg` is provided).
    * @param {string} arg - argument to action.
    * @returns {Response} response - Message of specific type, see {@link Response},

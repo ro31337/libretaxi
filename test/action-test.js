@@ -17,9 +17,7 @@ test.cb('should throw error when for missing methods', t => {
   const action = new Action({ i18n, type: 'foo', user });
 
   t.throws(() => { action.post(); }, err);
-  t.throws(() => { action.text(); }, err);
   t.throws(() => { action.get(); }, err);
-  t.throws(() => { action.id(); }, err);
 
   t.end();
 });
