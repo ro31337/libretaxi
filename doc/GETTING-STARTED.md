@@ -28,7 +28,7 @@ But for development purposes (and quick start) it's enough to have only first on
 
 Here is how to generate `libretaxi-development-credentials.json`:
 
-* Go to [Firebase console](libretaxi-development-credentials.json) and click "Create new project"
+* Go to [Firebase console](https://console.firebase.google.com/) and click "Create new project"
 
 * Type `libretaxi-development` as project name. Click "Create Project".
 
@@ -115,7 +115,9 @@ When everything's done, it's time to test and run:
 
 * `npm test` - Run tests. All tests should pass.
 * `npm run telegram` - Start Telegram bot.
+* `npm run build-production && npm run telegram-production` - Start Telegram bot for production.
 * `npm run cli` - Start CLI version of the bot.
+* `npm run tools:purge` - Purge stale orders, see [#528](https://github.com/ro31337/libretaxi/issues/528)
 
 ## Shutting down
 

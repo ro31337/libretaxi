@@ -1,6 +1,6 @@
 import sendMyNumber from './send-my-number';
 import setMyPrice from './set-my-price';
-import uuid from 'node-uuid';
+import uuid from 'uuid';
 
 /**
  * @typedef inlineButtons

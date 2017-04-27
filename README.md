@@ -1,6 +1,6 @@
 # LibreTaxi, open source alternative for Uber/Lyft
 
-LibreTaxi makes taxi affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
+LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
 
 Available at [@libretaxi_bot](https://telegram.me/libretaxi_bot).
 
@@ -14,16 +14,9 @@ Technical stack:
 * [Telegram](https://telegram.org) as the main transport
 * CLI as backup and PoC transport
 
-Translatable via locale file. Currently has support of the following languages:
+Translatable via locale file. Currently has support of [10+ languages](src/validations/supported-locales.js).
 
-* English
-* Spanish
-* Portuguese
-* Indonesian (app only, [help us translating the website](https://github.com/ro31337/libretaxi-www/issues/3))
-* Russian
-* (on the way) Persian [help us translating to Persian](https://github.com/ro31337/libretaxi/issues/424)
-
-Server support: macOS and Linux.
+Server support: macOS, Linux (Windows should also work).
 
 Client (Telegram) support: iOS, Android, macOS desktop client, web (can also work for Windows phones - not tested). Note that Telegram desktop clients for Linux and Windows are currently not supported because of lack location functionality. However, web client can be used on these OS along with any modern browser.
 
@@ -39,7 +32,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 ## Technical roadmap (unordered)
 
 * Make it safer for passengers and drivers
-* Add BitCoin integration
+* Add Bitcoin integration
 * Add drivers/passengers rating
 * Add configuration based on zones and regions
 * Add more vehicle types

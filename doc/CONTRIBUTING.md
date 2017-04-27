@@ -2,6 +2,10 @@
 
 Before you start contributing it's useful to know about philosophy and general contributing guidelines.
 
+## Merge vs rebase
+
+Your commits will be merged to `master` branch under your name. Few of earlier commits have been squashed and rebased from epic/feature branches on GitHub because of my settings. These settings have been switched off.
+
 ## Philosophy
 
 * It's always better to be a good and easy going person rather than "I know how to do sh*t" kind of person.
