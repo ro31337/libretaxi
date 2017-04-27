@@ -1,5 +1,5 @@
 {
-	"select-user-type.who_you_are": "Ki vagy te? (válaszd ki most, később megváltoztathatod)",
+	"select-user-type.who_you_are": "Ki vagy te? (később megváltoztathatod)",
 	"select-user-type.driver": "Sofőr",
 	"select-user-type.passenger": "Utas",
 	"request-phone.type_your_phone": "Küldd el nekünk a telefonszámodat! Nem osztjuk meg a telefonszámodat engedély nélkül.",
@@ -62,7 +62,7 @@
 	"global.location_button_text": "Helyzet megosztása",
 	"global.default_options_message": "Válassz egy műveletet az alábbi menüből 👇",
 	"global.default_inline_options_message": "Nyomd meg a gombot 👇 vagy hagyd figyelmen kívül ezt az üzenetet.",
-	"global.replied_to_order": "✔️ Válaszoltál erre a ☝️ fuvarra. Várakozz az utas hívására a megerősítéshez.",
+	"global.replied_to_order": "✔️ Válaszoltál erre ☝️ a fuvarra. Várakozz az utas hívására a megerősítéshez.",
 	"global.yes": "Igen",
 	"global.no": "Nem",
 	"global.error_try_again": "Hoppá, nem értem. Próbálkozz újra.",
