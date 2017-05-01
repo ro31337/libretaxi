@@ -2,6 +2,7 @@
 
 Thanks for your help translating LibreTaxi to other languages. Here is prioritized list of languages we want LibreTaxi translate to:
 
+* Ukrainian - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/39)
 * Czech - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/32)
 * Hindi - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/35)
 * Tamil - bot was translated, but [we need your help here](https://github.com/ro31337/libretaxi-www/issues/36)
