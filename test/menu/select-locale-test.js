@@ -17,7 +17,7 @@ test('should return composite response on get', t => {
   t.is(response.type, 'composite');
   t.is(response.responses.length, 2);
   t.is(response.responses[0].type, 'text');
-  t.is(response.responses[0].message, 'Select your language (page 1/4):');
+  t.is(response.responses[0].message, 'Select your language (page 1/5):');
   t.is(response.responses[1].type, 'options');
   t.is(response.responses[1].totalItems, locales.length);
 });
