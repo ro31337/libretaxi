@@ -25,6 +25,7 @@ localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('ua', '🇺🇦 Українська');
+localeMap.set('ro', '🇷🇴 Română');
 localeMap.set('hi', 'हिन्दी');
 localeMap.set('ta', 'தமிழ்');
 localeMap.set('vi', '🇻🇳 Tiếng Việt');

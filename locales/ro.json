@@ -20,7 +20,7 @@
 	"driver-select-vehicle-type.motorbike": "🏍 Scuter / Motocicletă",
 	"driver-select-vehicle-type.car": "🚗 Mașină",
 	"driver-select-vehicle-type.error_only_known_type": "Alegere necunoscuta , te rugăm să alegeți o mașină, scuter sau motocicletă.",
-	"driver-explain-checkins.text": "Aproape gata. Câteva lucruri să reținut: Telegram nu are suport de GPS în direct pentru locație, fiecare dată când schimbați locația trebuie să faceți un check-in, sau puțeti check-in în fiecare oră, dacă sunteți gata să acceptați o comandă nouă. Asta o să ne ajute să găsim pasager în jurul dumneavoastră. Apasă pe butonul \ "Următor \".",
+	"driver-explain-checkins.text": "Aproape gata. Câteva lucruri să reținut: Telegram nu are suport de GPS în direct pentru locație, fiecare dată când schimbați locația trebuie să faceți un check-in, sau puțeti check-in în fiecare oră, dacă sunteți gata să acceptați o comandă nouă. Asta o să ne ajute să găsim pasager în jurul dumneavoastră. Apasă pe butonul \"Următor\".",
 	"driver-explain-checkins.next": "Următor",
 	"driver-request-location.provide_location": "Te rugăm să deschizi locația curentă, pentru a găsi pasageri in jurul tău.",
 	"driver-explain-whats-next.text": "Sunteți gata cu setările! Vei fi notificat când sunt pasageri sau comenzi in apropiere. Ține această aplicație deschisă și dați check-in fiecare oră și(sau) la noua locație. Apasă \"Următor\" .",
