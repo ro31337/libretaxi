@@ -119,3 +119,16 @@ test('should call origin with parsed coordinates when data is processable', t =>
     t.truthy(origin.post.calledWith(item[1]));
   }
 });
+
+test('should return composite object with map', t => {
+  const origin = {
+    get: ss.sinon.spy(),
+    post: ss.sinon.spy(),
+  };
+  const action = new ParsedLocation(defaultParams, origin);
+  const r = action.post('37.421955, -122.084058');
+  t.is(r.type, 'composite');
+  t.is(r.responses.length, 2);
+  t.is(r.responses[0].type, 'map');
+  t.deepEqual(r.responses[0].location, [37.421955, -122.084058]);
+});
