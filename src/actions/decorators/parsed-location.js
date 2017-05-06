@@ -1,4 +1,6 @@
 import Action from '../../action';
+import CompositeResponse from '../../responses/composite-response';
+import MapResponse from '../../responses/map-response';
 
 /**
  * Parsed Location action decorator.
@@ -11,7 +13,7 @@ import Action from '../../action';
  * @date 2017-03-25
  * @abstract
  * @extends Action
- * @version 1.1
+ * @version 1.2
  * @since 0.1.0
  */
 export default class ParsedLocation extends Action {
@@ -43,7 +45,10 @@ export default class ParsedLocation extends Action {
       const match = new RegExp(pattern).exec(location);
       if (match) {
         const [, lat,, lng] = match;
-        return this.origin.post([lat * 1, lng * 1]);
+        const result = [lat * 1, lng * 1];
+        return new CompositeResponse()
+          .add(new MapResponse({ location: result }))
+          .add(this.origin.post(result));
       }
     }
     return this.origin.post(location);
