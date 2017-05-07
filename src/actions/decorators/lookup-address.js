@@ -1,6 +1,7 @@
 import Action from '../../action';
 import PromiseResponse from '../../responses/promise-response';
-// import MapResponse from '../../responses/map-response';
+import CompositeResponse from '../../responses/composite-response';
+import MapResponse from '../../responses/map-response';
 
 /**
  * Lookup address action decorator.
@@ -39,7 +40,19 @@ export default class LookupAddress extends Action {
    */
   post(address) {
     if (typeof address === 'string') {
-      const self = this;
+      // callback, to be executed after asynchronous operation
+      const cb = (result) => {
+        if (result === address) {
+          // no action was performed, address is the same, just call origin
+          return this.origin.post(result);
+        }
+        // address was resolved, add map response so user can see how this address was resolved
+        return new CompositeResponse()
+          .add(new MapResponse({ location: result }))
+          .add(this.origin.post(result));
+      };
+
+      // response that represents asynchronous operation
       return new PromiseResponse({
         promise: new Promise((resolve) => {
           if (address === 'google') {
@@ -48,12 +61,8 @@ export default class LookupAddress extends Action {
             resolve(address);
           }
         }),
-        cb: this.origin.post.bind(self),
+        cb: cb.bind(this),
       });
-
-      // return new CompositeResponse()
-      //   .add(new MapResponse({ location: result }))
-      //   .add(this.origin.post(result));
     }
     return this.origin.post(address);
   }
