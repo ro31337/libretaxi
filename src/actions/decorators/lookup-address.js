@@ -1,7 +1,9 @@
+import getGeocoder from 'node-geocoder';
 import Action from '../../action';
 import PromiseResponse from '../../responses/promise-response';
 import CompositeResponse from '../../responses/composite-response';
 import MapResponse from '../../responses/map-response';
+import Settings from '../../../settings';
 
 /**
  * Lookup address action decorator.
@@ -22,9 +24,10 @@ export default class LookupAddress extends Action {
    * @param {Object} options - action options.
    * @param {Action} origin - origin action.
    */
-  constructor(options, origin) {
+  constructor(options, origin, settings) {
     super(Object.assign({ type: origin.type }, options));
     this.origin = origin;
+    this.settings = settings || new Settings();
   }
 
   /**
@@ -54,17 +57,37 @@ export default class LookupAddress extends Action {
 
       // response that represents asynchronous operation
       return new PromiseResponse({
-        promise: new Promise((resolve) => {
-          if (address === 'google') {
-            resolve([37.421955, -122.084058]);
-          } else {
-            resolve(address);
-          }
-        }),
+        promise: this.promise(address),
         cb: cb.bind(this),
       });
     }
     return this.origin.post(address);
+  }
+
+  /**
+   * Promise for promise response. Resolves with provided `address` if lookup is unsuccessful
+   * or with array of coordinates if lookup was successful. Never explicitly rejects.
+   * @param {String} address - street address
+   * @private
+   */
+  promise(address) {
+    return new Promise((resolve) => {
+      // see https://github.com/nchaulet/node-geocoder for settings
+      const geocoder = getGeocoder({
+        provider: 'google',
+        httpAdapter: 'https',
+        apiKey: this.settings.GEOCODING_API_KEY,
+        formatter: null,
+      });
+
+      geocoder.geocode(address, (err, res) => {
+        if (err || !res || !res[0].latitude || !res[0].longitude) {
+          resolve(address);
+          return;
+        }
+        resolve([res[0].latitude, res[0].longitude]);
+      });
+    });
   }
 
   /**
