@@ -30,6 +30,7 @@ import ShowMessage from './actions/menu/show-message';
 import UpdateIdentity from './actions/menu/update-identity';
 import ConfirmLocale from './actions/menu/confirm-locale';
 import ParsedLocation from './actions/decorators/parsed-location';
+import LookupAddress from './actions/decorators/lookup-address';
 
 /**
  * @typedef Routes
@@ -60,7 +61,7 @@ const routes = {
   settings: (...args) => new Foo(...args),
   'passenger-request-location': (options) => new ParsedLocation(
     options,
-    new PassengerRequestLocation(options)
+    new LookupAddress(options, new PassengerRequestLocation(options))
   ),
   'passenger-request-destination': (...args) => new PassengerRequestDestination(...args),
   'order-submitted': (...args) => new OrderSubmitted(...args),
@@ -77,7 +78,7 @@ const routes = {
   'driver-index': (...args) => new DriverIndex(...args),
   'driver-checkin': (options) => new ParsedLocation(
     options,
-    new DriverCheckin(options)
+    new LookupAddress(options, new DriverCheckin(options))
   ),
   'driver-mute': (...args) => new DriverMute(...args),
   'driver-unmute': (...args) => new DriverUnmute(...args),

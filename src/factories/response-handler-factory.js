@@ -34,6 +34,7 @@ import OptimizedInlineOptions from '../responses/decorators/optimized-inline-opt
 import CliMapResponseHandler from '../response-handlers/cli/map-response-handler';
 import TelegramMapResponseHandler from '../response-handlers/telegram/map-response-handler';
 import CheckinResponseHandler from '../response-handlers/checkin-response-handler';
+import PromiseResponseHandler from '../response-handlers/promise-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -61,6 +62,7 @@ const map = {
     'call-action': (...args) => new CallActionResponseHandler(...args),
     map: (...args) => new CliMapResponseHandler(...args),
     checkin: (...args) => new CheckinResponseHandler(...args),
+    promise: (...args) => new PromiseResponseHandler(...args),
   },
   telegram: {
     text: (...args) => new TelegramTextResponseHandler(...args),
@@ -100,6 +102,7 @@ const map = {
     'call-action': (...args) => new CallActionResponseHandler(...args),
     map: (...args) => new TelegramMapResponseHandler(...args),
     checkin: (...args) => new CheckinResponseHandler(...args),
+    promise: (...args) => new PromiseResponseHandler(...args),
   },
 };
 

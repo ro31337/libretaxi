@@ -36,4 +36,5 @@ export default new Set([
   'call-action',
   'map',
   'checkin',
+  'promise',
 ]);
