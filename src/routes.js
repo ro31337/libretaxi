@@ -72,7 +72,7 @@ const routes = {
   'driver-explain-checkins': (...args) => new ExplainCheckins(...args),
   'driver-request-location': (options) => new ParsedLocation(
     options,
-    new DriverRequestLocation(options)
+    new LookupAddress(options, new DriverRequestLocation(options)),
   ),
   'driver-explain-whats-next': (...args) => new ExplainWhatsNext(...args),
   'driver-index': (...args) => new DriverIndex(...args),
