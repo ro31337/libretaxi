@@ -1,4 +1,4 @@
-import getGeocoder from 'node-geocoder';
+import importedGetGeocoder from 'node-geocoder';
 import Action from '../../action';
 import PromiseResponse from '../../responses/promise-response';
 import CompositeResponse from '../../responses/composite-response';
@@ -24,10 +24,11 @@ export default class LookupAddress extends Action {
    * @param {Object} options - action options.
    * @param {Action} origin - origin action.
    */
-  constructor(options, origin, settings) {
+  constructor(options, origin, settings, getGeocoder) {
     super(Object.assign({ type: origin.type }, options));
     this.origin = origin;
     this.settings = settings || new Settings();
+    this.getGeocoder = getGeocoder || importedGetGeocoder;
   }
 
   /**
@@ -54,7 +55,6 @@ export default class LookupAddress extends Action {
           .add(new MapResponse({ location: result }))
           .add(this.origin.post(result));
       };
-
       // response that represents asynchronous operation
       return new PromiseResponse({
         promise: this.promise(address),
@@ -73,7 +73,7 @@ export default class LookupAddress extends Action {
   promise(address) {
     return new Promise((resolve) => {
       // see https://github.com/nchaulet/node-geocoder for settings
-      const geocoder = getGeocoder({
+      const geocoder = this.getGeocoder({
         provider: 'google',
         httpAdapter: 'https',
         apiKey: this.settings.GEOCODING_API_KEY,
