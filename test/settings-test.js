@@ -12,6 +12,7 @@ test('settings props should be specified', t => {
   t.truthy(settings.TELEGRAM_TOKEN);
   t.truthy(settings.DEFAULT_LANGUAGE);
   t.truthy(settings.LOG_FILE);
+  t.truthy(settings.GEOCODING_API_KEY);
   t.is(settings.MAX_RADIUS, 10);
 });
 

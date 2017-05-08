@@ -91,7 +91,22 @@ In Telegram app open dialog with `@botfather`:
 
 Type `/newbot` command and follow instructions.
 
-## Step 4. Add changes to your `hosts` file.
+## Step 4. Get your Google Maps API key
+
+Google Maps API key is required to lookup street addresses, if they're provided. For example, a
+user can type street address and hit Enter, instead of clicking "Send location" button:
+
+![image](https://cloud.githubusercontent.com/assets/1477672/25786160/d2bd17f2-3344-11e7-95fd-fca662cc8722.png)
+
+In this case LibreTaxi tries to convert this address into coordinates and Google Maps geocoder is used.
+Also, LibreTaxi can be configured to use other street address resolver (MapQuest, OpenCage, etc).
+See [node-geocoder](https://github.com/nchaulet/node-geocoder) for details (you may want to skip
+this link if you're configuring LibreTaxi for the first time).
+
+To get your _Goolge Maps_ API key, go to [Developer's Guide here](https://developers.google.com/maps/documentation/geocoding/intro) and click "Get a key". Update
+your `settings.js` with newly generated key (see `GEOCODING_API_KEY`);
+
+## Step 5. Add changes to your `hosts` file.
 
 (required for development, optional for production).
 
@@ -104,7 +119,7 @@ See also:
 * [Docs for firebase-server](https://github.com/urish/firebase-server/blob/master/README.md) -
 package that we use to mock Firebase for local tests.
 
-## Step 5. Install Redis.
+## Step 6. Install Redis.
 
 Redis installation is covered in [REDIS.md](REDIS.md). Nothing fancy here. `before-all` test
 will fail if you did something wrong.

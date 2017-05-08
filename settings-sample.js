@@ -34,6 +34,10 @@ export default class Settings {
     // maximum allowed radius for drivers
     this.MAX_RADIUS = 10;
 
+    // geocoding api key, see
+    // https://developers.google.com/maps/documentation/geocoding/intro
+    this.GEOCODING_API_KEY = '';
+
     Object.assign(this, overrides);
   }
 }
