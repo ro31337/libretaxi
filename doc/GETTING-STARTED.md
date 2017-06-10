@@ -28,7 +28,7 @@ But for development purposes (and quick start) it's enough to have only first on
 
 Here is how to generate `libretaxi-development-credentials.json`:
 
-* Go to [Firebase console](https://console.firebase.google.com/) and click "Create new project"
+* Go to [Firebase console](https://console.firebase.google.com/) and click "Create new project" (Note that Firebase and/or Firebase API is not available in some countries. For example, in Iran. You may need to use VPN).
 
 * Type `libretaxi-development` as project name. Click "Create Project".
 
