@@ -25,11 +25,17 @@ api.on('message', (msg) => {
   console.log(`Got '${something}' from ${userKey}`);
 
   withUser(userKey, (user) => {
+    let menuLocation = user.state.menuLocation || 'default';
+    // System routes always override default routes. Platform specific. In this file for Telegram
+    // only. System route is activated when command starts with slash.
+    // TODO: refactoring required, needs to be moved somewhere.
+    if (something === '/start') menuLocation = 'system-remove-user';
+
     // post the actual message to the queue
     queue.create({
       userKey,
       arg: msg.text ? textToValue(user, msg.text) : something,
-      route: user.state.menuLocation || 'default',
+      route: menuLocation,
     });
 
     // Update identity so that we catch actual user's first, last name, Telegram id (username).

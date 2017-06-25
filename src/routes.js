@@ -31,6 +31,7 @@ import UpdateIdentity from './actions/menu/update-identity';
 import ConfirmLocale from './actions/menu/confirm-locale';
 import ParsedLocation from './actions/decorators/parsed-location';
 import LookupAddress from './actions/decorators/lookup-address';
+import RemoveUser from './actions/menu/system/remove-user';
 
 /**
  * @typedef Routes
@@ -94,6 +95,7 @@ const routes = {
   'show-message': (...args) => new ShowMessage(...args),
   'update-identity': (...args) => new UpdateIdentity(...args),
   'confirm-locale': (...args) => new ConfirmLocale(...args),
+  'system-remove-user': (...args) => new RemoveUser(...args),
 };
 
 // Adding more routes? update `action-factory-test.js`
