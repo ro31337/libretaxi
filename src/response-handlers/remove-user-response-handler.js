@@ -13,6 +13,7 @@ import firebaseDB from '../firebase-db';
 export default class RemoveUserResponseHandler extends ResponseHandler {
   constructor(options) {
     super(Object.assign({ type: 'remove-user-response-handler' }, options));
+    this.firebaseDB = options.firebaseDB || firebaseDB;
   }
 
   /**
@@ -25,7 +26,7 @@ export default class RemoveUserResponseHandler extends ResponseHandler {
       return;
     }
 
-    const usersDB = firebaseDB.config().ref('users');
+    const usersDB = this.firebaseDB.config().ref('users');
     usersDB.child(this.user.userKey).remove(onResult);
   }
 }
