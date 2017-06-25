@@ -29,7 +29,7 @@ api.on('message', (msg) => {
     // System routes always override default routes. Platform specific. In this file for Telegram
     // only. System route is activated when command starts with slash.
     // TODO: refactoring required, needs to be moved somewhere.
-    if (something === '/start') menuLocation = 'system-remove-user';
+    if (something === '/start') menuLocation = 'system-reset-user';
 
     // post the actual message to the queue
     queue.create({
