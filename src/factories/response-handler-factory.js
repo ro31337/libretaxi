@@ -35,6 +35,7 @@ import CliMapResponseHandler from '../response-handlers/cli/map-response-handler
 import TelegramMapResponseHandler from '../response-handlers/telegram/map-response-handler';
 import CheckinResponseHandler from '../response-handlers/checkin-response-handler';
 import PromiseResponseHandler from '../response-handlers/promise-response-handler';
+import RemoveUserResponseHandler from '../response-handlers/remove-user-response-handler';
 
 // updating map?
 // update test/factories/response-handler-factory-test.js
@@ -63,6 +64,7 @@ const map = {
     map: (...args) => new CliMapResponseHandler(...args),
     checkin: (...args) => new CheckinResponseHandler(...args),
     promise: (...args) => new PromiseResponseHandler(...args),
+    'remove-user': (...args) => new RemoveUserResponseHandler(...args),
   },
   telegram: {
     text: (...args) => new TelegramTextResponseHandler(...args),
@@ -103,6 +105,7 @@ const map = {
     map: (...args) => new TelegramMapResponseHandler(...args),
     checkin: (...args) => new CheckinResponseHandler(...args),
     promise: (...args) => new PromiseResponseHandler(...args),
+    'remove-user': (...args) => new RemoveUserResponseHandler(...args),
   },
 };
 

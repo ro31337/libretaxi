@@ -37,4 +37,5 @@ export default new Set([
   'map',
   'checkin',
   'promise',
+  'remove-user',
 ]);
