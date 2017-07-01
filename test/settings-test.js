@@ -9,10 +9,10 @@ test('settings props should be specified', t => {
   const settings = new Settings();
   t.truthy(settings.STATEFUL_CONNSTR);
   t.truthy(settings.STATEFUL_CREDENTIALS_FILE);
-  t.truthy(settings.TELEGRAM_TOKEN);
+  t.truthy(typeof settings.TELEGRAM_TOKEN !== 'undefined');
   t.truthy(settings.DEFAULT_LANGUAGE);
   t.truthy(settings.LOG_FILE);
-  t.truthy(settings.GEOCODING_API_KEY);
+  t.truthy(typeof settings.GEOCODING_API_KEY !== 'undefined');
   t.is(settings.MAX_RADIUS, 10);
 });
 

@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 6.9.2
+addons:
+  hosts:
+    - localhost.firebaseio.test
+services:
+  - redis-server
+before_install:
+  - cp settings-sample.js settings.js
