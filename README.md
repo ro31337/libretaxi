@@ -21,7 +21,7 @@ Technical stack:
 * [Telegram](https://telegram.org) as the main transport
 * CLI as backup and PoC transport
 
-Translatable via locale file. Currently has support of [10+ languages](src/validations/supported-locales.js).
+Translatable via locale file. Currently has support of [20+ languages](src/validations/supported-locales.js).
 
 Server support: macOS, Linux (Windows should also work).
 
