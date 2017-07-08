@@ -73,7 +73,7 @@ Right now we do a lot of work to push things forward, and little help can help a
 
 * Mobile devices. We're working on native mobile apps and if you can donate a device that works in U.S. or Russia - it would be great. It doesn't matter if it's new or used, but it should not be buggy please. It should work. Contact Roman by his email in [GitHub profile](https://github.com/ro31337) to donate.
 * Computers. We need at least two more powerful Macbook Pros (1 per engineer) so we can work on iOS and Android app. PC laptops are also fine and will help. We need at least 4 big monitors so we can make our work more efficient. Contact Roman by his email in [GitHub profile](https://github.com/ro31337) to donate.
-* Paypal donations. Send them to `romanpushkin@fastmail.com` (important). These donations are not tax-deductible at the moment. But we'll be happy to accept them. $5 seems not too much, but one cup of coffee can inspire founders work on the project full time for several days.
+* Paypal donations. Send them to `romanpushkin@fastmail.com` (important). These donations are not tax-deductible at the moment. But we'll be happy to accept them. $5 seems not too much, but one cup of coffee can inspire founders to work on the project full time for several days.
 * Bitcoin: `1HoUX4UtYPZUUQekAmyYpr42Z9dV9kLke3`
 * Ethereum: `0x01645791d038Ff07EcB95929448bd513D9C73cc4`
 * LiteCoin: `LajxywwPMtL5P2s5oj7dGmcgmVhEc9R7gF`
