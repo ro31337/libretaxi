@@ -41,12 +41,13 @@ localeMap.set('sv', '🇸🇪 Svenska');
 localeMap.set('pl', '🇵🇱 Polski');
 localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
-localeMap.set('id', '🇮🇩 Bahasa Indonesia');
+localeMap.set('am', '🇦🇲 Հայերեն');
 localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('ua', '🇺🇦 Українська');
 localeMap.set('ro', '🇷🇴 Română');
 localeMap.set('hi', 'हिन्दी');
 localeMap.set('ta', 'தமிழ்');
+localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('vi', '🇻🇳 Tiếng Việt');
 
 /**
