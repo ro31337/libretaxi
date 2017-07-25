@@ -31,6 +31,7 @@ const localeMap = new Map();
 localeMap.set('en', 'English');
 localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
+localeMap.set('ur', 'اردو');
 localeMap.set('zh-cn', '官话');
 localeMap.set('zh-tw', '繁體中文');
 localeMap.set('fr', 'Français');
