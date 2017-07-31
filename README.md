@@ -4,6 +4,8 @@
 </a>
 </div>
 
+[![Patreon](https://img.shields.io/badge/back_on-patreon-red.svg)](https://www.patreon.com/libretaxi)
+
 ## LibreTaxi: open source alternative for Uber/Lyft with the focus on social change, freedom, delivering taxi service through technology to all people around the world
 
 LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
