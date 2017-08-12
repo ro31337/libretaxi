@@ -23,6 +23,7 @@
     "firebase": "^3.2.1",
     "firebase-server": "^0.6.0",
     "geofire": "^4.1.1",
+    "geopoint": "git+https://github.com/ro31337/node-geopoint.git#98537c3",
     "i18n": "^0.8.3",
     "inquirer": "git+https://github.com/ro31337/Inquirer.js.git#a041b13",
     "kue": "^0.11.1",
