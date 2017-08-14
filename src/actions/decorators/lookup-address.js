@@ -99,7 +99,7 @@ export default class LookupAddress extends Action {
       });
 
       geocoder.geocode(address, (err, res) => {
-        if (err || !res || !res[0].latitude || !res[0].longitude) {
+        if (err || !res || !res[0] || !res[0].latitude || !res[0].longitude) {
           resolve(address);
           return;
         }

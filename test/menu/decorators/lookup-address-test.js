@@ -135,3 +135,17 @@ test.cb('should request geocoder with GEOCODING_API_KEY from settings', t => {
     .promise(address)
     .then(() => {});
 });
+
+test.cb('should not fail when geocoder returns no error, but empty array', t => {
+  t.plan(1);
+  const getGeocoder = () => ({
+    geocode: (_address, cb) => { cb(false, []); },
+  });
+  const action = new LookupAddress(defaultParams, origin, settings, getGeocoder);
+  action
+    .promise(address)
+    .then((resolvedAddress) => {
+      t.is(resolvedAddress, address);
+      t.end();
+    });
+});
