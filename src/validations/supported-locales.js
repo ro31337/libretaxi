@@ -33,6 +33,7 @@ localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
 localeMap.set('zh-tw', '繁體中文');
+localeMap.set('jp', '🇯🇵 日本語');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
 localeMap.set('it', '🇮🇹 Italiano');
