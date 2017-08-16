@@ -77,7 +77,7 @@
 	"driver-order-new.from_desc": "We show this message to drivers when they receive new order.",
 	"driver-order-new.to": "お客様の目的地: %s",
 	"driver-order-new.to_desc": "We show this message to drivers when they receive new order. Here we show passenger's destination address and maybe some random details.",
-	"driver-order-new.price": "お客様の支払い金額: %s （現地通過）",
+	"driver-order-new.price": "今回のご利用金額: %s （現地通過）",
 	"driver-order-new.price_desc": "We show this message to drivers when they receive new order. This is passenger's price for the order.",
 	"driver-order-new.call_to_action": "リストからアクションを選んで下さい 👇 またはこのメッセージを見送る。",
 	"driver-order-new.call_to_action_desc": "We show this message to drivers when they receive new order",
