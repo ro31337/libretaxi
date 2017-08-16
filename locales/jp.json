@@ -1,5 +1,5 @@
 {
-	"select-user-type.who_you_are": "どちら様ですか？（後ほど変更可",
+	"select-user-type.who_you_are": "どちら様ですか？（後ほど変更可）",
 	"select-user-type.who_you_are_desc": "You must select one of these to begin with",
 	"select-user-type.driver": "ドライバー",
 	"select-user-type.driver_desc": "User can be either a taxi driver, or a passenger. You must select this option now.",
