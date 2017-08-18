@@ -44,7 +44,7 @@
         "driver-order-new.set_my_price": "Sätt mitt pris",
         "driver-order-new.price_not_set": "Priset för denna bokning sattes inte av passagerare. Du behöver ge ditt pris.",
         "metric-distance.km": "%s km",
-        "passenger-request-price.set_price": "I denna app sätter passageraren priset 😉 Ge os ditt pris i din lokala valuta. Hur mycket är du villig att betala? (eller skriv \"0\" (noll) om du inte vet)",
+        "passenger-request-price.set_price": "I denna app sätter passageraren priset 😉 Ge oss ditt pris i din lokala valuta. Hur mycket är du villig att betala? (eller skriv \"0\" (noll) om du inte vet)",
         "passenger-request-price.should_be_numeric": "Ojdå, priset bör vara ett värde skrivet i siffror (och i lokal valuta)! Till exempel: \"50\". Vänligen försök igen!",
         "passenger-request-price.on_timeout": "Det verkar som att du har väntat ett tag? Vi är ledsna för det. Om du inte har hittat en skjuts rekommenderar vi dig att prova igen senare.",
         "passenger-contact-new-number.message": "🔔 {{driver}} accepterade ditt pris! Avstånd till förare ~{{distance}}. Ring föraren för att bekräfta din bokning:",
