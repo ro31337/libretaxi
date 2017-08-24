@@ -17,13 +17,13 @@ export default class Settings {
    */
   constructor(overrides) {
     // Firebase connection string
-    this.STATEFUL_CONNSTR = 'https://libretaxi-development.firebaseio.com/';
+    this.STATEFUL_CONNSTR = 'https://YOUR_APPLICATION_ID.firebaseio.com/';
 
     // path to Firebase credentials file
     this.STATEFUL_CREDENTIALS_FILE = './libretaxi-development-credentials.json';
 
     // Telegram token
-    this.TELEGRAM_TOKEN = '';
+    this.TELEGRAM_TOKEN = 'YOUR_TELEGRAM_TOKEN';
 
     // default language
     this.DEFAULT_LANGUAGE = 'en';
@@ -36,7 +36,7 @@ export default class Settings {
 
     // geocoding api key, see
     // https://developers.google.com/maps/documentation/geocoding/intro
-    this.GEOCODING_API_KEY = '';
+    this.GEOCODING_API_KEY = 'YOUR_GOOGLE_API_KEY';
 
     Object.assign(this, overrides);
   }
