@@ -38,7 +38,7 @@ Here is how to generate `libretaxi-development-credentials.json`:
 
 Keep in mind that credentials file is git-ignored. We do not recommend to add it to your git repository.
 
-* Now, you will need to update your 'settings.js' with your Firebase Connection String (STATEFUL_CONNSTR). Cick on the cog icon, select "Project settings," and copy your project ID and paste it as a Firebase URL. (i.e.'https://YOUR_PROJECT_NAME.firebaseio.com'  
+* Now, you will need to update your 'settings.js' with your Firebase Connection String (STATEFUL_CONNSTR). In your Firebase console, click on the cog icon, select "Project settings," and copy your project ID and paste it as a Firebase URL. (i.e.'https://YOUR_PROJECT_NAME.firebaseio.com'  
 
 ## Step 3. Indexes (recommended)
 
