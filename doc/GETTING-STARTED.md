@@ -9,7 +9,7 @@ through all the steps.
 cp settings-sample.js settings.js
 ```
 
-Command above will copy sample settings to settings. It's mandatory to have your own `settings.js`.
+Command above will copy sample settings to settings. 'settings.js' is where you will store your unique key for Firebase, Telegram, and Google Maps. The bot will not work unless you have modified 'settings.js` with your own information.
 
 In this file you'll see your pre-defined database connection. It should work, but make sure you have your own credentials file.
 
@@ -37,6 +37,8 @@ Here is how to generate `libretaxi-development-credentials.json`:
 * Click on "Generate private key". Download file as `libretaxi-development-credentials.json` and put it to project directory.
 
 Keep in mind that credentials file is git-ignored. We do not recommend to add it to your git repository.
+
+* Now, you will need to update your 'settings.js' with your Firebase Connection String (STATEFUL_CONNSTR). Cick on the cog icon, select "Project settings," and copy your project ID and paste it as a Firebase URL. (i.e.'https://YOUR_PROJECT_NAME.firebaseio.com'  
 
 ## Step 3. Indexes (recommended)
 
@@ -89,7 +91,7 @@ In Telegram app open dialog with `@botfather`:
 
 ![image](https://cloud.githubusercontent.com/assets/1477672/21249653/68e86f0e-c2f4-11e6-950b-862200013e5b.png)
 
-Type `/newbot` command and follow instructions.
+Type `/newbot` command and follow instructions. You will be given an API key, which is your 'TELEGRAM_TOKEN' in 'settings.js' 
 
 ## Step 4. Get your Google Maps API key
 
