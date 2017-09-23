@@ -50,6 +50,7 @@ import ConfirmLocale from './actions/menu/confirm-locale';
 import ParsedLocation from './actions/decorators/parsed-location';
 import LookupAddress from './actions/decorators/lookup-address';
 import ResetUser from './actions/menu/system/reset-user';
+import GoaInfo from './actions/decorators/info/goa';
 
 /**
  * @typedef Routes
@@ -91,7 +92,7 @@ const routes = {
   'driver-explain-checkins': (...args) => new ExplainCheckins(...args),
   'driver-request-location': (options) => new ParsedLocation(
     options,
-    new LookupAddress(options, new DriverRequestLocation(options)),
+    new LookupAddress(options, new GoaInfo(options, new DriverRequestLocation(options))),
   ),
   'driver-explain-whats-next': (...args) => new ExplainWhatsNext(...args),
   'driver-index': (...args) => new DriverIndex(...args),
