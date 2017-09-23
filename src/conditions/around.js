@@ -22,8 +22,9 @@ import GeoPoint from 'geopoint';
 const EARTH_RADIUS_KM = 6371.01;
 
 /**
- * Around bounding box condition.
- * Is point 1 around point 2 within this distance?
+ * Around bounding box condition. Is point 1 around point 2 within this distance?
+ * Note: this class has no validations. `call` method fails if invalid parameters provided. You may
+ * want to combine this condition with {Location} and {All} conditions.
  *
  * @author Roman Pushkin (roman.pushkin@gmail.com)
  * @date 2017-08-11
@@ -42,8 +43,8 @@ export default class Around extends Condition {
    */
   constructor(point1, point2, distance) {
     super({ type: 'around' });
-    this.point1 = new GeoPoint(point1[0], point1[1]);
-    this.point2 = new GeoPoint(point2[0], point2[1]);
+    this.point1 = point1;
+    this.point2 = point2;
     this.distance = distance;
   }
 
@@ -55,7 +56,9 @@ export default class Around extends Condition {
    * otherwise.
    */
   call() {
-    const bb = this.point1.boundingCoordinates(this.distance, EARTH_RADIUS_KM, true);
-    return this.point2.isInBoundingBox(bb);
+    const p1 = new GeoPoint(this.point1[0], this.point1[1]);
+    const p2 = new GeoPoint(this.point2[0], this.point2[1]);
+    const bb = p1.boundingCoordinates(this.distance, EARTH_RADIUS_KM, true);
+    return p2.isInBoundingBox(bb);
   }
 }
