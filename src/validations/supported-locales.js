@@ -39,6 +39,7 @@ localeMap.set('de', 'Deutsch');
 localeMap.set('it', '🇮🇹 Italiano');
 localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('sv', '🇸🇪 Svenska');
+localeMap.set('fi', '🇫🇮 Suomi');
 localeMap.set('pl', '🇵🇱 Polski');
 localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
