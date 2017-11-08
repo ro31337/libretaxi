@@ -29,6 +29,7 @@
  */
 const localeMap = new Map();
 localeMap.set('en', 'English');
+localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
@@ -44,7 +45,6 @@ localeMap.set('pl', '🇵🇱 Polski');
 localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
 localeMap.set('am', '🇦🇲 Հայերեն');
-localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('ua', '🇺🇦 Українська');
 localeMap.set('ro', '🇷🇴 Română');
 localeMap.set('hi', 'हिन्दी');
