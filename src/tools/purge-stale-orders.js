@@ -17,7 +17,7 @@
 */
 
 /* eslint-disable no-console */
-import firebase from 'firebase';
+import firebase from 'firebase-admin';
 import firebaseDB from '../firebase-db';
 
 const ordersDB = firebaseDB.config().ref('orders');

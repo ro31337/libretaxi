@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import firebase from 'firebase';
+import firebase from 'firebase-admin';
 import Settings from '../settings';
 
 let firebaseDB;
@@ -52,8 +52,9 @@ const config = () => {
   const settings = new Settings(overrides);
 
   // configuration hash
+  // `settings.STATEFUL_CREDENTIALS_FILE` must be undefined for tests
   const cfg = {
-    serviceAccount: settings.STATEFUL_CREDENTIALS_FILE, // must be undefined for tests
+    credential: firebase.credential.cert(settings.STATEFUL_CREDENTIALS_FILE),
     databaseURL: settings.STATEFUL_CONNSTR,
   };
 
