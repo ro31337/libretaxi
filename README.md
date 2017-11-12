@@ -18,7 +18,7 @@ LibreTaxi makes taxis affordable again by completely removing all layers in betw
 Technical stack:
 
 * Node.js, JavaScript (ES6)
-* Firebase as data storage
+* [Firebase](https://firebase.google.com/) as data storage
 * Redis as storage for [kue](https://github.com/Automattic/kue)
 * [Telegram](https://telegram.org) as the main transport
 * CLI as backup and PoC transport
@@ -32,7 +32,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 ## Why Telegram?
 
 * Available for all popular platforms
-* Contains rich bot API
+* Has rich bot API
 * Fast, reliable, and secure
 * Works perfect with slow/poor Internet connection
 * Staff and support are developer-friendly
@@ -60,6 +60,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 * [Esdoc](doc/ESDOC.md)
 * [Contributing](doc/CONTRIBUTING.md)
 * [Add translation](doc/TRANSLATE.md)
+* [Debugging](doc/DEBUGGING.md)
 
 ## Linux tweaks
 

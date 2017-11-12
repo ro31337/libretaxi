@@ -30,7 +30,6 @@ import { loadOrder } from '../../src/factories/order-factory';
 
 overrideSettings({
   STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5506',
-  STATEFUL_CREDENTIALS_FILE: undefined,
 });
 
 let server = null;

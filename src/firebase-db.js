@@ -22,6 +22,21 @@ import Settings from '../settings';
 let firebaseDB;
 let overrides;
 
+const credential = (settings) => {
+  // Credentials for test environment. We use firebase-server package for tests, to avoid errors it
+  // should be defined this ticky way. See also: https://github.com/urish/firebase-server/issues/81
+  if (process.env.TEST_ENVIRONMENT) {
+    return {
+      getAccessToken: () => ({
+        expires_in: 0,
+        access_token: '',
+      }),
+    };
+  }
+  // Default way of settings credential for firebase-admin
+  return firebase.credential.cert(settings.STATEFUL_CREDENTIALS_FILE);
+};
+
 /**
  * @typedef firebaseDB
  * @desc
@@ -52,9 +67,8 @@ const config = () => {
   const settings = new Settings(overrides);
 
   // configuration hash
-  // `settings.STATEFUL_CREDENTIALS_FILE` must be undefined for tests
   const cfg = {
-    credential: firebase.credential.cert(settings.STATEFUL_CREDENTIALS_FILE),
+    credential: credential(settings),
     databaseURL: settings.STATEFUL_CONNSTR,
   };
 

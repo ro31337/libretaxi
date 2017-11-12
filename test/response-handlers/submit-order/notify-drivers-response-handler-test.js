@@ -29,7 +29,6 @@ import { loadUser } from '../../../src/factories/user-factory';
 
 overrideSettings({
   STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5505',
-  STATEFUL_CREDENTIALS_FILE: undefined,
 });
 
 let server = null;
