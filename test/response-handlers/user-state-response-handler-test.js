@@ -27,7 +27,6 @@ import { overrideSettings } from '../../src/firebase-db';
 
 overrideSettings({
   STATEFUL_CONNSTR: 'ws://localhost.firebaseio.test:5502',
-  STATEFUL_CREDENTIALS_FILE: undefined,
 });
 
 let server = null;

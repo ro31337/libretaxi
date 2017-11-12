@@ -25,7 +25,7 @@ import ErrorResponse from '../../../responses/error-response';
 import RedirectResponse from '../../../responses/redirect-response';
 import CallActionResponse from '../../../responses/call-action-response';
 import SubmitOrderResponse from '../../../responses/submit-order/submit-order-response';
-import Firebase from 'firebase';
+import Firebase from 'firebase-admin';
 import If from '../../../responses/if-response';
 import Numeric from '../../../conditions/numeric';
 import uuid from 'uuid';

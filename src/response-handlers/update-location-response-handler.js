@@ -21,7 +21,7 @@ import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
 import GeoFire from 'geofire';
 import firebaseDB from '../firebase-db';
-import Firebase from 'firebase';
+import Firebase from 'firebase-admin';
 
 /**
  * Update location response handler.
