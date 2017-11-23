@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * "Request location" response Telegram handler.
@@ -49,6 +49,6 @@ export default class RequestLocationResponseHandler extends ResponseHandler {
           keyboard: [[{ text: buttonText, request_location: true }]],
           one_time_keyboard: true,
         }),
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
   }
 }

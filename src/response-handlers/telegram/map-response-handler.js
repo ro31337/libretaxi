@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * Map response Telegram handler.
@@ -45,7 +45,7 @@ export default class MapResponseHandler extends ResponseHandler {
       this.response.location[1],
       {
         disable_notification: true,
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
     onResult();
   }
 }
