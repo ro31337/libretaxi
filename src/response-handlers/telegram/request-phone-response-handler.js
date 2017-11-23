@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * "Request phone" response Telegram handler.
@@ -49,6 +49,6 @@ export default class RequestPhoneResponseHandler extends ResponseHandler {
           keyboard: [[{ text: buttonText, request_contact: true }]],
           one_time_keyboard: true,
         }),
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
   }
 }

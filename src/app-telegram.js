@@ -36,7 +36,7 @@ console.log('OK telegram bot is waiting for messages...');
 const queue = new CaQueue();
 
 api.on('message', (msg) => {
-  api.sendChatAction(msg.chat.id, 'typing');
+  api.sendChatAction(msg.chat.id, 'typing').catch(() => {});
 
   const userKey = `telegram_${msg.chat.id}`;
   const something = msg.text || (msg.contact || {}).phone_number || getLocation(msg);

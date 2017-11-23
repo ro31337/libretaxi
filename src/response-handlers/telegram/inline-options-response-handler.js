@@ -16,8 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* eslint-disable arrow-body-style, no-console */
+/* eslint-disable arrow-body-style */
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * Inline options response Telegram handler.
@@ -60,7 +61,7 @@ export default class InlineOptionsResponseHandler extends ResponseHandler {
       {
         disable_notification: true,
         reply_markup: JSON.stringify({ inline_keyboard: rows }),
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
 
     onResult();
   }

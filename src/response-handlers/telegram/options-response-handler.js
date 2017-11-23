@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* eslint-disable no-console */
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * Options response Telegram handler.
@@ -56,6 +56,6 @@ export default class OptionsResponseHandler extends ResponseHandler {
       {
         disable_notification: true,
         reply_markup: JSON.stringify({ keyboard: rows, one_time_keyboard: true }),
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
   }
 }
