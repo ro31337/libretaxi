@@ -45,7 +45,7 @@ test.cb('should call super.process(recreate) on process', t => {
     queue: { // inject dependency
       process: (type, num, callback) => {
         t.is(type, 'call-action');
-        t.is(num, 20);
+        t.is(num, 200);
         t.is(callback, recreate);
         t.end();
       },
