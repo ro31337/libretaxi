@@ -75,7 +75,7 @@ test('should process \'call-action\' messages', t => {
   queue.process({ foo3: 'bar3' });
 
   // assert
-  t.truthy(myQueue.process.calledWith('test-queue-type3', 20, { foo3: 'bar3' }));
+  t.truthy(myQueue.process.calledWith('test-queue-type3', 200, { foo3: 'bar3' }));
 });
 
 test('should create delayed message with custom delay on createDelayed', t => {

@@ -76,6 +76,6 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
    */
   process(callback) {
     this.queue
-      .process(this.type, 20, callback);
+      .process(this.type, 200, callback);
   }
 }
