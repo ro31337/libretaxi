@@ -41,6 +41,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
     super(options);
     this.type = options.type;
     this.queue = options.queue || kue.createQueue();
+    if (!options.queue) this.queue.watchStuckJobs();
   }
 
   /**

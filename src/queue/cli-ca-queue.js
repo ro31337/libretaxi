@@ -48,6 +48,7 @@ export default class CliCaQueue extends mix(CaQueue).with(checkNotNull('userKey'
     // dependency injection for tests (instanceQueue and instanceKue)
     this.instanceQueue = options.instanceQueue || new Queue({ type: this.instanceType });
     this.instanceKue = options.instanceKue || kue.createQueue();
+    if (!options.instanceKue) this.instanceKue.watchStuckJobs();
     this.recreate = this.recreate.bind(this);
   }
 
