@@ -31,8 +31,9 @@ test('should create message on create', t => {
   const myQueue = {};
   const create = ss.sinon.stub().returns(myQueue);
   const removeOnComplete = ss.sinon.stub().returns(myQueue);
+  const ttl = ss.sinon.stub().returns(myQueue);
   const save = ss.sinon.stub().returns(myQueue);
-  Object.assign(myQueue, { create, removeOnComplete, save });
+  Object.assign(myQueue, { create, removeOnComplete, ttl, save });
   const queue = new Queue({ type: 'test-queue-type1', queue: myQueue });
 
   // act
@@ -41,6 +42,7 @@ test('should create message on create', t => {
   // assert
   t.truthy(create.calledWith('test-queue-type1', { foo1: 'bar1' }));
   t.truthy(removeOnComplete.calledWith(true));
+  t.truthy(ttl.calledWith(5000));
   t.truthy(save.calledWith());
   sinon.assert.callOrder(create, removeOnComplete, save);
 });
@@ -51,8 +53,9 @@ test('should create delayed message on createDelayed', t => {
   const create = ss.sinon.stub().returns(myQueue);
   const delay = ss.sinon.stub().returns(myQueue);
   const removeOnComplete = ss.sinon.stub().returns(myQueue);
+  const ttl = ss.sinon.stub().returns(myQueue);
   const save = ss.sinon.stub().returns(myQueue);
-  Object.assign(myQueue, { create, delay, removeOnComplete, save });
+  Object.assign(myQueue, { create, delay, removeOnComplete, ttl, save });
   const queue = new Queue({ type: 'test-queue-type2', queue: myQueue });
 
   // act
@@ -62,6 +65,7 @@ test('should create delayed message on createDelayed', t => {
   t.truthy(create.calledWith('test-queue-type2', { foo2: 'bar2' }));
   t.truthy(delay.calledWith(1000));
   t.truthy(removeOnComplete.calledWith(true));
+  t.truthy(ttl.calledWith(5000));
   t.truthy(save.calledWith());
   sinon.assert.callOrder(create, delay, removeOnComplete, save);
 });
@@ -84,8 +88,9 @@ test('should create delayed message with custom delay on createDelayed', t => {
   const create = ss.sinon.stub().returns(myQueue);
   const delay = ss.sinon.stub().returns(myQueue);
   const removeOnComplete = ss.sinon.stub().returns(myQueue);
+  const ttl = ss.sinon.stub().returns(myQueue);
   const save = ss.sinon.stub().returns(myQueue);
-  Object.assign(myQueue, { create, delay, removeOnComplete, save });
+  Object.assign(myQueue, { create, delay, removeOnComplete, ttl, save });
   const queue = new Queue({ type: 'test-queue-type2', queue: myQueue });
 
   // act
@@ -95,6 +100,7 @@ test('should create delayed message with custom delay on createDelayed', t => {
   t.truthy(create.calledWith('test-queue-type2', { foo2: 'bar2' }));
   t.truthy(delay.calledWith(31337));
   t.truthy(removeOnComplete.calledWith(true));
+  t.truthy(ttl.calledWith(5000));
   t.truthy(save.calledWith());
   sinon.assert.callOrder(create, delay, removeOnComplete, save);
 });

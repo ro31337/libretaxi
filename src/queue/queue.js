@@ -52,6 +52,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
     this.queue
       .create(this.type, options)
       .removeOnComplete(true)
+      .ttl(5000)
       .save();
   }
 
@@ -66,6 +67,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
       .create(this.type, options)
       .delay(delay)
       .removeOnComplete(true)
+      .ttl(5000)
       .save();
   }
 

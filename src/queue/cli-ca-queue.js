@@ -76,6 +76,7 @@ export default class CliCaQueue extends mix(CaQueue).with(checkNotNull('userKey'
     this.instanceKue
       .create(destinationType, data)
       .removeOnComplete(true)
+      .ttl(5000)
       .save();
 
     // console.log(`job type: ${job.type}`);
