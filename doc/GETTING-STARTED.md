@@ -30,7 +30,7 @@ Here is how to generate `libretaxi-development-credentials.json`:
 
 * Go to [Firebase console](https://console.firebase.google.com/) and click "Create new project" (Note that Firebase and/or Firebase API is not available in some countries. For example, in Iran. You may need to use VPN).
 
-* Create a Firebase project, Type `githubusername-development` as project name (replace githubusername with your github username or any unique string). Click "Create Project". You will need to update the Firebase connection string in your settings.js file with the Project URL. For example, if you titled your project,`githubusername-development`, your Firebase connection string would likely be: https://githubusername-development.firebaseio.com/
+* Create a Firebase project, type `githubusername-development` as project name (replace githubusername with your github username or any unique string). Click "Create Project". You will need to update the Firebase connection string in your settings.js file with the Project URL. For example, if you title your project,`githubusername-development`, your Firebase connection string would likely be: https://githubusername-development.firebaseio.com/ (if the title of your project is not unique to Firebase then Firebase will add unique text to your Firebase connection string)
 
 * Click on cog icon, select "Project settings", select "Service Accounts" tab. If it doesn't work, try [this url](https://console.firebase.google.com/project/libretaxi-development/settings/serviceaccounts/adminsdk).
 
