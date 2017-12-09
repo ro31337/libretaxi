@@ -30,7 +30,7 @@ Here is how to generate `libretaxi-development-credentials.json`:
 
 * Go to [Firebase console](https://console.firebase.google.com/) and click "Create new project" (Note that Firebase and/or Firebase API is not available in some countries. For example, in Iran. You may need to use VPN).
 
-* Type `libretaxi-development` as project name. Click "Create Project".
+* Create a Firebase project, Type `githubusername-development` as project name (replace githubusername with your github username or any unique string). Click "Create Project". You will need to update the Firebase connection string in your settings.js file with the Project URL. For example, if you titled your project,`githubusername-development`, your Firebase connection string would likely be: https://githubusername-development.firebaseio.com/
 
 * Click on cog icon, select "Project settings", select "Service Accounts" tab. If it doesn't work, try [this url](https://console.firebase.google.com/project/libretaxi-development/settings/serviceaccounts/adminsdk).
 
@@ -44,7 +44,7 @@ Also, make sure you have firebase indexes on `users.q`. If you don't have indexe
 
 > FIREBASE WARNING: Using an unspecified index. Consider adding ".indexOn": "g" at /users to your security rules for better performance
 
-Here is how you can enable index. Add the following two lines into your `rules` section on [this page](https://console.firebase.google.com/project/libretaxi-development/database/rules):
+Here is how you can enable index. Add the following two lines into your `rules` section on your project's database. For example, if your project was titled, 'githubusername-development', your could edit database rules by putting this in browser: (https://console.firebase.google.com/project/githubusername-development/database/rules):
 
 ```
     "users": {
