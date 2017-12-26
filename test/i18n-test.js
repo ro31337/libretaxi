@@ -155,3 +155,36 @@ test.cb('locales should not have long keys with {{phone}}', t => {
     t.end();
   });
 });
+
+test.cb('all translations should have the same number of format tags', t => {
+  t.plan(NUM_OF_LOCALIZATIONS - 1);
+  const walker = walk.walk('../locales', { followLinks: false });
+  const en = require('../locales/en.json'); // eslint-disable-line global-require
+
+  // walk through each file, except en.json
+  walker.on('file', (root, stat, next) => {
+    if (stat.name !== 'en.json') {
+      const path = `${root}/${stat.name}`;
+      const xx = require(path); // eslint-disable-line global-require
+
+      for (const key of Object.keys(en)) {
+        if (key.endsWith('_desc')) continue;
+        const cnt1 = (en[key].match(/%/g) || []).length;
+        const cnt2 = (xx[key].match(/%/g) || []).length;
+
+        if (cnt1 !== cnt2) {
+          t.fail(`Key '${key}' in en.json has ${cnt1} format tag(s) (%), ` +
+            `but in ${stat.name} it is ${cnt2}. Number of format tags should be the same.`);
+        }
+      }
+
+      t.pass();
+    }
+
+    next();
+  });
+
+  walker.on('end', () => {
+    t.end();
+  });
+});
