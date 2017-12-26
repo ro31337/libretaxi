@@ -156,6 +156,14 @@ test.cb('locales should not have long keys with {{phone}}', t => {
   });
 });
 
+// compare the number of "what" in str1 and str2, return false if not equal
+const calcMatch = (str1, str2, what) => {
+  const re = new RegExp(what, 'g');
+  const cnt1 = (str1.match(re) || []).length;
+  const cnt2 = (str2.match(re) || []).length;
+  return cnt1 === cnt2;
+};
+
 test.cb('all translations should have the same number of format tags', t => {
   t.plan(NUM_OF_LOCALIZATIONS - 1);
   const walker = walk.walk('../locales', { followLinks: false });
@@ -169,15 +177,17 @@ test.cb('all translations should have the same number of format tags', t => {
 
       for (const key of Object.keys(en)) {
         if (key.endsWith('_desc')) continue;
-        const cnt1 = (en[key].match(/%/g) || []).length;
-        const cnt2 = (xx[key].match(/%/g) || []).length;
 
-        if (cnt1 !== cnt2) {
-          t.fail(`Key '${key}' in en.json has ${cnt1} format tag(s) (%), ` +
-            `but in ${stat.name} it is ${cnt2}. Number of format tags should be the same.`);
+        if (!calcMatch(en[key], xx[key], '%')) {
+          t.fail(`Number of % for ${key} in en.json and ${stat.name} is different`);
+        }
+        if (!calcMatch(en[key], xx[key], '{')) {
+          t.fail(`Number of {{ for ${key} in en.json and ${stat.name} is different`);
+        }
+        if (!calcMatch(en[key], xx[key], '}')) {
+          t.fail(`Number of }} for ${key} in en.json and ${stat.name} is different`);
         }
       }
-
       t.pass();
     }
 
