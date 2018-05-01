@@ -6,7 +6,7 @@
 
 [![Patreon](https://img.shields.io/badge/back_on-patreon-red.svg)](https://www.patreon.com/libretaxi)
 
-### IMPORTANT: development suspended until we reach the goal of $500/month [https://www.patreon.com/libretaxi]($500/month).
+### IMPORTANT: active development suspended until we reach the goal of $500/month [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi)
 
 ## LibreTaxi: open source alternative for Uber/Lyft with the focus on social change, freedom, delivering taxi service through technology to all people around the world
 
