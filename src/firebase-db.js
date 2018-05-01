@@ -1,8 +1,41 @@
-import firebase from 'firebase';
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+import firebase from 'firebase-admin';
 import Settings from '../settings';
 
 let firebaseDB;
 let overrides;
+
+const credential = (settings) => {
+  // Credentials for test environment. We use firebase-server package for tests, to avoid errors it
+  // should be defined this ticky way. See also: https://github.com/urish/firebase-server/issues/81
+  if (process.env.TEST_ENVIRONMENT) {
+    return {
+      getAccessToken: () => ({
+        expires_in: 0,
+        access_token: '',
+      }),
+    };
+  }
+  // Default way of settings credential for firebase-admin
+  return firebase.credential.cert(settings.STATEFUL_CREDENTIALS_FILE);
+};
 
 /**
  * @typedef firebaseDB
@@ -35,7 +68,7 @@ const config = () => {
 
   // configuration hash
   const cfg = {
-    serviceAccount: settings.STATEFUL_CREDENTIALS_FILE, // must be undefined for tests
+    credential: credential(settings),
     databaseURL: settings.STATEFUL_CONNSTR,
   };
 

@@ -1,3 +1,21 @@
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import kue from 'kue';
 import { mix } from 'mixwith';
 import checkNotNull from '../validations/check-not-null.js';
@@ -23,6 +41,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
     super(options);
     this.type = options.type;
     this.queue = options.queue || kue.createQueue();
+    if (!options.queue) this.queue.watchStuckJobs();
   }
 
   /**
@@ -34,6 +53,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
     this.queue
       .create(this.type, options)
       .removeOnComplete(true)
+      .ttl(5000)
       .save();
   }
 
@@ -48,6 +68,7 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
       .create(this.type, options)
       .delay(delay)
       .removeOnComplete(true)
+      .ttl(5000)
       .save();
   }
 
@@ -58,6 +79,6 @@ export default class Queue extends mix(class {}).with(checkNotNull('type')) {
    */
   process(callback) {
     this.queue
-      .process(this.type, 20, callback);
+      .process(this.type, 200, callback);
   }
 }

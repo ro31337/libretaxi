@@ -1,3 +1,21 @@
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import SelectLocale from './actions/menu/select-locale';
 import SelectUserType from './actions/menu/select-user-type';
 import RequestPhone from './actions/menu/request-phone';
@@ -32,6 +50,7 @@ import ConfirmLocale from './actions/menu/confirm-locale';
 import ParsedLocation from './actions/decorators/parsed-location';
 import LookupAddress from './actions/decorators/lookup-address';
 import ResetUser from './actions/menu/system/reset-user';
+import GoaInfo from './actions/decorators/info/goa';
 
 /**
  * @typedef Routes
@@ -73,7 +92,7 @@ const routes = {
   'driver-explain-checkins': (...args) => new ExplainCheckins(...args),
   'driver-request-location': (options) => new ParsedLocation(
     options,
-    new LookupAddress(options, new DriverRequestLocation(options)),
+    new LookupAddress(options, new GoaInfo(options, new DriverRequestLocation(options))),
   ),
   'driver-explain-whats-next': (...args) => new ExplainWhatsNext(...args),
   'driver-index': (...args) => new DriverIndex(...args),

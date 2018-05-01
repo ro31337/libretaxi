@@ -1,5 +1,23 @@
-/* eslint-disable no-console */
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 import ResponseHandler from '../response-handler';
+import telegramErrors from './telegram-errors';
 
 /**
  * "Request phone" response Telegram handler.
@@ -31,6 +49,6 @@ export default class RequestPhoneResponseHandler extends ResponseHandler {
           keyboard: [[{ text: buttonText, request_contact: true }]],
           one_time_keyboard: true,
         }),
-      }).catch(console.log.bind(console));
+      }).catch(telegramErrors);
   }
 }

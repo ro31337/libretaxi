@@ -1,3 +1,21 @@
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * @typedef LocaleMap
  * @desc Key/value map where:
@@ -11,24 +29,27 @@
  */
 const localeMap = new Map();
 localeMap.set('en', 'English');
+localeMap.set('ru', '🇷🇺 Русский');
 localeMap.set('es', 'Español');
 localeMap.set('fa', 'فارسی');
 localeMap.set('zh-cn', '官话');
 localeMap.set('zh-tw', '繁體中文');
+localeMap.set('jp', '🇯🇵 日本語');
 localeMap.set('fr', 'Français');
 localeMap.set('de', 'Deutsch');
 localeMap.set('it', '🇮🇹 Italiano');
 localeMap.set('pt-br', '🇧🇷 Português');
 localeMap.set('sv', '🇸🇪 Svenska');
+localeMap.set('fi', '🇫🇮 Suomi');
 localeMap.set('pl', '🇵🇱 Polski');
 localeMap.set('cz', '🇨🇿 Česky');
 localeMap.set('tr', '🇹🇷 Türkçe');
-localeMap.set('id', '🇮🇩 Bahasa Indonesia');
-localeMap.set('ru', '🇷🇺 Русский');
+localeMap.set('am', '🇦🇲 Հայերեն');
 localeMap.set('ua', '🇺🇦 Українська');
 localeMap.set('ro', '🇷🇴 Română');
 localeMap.set('hi', 'हिन्दी');
 localeMap.set('ta', 'தமிழ்');
+localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('vi', '🇻🇳 Tiếng Việt');
 
 /**

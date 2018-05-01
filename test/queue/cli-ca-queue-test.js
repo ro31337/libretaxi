@@ -1,3 +1,21 @@
+/*
+    LibreTaxi, free and open source ride sharing platform.
+    Copyright (C) 2016-2017  Roman Pushkin
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 /* eslint-disable no-new */
 import test from 'ava';
 import CliCaQueue from '../../src/queue/cli-ca-queue';
@@ -27,7 +45,7 @@ test.cb('should call super.process(recreate) on process', t => {
     queue: { // inject dependency
       process: (type, num, callback) => {
         t.is(type, 'call-action');
-        t.is(num, 20);
+        t.is(num, 200);
         t.is(callback, recreate);
         t.end();
       },
@@ -60,13 +78,14 @@ test.cb('should subscribe to instance queue messages on process', t => {
 });
 
 test.cb('should recreate message on recreate callback', t => {
-  t.plan(3);
+  t.plan(4);
 
   const instanceKue = {};
   const create = ss.sinon.stub().returns(instanceKue);
   const removeOnComplete = ss.sinon.stub().returns(instanceKue);
+  const ttl = ss.sinon.stub().returns(instanceKue);
   const save = ss.sinon.stub().returns(instanceKue);
-  Object.assign(instanceKue, { create, removeOnComplete, save });
+  Object.assign(instanceKue, { create, removeOnComplete, ttl, save });
 
   const data = { foo: 'bar', userKey: 'cli_2' };
   const job = { data };
@@ -77,6 +96,7 @@ test.cb('should recreate message on recreate callback', t => {
   const done = () => {
     t.truthy(create.calledWith('call-action-cli_2', { foo: 'bar', userKey: 'cli_2' }));
     t.truthy(removeOnComplete.calledWith(true));
+    t.truthy(ttl.calledWith(5000));
     t.truthy(save.calledWith());
     sinon.assert.callOrder(create, removeOnComplete, save);
     t.end();
