@@ -31,6 +31,8 @@ Server support: macOS, Linux (Windows should also work).
 
 Client (Telegram) support: iOS, Android, macOS desktop client, web (can also work for Windows phones - not tested). Note that Telegram desktop clients for Linux and Windows are currently not supported because of lack location functionality. However, web client can be used on these OS along with any modern browser.
 
+![taxi](https://user-images.githubusercontent.com/25986518/29890177-b6c64e92-8d94-11e7-8cf6-1bd1691e7164.png)
+
 ## Why Telegram?
 
 * Available for all popular platforms
