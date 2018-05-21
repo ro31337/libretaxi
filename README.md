@@ -10,7 +10,7 @@ Support project on Patreon: [https://www.patreon.com/libretaxi](https://www.patr
 
 LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
 
-* Available at [@libretaxi_bot](https://telegram.me/libretaxi_bot)
+* Demo available at [@libretaxi_bot](https://telegram.me/libretaxi_bot)
 * Also see [LibreTaxi FAQ](doc/FAQ.md)
 
 ## Implementation details
