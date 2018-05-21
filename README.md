@@ -70,9 +70,7 @@ This package is using unicode emojis. [Click here](https://github.com/eosrei/emo
 
 Here is how you can help:
 
-* Donate from [LibreTaxi.org](http://libretaxi.org) - scroll down for link.
+* Support project on Patreon: [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi)
 * BTC: `1HoUX4UtYPZUUQekAmyYpr42Z9dV9kLke3`
 * ETC: `0x01645791d038Ff07EcB95929448bd513D9C73cc4`
 * LTC: `LajxywwPMtL5P2s5oj7dGmcgmVhEc9R7gF`
-
-Or just spread the word and contribute to the project!
