@@ -4,7 +4,7 @@
 </a>
 </div>
 
-*** Support project on Patreon: [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi) ***
+Support project on Patreon: [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi)
 
 ## LibreTaxi - ridesharing jailbreak (open source Uber alternative PoC)
 
