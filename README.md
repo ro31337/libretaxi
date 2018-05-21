@@ -4,11 +4,9 @@
 </a>
 </div>
 
-[![Patreon](https://img.shields.io/badge/back_on-patreon-red.svg)](https://www.patreon.com/libretaxi)
+*** Support project on Patreon: [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi) ***
 
-### IMPORTANT: active development suspended until we reach the goal of $500/month [https://www.patreon.com/libretaxi](https://www.patreon.com/libretaxi)
-
-## LibreTaxi: open source alternative for Uber/Lyft with the focus on social change, freedom, delivering taxi service through technology to all people around the world
+## LibreTaxi - ridesharing jailbreak (open source Uber alternative PoC)
 
 LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
 
