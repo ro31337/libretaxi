@@ -11,7 +11,7 @@ The best way to install Node.js is to install [Node Version Manager](https://git
 
 * `nvm ls` - show the list of locally installed Node.js versions.
 * `nvm ls-remote` - show the list of available remote Node.js versions.
-* `nvm install v6.3.1` - installs Node.js version 6.3.1
+* `nvm install --lts` - installs Node.js version LTS
 * `nvm --help` - for the list of other commands.
 
 When you typed `nvm install v6.3.1` (or other version) make sure Node.js works by typing:
