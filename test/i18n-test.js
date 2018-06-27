@@ -21,7 +21,7 @@ import walk from 'walk';
 import oboe from 'oboe';
 import fs from 'fs';
 
-const NUM_OF_LOCALIZATIONS = 23;
+const NUM_OF_LOCALIZATIONS = 24;
 
 test.cb('locales should have all keys from en.json, except *_desc', t => {
   t.plan(NUM_OF_LOCALIZATIONS - 1);
@@ -82,7 +82,7 @@ test.cb('locales except en.json should not have keys ending with _desc', t => {
 
       for (const key of Object.keys(xx)) {
         if (key.endsWith('_desc')) {
-          t.fail(`'${stat.name}' cannot contani keys ending with '_desc', but '${key}' was found.`);
+          t.fail(`'${stat.name}' cannot contain keys ending with '_desc', but '${key}' was found.`);
         }
       }
 
