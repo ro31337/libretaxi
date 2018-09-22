@@ -52,7 +52,6 @@ localeMap.set('ta', 'தமிழ்');
 localeMap.set('id', '🇮🇩 Bahasa Indonesia');
 localeMap.set('vi', '🇻🇳 Tiếng Việt');
 localeMap.set('ki', 'Kiribati');
-localeMap.set('ku', 'کوردی 🇹🇯');
 
 /**
  * @typedef SupportedLocales
