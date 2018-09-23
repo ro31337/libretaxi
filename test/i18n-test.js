@@ -21,7 +21,7 @@ import walk from 'walk';
 import oboe from 'oboe';
 import fs from 'fs';
 
-const NUM_OF_LOCALIZATIONS = 24;
+const NUM_OF_LOCALIZATIONS = 25;
 
 test.cb('locales should have all keys from en.json, except *_desc', t => {
   t.plan(NUM_OF_LOCALIZATIONS - 1);
