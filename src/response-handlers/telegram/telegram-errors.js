@@ -20,6 +20,8 @@
 const handler = (error) => {
   if ((error.response || {}).statusCode === 403) {
     console.log('*** bot was blocked by the user ***');
+  } else if ((error.response || {}).statusCode === 400) {
+    console.log('*** message is not modified ***');
   } else {
     console.log(error);
   }
