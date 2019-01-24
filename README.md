@@ -61,6 +61,7 @@ Client (Telegram) support: iOS, Android, macOS desktop client, web (can also wor
 * [Contributing](doc/CONTRIBUTING.md)
 * [Add translation](doc/TRANSLATE.md)
 * [Debugging](doc/DEBUGGING.md)
+* [Using Vagrant](doc/VAGRANT.md)
 
 ## Linux tweaks
 
