@@ -56,3 +56,6 @@ build
 
 # Production settings file
 settings-production.js
+
+# Vagrant
+.vagrant
