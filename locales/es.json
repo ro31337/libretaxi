@@ -16,7 +16,7 @@
 	"order-submitted.cancel": "Terminar búsqueda",
 	"order-submitted.error_incorrect_input": "Opción desconocida, por favor intentalo de nuevo.",
 	"order-cancelled.order_cancelled": "👌 Gracias, hemos terminado de buscar conductores.",
-	"driver-select-vehicle-type.select": "Selecciona el tipo de vehículo que deseas pedir.",
+	"driver-select-vehicle-type.select": "Selecciona el tipo de vehículo que conduces.",
 	"driver-select-vehicle-type.motorbike": "🏍  Motoneta / Motocicleta",
 	"driver-select-vehicle-type.car": "🚗 Automóvil",
 	"driver-select-vehicle-type.error_only_known_type": "Opción desconocida, por favor selecciona automóvil o motoneta / motocicleta.",
