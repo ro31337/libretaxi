@@ -54,6 +54,7 @@ localeMap.set('vi', '🇻🇳 Tiếng Việt');
 localeMap.set('ki', 'Kiribati');
 localeMap.set('ku', 'کوردی 🇹🇯');
 localeMap.set('ar', 'عربي');
+localeMap.set('bn', 'বাংলা');
 
 /**
  * @typedef SupportedLocales
