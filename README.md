@@ -1,4 +1,10 @@
-## LibreTaxi - ridesharing jailbreak (open source Uber alternative PoC)
+## Version 1 is deprecated
+
+This version is deprecated and unsupported. See version 2 instead which is easier to use, simpler, faster, has no dependency like Google Firebase and just better:
+
+https://github.com/ro31337/libretaxi2
+
+## LibreTaxi v1 - ridesharing jailbreak (open source Uber alternative PoC)
 
 LibreTaxi makes taxis affordable again by completely removing all layers in between. Passengers pay with cash and get connected with drivers directly, where LibreTaxi is a thin layer allowing to negotiate the price before order is confirmed. No registration/approval is required. Less regulations.
 
