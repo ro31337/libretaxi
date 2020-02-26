@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  db: {}
+  rabbit: {}
+
+services:
+  db:
+    image: kartoza/postgis:12.0
+    volumes:
+      - db:/var/lib/postgresql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/setup-db.sql
+    environment:
+      - POSTGRES_USER=libretaxi
+      - POSTGRES_TEMPLATE_EXTENSIONS=true
+      - POSTGRES_PASS=libretaxi
+      - POSTGRES_DBNAME=libretaxi
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology
+    ports:
+      - 127.0.0.1:15432:5432
+  rabbit:
+    hostname: my-rabbit
+    image: rabbitmq:3-management
+    volumes:
+      - rabbit:/var/lib/rabbitmq
+    ports:
+      - 127.0.0.1:8079:5672
+      - 127.0.0.1:8080:15672

@@ -1,0 +1,102 @@
+msgid "init_menu.welcome"
+msgstr "Bienvenido a LibreTaxi 2.0!"
+
+msgid "ask_location_menu.click_next"
+msgstr "Pulse \"Siguiente\" (desde teléfono celular) para compartir su ubicación. O puede 📎 Clip -> 📍 Ubicación para mejor privacidad."
+
+msgid "ask_location_menu.next_button"
+msgstr "Siguiente"
+
+msgid "feed_menu.greeting"
+msgstr "Encontraras 🚗 conductores y 👋 pasajeros aquí."
+
+msgid "feed_menu.search_button"
+msgstr "Encontrar 🚗 o 👋"
+
+msgid "feed_menu.location_button"
+msgstr "📍 Cambiar ubicación"
+
+msgid "feed_menu.location_changed"
+msgstr "👌 Ubicación actualizada"
+
+msgid "feed_menu.error"
+msgstr "😕 No puedo entender su elección."
+
+msgid "post_menu.report_button"
+msgstr "☝️️Reportar ⚠️"
+
+msgid "post_menu.wait"
+msgstr "🕙 Esperar por 5 minutos"
+
+# Do not translate /cancel
+msgid "post_menu.copy_and_paste"
+msgstr "Copiar & pegar texto que empieza con 🚗 (conductor) o 👋 (pasajero) en el siguiente formato, or /cancel, ejemplos:"
+
+msgid "post_menu.driver_example"
+msgstr ""
+"🚗 Viaje ofrecido\n"
+"Desde: foobar\n"
+"Hasta: Aerpuerto\n"
+"Fecha: hoy\n"
+"Horario: ahora\n"
+"Pago: efectivo, venmo"
+
+msgid "post_menu.passenger_example"
+msgstr ""
+"👋 Viaje deseado\n"
+"Desde: foobar, 42\n"
+"Hasta: El centro\n"
+"Fecha: hoy\n"
+"Horario: ahora\n"
+"Pasajero: 1"
+
+# Here is how we check if the user just copied the text or changed it. It's just a string from the previous postings.
+# Note how we have "foobar" in both postings above. It's the magic string, non-existent address, you should think
+# about an address that doesn't exist in your own language. Or you can leave "foobar" if you didn't get it ;)
+# Keep it lowercased!
+msgid "validation.dummy_addr_lowercase"
+msgstr "foobar"
+
+msgid "post_menu.sent"
+msgstr "✅ Enviados a usuarios de hasta (25km) and to @libretaxi_all"
+
+# "Contact" is a verb here. For example, we'll have a posting where it says "blabla, I'm looking for ride, contact @username".
+# So you're translating this verb "contact" below.
+msgid "post_menu.via"
+msgstr "Contactar"
+
+# When we have an error we say something like:
+# "Your input is invalid, try again or /cancel"
+# So this "or" part needs to be translated below.
+msgid "post_menu.or"
+msgstr "o"
+
+msgid "validation.text_too_long"
+msgstr "🚫 El texto es muy largo, máximo 300 caracteres (tienes %d)"
+
+msgid "validation.text_too_short"
+msgstr "🚫 El texto es muy corto, minimo 20 caracteres (tienes %d)"
+
+msgid "validation.prefix"
+msgstr "🚫 El texto es debe empezar con 🚗 o 👋"
+
+msgid "validation.no_at"
+msgstr "🚫 El simbolo @ no esta permitido"
+
+msgid "validation.no_offensive_language"
+msgstr "🚫 Por favor sin malas palabras 🤦"
+
+msgid "validation.change_from_to"
+msgstr "🚫 Publica de nuevo, cambia \"Desde\" y \"Hasta\""
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Solo 2 líneas vacías como máximo (tienes %d)"
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Solo 9 líneas máximas por favor (tienes %d)"
+
+msgid "validation.min_lines"
+msgstr "🚫 Al menos 5 líneas por favor (tienes %d)"
+
+msgid "main.welcome_link"
+msgstr "https://telegra.ph/LibreTaxi-20---te-va-a-enamorar-02-09"
