@@ -23,7 +23,7 @@ msgid "feed_menu.location_changed"
 msgstr "👌 Location updated"
 
 msgid "feed_menu.error"
-msgstr "😕 Can't understand your choice"
+msgstr "😕 Can't understand your choice, try clicking 🔳 icon below 👇"
 
 msgid "post_menu.report_button"
 msgstr "☝️️Report ⚠️"

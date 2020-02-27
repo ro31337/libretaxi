@@ -20,7 +20,7 @@ msgid "feed_menu.location_changed"
 msgstr "👌 Ubicación actualizada"
 
 msgid "feed_menu.error"
-msgstr "😕 No puedo entender su elección."
+msgstr "😕 No puedo entender su elección, intente hacer clic 🔳 abajo 👇"
 
 msgid "post_menu.report_button"
 msgstr "☝️️Reportar ⚠️"
