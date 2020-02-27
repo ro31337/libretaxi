@@ -1,6 +1,6 @@
 msgid "init_menu.welcome"
 msgstr "Добро пожаловать в новую версию Либре-такси!\n"
-"Исходный код: https://github.com/ro31337/libretaxi2\n"
+"Исходный код: https://github.com/ro31337/libretaxi\n"
 "Запрограммировал Роман Пушкин и друзья\n"
 "Лицензия: AGPL-3.0"
 

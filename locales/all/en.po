@@ -1,6 +1,6 @@
 msgid "init_menu.welcome"
 msgstr "Welcome to LibreTaxi 2.0!\n"
-"Source code: https://github.com/ro31337/libretaxi2\n"
+"Source code: https://github.com/ro31337/libretaxi\n"
 "Made by Roman Pushkin and supporters\n"
 "License: AGPL-3.0"
 

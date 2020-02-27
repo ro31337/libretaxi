@@ -24,7 +24,7 @@ It is closer to Craigslist rideshare rather than Uber, but it works, and works g
 
 1. [Install Go](https://golang.org/doc/install)
 2. [Install Go dep](https://github.com/golang/dep)
-3. Download the repo to `~/go/src/libretaxi` (not libretaxi2).
+3. Download the repo to `~/go/src/libretaxi`
 4. Install Docker with docker-compose
 5. Run PostgreSQL and RabbitMQ with default credentials (see connection strings below)
 ```
