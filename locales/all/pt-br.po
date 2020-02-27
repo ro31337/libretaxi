@@ -34,12 +34,12 @@ msgstr "Copiar & colar o texto començando com 🚗 (motorista) ou 👋 (passage
 
 msgid "post_menu.driver_example"
 msgstr ""
-"🚗 Oferta de boleia\n"
+"🚗 Oferta de viagem\n"
 "De: praça fulano\n"
-"Para: aeropuerto\n"
+"Para: aeroporto\n"
 "Data: hoje\n"
 "Hora: agora\n"
-"Pagamento: cash, coins, troca,..."
+"Pagamento: cash"
 
 msgid "post_menu.passenger_example"
 msgstr ""
