@@ -20,7 +20,7 @@ msgid "feed_menu.location_changed"
 msgstr "👌 Localização actualizada"
 
 msgid "feed_menu.error"
-msgstr "😕 Pedido não entendido, intente hacer clic 🔳 abajo 👇"
+msgstr "😕 Pedido não entendido, tente fazer clic 🔳 abajo 👇"
 
 msgid "post_menu.report_button"
 msgstr "☝️️Reportar ⚠️"
@@ -34,12 +34,12 @@ msgstr "Copiar & colar o texto començando com 🚗 (motorista) ou 👋 (passage
 
 msgid "post_menu.driver_example"
 msgstr ""
-"🚗 Oferta de boleia\n"
+"🚗 Oferta de viagem\n"
 "De: praça fulano\n"
-"Para: aeropuerto\n"
+"Para: aeroporto\n"
 "Data: hoje\n"
 "Hora: agora\n"
-"Pagamento: cash, coins, troca,..."
+"Pagamento: cash"
 
 msgid "post_menu.passenger_example"
 msgstr ""
