@@ -1,0 +1,105 @@
+msgid "init_menu.welcome"
+msgstr "Welcome to LibreTaxi 2.0!\n"
+"Source code: https://github.com/ro31337/libretaxi\n"
+"Made by Roman Pushkin and supporters\n"
+"License: AGPL-3.0"
+
+msgid "ask_location_menu.click_next"
+msgstr "ক্লিক \"পরবর্তী\" (মোবাইল ফোন থেকে) আপনার অবস্থান শেয়ার করতে।  অথবা নকল করুন এইটি দিয়ে  📎 পেপার ক্লিপ -> 📍 অবস্থান"
+
+msgid "ask_location_menu.next_button"
+msgstr "পরবর্তী"
+
+msgid "feed_menu.greeting"
+msgstr "আপনি দেখতে পাবেন 🚗 ড্রাইভার এবং 👋 যাত্রী এখানে।"
+
+msgid "feed_menu.search_button"
+msgstr "অনুসন্ধান 🚗 অথবা 👋"
+
+msgid "feed_menu.location_button"
+msgstr "📍 অবস্থান পরিবর্তন করুন"
+
+msgid "feed_menu.location_changed"
+msgstr "👌 অবস্থান আপডেট হয়েছে"
+
+msgid "feed_menu.error"
+msgstr "😕 আপনার পছন্দ বুঝতে পারছি না, ক্লিক করার চেষ্টা করুন 🔳 নীচের  আইকনে  👇"
+
+msgid "post_menu.report_button"
+msgstr "☝️️প্রতিবেদন ⚠️"
+
+msgid "post_menu.wait"
+msgstr "🕙 অপেক্ষা করুন"
+
+# Do not translate /cancel
+msgid "post_menu.copy_and_paste"
+msgstr "কপি এবং পেস্ট টেস্ট শুরু হয় 🚗 (চালক) অথবা 👋 (যাত্রী) নিম্নলিখিত ফরমেটে, অথবা  /বাতিল, উদাহরণ:"
+
+msgid "post_menu.driver_example"
+msgstr ""
+"🚗 রাইড দিচ্ছি\n"
+"থেকে: ফুৰাৰ স্কোয়ার\n"
+"টু: এয়ারপোর্ট\n"
+"তারিখ: আজকে\n"
+"সময়: এখন\n"
+"অর্থ প্রদান: নগদ, ভেনমো"
+
+msgid "post_menu.passenger_example"
+msgstr ""
+"👋 রাইড চেয়েছিল\n"
+"থেকে: ফুৰাৰ এসটি, ৪২\n"
+"টু: ডাউনটাউন\n"
+"তারিখ: আজকে\n"
+"সময়: এখন\n"
+"প্যাক্স: ১"
+
+# Here is how we check if the user just copied the text or changed it. It's just a string from the previous postings.
+# Note how we have "foobar" in both postings above. It's the magic string, non-existent address, you should think
+# about an address that doesn't exist in your own language. Or you can leave "foobar" if you didn't get it ;)
+# Keep it lowercased!
+msgid "validation.dummy_addr_lowercase"
+msgstr "ফুৰাৰ"
+
+msgid "post_menu.sent"
+msgstr "✅ আপনার চারপাশের ব্যবহারকারীদের (২৫ কিমি) এবং প্রেরণ করা হয়েছে @libretaxi_all"
+
+# "Contact" is a verb here. For example, we'll have a posting where it says "blabla, I'm looking for ride, contact @username".
+# So you're translating this verb "contact" below.
+msgid "post_menu.via"
+msgstr "যোগাযোগ"
+
+# When we have an error we say something like:
+# "Your input is invalid, try again or /cancel"
+# So this "or" part needs to be translated below.
+msgid "post_menu.or"
+msgstr "অথবা"
+
+msgid "validation.text_too_long"
+msgstr "🚫 লেখাটি অনেক দীর্ঘ , সর্বোচ্চ ৩০০ টি অক্ষর (আপনার আছে %d)"
+
+msgid "validation.text_too_short"
+msgstr "🚫 লেখাটি খুব চোট, ২০ টি অক্ষর ন্যূনতম (আপনার আছে %d)"
+
+msgid "validation.prefix"
+msgstr "🚫 লেখা অবশ্যই শুরু হতে হবে 🚗 অথবা 👋"
+
+msgid "validation.no_at"
+msgstr "🚫 কোন @ প্রতীক নয় দয়া করে"
+
+msgid "validation.no_offensive_language"
+msgstr "🚫 কোন খারাপ শব্দ নয় দয়া করে 🤦"
+
+msgid "validation.change_from_to"
+msgstr "🚫 আবার পোস্ট করুন, পরিবর্তন \"থেকে\" এবং \"পর্যন্ত\""
+
+msgid "validation.empty_lines1"
+msgstr "🚫 দয়া করে সর্বাধিক শুধুমাত্র ২ টি খালি লাইন  (আপনার আছে  %d)"
+
+msgid "validation.empty_lines1"
+msgstr "🚫 দয়া করে সর্বোচ্চ  ৯ লাইন (আপনার আছে %d)"
+
+msgid "validation.min_lines"
+msgstr "🚫 দয়া করে ন্যূনতম ৫ লাইন  (আপনার আছে %d)"
+
+msgid "main.welcome_link"
+msgstr "https://telegra.ph/LibreTaxi-20---%E0%A6%86%E0%A6%AA%E0%A6%A8-%E0%A6%8F%E0%A6%9F-%E0%A6%AD%E0%A6%B2%E0%A6%AC%E0%A6%B8%E0%A6%AC%E0%A6%A8-03-05"
