@@ -19,7 +19,7 @@ It is closer to Craigslist rideshare rather than Uber, but it works, and works g
 * [How it works - Spanish](https://telegra.ph/LibreTaxi-20---te-va-a-enamorar-02-09)
 * [How it works - Russian](https://telegra.ph/Novaya-versiya-Libre-taksi-vam-ponravitsya-02-08)
 * [How it works - Portuguese](https://telegra.ph/LibreTaxi-20---Vai-o-amar-02-12)
-* [How it works - Bengali] (https://telegra.ph/LibreTaxi-20---%E0%A6%86%E0%A6%AA%E0%A6%A8-%E0%A6%8F%E0%A6%9F-%E0%A6%AD%E0%A6%B2%E0%A6%AC%E0%A6%B8%E0%A6%AC%E0%A6%A8-03-05)
+* [How it works - Portuguese](https://telegra.ph/LibreTaxi-20---%E0%A6%86%E0%A6%AA%E0%A6%A8-%E0%A6%8F%E0%A6%9F-%E0%A6%AD%E0%A6%B2%E0%A6%AC%E0%A6%B8%E0%A6%AC%E0%A6%A8-03-05)
 
 ## Prerequisites
 
