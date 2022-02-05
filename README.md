@@ -71,6 +71,16 @@ Shown below are our bronze, silver and gold project sponsors.
 Big thanks to these companies for supporting the project.
 Note: Listed services are not tested, vetted nor supported by the author(s) in any manner.
 
-[No sponsors at the moment, become a first sponsor!](https://github.com/sponsors/ro31337)
+### Gold sponsors
+
+Prevent workplace conflicts with this Slack app:
+
+<table><tbody><tr>
+<td><a href="https://healthydebate.ai" target="_blank">
+    <img width="400" src="https://user-images.githubusercontent.com/1477672/152650139-fe043eac-eab4-4cdb-a04a-e0a9daea4639.svg" alt="Prevent workplace conflicts">
+</a></td>
+</tr></tbody></table>
+
+[Become a sponsor!](https://github.com/sponsors/ro31337)
 
 [View all sponsors](https://github.com/sponsors/ro31337)
