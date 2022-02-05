@@ -1,13 +1,6 @@
-# LibreTaxi v2, #deleteuber
+# LibreTaxi v2
 
-```
-Roses are red
-violets are blue
-workers are tired of getting exploited
-and we're all coming for you
-```
-
-LibreTaxi is open-source Uber proof-of-concept that works though [Telegram](https://telegram.org/).
+LibreTaxi is open-source Uber proof-of-concept that works through [Telegram](https://telegram.org/).
 
 See it in action: https://t.me/libretaxi_bot
 
@@ -71,3 +64,13 @@ dep ensure # or ~/go/bin/dep ensure
 go build
 ./libretaxi
 ```
+
+## 🌟 Project Sponsors
+
+Shown below are our bronze, silver and gold project sponsors.
+Big thanks to these companies for supporting the project.
+Note: Listed services are not tested, vetted nor supported by the author(s) in any manner.
+
+[No sponsors at the moment, become a first sponsor!](https://github.com/sponsors/ro31337)
+
+[View all sponsors](https://github.com/sponsors/ro31337)
