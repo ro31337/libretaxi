@@ -1,0 +1,105 @@
+msgid "init_menu.welcome"
+msgstr "Вітаємо у новій версії Лібре-таксі!\n"
+"Програмний код: https://github.com/ro31337/libretaxi\n"
+"Запрограмував Роман Пушкін та його друзі\n"
+"Ліцензія: AGPL-3.0"
+
+msgid "ask_location_menu.click_next"
+msgstr "Натисніть \"Далі\" (з мессенжеру у телефоні) щоб встановити локацію. Або 📎 скріпка -> 📍 Місцезнаходження для більшої приватності."
+
+msgid "ask_location_menu.next_button"
+msgstr "Далі"
+
+msgid "feed_menu.greeting"
+msgstr "Тут ви побачите 🚗 водіїв та 👋 пасажирів."
+
+msgid "feed_menu.search_button"
+msgstr "Знайти 🚗 або 👋"
+
+msgid "feed_menu.location_button"
+msgstr "📍 Змінити локацію"
+
+msgid "feed_menu.location_changed"
+msgstr "👌 Нову локація встановлено"
+
+msgid "feed_menu.error"
+msgstr "😕 Не можу зрозуміти ваш вибір, спопробуйте натистнути 🔳 іконку нижче 👇"
+
+msgid "post_menu.report_button"
+msgstr "☝️️Поскаржитись ⚠️"
+
+msgid "post_menu.wait"
+msgstr "🕙 Почекайте 5 хвилин"
+
+# Do not translate /cancel
+msgid "post_menu.copy_and_paste"
+msgstr "Скопіюйте текст, що починається з 🚗 (якщо ви водій) або 👋 (якщо пасажир) та змініть необхідні поля, або /cancel:"
+
+msgid "post_menu.driver_example"
+msgstr ""
+"🚗 Підвезу\n"
+"Звідки: район Річного вокзалу\n"
+"Куди: на Дубровку\n"
+"Дата: сьогодні\n"
+"Час: зараз\n"
+"Оплата: готівка, на карту\n"
+
+msgid "post_menu.passenger_example"
+msgstr ""
+"👋 Шукаю водія\n"
+"Звідки: Дубровська вулиця, будинок 1\n"
+"Куди: аеропорт\n"
+"Дата: сьогодні\n"
+"Час: зараз\n"
+"Пасажирів: 1"
+
+# Here is how we check if the user just copied the text or changed it. It's just a string from the previous postings.
+# Note how we have "foobar" in both postings above. It's the magic string, non-existent address, you should think
+# about an address that doesn't exist in your own language. Or you can leave "foobar" if you didn't get it ;)
+# Keep it lowercased!
+msgid "validation.dummy_addr_lowercase"
+msgstr "дубров"
+
+msgid "post_menu.sent"
+msgstr "✅ Відправлено усім у радіусі 25 км і в @libretaxi_all"
+
+# "Contact" is a verb here. For example, we'll have a posting where it says "blabla, I'm looking for ride, contact @username".
+# So you're translating this verb "contact" below.
+msgid "post_menu.via"
+msgstr "Контакт: "
+
+# When we have an error we say something like:
+# "Your input is invalid, try again or /cancel"
+# So this "or" part needs to be translated below. Important: keep space at the end!
+msgid "post_menu.or"
+msgstr "або"
+
+msgid "validation.text_too_long"
+msgstr "🚫 Повідомлення занадто довге, 300 літер максимум (у вас %d)"
+
+msgid "validation.text_too_short"
+msgstr "🚫 Текст занадто короткий, 20 літер мінімум (у вас %d)"
+
+msgid "validation.prefix"
+msgstr "🚫 Текст повинен починатися з 🚗 або 👋"
+
+msgid "validation.no_at"
+msgstr "🚫 Не вказуйте символ @"
+
+msgid "validation.no_offensive_language"
+msgstr "🚫 Поважайте культуру мовлення 🤦"
+
+msgid "validation.change_from_to"
+msgstr "🚫 Ще раз, але змініть \"Звідки\" і \"Куди\""
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Дві пусті строки максимум, якщо можливо (у вас %d)"
+
+msgid "validation.empty_lines2"
+msgstr "🚫 Дев\ʼять строк максимум будь ласка (у вас %d)"
+
+msgid "validation.min_lines"
+msgstr "🚫 Потрібно хоча б п\ʼять строк (у вас %d)"
+
+msgid "main.welcome_link"
+msgstr "https://telegra.ph/Novaya-versiya-Libre-taksi-vam-ponravitsya-02-08"
