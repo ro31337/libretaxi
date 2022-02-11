@@ -1,0 +1,105 @@
+msgid "init_menu.welcome"
+msgstr "Benvenuto in LibreTaxi 2.0!\n"
+"Codice sorgente: https://github.com/ro31337/libretaxi\n"
+"Creato da Roman Pushkin e sostenitori\n"
+"Licenza: AGPL-3.0"
+
+msgid "ask_location_menu.click_next"
+msgstr "Clic \"Prossimo\" (dal cellulare) per condividere la tua posizione. O selezionare 📎 Fermacarte -> 📍 Posizione"
+
+msgid "ask_location_menu.next_button"
+msgstr "Prossimo"
+
+msgid "feed_menu.greeting"
+msgstr "Vedrai 🚗 autisti e 👋 passeggeri qui."
+
+msgid "feed_menu.search_button"
+msgstr "Trovare 🚗 o 👋"
+
+msgid "feed_menu.location_button"
+msgstr "📍 Modificare posizione"
+
+msgid "feed_menu.location_changed"
+msgstr "👌 Posizione aggiornata"
+
+msgid "feed_menu.error"
+msgstr "😕 Non riesco a capire la tua scelta, prova a fare clic 🔳 icona sotto 👇"
+
+msgid "post_menu.report_button"
+msgstr "☝️️Rapporto ⚠️"
+
+msgid "post_menu.wait"
+msgstr "🕙 Attendi 5 minuti"
+
+# Non tradurre /cancel
+msgid "post_menu.copy_and_paste"
+msgstr "Copia e incolla il testo che inizia con 🚗 (autista) or 👋 (passeggeri) nel seguente formato, o /cancel, esempi:"
+
+msgid "post_menu.driver_example"
+msgstr ""
+"🚗 Offerta corsa\n"
+"Da: piazza foobar\n"
+"A: aeroporto\n"
+"Data: oggi\n"
+"Ora: adesso\n"
+"Pagamento: contanti, Venmo"
+
+msgid "post_menu.passenger_example"
+msgstr ""
+"👋 Corsa richiesta\n"
+"Da: via foobar, 42\n"
+"A: centro città\n"
+"Data: oggi\n"
+"Ora: adesso\n"
+"Pagamento: 1"
+
+# Ecco come controlliamo se l'utente ha appena copiato il testo o l'ha modificato. È solo una stringa dai messaggi precedenti.
+# Nota come abbiamo "foobar" in entrambi i post sopra. È la stringa magica, indirizzo inesistente, dovresti pensare
+# su un indirizzo che non esiste nella tua lingua. Oppure puoi lasciare "foobar" se non l'hai capito ;)
+# Tienilo minuscolo!
+msgid "validation.dummy_addr_lowercase"
+msgstr "foobar"
+
+msgid "post_menu.sent"
+msgstr "✅ Inviato agli utenti intorno a te (25 km) e a @libretaxi_all"
+
+# "Contattare" è un verbo qui. Ad esempio, avremo un post in cui si dice "blabla, sto cercando un passaggio, contatto @username".
+# Quindi stai traducendo questo verbo "contattare" qui sotto.
+msgid "post_menu.via"
+msgstr "Contattare"
+
+# Quando abbiamo un errore diciamo qualcosa come:
+# "Il tuo input non è valido, riprova o / annulla"
+# Quindi questa parte "o" deve essere tradotta di seguito.
+msgid "post_menu.or"
+msgstr "o"
+
+msgid "validation.text_too_long"
+msgstr "🚫 Il testo è troppo lungo, massimo 300 caratteri (hai %d)"
+
+msgid "validation.text_too_short"
+msgstr "🚫 Il testo è troppo corto, 20 caratteri minimo (hai %d)"
+
+msgid "validation.prefix"
+msgstr "🚫 Il testo deve iniziare con 🚗 o 👋"
+
+msgid "validation.no_at"
+msgstr "🚫 Non usare il simbolo @ per favore"
+
+msgid "validation.no_offensive_language"
+msgstr "🚫 Niente parolacce per favore 🤦"
+
+msgid "validation.change_from_to"
+msgstr "🚫 Pubblica di nuovo, cambia \"Da\" e \"A\""
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Solo 2 righe vuote al massimo per favore (hai %d)"
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Solo 9 righe al massimo per favore (hai %d)"
+
+msgid "validation.min_lines"
+msgstr "🚫 Almeno 5 righe per favore (hai %d)"
+
+msgid "main.welcome_link"
+msgstr "https://telegra.ph/LibreTaxi-20---you-will-love-it-02-02"
