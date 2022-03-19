@@ -1,0 +1,102 @@
+msgid "init_menu.welcome"
+msgstr "Bienvenue à LibreTaxi 2.0 !"
+
+msgid "ask_location_menu.click_next"
+msgstr "Appuyez sur \"Suivant\" (à partir d'un smartphone) (depuis un téléphone portable) pour partager votre position. U utiliser le bouton 📎 -> 📍 Position pour une meilleure confidentialité."
+
+msgid "ask_location_menu.next_button"
+msgstr "Suivant"
+
+msgid "feed_menu.greeting"
+msgstr "Vous trouverez ici 🚗 conducteurs et 👋 passagers."
+
+msgid "feed_menu.search_button"
+msgstr "Trouver 🚗 ou 👋"
+
+msgid "feed_menu.location_button"
+msgstr "📍 Modifier la localisation".
+
+msgid "feed_menu.location_changed"
+msgstr "👌 Localisation mise à jour".
+
+msgid "feed_menu.error"
+msgstr "😕 Je ne comprends pas votre choix, essayez de cliquer sur 🔳 ci-dessous 👇".
+
+msgid "post_menu.report_button"
+msgstr "☝️️Signaler ⚠️"
+
+msgid "post_menu.wait"
+msgstr "🕙 Attendez 5 minutes".
+
+# Do not translate /cancel
+msgid "post_menu.copy_and_paste"
+msgstr "Copiez et collez le texte commençant par 🚗 (conducteur) ou 👋 (passager) dans le format suivant, ou tapez /cancel (pour annuler), exemples :"
+
+msgid "post_menu.driver_example"
+msgstr ""
+"🚗 Trajet proposé\n"
+"Depuis: dtc\n"
+"Vers: Aéroport\n"
+"Date: aujourd'hui\n"
+"Horaire: maintenant\n"
+"Paiement: liquide, chèque, virement, Ğ1"
+
+msgid "post_menu.passenger_example"
+msgstr ""
+"👋 Trajet désiré\n"
+"Depuis: dtc\n"
+"Vers: Centre-ville\n"
+"Date: aujourd'hui\n"
+"Horaire: maintenant\n"
+"Passager(s): 1"
+
+# Here is how we check if the user just copied the text or changed it. It's just a string from the previous postings.
+# Note how we have "foobar"  in both postings above. It's the magic string, non-existent address, you should think
+# about an address that doesn't exist in your own language. ( ie "dtc" in french) Or you can leave "foobar" if you didn't get it ;)
+# Keep it lowercased!
+msgid "validation.dummy_addr_lowercase"
+msgstr "dtc"
+
+msgid "post_menu.sent"
+msgstr "✅ Envoyé aux utilisateurs jusqu'à (25km) et à @libretaxi_all"
+
+# "Contact" is a verb here. For example, we'll have a posting where it says "blabla, I'm looking for ride, contact @username".
+# So you're translating this verb "contact" below.
+msgid "post_menu.via"
+msgstr "Contacter"
+
+# When we have an error we say something like:
+# "Your input is invalid, try again or /cancel"
+# So this "or" part needs to be translated below.
+msgid "post_menu.or"
+msgstr "ou"
+
+msgid "validation.text_too_long"
+msgstr "🚫 Le texte est trop long, 300 caractères maximum (vous en avez saisi %d)"
+
+msgid "validation.text_too_short"
+msgstr "🚫 Le texte est très court, 20 caractères au minimum. (vous en avez saisi %d)"
+
+msgid "validation.prefix"
+msgstr "🚫 Le texte doit commencer par 🚗 ou 👋."
+
+msgid "validation.no_at"
+msgstr "🚫 Le symbole @ n'est pas autorisé"
+
+msgid "validation.no_offensive_language"
+msgstr "🚫 S'il vous plaît, pas de jurons 🤦."
+
+msgid "validation.change_from_to"
+msgstr "🚫 Publiez à nouveau, modifiez \"De\" et \"Vers\""
+
+msgid "validation.empty_lines1"
+msgstr "🚫 Seulement 2 lignes vides au maximum (vous en avez saisi %d)"
+
+msgid "validation.empty_lines1"
+msgstr "🚫 9 lignes maximum, s'il vous plaît (vous en avez saisi %d)"
+
+msgid "validation.min_lines"
+msgstr "🚫 Au moins 5 lignes s'il vous plaît (vous en avez saisi %d)"
+
+msgid "main.welcome_link"
+msgstr "https://telegra.ph/LibreTaxi-20---vous-allez-le-kiffer-03-19"
